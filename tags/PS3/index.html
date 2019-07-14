@@ -161,7 +161,7 @@
 <div class="tabs-bar container">
     <nav class="tags-list">
         <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">全部</a>
+            ">All</a>
         
             <a href="/tags/PS3/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light active">PS3</a>
             
@@ -240,7 +240,7 @@
     <div class="bottom">
         <p>
             <span>
-                Wisejay &copy; 2017 - 2019
+                Wisejay &copy; 2019
             </span>
         		
            	
@@ -376,10 +376,10 @@
         var OriginTitile = document.title, titleTime;
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
-                document.title = '死鬼去哪里了！';
+                document.title = '点这里看看！';
                 clearTimeout(titleTime);
             } else {
-                document.title = '(つェ⊂)咦!又好了!';
+                document.title = '欢迎回来!';
                 titleTime = setTimeout(function() {
                     document.title = OriginTitile;
                 },2000);

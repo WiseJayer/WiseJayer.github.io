@@ -225,7 +225,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-14T09:05:54.662Z" itemprop="dateUpdated">2019-07-14 17:05:54</time>
+    Last updated: <time datetime="2019-07-14T09:05:54.662Z" itemprop="dateUpdated">2019-07-14 17:05:54</time>
 </span><br>
 
 
@@ -343,7 +343,7 @@
     <div class="bottom">
         <p>
             <span>
-                Wisejay &copy; 2017 - 2019
+                Wisejay &copy; 2019
             </span>
         		
            	
@@ -479,10 +479,10 @@
         var OriginTitile = document.title, titleTime;
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
-                document.title = '死鬼去哪里了！';
+                document.title = '点这里看看！';
                 clearTimeout(titleTime);
             } else {
-                document.title = '(つェ⊂)咦!又好了!';
+                document.title = '欢迎回来!';
                 titleTime = setTimeout(function() {
                     document.title = OriginTitile;
                 },2000);
