@@ -3,31 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[为什么是Hexo?]]></title>
-      <url>/2019/07/15/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFHexo/</url>
-      <content type="html"><![CDATA[<h2 id="关于Hexo"><a href="#关于Hexo" class="headerlink" title="关于Hexo"></a>关于Hexo</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-<h2 id="我为什么选择Hexo"><a href="#我为什么选择Hexo" class="headerlink" title="我为什么选择Hexo"></a>我为什么选择Hexo</h2><p>在选择Hexo之前我参考了Typecho和FireKylin，一开始我是打算搭建Typecho因为有后台方便管理，但是看到FireKylin后，一眼就喜欢行了就用阿里云搭建了FireKylin，FireKylin搭建还算顺利，但是最后还是放弃了！因为服务器也不打算长久买，备案挺麻烦，所以选择了Hexo托管在GitHub上面，这样还可以学习下github，于是我的Hexo就诞生。</p>
-<h2 id="关于主题"><a href="#关于主题" class="headerlink" title="关于主题"></a>关于主题</h2><p>在Hexo搭建之前我就了解了NEXT主题挺多人用，于是试了一下，搭建好了配置过程百度看到了目前这款mellow便迷上了这款主题，最后还是选择mellow虽然没有NEXT那么出名，不过到目前为止还是觉得很实用</p>
-<h2 id="布局调整"><a href="#布局调整" class="headerlink" title="布局调整"></a>布局调整</h2><p>虽然更换主题很快，但是修改各种信息参数还是花费了挺多时间。</p>
-<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>添加一个live2d插件，加SSL证书（不一定弄得成）</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Hexo </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Hello World]]></title>
       <url>/2019/07/13/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
