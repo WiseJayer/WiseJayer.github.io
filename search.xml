@@ -3,27 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[测试一下]]></title>
-      <url>/2019/07/15/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B/</url>
-      <content type="html"><![CDATA[<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1><p>终于搞定测试一下!</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Test </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Test </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[为什么是Hexo?]]></title>
       <url>/2019/07/15/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFHexo/</url>
       <content type="html"><![CDATA[<h2 id="关于Hexo"><a href="#关于Hexo" class="headerlink" title="关于Hexo"></a>关于Hexo</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
@@ -43,6 +22,27 @@
         <tags>
             
             <tag> Hexo </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[测试一下]]></title>
+      <url>/2019/07/15/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B/</url>
+      <content type="html"><![CDATA[<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1><p>终于搞定测试一下!</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Test </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Test </tag>
             
         </tags>
         
