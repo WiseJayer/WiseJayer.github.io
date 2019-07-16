@@ -8,8 +8,13 @@
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>需要准备的东西：Github账号、Node.js环境、git工具</p>
 <h1 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h1><pre><code>sudo yum install git-core</code></pre><h1 id="Node-js环境"><a href="#Node-js环境" class="headerlink" title="Node.js环境"></a>Node.js环境</h1><h6 id="下载-Node-js"><a href="#下载-Node-js" class="headerlink" title="下载 Node.js"></a>下载 Node.js</h6><pre><code>wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</code></pre><h6 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h6><pre><code>source ~/.bash_profile</code></pre><h6 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h6><pre><code>nvm install stable</code></pre><h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><h6 id="用命令创建-hexo-文件夹"><a href="#用命令创建-hexo-文件夹" class="headerlink" title="用命令创建 hexo 文件夹"></a>用命令创建 hexo 文件夹</h6><pre><code>mkdir hexo</code></pre><h6 id="用命令安装-hexo"><a href="#用命令安装-hexo" class="headerlink" title="用命令安装 hexo"></a>用命令安装 hexo</h6><pre><code>npm install -g hexo-cli</code></pre><h6 id="进入Hexo"><a href="#进入Hexo" class="headerlink" title="进入Hexo"></a>进入Hexo</h6><pre><code>cd hexo/</code></pre><h6 id="初始化-hexo"><a href="#初始化-hexo" class="headerlink" title="初始化 hexo"></a>初始化 hexo</h6><pre><code>hexo init</code></pre><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><h6 id="打开-hexo-服务"><a href="#打开-hexo-服务" class="headerlink" title="打开 hexo 服务"></a>打开 hexo 服务</h6><pre><code>hexo server</code></pre><h1 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h1><h6 id="设置-user-name-和-user-email"><a href="#设置-user-name-和-user-email" class="headerlink" title="设置 user.name 和 user.email"></a>设置 user.name 和 user.email</h6><pre><code>git config --global user.name &quot;github名称&quot;
 git config --global user.email &quot;github邮箱&quot;</code></pre><h6 id="生成-ssh-密匙"><a href="#生成-ssh-密匙" class="headerlink" title="生成 ssh 密匙"></a>生成 ssh 密匙</h6><pre><code>ssh-keygen -t rsa -C &quot;github邮箱&quot;</code></pre><p>然后出现密钥保存的路径一直按回车</p>
-<h6 id="查看密钥"><a href="#查看密钥" class="headerlink" title="查看密钥"></a>查看密钥</h6><pre><code>cat /root/.shh/id_rsa</code></pre><h6 id="创建-GitHub-仓库"><a href="#创建-GitHub-仓库" class="headerlink" title="创建 GitHub 仓库"></a>创建 GitHub 仓库</h6><pre><code>命名格式为&quot;github名称&quot;.github.io</code></pre><h6 id="添加密钥"><a href="#添加密钥" class="headerlink" title="添加密钥"></a>添加密钥</h6><p>登陆github—进入设置—找到ssh设置密钥</p>
+<h6 id="查看密钥"><a href="#查看密钥" class="headerlink" title="查看密钥"></a>查看密钥</h6><pre><code>cd .ssh
+vim id_rsa.pub</code></pre><p>复制里面的内容</p>
+<pre><code>:q</code></pre><p>退出</p>
+<h6 id="创建-GitHub-仓库"><a href="#创建-GitHub-仓库" class="headerlink" title="创建 GitHub 仓库"></a>创建 GitHub 仓库</h6><pre><code>命名格式为&quot;github名称&quot;.github.io</code></pre><h6 id="添加密钥"><a href="#添加密钥" class="headerlink" title="添加密钥"></a>添加密钥</h6><p>登陆github—进入设置—找到ssh设置密钥把刚刚复制的粘贴进去即可</p>
 <h6 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h6><p>打开 hexo 配置文件 _config.yml修改对应部分</p>
+<pre><code>cd hexo
+vim _config.yml</code></pre><p>找到以下内容并修改</p>
 <pre><code>deploy:
 type: git
 repo: git@github.com:github名称/github名称.github.io.git 
@@ -55,27 +60,6 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         <tags>
             
             <tag> Hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[测试一下]]></title>
-      <url>/2019/07/15/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B/</url>
-      <content type="html"><![CDATA[<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1><p>终于搞定测试一下!</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Test </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Test </tag>
             
         </tags>
         
