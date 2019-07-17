@@ -3,6 +3,52 @@
   
     
     <entry>
+      <title><![CDATA[Google Hacking语法]]></title>
+      <url>/2019/07/17/Google-Hacking%E8%AF%AD%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="定义："><a href="#定义：" class="headerlink" title="定义："></a><strong>定义：</strong></h1><p>Google Hacking的含义原指利用Google Google搜索引擎搜索信息来进行入侵的技术和行为；现指利用各种搜索引擎搜索信息来进行入侵的技术和行为。</p>
+<h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法:"></a><strong>基础语法:</strong></h1><ul>
+<li>逻辑与：and</li>
+<li>逻辑或： or 、|</li>
+<li>逻辑非： -</li>
+<li>完整匹配：”关键词” </li>
+<li>通配符：* ?</li>
+</ul>
+<h1 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法:"></a><strong>高级语法:</strong></h1><h2 id="intitle：搜索网页标题中包含有特定字符的网页"><a href="#intitle：搜索网页标题中包含有特定字符的网页" class="headerlink" title="intitle：搜索网页标题中包含有特定字符的网页"></a>intitle：搜索网页标题中包含有特定字符的网页</h2><pre><code>intitel:admin </code></pre><p>返回标题为admin的网页</p>
+<h2 id="intext-搜索网页正文内容中的指定字符"><a href="#intext-搜索网页正文内容中的指定字符" class="headerlink" title="intext: 搜索网页正文内容中的指定字符"></a>intext: 搜索网页正文内容中的指定字符</h2><pre><code>intext:计算机</code></pre><p>返回正文包含计算机的网页</p>
+<h2 id="inurl：将返回url中含有关键词的网页"><a href="#inurl：将返回url中含有关键词的网页" class="headerlink" title="inurl：将返回url中含有关键词的网页"></a>inurl：将返回url中含有关键词的网页</h2><pre><code>inurl:admin</code></pre><p>返回url中含有admin的网页</p>
+<h2 id="site-找到与指定网站有联系的URL"><a href="#site-找到与指定网站有联系的URL" class="headerlink" title="site: 找到与指定网站有联系的URL"></a>site: 找到与指定网站有联系的URL</h2><pre><code>site:baidu.com</code></pre><p>返回与baidu.com有关的网页</p>
+<h2 id="filetype-搜索指定类型的文件"><a href="#filetype-搜索指定类型的文件" class="headerlink" title="filetype:搜索指定类型的文件"></a>filetype:搜索指定类型的文件</h2><pre><code>filetype:txt</code></pre><p>返回txt文件</p>
+<h2 id="link-指定链接的网页"><a href="#link-指定链接的网页" class="headerlink" title="link: 指定链接的网页"></a>link: 指定链接的网页</h2><pre><code>link:www.baidu.com</code></pre><p>返回所有包含指向 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 的网页</p>
+<h2 id="info-查询网站的一些信息"><a href="#info-查询网站的一些信息" class="headerlink" title="info: 查询网站的一些信息"></a>info: 查询网站的一些信息</h2><pre><code>info:www.baidu.com </code></pre><p>将返回百度的一些信息</p>
+<h2 id="define-查询关键词的词义"><a href="#define-查询关键词的词义" class="headerlink" title="define: 查询关键词的词义"></a>define: 查询关键词的词义</h2><pre><code>define:计算机</code></pre><p>将返回关于计算机的定义</p>
+<h2 id="cache-关于某些内容的缓存"><a href="#cache-关于某些内容的缓存" class="headerlink" title="cache: 关于某些内容的缓存"></a>cache: 关于某些内容的缓存</h2><pre><code>cache:www.baidu.com</code></pre><p>返回百度历史缓存</p>
+<h1 id="综合语法"><a href="#综合语法" class="headerlink" title="综合语法:"></a><strong>综合语法:</strong></h1><h2 id="查找网站后台"><a href="#查找网站后台" class="headerlink" title="查找网站后台"></a>查找网站后台</h2><pre><code>inurl:login|admin|manage|管理|后台</code></pre><h2 id="查找文本内容"><a href="#查找文本内容" class="headerlink" title="查找文本内容"></a>查找文本内容</h2><pre><code>site:域名 intext:管理|后台|登陆|</code></pre><h2 id="查找可注入点"><a href="#查找可注入点" class="headerlink" title="查找可注入点"></a>查找可注入点</h2><pre><code>site:域名 inurl:aspx|jsp|php|asp</code></pre><h2 id="查看上传漏洞"><a href="#查看上传漏洞" class="headerlink" title="查看上传漏洞"></a>查看上传漏洞</h2><pre><code>site:域名 inurl:file|load</code></pre><h2 id="查看服务器使用的脚本"><a href="#查看服务器使用的脚本" class="headerlink" title="查看服务器使用的脚本"></a>查看服务器使用的脚本</h2><pre><code>site:域名 filetype:asp
+site:域名 filetype:aspx
+site:域名 filetype:jsp
+site:域名 filetype:php</code></pre><figure class="image-box">
+                <img src="/img/gk.png" alt="gk" title class>
+                <p>gk</p>
+            </figure>
+]]></content>
+      
+        <categories>
+            
+            <category> 安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 安全 </tag>
+            
+            <tag> google hacking </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux系统搭建Hexo博客]]></title>
       <url>/2019/07/16/Linux%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>需要准备的东西：Github账号、Node.js环境、git工具</p>
