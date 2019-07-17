@@ -25,7 +25,8 @@
 <h1 id="综合语法"><a href="#综合语法" class="headerlink" title="综合语法:"></a><strong>综合语法:</strong></h1><h2 id="查找网站后台"><a href="#查找网站后台" class="headerlink" title="查找网站后台"></a>查找网站后台</h2><pre><code>inurl:login|admin|manage|管理|后台</code></pre><h2 id="查找文本内容"><a href="#查找文本内容" class="headerlink" title="查找文本内容"></a>查找文本内容</h2><pre><code>site:域名 intext:管理|后台|登陆|</code></pre><h2 id="查找可注入点"><a href="#查找可注入点" class="headerlink" title="查找可注入点"></a>查找可注入点</h2><pre><code>site:域名 inurl:aspx|jsp|php|asp</code></pre><h2 id="查看上传漏洞"><a href="#查看上传漏洞" class="headerlink" title="查看上传漏洞"></a>查看上传漏洞</h2><pre><code>site:域名 inurl:file|load</code></pre><h2 id="查看服务器使用的脚本"><a href="#查看服务器使用的脚本" class="headerlink" title="查看服务器使用的脚本"></a>查看服务器使用的脚本</h2><pre><code>site:域名 filetype:asp
 site:域名 filetype:aspx
 site:域名 filetype:jsp
-site:域名 filetype:php</code></pre><figure class="image-box">
+site:域名 filetype:php</code></pre><p>## </p>
+<figure class="image-box">
                 <img src="/img/gk.png" alt="gk" title class>
                 <p>gk</p>
             </figure>
