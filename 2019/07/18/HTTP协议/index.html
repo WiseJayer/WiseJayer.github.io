@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>HTTP协议 | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="HTTP,协议">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>HTTP协议</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">HTTP协议</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-18T15:15:43.000Z" itemprop="datePublished" class="page-time">
+  2019-07-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-HTTP协议"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">HTTP协议</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-18 23:15:43" datetime="2019-07-18T15:15:43.000Z"  itemprop="datePublished">2019-07-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>协议，网络协议的简称，网络协议是通信计算机双方必须共同遵从的一组约定。如怎么样建立连接、怎么样互相识别等。只有遵守这个约定，计算机之间才能相互通信交流。它的三要素是：语法、语义、时序。为了使数据在网络上从源到达目的，网络通信的参与方必须遵循相同的规则，这套规则称为协议（protocol），它最终体现为在网络上传输的数据包的格式。</p>
+<h2 id="HTTP协议-1"><a href="#HTTP协议-1" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p>HTTP(HyperText Transfer Protocol)即超文本传输协议。它详细规定了浏览器和web服务器之间的通信的格式，是万维网交换信息的基础。</p>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>URL(统一资源定位符）又称网页地址。就如同现实世界中的门牌号一样，它是网络上的门牌号。通过它我们可以到网络上任意一个公开的web服 务中寻找我们需要的信息。</p>
+<p>常用的URL格式如下：协议类型://服务器地址[:端口号]/路径/文件名[参数=值]</p>
+<h1 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h1><h2 id="GET-方法"><a href="#GET-方法" class="headerlink" title="GET 方法"></a>GET 方法</h2><p>GET 方法用于获取请求页面的指定信息，我们平时浏览网页大部分用的都是GET的方法。如果我们请求的页面为动态脚本页面，则 返回的结果是容器解析过的HTML源代码。</p>
+<h2 id="POST-方法"><a href="#POST-方法" class="headerlink" title="POST 方法"></a>POST 方法</h2><p>POST方法也与GET 方法类似，但是最大的区别在于。GET方法没有请求内容，但是post方法是有请求内容的。POST的请求可以 向服务器发送大量的信息。eg:文件上传。虽然GET方法也可以传送数据，但是有长度的限制，而且get请求会将发送的数据明文显示出来。而 post不会,所以安全性相对高一点。eg:账户密码登录。</p>
+<h2 id="PUT方法"><a href="#PUT方法" class="headerlink" title="PUT方法"></a>PUT方法</h2><p>PUT方法会把http请求消息中的请求正文存储在web服务器的指定目录下。如果存在，则会替换。此方法属于极度危险的方法。</p>
+<h2 id="OPTIONS方法"><a href="#OPTIONS方法" class="headerlink" title="OPTIONS方法"></a>OPTIONS方法</h2><p>用于试探服务器支持的http方法。</p>
+<h2 id="DELETE方法"><a href="#DELETE方法" class="headerlink" title="DELETE方法"></a>DELETE方法</h2><p>用于删除指定web目录下的资源</p>
+<h2 id="HEAD-方法"><a href="#HEAD-方法" class="headerlink" title="HEAD 方法"></a>HEAD 方法</h2><p>方法几乎是相同的，它们的区别在于 HEAD 方法只是请求消息报头，而不是完整的内容。对于 HEAD 请求的回应部分来说，它的 HTTP 头部中包含的信息与通过 GET 请求所得到的信息是相同的。利用这个方法，不必传输整个资源内容，就可以得到 Request-URI 所标识的资源的信息。这个方法通常被用于测试超链接的有效性，是否可以访问，以及最近是否更新。</p>
+<h1 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h1><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>分类描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1**</td>
+<td>信息，服务器收到请求，需要请求者继续执行操作</td>
+</tr>
+<tr>
+<td>2**</td>
+<td>成功，操作被成功接收并处理</td>
+</tr>
+<tr>
+<td>3**</td>
+<td>重定向，需要进一步的操作以完成请求</td>
+</tr>
+<tr>
+<td>4**</td>
+<td>客户端错误，请求包含语法错误或无法完成请求</td>
+</tr>
+<tr>
+<td>5**</td>
+<td>服务器错误，服务器在处理请求的过程中发生了错误</td>
+</tr>
+</tbody></table>
+<h1 id="常见的HTTP状态码"><a href="#常见的HTTP状态码" class="headerlink" title="常见的HTTP状态码"></a>常见的HTTP状态码</h1><ul>
+<li>200 - 请求成功</li>
+<li>资源（网页等）被永久转移到其它URL</li>
+<li>请求的资源（网页等）不存在</li>
+<li>内部服务器错误</li>
+</ul>
+<h1 id="HTTPS协议"><a href="#HTTPS协议" class="headerlink" title="HTTPS协议"></a>HTTPS协议</h1><p>是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 </p>
+<h1 id="HTTPS安全"><a href="#HTTPS安全" class="headerlink" title="HTTPS安全"></a>HTTPS安全</h1><p>当用户打开PUT、MOV等危险的方法并且没有做验证时，就会产生被人攻击的可能性。 简单的思路：当目录给了读写权限，可以直接put上去一个木马。 当服务端禁止上传动态脚本时：可以先上传一个普通文件，然后mov文件改名，或者结合其他的漏洞。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-07-18T15:29:18.978Z" itemprop="dateUpdated">2019-07-18 23:29:18</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/07/18/HTTP协议/" target="_blank" rel="external">http://wisejay.top/2019/07/18/HTTP协议/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/07/18/HTTP协议/&title=《HTTP协议》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/07/18/HTTP协议/&title=《HTTP协议》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/07/17/Google-Hacking语法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Google Hacking语法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTTP协议"><span class="post-toc-number">1.</span> <span class="post-toc-text">HTTP协议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#协议"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">协议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP协议-1"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">HTTP协议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#URL"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">URL</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTTP请求方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">HTTP请求方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GET-方法"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">GET 方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#POST-方法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">POST 方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PUT方法"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">PUT方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#OPTIONS方法"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">OPTIONS方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DELETE方法"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">DELETE方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HEAD-方法"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">HEAD 方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTTP状态码"><span class="post-toc-number">3.</span> <span class="post-toc-text">HTTP状态码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常见的HTTP状态码"><span class="post-toc-number">4.</span> <span class="post-toc-text">常见的HTTP状态码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTTPS协议"><span class="post-toc-number">5.</span> <span class="post-toc-text">HTTPS协议</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTTPS安全"><span class="post-toc-number">6.</span> <span class="post-toc-text">HTTPS安全</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/07/18/HTTP协议/&title=《HTTP协议》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/07/18/HTTP协议/&title=《HTTP协议》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzUlEQVR42u3awa7CMAxEUf7/p4vECqklzHhiU6SbFQIePXkLKxn78ZDX8Vrnd97X+Zvr1+ff3LbgwoUbc4/lWnOVja2fohvgwoU7z10/WCk968d/otubhwsX7s24yl+tt6ccgODChftfXL20KYcVuHDh3p/rXk6UAqdspvGuBhcu3IDrBqYdrxvzXbhw4Zrcw1z51UgvXhdPhwsX7gi3+2FKm9aNUOHChdvNVWIOtxGiBCh62PqxhMGFC7eNW6sStaOPHrlKhRUuXLgj3LxIuUNXbrmECxfuJDcJPmrHF3cbF+cyuHDhNnNrw1XK+EXeJSk2WuDChRtw3aEH5Sijc90iCBcu3Bmu3j5Jriv5+19SHLhw4Y5zawcXN36FCxfufbhJ0OkOVLnfudg8XLhwR7huYGq0P4N4dFu+Cxcu3BLXDUGUg4gepLq/CRcu3Emu/nPuiEYxDF0XMrhw4Y5wa9cYPXFJmrVG5wcuXLibuG5B0S88+jZqn8KFC7ebWyte+ViGG5vChQt3nps3SvOAdcNIFly4cMe5SRPF/UfYcyJw4cL9KVcf4XIbq9EEGVy4cBu47lhVvtViOxYuXLgj3CQw3TvAYZQzuHDhdnGfo9Yu5QmOeVoAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '点这里看看！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '欢迎回来!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
