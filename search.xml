@@ -29,6 +29,8 @@ $ docker build -t upload-labs</code></pre><p>或</p>
         
         <tags>
             
+            <tag> 安全 </tag>
+            
             <tag> 文件上传 </tag>
             
         </tags>
@@ -65,6 +67,8 @@ $ docker build -t upload-labs</code></pre><p>或</p>
         
         
         <tags>
+            
+            <tag> 安全 </tag>
             
             <tag> SQL注入 </tag>
             
