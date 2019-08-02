@@ -3,6 +3,76 @@
   
     
     <entry>
+      <title><![CDATA[upload-labs靶场安装]]></title>
+      <url>/2019/08/03/upload-labs%E9%9D%B6%E5%9C%BA%E5%AE%89%E8%A3%85/</url>
+      <content type="html"><![CDATA[<h1 id="upload-labs简介"><a href="#upload-labs简介" class="headerlink" title="upload-labs简介"></a>upload-labs简介</h1><p>是一个使用PHP语言编写的，专门收集渗透测试和CTF中遇到的各种上传漏洞的靶场</p>
+<h1 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h1><ul>
+<li>操作系统：windows或Linux</li>
+<li>Php版本：推荐5.2.17其他版本可能会导致部分关卡无法突破</li>
+<li>中间件：Apache</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Windows环境安装"><a href="#Windows环境安装" class="headerlink" title="Windows环境安装"></a>Windows环境安装</h2><p>下载地址：<a href="https://github.com/c0ny1/upload-labs/releases" target="_blank" rel="noopener">https://github.com/c0ny1/upload-labs/releases</a></p>
+<p>这个是集成环境绿色免安装，解压即可使用。</p>
+<h2 id="Linux环境安装"><a href="#Linux环境安装" class="headerlink" title="Linux环境安装"></a>Linux环境安装</h2><p>创建镜像</p>
+<pre><code>$ cd upload-labs/docker
+$ docker build -t upload-labs</code></pre><p>或</p>
+<pre><code>$ docker pull c0ny1/upload-labs</code></pre><p>创建容器</p>
+<pre><code>$ docker run -d -p 80:80 upload-labs:latest</code></pre><h1 id="通关秘籍"><a href="#通关秘籍" class="headerlink" title="通关秘籍"></a>通关秘籍</h1><p><a href="https://xz.aliyun.com/t/2435" target="_blank" rel="noopener">https://xz.aliyun.com/t/2435</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 文件上传 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[sqli-labs靶场搭建]]></title>
+      <url>/2019/08/01/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</url>
+      <content type="html"><![CDATA[<h1 id="SQLi-Labs简介"><a href="#SQLi-Labs简介" class="headerlink" title="SQLi-Labs简介"></a>SQLi-Labs简介</h1><p>Sqli-labs是一个印度程序员写的专业的SQL注入练习平台。</p>
+<h1 id="SQLi-Labs环境要求"><a href="#SQLi-Labs环境要求" class="headerlink" title="SQLi-Labs环境要求"></a>SQLi-Labs环境要求</h1><ul>
+<li>1.apache+mysql+php</li>
+<li>2.Tomcat+mysql+java（部分关卡需要）</li>
+<li>Windows和linux环境均可安装。</li>
+<li>本次使windows环境下使用phpstudy来安装。</li>
+</ul>
+<h1 id="Sqli-labs安装"><a href="#Sqli-labs安装" class="headerlink" title="Sqli-labs安装"></a>Sqli-labs安装</h1><h2 id="下载："><a href="#下载：" class="headerlink" title="下载："></a>下载：</h2><p>Sqli-labs源码：<a href="https://github.com/Audi-1/sqli-labs" target="_blank" rel="noopener">https://github.com/Audi-1/sqli-labs</a></p>
+<p>Phpstudy：<a href="http://phpstudy.php.cn/" target="_blank" rel="noopener">http://phpstudy.php.cn/</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>安装phpstudy</li>
+<li>将下载sqli-labs的源码sqli-labs-master解压缩到WWW目录下面</li>
+<li>因为phpstudy的数据库默认用户名跟密码都是root，我们需要将sqli-labs-master\sql-connections文件夹中db-creds.inc文件中的用户名密码改为root。</li>
+<li>在本机通过浏览器访问127.0.0.1/sqli-labs-master</li>
+<li>在页面中点击Setup/reset Database for labs进行数据库的配置</li>
+<li>配置完成返回即可使用。</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> SQL注入 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTTP协议]]></title>
       <url>/2019/07/18/HTTP%E5%8D%8F%E8%AE%AE/</url>
       <content type="html"><![CDATA[<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>协议，网络协议的简称，网络协议是通信计算机双方必须共同遵从的一组约定。如怎么样建立连接、怎么样互相识别等。只有遵守这个约定，计算机之间才能相互通信交流。它的三要素是：语法、语义、时序。为了使数据在网络上从源到达目的，网络通信的参与方必须遵循相同的规则，这套规则称为协议（protocol），它最终体现为在网络上传输的数据包的格式。</p>
@@ -55,7 +125,7 @@
       
         <categories>
             
-            <category> web安全 </category>
+            <category> 安全 </category>
             
         </categories>
         
@@ -166,7 +236,7 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
       
         <categories>
             
-            <category> Hexo </category>
+            <category> 博客 </category>
             
         </categories>
         

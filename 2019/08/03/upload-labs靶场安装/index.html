@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>Linux系统搭建Hexo博客 | To be better</title>
+    <title>upload-labs靶场安装 | To be better</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="Hexo,博客">
+    <meta name="keywords" content="文件上传">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -138,7 +138,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Linux系统搭建Hexo博客</span>
+            <span>upload-labs靶场安装</span>
             
         </div>
         
@@ -151,15 +151,15 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Linux系统搭建Hexo博客</h1>
+        <h1 class="title">upload-labs靶场安装</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-07-16T14:54:14.000Z" itemprop="datePublished" class="page-time">
-  2019-07-16
+                <time datetime="2019-08-02T16:21:21.000Z" itemprop="datePublished" class="page-time">
+  2019-08-03
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
 
             
         </h5>
@@ -184,15 +184,15 @@
 
 
 <div class="container body-wrap">
-    <article id="post-Linux系统搭建Hexo博客"
+    <article id="post-upload-labs靶场安装"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">Linux系统搭建Hexo博客</h1>
+        <h1 class="post-card-title">upload-labs靶场安装</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-07-16 22:54:14" datetime="2019-07-16T14:54:14.000Z"  itemprop="datePublished">2019-07-16</time>
+            <time class="post-time" title="2019-08-03 00:21:21" datetime="2019-08-02T16:21:21.000Z"  itemprop="datePublished">2019-08-03</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
 
 
 
@@ -205,35 +205,32 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>需要准备的东西：Github账号、Node.js环境、git工具</p>
-<h1 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h1><pre><code>sudo yum install git-core</code></pre><h1 id="Node-js环境"><a href="#Node-js环境" class="headerlink" title="Node.js环境"></a>Node.js环境</h1><h6 id="下载-Node-js"><a href="#下载-Node-js" class="headerlink" title="下载 Node.js"></a>下载 Node.js</h6><pre><code>wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</code></pre><h6 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h6><pre><code>source ~/.bash_profile</code></pre><h6 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h6><pre><code>nvm install stable</code></pre><h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><h6 id="用命令创建-hexo-文件夹"><a href="#用命令创建-hexo-文件夹" class="headerlink" title="用命令创建 hexo 文件夹"></a>用命令创建 hexo 文件夹</h6><pre><code>mkdir hexo</code></pre><h6 id="用命令安装-hexo"><a href="#用命令安装-hexo" class="headerlink" title="用命令安装 hexo"></a>用命令安装 hexo</h6><pre><code>npm install -g hexo-cli</code></pre><h6 id="进入Hexo"><a href="#进入Hexo" class="headerlink" title="进入Hexo"></a>进入Hexo</h6><pre><code>cd hexo/</code></pre><h6 id="初始化-hexo"><a href="#初始化-hexo" class="headerlink" title="初始化 hexo"></a>初始化 hexo</h6><pre><code>hexo init</code></pre><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><h6 id="打开-hexo-服务"><a href="#打开-hexo-服务" class="headerlink" title="打开 hexo 服务"></a>打开 hexo 服务</h6><pre><code>hexo server</code></pre><h1 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h1><h6 id="设置-user-name-和-user-email"><a href="#设置-user-name-和-user-email" class="headerlink" title="设置 user.name 和 user.email"></a>设置 user.name 和 user.email</h6><pre><code>git config --global user.name &quot;github名称&quot;
-git config --global user.email &quot;github邮箱&quot;</code></pre><h6 id="生成-ssh-密匙"><a href="#生成-ssh-密匙" class="headerlink" title="生成 ssh 密匙"></a>生成 ssh 密匙</h6><pre><code>ssh-keygen -t rsa -C &quot;github邮箱&quot;</code></pre><p>然后出现密钥保存的路径一直按回车</p>
-<h6 id="查看密钥"><a href="#查看密钥" class="headerlink" title="查看密钥"></a>查看密钥</h6><pre><code>cd .ssh
-vim id_rsa.pub</code></pre><p>复制里面的内容</p>
-<pre><code>:q</code></pre><p>退出</p>
-<h6 id="创建-GitHub-仓库"><a href="#创建-GitHub-仓库" class="headerlink" title="创建 GitHub 仓库"></a>创建 GitHub 仓库</h6><pre><code>命名格式为&quot;github名称&quot;.github.io</code></pre><h6 id="添加密钥"><a href="#添加密钥" class="headerlink" title="添加密钥"></a>添加密钥</h6><p>登陆github—进入设置—找到ssh设置密钥把刚刚复制的粘贴进去即可</p>
-<h6 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h6><p>打开 hexo 配置文件 _config.yml修改对应部分</p>
-<pre><code>cd hexo
-vim _config.yml</code></pre><p>找到以下内容并修改</p>
-<pre><code>deploy:
-type: git
-repo: git@github.com:github名称/github名称.github.io.git 
-branch: master</code></pre><h6 id="生成并部署"><a href="#生成并部署" class="headerlink" title="生成并部署"></a>生成并部署</h6><pre><code>hexo clean
-hexo g
-npm install hexo-deployer-git --save
-hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="浏览"></a>浏览</h1><h2 id="github名称-github-io"><a href="#github名称-github-io" class="headerlink" title="github名称.github.io"></a>github名称.github.io</h2>
+            <h1 id="upload-labs简介"><a href="#upload-labs简介" class="headerlink" title="upload-labs简介"></a>upload-labs简介</h1><p>是一个使用PHP语言编写的，专门收集渗透测试和CTF中遇到的各种上传漏洞的靶场</p>
+<h1 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h1><ul>
+<li>操作系统：windows或Linux</li>
+<li>Php版本：推荐5.2.17其他版本可能会导致部分关卡无法突破</li>
+<li>中间件：Apache</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Windows环境安装"><a href="#Windows环境安装" class="headerlink" title="Windows环境安装"></a>Windows环境安装</h2><p>下载地址：<a href="https://github.com/c0ny1/upload-labs/releases" target="_blank" rel="noopener">https://github.com/c0ny1/upload-labs/releases</a></p>
+<p>这个是集成环境绿色免安装，解压即可使用。</p>
+<h2 id="Linux环境安装"><a href="#Linux环境安装" class="headerlink" title="Linux环境安装"></a>Linux环境安装</h2><p>创建镜像</p>
+<pre><code>$ cd upload-labs/docker
+$ docker build -t upload-labs</code></pre><p>或</p>
+<pre><code>$ docker pull c0ny1/upload-labs</code></pre><p>创建容器</p>
+<pre><code>$ docker run -d -p 80:80 upload-labs:latest</code></pre><h1 id="通关秘籍"><a href="#通关秘籍" class="headerlink" title="通关秘籍"></a>通关秘籍</h1><p><a href="https://xz.aliyun.com/t/2435" target="_blank" rel="noopener">https://xz.aliyun.com/t/2435</a></p>
+
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-16T15:28:38.197Z" itemprop="dateUpdated">2019-07-16 23:28:38</time>
+    Last updated: <time datetime="2019-08-02T16:26:23.286Z" itemprop="dateUpdated">2019-08-03 00:26:23</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2019/07/16/Linux系统搭建Hexo博客/" target="_blank" rel="external">http://wisejay.top/2019/07/16/Linux系统搭建Hexo博客/</a>
+        转载注明出处，原文地址：<a href="/2019/08/03/upload-labs靶场安装/" target="_blank" rel="external">http://wisejay.top/2019/08/03/upload-labs靶场安装/</a>
         
     </div>
     <footer>
@@ -253,7 +250,7 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件上传/">文件上传</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -262,7 +259,7 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/07/16/Linux系统搭建Hexo博客/&title=《Linux系统搭建Hexo博客》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/03/upload-labs靶场安装/&title=《upload-labs靶场安装》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -274,7 +271,7 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/07/16/Linux系统搭建Hexo博客/&title=《Linux系统搭建Hexo博客》 — To be better&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/03/upload-labs靶场安装/&title=《upload-labs靶场安装》 — To be better&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -297,21 +294,14 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/07/17/Google-Hacking语法/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Google Hacking语法</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/07/15/为什么是Hexo/" id="post-next" class="post-nav-link">
+      <a href="/2019/08/01/sqli-labs靶场搭建/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">为什么是Hexo?</h4>
+        <h4 class="title">sqli-labs靶场搭建</h4>
       </a>
     </div>
   
@@ -323,7 +313,7 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装-Git"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装 Git</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Node-js环境"><span class="post-toc-number">3.</span> <span class="post-toc-text">Node.js环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装-Hexo"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装 Hexo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#测试"><span class="post-toc-number">5.</span> <span class="post-toc-text">测试</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#部署到GitHub"><span class="post-toc-number">6.</span> <span class="post-toc-text">部署到GitHub</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#浏览"><span class="post-toc-number">7.</span> <span class="post-toc-text">浏览</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#github名称-github-io"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">github名称.github.io</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#upload-labs简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">upload-labs简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#环境要求"><span class="post-toc-number">2.</span> <span class="post-toc-text">环境要求</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Windows环境安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Windows环境安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Linux环境安装"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Linux环境安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#通关秘籍"><span class="post-toc-number">4.</span> <span class="post-toc-text">通关秘籍</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -402,7 +392,7 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/07/16/Linux系统搭建Hexo博客/&title=《Linux系统搭建Hexo博客》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/03/upload-labs靶场安装/&title=《upload-labs靶场安装》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -414,7 +404,7 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/07/16/Linux系统搭建Hexo博客/&title=《Linux系统搭建Hexo博客》 — To be better&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/03/upload-labs靶场安装/&title=《upload-labs靶场安装》 — To be better&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -426,7 +416,7 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3ay07EMAwFUP7/p4ctEtNybWeQmpysEFRtThbGj3x9xev1Y139NXnD/Tvvv7JgYWBgPJbxul2/N5Fs6J53v9Er2NXeMDAwzmHkr+sF2XtqfmSXv8fAwMBIQl6L1DssDAwMjFHgizc9CesYGBhnMpIiNtlEtWGXpIaLa3EMDIwHMnqJ3f/8/JH5BgYGxqMYr9ZKEr7JuZb3g4GBsTWjGgTzEjRPBBNGVOJiYGBszeg12pKLF0mY/mARi4GBsQXjc+H1ExfFLp/BwMA4gNEbK+aDxklJnBwNBgbG3oxqSpckhUnK2Gu3RWkrBgbGdoykrT+fkfaK1cL1MgwMjK0Zk0sVOakamheMQjEwMDZiJIPGSfnaI5X/AWBgYBzA6BWivUJ31dbf3G7DwMDYlDEZH06CdbU8jspXDAyMTRm9YrJ35et+K72rGxgYGKcxepct8vbcfBR6ScXAwNiakSR5qxptefhePI/FwMB4OCNP1yZjgOQr5esUeY2LgYHxcEb1Y1Vw9TfVJzEwME5gzIeU+SChVyRjYGBg5Clg4dJDceVvKLfbMDAwtmBMho7V9tnaNLTct8PAwHgsYxIWV5W1+RWQEQADA+PhjGqgXHUja3JAb76OgYFxAKMX+CZDzWoRi4GBgVENmvlooRpYe8UtBgYGRp7YVZ/Py+A/AjQGBsYBjGpDP+96VXt+zScxMDC2ZkxKx+rgM2m9rToODAyMLRjf5btGvBJ05JgAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aS27DMAwFQN//0u42QBv3kXSKWhqtgjiWNVkQ/Pg44nW+rNdvevde75nvXF4YGBiPZZyX6/uhk8/JE5OrydkwMDD2YfS2y49VDbv52TAwMDCS9G6SVl4/BQMDA6PKyB+WB1AMDAyMnJEkf/mBek236+feVotjYGA8kFFtkP3l54/MNzAwMB7FOFsrb/QnzbXqMOCH82BgYCzNqAbB3iHmjCg9xcDAWJoxSQSvQ22vKM1Hp7flsxgYGP+e0WvE95pxeWBNwjQGBsYOjElgzV+zuKsz9haMgYGxDWPSh7+r6Z+HaQwMjH0Yk9StOjaoBtNq+oiBgbEPIyHld1WDbHJvuSLHwMBYjpEPI3vBt3r08ggTAwNjOUZ1i94gszeKyNtzGBgYOzAmL0zMBwA9zJFPODEwMJZjVAeT+Stc10fJrxYKVwwMjCUYdx0rb97lO5RrcQwMjKUZ1RZ/NWXsJaDVEQUGBsaqjCQpnDT6k4FBdXQaBVkMDIyFGL1Qm48ec14eoJtvi2BgYDyW0Wvuj4rMT5TNGBgYSzMmx83DaB4tk19iYGDsxjiLK0ns7koxC+NMDAyMpRnVQrcH6FHzhiAGBsYOjF6Q7QXTSTPul6sYGBgbMKr99jxdqzbgmkUvBgYGxiBE9hLNanGLgYGBcVdRmgfrvBjGwMDYh1ENgvMSt5cCvsVgYGAszahumieC81Ce/EEYGBhLM74AXaytY13KU7UAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
