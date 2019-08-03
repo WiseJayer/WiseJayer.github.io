@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>SQL基础语法 | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="SQL语法">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>SQL基础语法</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">SQL基础语法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-03T12:25:11.000Z" itemprop="datePublished" class="page-time">
+  2019-08-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/数据库/">数据库</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-SQL基础语法"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">SQL基础语法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-03 20:25:11" datetime="2019-08-03T12:25:11.000Z"  itemprop="datePublished">2019-08-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/数据库/">数据库</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="SQL中SELECT的语句结构"><a href="#SQL中SELECT的语句结构" class="headerlink" title="SQL中SELECT的语句结构"></a>SQL中SELECT的语句结构</h1><blockquote>
+<p>SELECT * FROM 表名 WHERE 条件表达式;</p>
+</blockquote>
+<p>*代表查询全部，如何只查询某字段则填写字段；</p>
+<h1 id="去重查询DISINCT"><a href="#去重查询DISINCT" class="headerlink" title="去重查询DISINCT"></a>去重查询DISINCT</h1><blockquote>
+<p>SELECT DISTINCT 字段名 FROM 表名;</p>
+</blockquote>
+<p>字段名可以有多个</p>
+<h1 id="AND-LKIE-IN"><a href="#AND-LKIE-IN" class="headerlink" title="AND LKIE IN"></a>AND LKIE IN</h1><blockquote>
+<p>WHERE子句 SELECT * FROM 表名 WHERE 字段=条件</p>
+</blockquote>
+<p>条件可以有多个</p>
+<blockquote>
+<p>SELECT * FROM 表名 WHERE 字段=’漏洞’;</p>
+</blockquote>
+<p>字段加单引号</p>
+<blockquote>
+<p>SELECT * FROM 表名 WHERE 字段1=’BUG’ AND 字段2=10086;<br><br>SELECT * FROM 表名 WHERE 字段1 BETWEEN 100 and 200;<br><br>SELECT * FROM 表名 WHERE 字段 LIKE ‘%漏洞%’;</p>
+</blockquote>
+<p>%漏洞 查找以漏洞结尾的<br>漏洞% 查找以漏洞开头的<br></p>
+<blockquote>
+<p>SELECT * FROM 表名 WHERE 字段 IN (100,200,300);</p>
+</blockquote>
+<h1 id="ORDER-BY-用于排序，默认是升序"><a href="#ORDER-BY-用于排序，默认是升序" class="headerlink" title="ORDER BY 用于排序，默认是升序"></a>ORDER BY 用于排序，默认是升序</h1><blockquote>
+<p>SELECT * FROM 表名 ORDER BY  字段名 ASC;–升序</p>
+<p>SELECT * FROM 表名 ORDER BY 字段名 DESC;–降序</p>
+</blockquote>
+<h1 id="LIMIT-用于指定范围取记录"><a href="#LIMIT-用于指定范围取记录" class="headerlink" title="LIMIT 用于指定范围取记录"></a>LIMIT 用于指定范围取记录</h1><blockquote>
+<p>SELECT * FROM 表名  LIMIT 1;<br><br>等价于 SELECT * FROM 表  LIMIT 0,1;</p>
+</blockquote>
+<p>SELECT * FROM 表 名 LIMIT 从第几条开始（默认从0开始）, 取几条;</p>
+<h1 id="INSERT用于新增数据"><a href="#INSERT用于新增数据" class="headerlink" title="INSERT用于新增数据"></a>INSERT用于新增数据</h1><blockquote>
+<p>INSERT  表名 VALUES(column1_value,column2_value,…..);<br><br>INSERT 表名(column1,column2,column3,..)VALUE(column1_value,column2_value,column3…);</p>
+</blockquote>
+<h1 id="DELETE用于删除数据"><a href="#DELETE用于删除数据" class="headerlink" title="DELETE用于删除数据"></a>DELETE用于删除数据</h1><blockquote>
+<p>删除记录 DELETE FROM 表; – 清空表中的数据 <br><br>DELETE  FROM  表 WHERE ID = 50; – 删除ID=50的数据。</p>
+</blockquote>
+<h1 id="UPDATE用于更新数据"><a href="#UPDATE用于更新数据" class="headerlink" title="UPDATE用于更新数据"></a>UPDATE用于更新数据</h1><blockquote>
+<p>UPDATE 表名 SET column1=column1_value,column2=column2_value,… WHERE…</p>
+</blockquote>
+<p>UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值</p>
+<h1 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h1><blockquote>
+<p>列的别名：SELECT name AS n, country AS c FROM Websites;<br><br>表的别名：SELECT w.name, w.url, a.count, a.date<br>FROM Websites AS w, access_log AS a<br>WHERE a.site_id=w.id and w.name=”别名”;</p>
+</blockquote>
+<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><p>在SQL语言中，一个SELECT-FROM-WHERE语句称为一个查询块。 当获得一个查询的答案需要多个步骤的操作，首先必须创建一个查询来确定用户不知道但包含在数据库中 的值，将一个查询块嵌套在另一个查询块的WHERE字句或HAVING短语的条件中查询块称为子查询或内 层查询。上层的查询块曾为父查询或外层查询。子查询的结果作为输入传递回“父查询”或“外部查询”。 父查询将这个值结合到计算中，以便确定最后的输出。</p>
+<blockquote>
+<p>SELECT * FROM COMPANY WHERE ID IN (SELECT ID FROM COMPANY WHERE SALARY &gt; 45000) ;</p>
+</blockquote>
+<h1 id="Join查询"><a href="#Join查询" class="headerlink" title="Join查询"></a>Join查询</h1><p>SQL Join：如果表中有至少一个匹配，则返回行<br><br>SQL Inner Join 等于 SQL Join<br></p>
+<blockquote>
+<p>SELECT column_name(s) FROM table1 INNER JOIN table2 ON table1.column_name=table2.column_name; </p>
+</blockquote>
+<ul>
+<li>SQL Left Join：即使右表中没有匹配，也从左表返回所有的行</li>
+<li>SQL Right Join：即使左表中没有匹配，也从右表返回所有的行</li>
+<li>SQL Full Join：只要其中一个表中存在匹配，就返回行</li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="AVG-函数"><a href="#AVG-函数" class="headerlink" title="AVG() 函数"></a>AVG() 函数</h2><p>返回数值列的平均值</p>
+<blockquote>
+<p>SELECT AVG(column_name) FROM table_name;</p>
+</blockquote>
+<h2 id="COUNT-函数"><a href="#COUNT-函数" class="headerlink" title="COUNT() 函数"></a>COUNT() 函数</h2><p>返回匹配指定条件的行数</p>
+<blockquote>
+<p>SELECT COUNT(column_name) FROM table_name;</p>
+</blockquote>
+<h2 id="COUNT-函数-1"><a href="#COUNT-函数-1" class="headerlink" title="COUNT(*) 函数"></a>COUNT(*) 函数</h2><p>返回表中的记录数</p>
+<blockquote>
+<p>SELECT COUNT(*) FROM table_name;</p>
+</blockquote>
+<h2 id="COUNT-DISTINCT-column-name-函数"><a href="#COUNT-DISTINCT-column-name-函数" class="headerlink" title="COUNT(DISTINCT column_name)函数"></a>COUNT(DISTINCT column_name)函数</h2><p>返回指定列的不同值的数目</p>
+<blockquote>
+<p>SELECT COUNT(DISTINCT column_name) FROM table_name;</p>
+</blockquote>
+<h2 id="MAX-函数"><a href="#MAX-函数" class="headerlink" title="MAX() 函数"></a>MAX() 函数</h2><p>返回指定列的最大值</p>
+<blockquote>
+<p>SELECT MAX(column_name) FROM table_name;</p>
+</blockquote>
+<h2 id="MIN-函数"><a href="#MIN-函数" class="headerlink" title="MIN() 函数"></a>MIN() 函数</h2><p>返回指定列的最小值</p>
+<blockquote>
+<p>SELECT MIN(column_name) FROM table_name;</p>
+</blockquote>
+<h2 id="SUM-函数"><a href="#SUM-函数" class="headerlink" title="SUM() 函数"></a>SUM() 函数</h2><p>返回数值列的总数</p>
+<blockquote>
+<p>SELECT SUM(column_name) FROM table_name;</p>
+</blockquote>
+<h2 id="MID-函数"><a href="#MID-函数" class="headerlink" title="MID() 函数"></a>MID() 函数</h2><p>用于从文本字段中提取字符</p>
+<blockquote>
+<p>SELECT MID(column_name,start [ , length] ) FROM table_name;</p>
+</blockquote>
+<h2 id="LEN-函数"><a href="#LEN-函数" class="headerlink" title="LEN() 函数"></a>LEN() 函数</h2><p>返回文本字段中值的长度</p>
+<blockquote>
+<p>SELECT LENGTH(column_name) FROM table_name;</p>
+</blockquote>
+<h1 id="UNION-操作符"><a href="#UNION-操作符" class="headerlink" title="UNION 操作符"></a>UNION 操作符</h1><p>SQL UNION 操作符合并两个或多个 SELECT 语句的结果。</p>
+<blockquote>
+<p>SELECT column_name(s) FROM table1 UNION SELECT column_name(s) FROM table2;<br><br>默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL</p>
+</blockquote>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-08-03T13:46:37.158Z" itemprop="dateUpdated">2019-08-03 21:46:37</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/03/SQL基础语法/" target="_blank" rel="external">http://wisejay.top/2019/08/03/SQL基础语法/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL语法/">SQL语法</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/03/SQL基础语法/&title=《SQL基础语法》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/03/SQL基础语法/&title=《SQL基础语法》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/03/upload-labs靶场安装/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">upload-labs靶场安装</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SQL中SELECT的语句结构"><span class="post-toc-number">1.</span> <span class="post-toc-text">SQL中SELECT的语句结构</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#去重查询DISINCT"><span class="post-toc-number">2.</span> <span class="post-toc-text">去重查询DISINCT</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#AND-LKIE-IN"><span class="post-toc-number">3.</span> <span class="post-toc-text">AND LKIE IN</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ORDER-BY-用于排序，默认是升序"><span class="post-toc-number">4.</span> <span class="post-toc-text">ORDER BY 用于排序，默认是升序</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#LIMIT-用于指定范围取记录"><span class="post-toc-number">5.</span> <span class="post-toc-text">LIMIT 用于指定范围取记录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#INSERT用于新增数据"><span class="post-toc-number">6.</span> <span class="post-toc-text">INSERT用于新增数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#DELETE用于删除数据"><span class="post-toc-number">7.</span> <span class="post-toc-text">DELETE用于删除数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#UPDATE用于更新数据"><span class="post-toc-number">8.</span> <span class="post-toc-text">UPDATE用于更新数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#别名"><span class="post-toc-number">9.</span> <span class="post-toc-text">别名</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#子查询"><span class="post-toc-number">10.</span> <span class="post-toc-text">子查询</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Join查询"><span class="post-toc-number">11.</span> <span class="post-toc-text">Join查询</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#函数"><span class="post-toc-number">12.</span> <span class="post-toc-text">函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AVG-函数"><span class="post-toc-number">12.1.</span> <span class="post-toc-text">AVG() 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#COUNT-函数"><span class="post-toc-number">12.2.</span> <span class="post-toc-text">COUNT() 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#COUNT-函数-1"><span class="post-toc-number">12.3.</span> <span class="post-toc-text">COUNT(*) 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#COUNT-DISTINCT-column-name-函数"><span class="post-toc-number">12.4.</span> <span class="post-toc-text">COUNT(DISTINCT column_name)函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MAX-函数"><span class="post-toc-number">12.5.</span> <span class="post-toc-text">MAX() 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MIN-函数"><span class="post-toc-number">12.6.</span> <span class="post-toc-text">MIN() 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SUM-函数"><span class="post-toc-number">12.7.</span> <span class="post-toc-text">SUM() 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MID-函数"><span class="post-toc-number">12.8.</span> <span class="post-toc-text">MID() 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#LEN-函数"><span class="post-toc-number">12.9.</span> <span class="post-toc-text">LEN() 函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#UNION-操作符"><span class="post-toc-number">13.</span> <span class="post-toc-text">UNION 操作符</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/03/SQL基础语法/&title=《SQL基础语法》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/03/SQL基础语法/&title=《SQL基础语法》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3a0W6DMAwF0P3/TzNpT5M66LVNqzU5eapQAB8e0sT211c8jp/x+Pv3lbM5x8M4u/dszm0DAwPjYxnH5bgO/fo5yfzre5PYMDAw9mFUF9nqwprc1XsvBgYGxtnLqnuz6gYRAwMDY7Lg5ofMfDs4WegxMDD2YSSH2DwdVg3xrWdxDAyMD2RMCgOv/v2m+gYGBsY/ZhytUS0P5Pc2D8MYGBhLM/JU2rxscG8DR2E3ioGB8eGMvKlifnDNn5B/gj/+NzAwMJZjJOn73hKcFwbmGAwMjLUZvWPkZKt3/fzrnd7pFQwMjKUZhUmvKCgGTy7MwcDAWJRRDT3PdFXbLKpJQAwMjJ0ZkyU4ydL3FlYMDAyM3iG2eqW3KCdPw8DA2IGRvCBPrt1bFo2QGBgY2zDmm7lJITOPBAMDY09GtW2it1nMrydH2cIOFwMDYyFGlTRpyMjDLfe1YWBgLMrotVlUk3S9EmlU/sTAwFiaUUhptVq48oB6BQkMDIx9GHko1TLkvDm1ULTAwMDYgDEJPU+QTQoMT2LAwMBYmlENMdkC5tvEanvHk7swMDCWYxzF0WsI6xUy8/diYGCszeg1j07S+kkQvU+GgYGxNqO3yN61gObl0iefAwMDYwPGveXGXrGheogt/CdgYGBszEheOVleC4VMDAwMjNbGcd52lh+nMTAwdmD0kvi99FleQii8CwMDY2lGtTCQN3Xlc5LQo54RDAyM1RjflyvwLk2JitQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '点这里看看！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '欢迎回来!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
