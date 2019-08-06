@@ -206,9 +206,17 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             
             <h1 id="Markdown简介"><a href="#Markdown简介" class="headerlink" title="Markdown简介"></a>Markdown简介</h1><p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面，Markdown文件的后缀名便是“.md”。</p>
-<h1 id="Markdown使用"><a href="#Markdown使用" class="headerlink" title="Markdown使用"></a>Markdown使用</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 标题H1</span><br><span class="line"></span><br><span class="line">## 标题H2</span><br><span class="line"></span><br><span class="line">### 标题H3</span><br><span class="line"></span><br><span class="line">#### 标题H4</span><br><span class="line"></span><br><span class="line">##### 标题H5</span><br><span class="line"></span><br><span class="line">###### 标题H6</span><br></pre></td></tr></table></figure>
+<h1 id="Markdown使用"><a href="#Markdown使用" class="headerlink" title="Markdown使用"></a>Markdown使用</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><pre><code># 标题H1
 
-<h2 id="字符效果和横线"><a href="#字符效果和横线" class="headerlink" title="字符效果和横线"></a>字符效果和横线</h2><p><code>~~删除线~~</code></p>
+## 标题H2
+
+### 标题H3
+
+#### 标题H4
+
+##### 标题H5
+
+###### 标题H6</code></pre><h2 id="字符效果和横线"><a href="#字符效果和横线" class="headerlink" title="字符效果和横线"></a>字符效果和横线</h2><p><code>~~删除线~~</code></p>
 <p><del>删除线</del></p>
 <p><code>*斜体字*</code></p>
 <p><em>斜体字</em></p>
@@ -248,24 +256,25 @@
 </blockquote>
 </blockquote>
 </blockquote>
-<h2 id="锚点与链接"><a href="#锚点与链接" class="headerlink" title="锚点与链接"></a>锚点与链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[普通链接]( https://www.wisejay.top/)</span><br><span class="line">[普通链接带标题]( https://www.wisejay.top/ &quot;普通链接带题&quot;)</span><br><span class="line">直接链接：&lt;https://www.wisejay.top/&gt;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.wisejay.top/" target="_blank" rel="noopener">普通链接</a></p>
+<h2 id="锚点与链接"><a href="#锚点与链接" class="headerlink" title="锚点与链接"></a>锚点与链接</h2><pre><code>[普通链接]( https://www.wisejay.top/)
+[普通链接带标题]( https://www.wisejay.top/ &quot;普通链接带题&quot;)
+直接链接：&lt;https://www.wisejay.top/&gt;</code></pre><p><a href="https://www.wisejay.top/" target="_blank" rel="noopener">普通链接</a></p>
 <p><a href="https://www.wisejay.top/" title="普通链接带题" target="_blank" rel="noopener">普通链接带标题</a></p>
 <p>直接链接：<a href="https://www.wisejay.top/" target="_blank" rel="noopener">https://www.wisejay.top/</a></p>
-<h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><p>`行内代码`</p>
-<p><code>行内代码</code></p>
+<h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><pre><code>`行内代码`</code></pre><p><code>行内代码</code></p>
 <p>缩进风格(四个空格既tab键)</p>
 <pre><code>缩进风格(四个空格既tab键)</code></pre><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```指定代码类型</span><br><span class="line"></span><br><span class="line">代码</span><br><span class="line"></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```指定代码类型</span><br><span class="line">代码</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"markdown"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"markdown"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p><code>![名字](图片地址 &quot;标题&quot;)</code></p>
 <p>标题可加可不加</p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 无序列表（减号）</span><br><span class="line"></span><br><span class="line">* 无序列表（星号）</span><br><span class="line"></span><br><span class="line">+ 无序列表（加号）</span><br></pre></td></tr></table></figure>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><pre><code>- 无序列表（减号）
 
-<ul>
+* 无序列表（星号）
+
++ 无序列表（加号）</code></pre><ul>
 <li><p>无序列表</p>
 </li>
 <li><p>无序列表</p>
@@ -278,16 +287,17 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.	有序列表</span><br><span class="line">2.	有序列表</span><br><span class="line">3.	有序列表</span><br></pre></td></tr></table></figure>
-
-<ol>
+<pre><code>1.    有序列表
+2.    有序列表
+3.    有序列表</code></pre><ol>
 <li>有序列表</li>
 <li>有序列表</li>
 <li>有序列表</li>
 </ol>
-<h2 id="绘制表格"><a href="#绘制表格" class="headerlink" title="绘制表格"></a>绘制表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">First Header  | Second Header</span><br><span class="line">------------- | -------------</span><br><span class="line">Content Cell  | Content Cell</span><br><span class="line">Content Cell  | Content Cell</span><br></pre></td></tr></table></figure>
-
-<table>
+<h2 id="绘制表格"><a href="#绘制表格" class="headerlink" title="绘制表格"></a>绘制表格</h2><pre><code>First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell</code></pre><table>
 <thead>
 <tr>
 <th>First Header</th>
@@ -319,7 +329,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-08-06T13:15:30.925Z" itemprop="dateUpdated">2019-08-06 21:15:30</time>
+    最后更新时间：<time datetime="2019-08-06T13:26:13.139Z" itemprop="dateUpdated">2019-08-06 21:26:13</time>
 </span><br>
 
 
