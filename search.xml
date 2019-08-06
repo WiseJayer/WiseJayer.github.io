@@ -3,6 +3,135 @@
   
     
     <entry>
+      <title><![CDATA[Markdown常用语法]]></title>
+      <url>/2019/08/06/Markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="Markdown简介"><a href="#Markdown简介" class="headerlink" title="Markdown简介"></a>Markdown简介</h1><p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面，Markdown文件的后缀名便是“.md”。</p>
+<h1 id="Markdown使用"><a href="#Markdown使用" class="headerlink" title="Markdown使用"></a>Markdown使用</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 标题H1</span><br><span class="line"></span><br><span class="line">## 标题H2</span><br><span class="line"></span><br><span class="line">### 标题H3</span><br><span class="line"></span><br><span class="line">#### 标题H4</span><br><span class="line"></span><br><span class="line">##### 标题H5</span><br><span class="line"></span><br><span class="line">###### 标题H6</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符效果和横线"><a href="#字符效果和横线" class="headerlink" title="字符效果和横线"></a>字符效果和横线</h2><p><code>~~删除线~~</code></p>
+<p><del>删除线</del></p>
+<p><code>*斜体字*</code></p>
+<p><em>斜体字</em></p>
+<p><code>**粗体**</code></p>
+<p><strong>粗体</strong></p>
+<p><code>***粗斜体***</code></p>
+<p><strong><em>粗斜体</em></strong></p>
+<p><code>上标：X&lt;sub&gt;2&lt;/sub&gt;</code></p>
+<p>上标：X<sub>2</sub></p>
+<p><code>下标：O&lt;sup&gt;2&lt;/sup&gt;</code></p>
+<p>下标：O<sup>2</sup></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>&gt; 区块引用</p>
+<p>&gt; &gt; 嵌套引用</p>
+<p>&gt; &gt; &gt;三嵌套引用</p>
+<p>&gt; &gt; &gt; &gt; 四嵌套引用</p>
+<blockquote>
+<p>区块引用</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>嵌套引用</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>三嵌套引用</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>四嵌套引用</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="锚点与链接"><a href="#锚点与链接" class="headerlink" title="锚点与链接"></a>锚点与链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[普通链接]( https://www.wisejay.top/)</span><br><span class="line">[普通链接带标题]( https://www.wisejay.top/ &quot;普通链接带题&quot;)</span><br><span class="line">直接链接：&lt;https://www.wisejay.top/&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.wisejay.top/" target="_blank" rel="noopener">普通链接</a></p>
+<p><a href="https://www.wisejay.top/" title="普通链接带题" target="_blank" rel="noopener">普通链接带标题</a></p>
+<p>直接链接：<a href="https://www.wisejay.top/" target="_blank" rel="noopener">https://www.wisejay.top/</a></p>
+<h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><p>`行内代码`</p>
+<p><code>行内代码</code></p>
+<p>缩进风格(四个空格既tab键)</p>
+<pre><code>缩进风格(四个空格既tab键)</code></pre><p>&lt;!–￼2–&gt;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"markdown"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p><code>![名字](图片地址 &quot;标题&quot;)</code></p>
+<p><code>[<figure class="image-box">
+                <img src="图片地址" alt="名字" title class>
+                <p>名字</p>
+            </figure>](链接 “标题”)</code></p>
+<p>标题可加可不加</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 无序列表（减号）</span><br><span class="line"></span><br><span class="line">* 无序列表（星号）</span><br><span class="line"></span><br><span class="line">+ 无序列表（加号）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>无序列表</p>
+</li>
+<li><p>无序列表</p>
+</li>
+</ul>
+<ul>
+<li><p>无序列表嵌套</p>
+<ul>
+<li>无序列表嵌套</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.	有序列表</span><br><span class="line">2.	有序列表</span><br><span class="line">3.	有序列表</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表</li>
+</ol>
+<h2 id="绘制表格"><a href="#绘制表格" class="headerlink" title="绘制表格"></a>绘制表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">First Header  | Second Header</span><br><span class="line">------------- | -------------</span><br><span class="line">Content Cell  | Content Cell</span><br><span class="line">Content Cell  | Content Cell</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody></table>
+<h2 id="更多用法可以自己上网查看"><a href="#更多用法可以自己上网查看" class="headerlink" title="更多用法可以自己上网查看"></a>更多用法可以自己上网查看</h2><h1 id="Markdown编辑器"><a href="#Markdown编辑器" class="headerlink" title="Markdown编辑器"></a>Markdown编辑器</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>MarkdownPad</p>
+<p>Typora</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>ReText</p>
+<h2 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h2><p>Auto</p>
+<p>Mou</p>
+<h2 id="在线"><a href="#在线" class="headerlink" title="在线"></a>在线</h2><p>Editor.md:<a href="https://www.mdeditor.com/" target="_blank" rel="noopener">https://www.mdeditor.com/</a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>印象笔记</p>
+<p>有道笔记</p>
+<p>为知笔记</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 博客 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SQL基础语法]]></title>
       <url>/2019/08/03/SQL%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="SQL中SELECT的语句结构"><a href="#SQL中SELECT的语句结构" class="headerlink" title="SQL中SELECT的语句结构"></a>SQL中SELECT的语句结构</h1><blockquote>
@@ -337,9 +466,9 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         
         <tags>
             
-            <tag> Hexo </tag>
-            
             <tag> 博客 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
         
