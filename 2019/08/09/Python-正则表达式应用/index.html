@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>Python 正则表达式应用 | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Python,正则">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>Python 正则表达式应用</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Python 正则表达式应用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-09T07:22:13.000Z" itemprop="datePublished" class="page-time">
+  2019-08-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-Python-正则表达式应用"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">Python 正则表达式应用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-09 15:22:13" datetime="2019-08-09T07:22:13.000Z"  itemprop="datePublished">2019-08-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>关于正则表达式的内容可以参考“正则表达式”文章。这一篇是关于Python re模块的基本使用方法。</p>
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="函数说明："><a href="#函数说明：" class="headerlink" title="函数说明："></a>函数说明：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串。</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。</td>
+</tr>
+<tr>
+<td>repl</td>
+<td>替换的字符串，也可为一个函数。</td>
+</tr>
+<tr>
+<td>count</td>
+<td>模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。</td>
+</tr>
+<tr>
+<td>pos</td>
+<td>指定字符串的起始位置，默认为 0</td>
+</tr>
+<tr>
+<td>endpos</td>
+<td>指定字符串的结束位置，默认为字符串的长度</td>
+</tr>
+<tr>
+<td>maxsplit</td>
+<td>分隔次数，maxsplit=1 分隔一次，默认为 0，不限制次数</td>
+</tr>
+</tbody></table>
+<h2 id="修饰符（flags）"><a href="#修饰符（flags）" class="headerlink" title="修饰符（flags）"></a>修饰符（flags）</h2><p>正则表达式可以包含一些可选标志修饰符来控制匹配的模式。修饰符被指定为一个可选的标志。多个标志可以通过按位 OR(|) 它们来指定。如 re.I | re.M 被设置成 I 和 M 标志</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>re.I</td>
+<td>使匹配对大小写不敏感</td>
+</tr>
+<tr>
+<td>re.L</td>
+<td>做本地化识别（locale-aware）匹配</td>
+</tr>
+<tr>
+<td>re.M</td>
+<td>多行匹配，影响 ^ 和 $</td>
+</tr>
+<tr>
+<td>re.S</td>
+<td>使 . 匹配包括换行在内的所有字符</td>
+</tr>
+<tr>
+<td>re.U</td>
+<td>根据Unicode字符集解析字符。这个标志影响 \w, \W, \b, \B.</td>
+</tr>
+<tr>
+<td>re.X</td>
+<td>该标志通过给予你更灵活的格式以便你将正则表达式写得更易于理解</td>
+</tr>
+</tbody></table>
+<h2 id="正则表达式对象"><a href="#正则表达式对象" class="headerlink" title="正则表达式对象"></a>正则表达式对象</h2><blockquote>
+<p>re.RegexObject</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>compile() 返回 RegexObject 对象。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>re.MatchObject</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>group() 返回被 RE 匹配的字符串。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>start() 返回匹配开始的位置</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>end() 返回匹配结束的位置</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>span() 返回一个元组包含匹配 (开始,结束) 的位置</p>
+</blockquote>
+</blockquote>
+<h2 id="获取匹配表达式"><a href="#获取匹配表达式" class="headerlink" title="获取匹配表达式"></a>获取匹配表达式</h2><p>我们可以使用group(num) 或groups() 匹配对象函数来获取匹配表达式。</p>
+<table>
+<thead>
+<tr>
+<th>匹配对象方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>group(num=0)</td>
+<td>匹配的整个表达式的字符串，group() 可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组。</td>
+</tr>
+<tr>
+<td>groups()</td>
+<td>返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。</td>
+</tr>
+</tbody></table>
+<h1 id="re-模块的使用"><a href="#re-模块的使用" class="headerlink" title="re 模块的使用"></a>re 模块的使用</h1><h2 id="re-match方法"><a href="#re-match方法" class="headerlink" title="re.match方法"></a>re.match方法</h2><p>re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.match(pattern, string[, flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-search方法"><a href="#re-search方法" class="headerlink" title="re.search方法"></a>re.search方法</h2><p>re.search 扫描整个字符串并返回第一个成功的匹配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.search(pattern, string[,flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-match方法与re-search方法区别"><a href="#re-match方法与re-search方法区别" class="headerlink" title="re.match方法与re.search方法区别"></a>re.match方法与re.search方法区别</h2><blockquote>
+<p>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。</p>
+</blockquote>
+<h2 id="re-sub方法"><a href="#re-sub方法" class="headerlink" title="re.sub方法"></a>re.sub方法</h2><p>re.sub用于替换字符串中的匹配项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.sub(pattern, repl, string[, count])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-compile-方法"><a href="#re-compile-方法" class="headerlink" title="re.compile 方法"></a>re.compile 方法</h2><p>re.compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 这两个函数使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.compile(pattern[, flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-findall方法"><a href="#re-findall方法" class="headerlink" title="re.findall方法"></a>re.findall方法</h2><p>re.findall在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
+<p><code>match 和 search 是匹配一次findall 匹配所有。</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法: findall(string[, pos, endpos])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-finditer方法"><a href="#re-finditer方法" class="headerlink" title="re.finditer方法"></a>re.finditer方法</h2><p>re.finditer在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.finditer(pattern, string[, flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-split方法"><a href="#re-split方法" class="headerlink" title="re.split方法"></a>re.split方法</h2><p>re.split 方法按照能够匹配的子串将字符串分割后返回列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.split(pattern, string[, maxsplit, flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-escape方法"><a href="#re-escape方法" class="headerlink" title="re.escape方法"></a>re.escape方法</h2><p>将字符串中所有可能被解释为正则运算符的字符进行转译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.escape(pattern)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2019-08-10T09:32:33.729Z" itemprop="dateUpdated">2019-08-10 17:32:33</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/09/Python-正则表达式应用/" target="_blank" rel="external">http://wisejay.top/2019/08/09/Python-正则表达式应用/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/09/Python-正则表达式应用/&title=《Python 正则表达式应用》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/09/Python-正则表达式应用/&title=《Python 正则表达式应用》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/08/正则表达式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">正则表达式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#说明"><span class="post-toc-number">1.</span> <span class="post-toc-text">说明</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参数"><span class="post-toc-number">2.</span> <span class="post-toc-text">参数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数说明："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">函数说明：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修饰符（flags）"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">修饰符（flags）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正则表达式对象"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">正则表达式对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取匹配表达式"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">获取匹配表达式</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#re-模块的使用"><span class="post-toc-number">3.</span> <span class="post-toc-text">re 模块的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re-match方法"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">re.match方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re-search方法"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">re.search方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re-match方法与re-search方法区别"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">re.match方法与re.search方法区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re-sub方法"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">re.sub方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re-compile-方法"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">re.compile 方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re-findall方法"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">re.findall方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re-finditer方法"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">re.finditer方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re-split方法"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">re.split方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#re-escape方法"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">re.escape方法</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/09/Python-正则表达式应用/&title=《Python 正则表达式应用》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/09/Python-正则表达式应用/&title=《Python 正则表达式应用》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3a0UrEQAwF0P3/n15BfBBk671pFTY98yRrne0ZISSTPB7xen6uV5/8/O33z3+u4z1f7XbBwsDAeFvG83C9eub4i/Nn2u99ScXAwLgB4zjI5q+S75McSrInBgYGRp4ang+aGBgYGFcx2leclbIYGBgYs2Iyv+9KPmkL4MtqcQwMjDdktI2B//z5D/sbGBgYb8J4lqttauZhevY+X3+LgYGxmpG0J6MCsvztmfBaZLgYGBgrGAkgv75P9mlL1uhAMTAwbs9oW5t5jZkE6+iIMTAwVjOScJa3G2cBum0h/FLEYmBgrGPkgw7HL9c2Kc/U3NH/AQMDYxHjTJCdBdC2OTo8IAwMjHWMay/a8nGKdjisKGIxMDAWMZIaN0kK8wSubX9GeAwMjNWM86VjOwqWP5MnixgYGHdgzK7SZs+3gAvuDjEwMBYx2vI1CaBtanimMMbAwLgPIx93yAcsZgVtS8LAwNjKOA6U+eu2JWh+WNH+GBgYqxmzVGz4NaN2aX4Zh4GBsZXRlqBtyphfsdUlKwYGxo0Z+Ub5Jf5s2KI4LAwMjNWM82MQZxqW7Yr2x8DAWMd4lmtWprZjE205jYGBsZvRBrs2EZwlfLMLOwwMjN2MfOvZ8MSZYJqMcWBgYNyHUfQ8yyIzbwy0of8xO0UMDIzVjPZybdbsbPfEwMDAyFO64wA6260I0xgYGDdgtEXsbHgif6YucTEwMFYzrm0MtMnfVddwGBgYSxkfwKzrQd7WCBQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '点这里看看！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '欢迎回来!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

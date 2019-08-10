@@ -3,6 +3,178 @@
   
     
     <entry>
+      <title><![CDATA[Python 正则表达式应用]]></title>
+      <url>/2019/08/09/Python-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BA%94%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>关于正则表达式的内容可以参考“正则表达式”文章。这一篇是关于Python re模块的基本使用方法。</p>
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="函数说明："><a href="#函数说明：" class="headerlink" title="函数说明："></a>函数说明：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串。</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。</td>
+</tr>
+<tr>
+<td>repl</td>
+<td>替换的字符串，也可为一个函数。</td>
+</tr>
+<tr>
+<td>count</td>
+<td>模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。</td>
+</tr>
+<tr>
+<td>pos</td>
+<td>指定字符串的起始位置，默认为 0</td>
+</tr>
+<tr>
+<td>endpos</td>
+<td>指定字符串的结束位置，默认为字符串的长度</td>
+</tr>
+<tr>
+<td>maxsplit</td>
+<td>分隔次数，maxsplit=1 分隔一次，默认为 0，不限制次数</td>
+</tr>
+</tbody></table>
+<h2 id="修饰符（flags）"><a href="#修饰符（flags）" class="headerlink" title="修饰符（flags）"></a>修饰符（flags）</h2><p>正则表达式可以包含一些可选标志修饰符来控制匹配的模式。修饰符被指定为一个可选的标志。多个标志可以通过按位 OR(|) 它们来指定。如 re.I | re.M 被设置成 I 和 M 标志</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>re.I</td>
+<td>使匹配对大小写不敏感</td>
+</tr>
+<tr>
+<td>re.L</td>
+<td>做本地化识别（locale-aware）匹配</td>
+</tr>
+<tr>
+<td>re.M</td>
+<td>多行匹配，影响 ^ 和 $</td>
+</tr>
+<tr>
+<td>re.S</td>
+<td>使 . 匹配包括换行在内的所有字符</td>
+</tr>
+<tr>
+<td>re.U</td>
+<td>根据Unicode字符集解析字符。这个标志影响 \w, \W, \b, \B.</td>
+</tr>
+<tr>
+<td>re.X</td>
+<td>该标志通过给予你更灵活的格式以便你将正则表达式写得更易于理解</td>
+</tr>
+</tbody></table>
+<h2 id="正则表达式对象"><a href="#正则表达式对象" class="headerlink" title="正则表达式对象"></a>正则表达式对象</h2><blockquote>
+<p>re.RegexObject</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>compile() 返回 RegexObject 对象。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>re.MatchObject</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>group() 返回被 RE 匹配的字符串。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>start() 返回匹配开始的位置</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>end() 返回匹配结束的位置</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>span() 返回一个元组包含匹配 (开始,结束) 的位置</p>
+</blockquote>
+</blockquote>
+<h2 id="获取匹配表达式"><a href="#获取匹配表达式" class="headerlink" title="获取匹配表达式"></a>获取匹配表达式</h2><p>我们可以使用group(num) 或groups() 匹配对象函数来获取匹配表达式。</p>
+<table>
+<thead>
+<tr>
+<th>匹配对象方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>group(num=0)</td>
+<td>匹配的整个表达式的字符串，group() 可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组。</td>
+</tr>
+<tr>
+<td>groups()</td>
+<td>返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。</td>
+</tr>
+</tbody></table>
+<h1 id="re-模块的使用"><a href="#re-模块的使用" class="headerlink" title="re 模块的使用"></a>re 模块的使用</h1><h2 id="re-match方法"><a href="#re-match方法" class="headerlink" title="re.match方法"></a>re.match方法</h2><p>re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.match(pattern, string[, flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-search方法"><a href="#re-search方法" class="headerlink" title="re.search方法"></a>re.search方法</h2><p>re.search 扫描整个字符串并返回第一个成功的匹配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.search(pattern, string[,flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-match方法与re-search方法区别"><a href="#re-match方法与re-search方法区别" class="headerlink" title="re.match方法与re.search方法区别"></a>re.match方法与re.search方法区别</h2><blockquote>
+<p>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。</p>
+</blockquote>
+<h2 id="re-sub方法"><a href="#re-sub方法" class="headerlink" title="re.sub方法"></a>re.sub方法</h2><p>re.sub用于替换字符串中的匹配项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.sub(pattern, repl, string[, count])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-compile-方法"><a href="#re-compile-方法" class="headerlink" title="re.compile 方法"></a>re.compile 方法</h2><p>re.compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 这两个函数使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.compile(pattern[, flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-findall方法"><a href="#re-findall方法" class="headerlink" title="re.findall方法"></a>re.findall方法</h2><p>re.findall在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
+<p><code>match 和 search 是匹配一次findall 匹配所有。</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法: findall(string[, pos, endpos])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-finditer方法"><a href="#re-finditer方法" class="headerlink" title="re.finditer方法"></a>re.finditer方法</h2><p>re.finditer在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.finditer(pattern, string[, flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-split方法"><a href="#re-split方法" class="headerlink" title="re.split方法"></a>re.split方法</h2><p>re.split 方法按照能够匹配的子串将字符串分割后返回列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.split(pattern, string[, maxsplit, flags])</span><br></pre></td></tr></table></figure>
+
+<h2 id="re-escape方法"><a href="#re-escape方法" class="headerlink" title="re.escape方法"></a>re.escape方法</h2><p>将字符串中所有可能被解释为正则运算符的字符进行转译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：re.escape(pattern)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> 正则 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[正则表达式]]></title>
       <url>/2019/08/08/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑，可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
