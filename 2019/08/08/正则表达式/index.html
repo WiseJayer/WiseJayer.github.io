@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>正则表达式 | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="正则">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>正则表达式</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">正则表达式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-08T08:59:18.000Z" itemprop="datePublished" class="page-time">
+  2019-08-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/正则/">正则</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-正则表达式"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">正则表达式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-08 16:59:18" datetime="2019-08-08T08:59:18.000Z"  itemprop="datePublished">2019-08-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/正则/">正则</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑，可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<h1 id="正则表达式基础"><a href="#正则表达式基础" class="headerlink" title="正则表达式基础"></a>正则表达式基础</h1><h2 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h2><p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。</p>
+<h2 id="非打印字符（转义）"><a href="#非打印字符（转义）" class="headerlink" title="非打印字符（转义）"></a>非打印字符（转义）</h2><p>表达式中一些字符需要在前面加 “”（既\） 进行转义</p>
+<table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\n</td>
+<td align="center">匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td align="center">匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="center">匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+<td align="center">\</td>
+<td align="center">代表   “” 本身</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">^本身</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">$本身</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">.本身</td>
+</tr>
+</tbody></table>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$</td>
+<td align="center">匹配输入字符串的结尾位置、不匹配任何字符</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">匹配输入字符串的开始位置、不匹配任何字符</td>
+</tr>
+<tr>
+<td align="center">( )</td>
+<td align="center">标记一个子表达式的开始和结束位置</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td align="center">指明两项之间的一个选择、匹配左边或者右边</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">匹配除换行符 \n 之外的任何单字符</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="center">匹配一个单词边界，即字与空格间的位置</td>
+</tr>
+<tr>
+<td align="center">\B</td>
+<td align="center">非单词边界匹配</td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>表达式 “^aaa” 在匹配 “xxx aaa xxx” 时，匹配结果是：失败。因为 “^” 要求与字符串开始的地方匹配，因此，只有当 “aaa” 位于字符串的开头的时候，”^aaa” 才能匹配，比如：”aaa xxx xxx”。</p>
+</li>
+<li><p>表达式 “aaa$”在匹配“xxxaaaxxx”时，匹配结果是： 失败。因为“”要求与字符串结束的地方匹配，因此， 只有当 “aaa” 位于字符串的结尾的时候，”aaa$” 才能匹配，比如：”xxx xxx aaa”。</p>
+</li>
+<li><p>表达式 “.\b.” 在匹配 “@@@abc” 时，匹配结果是：成功；匹配到的内容是：”@a”；匹配到的位置是：开始于2，结束于4。</p>
+</li>
+<li><p>表达式 “Tom|Jack” 在匹配字符串 “I’m Tom, he is Jack” 时，匹配结果是：成功；匹配到的内容是：”Tom”； 匹配到的位置是：开始于4，结束于7。匹配下一个时，匹配结果是：成功；匹配到的内容是：”Jack”；匹配到的位置  时：开始于15，结束于19。</p>
+</li>
+</ol>
+<p>说明：”\b” 与 “^” 和 “$” 类似，本身不匹配任何字符，但是它要求它在匹配结果中所处位置的左右两边，其中一边是 “\w” 范围，另一边是 非”\w” 的范围。                                                                      </p>
+<h2 id="匹配次数"><a href="#匹配次数" class="headerlink" title="匹配次数"></a>匹配次数</h2><table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">*</td>
+<td align="center">匹配前面的子表达式零次或多次等价于{0,}</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">匹配前面的子表达式一次或多次等价于 {1,}</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td align="center">匹配前面的子表达式零次或一次等价于 {0,1}</td>
+</tr>
+<tr>
+<td align="center">{n}</td>
+<td align="center">n 是一个非负整数。匹配确定的 n   次。</td>
+</tr>
+<tr>
+<td align="center">{m,n}</td>
+<td align="center">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。</td>
+</tr>
+<tr>
+<td align="center">{n,}</td>
+<td align="center">n 是一个非负整数。至少匹配n 次。</td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>zo* 能匹配 “z” 以及 “zoo”</p>
+</li>
+<li><p>“a+b”可以匹配 “ab”,”aab”,”aaab”</p>
+</li>
+<li><p>“do(es)?” 可以匹配 “do” 、 “does” 中的 “does” 、 “doxy” 中的 “do”</p>
+</li>
+<li><p>‘o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o</p>
+</li>
+<li><p>‘o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o</p>
+</li>
+<li><p>“o{1,3}” 将匹配 “fooooood” 中的前三个 o</p>
+</li>
+</ol>
+<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\w</td>
+<td align="center">任意一个字母或数字或下划线，也就是   A<del>Z,a</del>z,0~9,_ 中任意一个</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="center">包括空格、制表符、换页符等空白字符的其中任意一个</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center">任意一个数字，0~9 中的任意一个</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="center">匹配所有的字母、数字、下划线以外的字符</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="center">匹配所有的非数字字符</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="center">匹配任何可见字符</td>
+</tr>
+</tbody></table>
+<p>在表达式 “\s”，”\d”，”\w”，”\b” 表示特殊意义的同时，对应的大写字母表示相反的意义。</p>
+<h1 id="正则表达式进阶"><a href="#正则表达式进阶" class="headerlink" title="正则表达式进阶"></a>正则表达式进阶</h1><h2 id="贪婪与非贪婪"><a href="#贪婪与非贪婪" class="headerlink" title="贪婪与非贪婪"></a>贪婪与非贪婪</h2><p>针对文本 “dxxxdxxxd”</p>
+<p>贪婪模式:总是尽可能多的匹配</p>
+<table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">d\w+</td>
+<td align="center">“\w+” 将匹配第一个 “d” 之后的所有字符   “xxxdxxxd”</td>
+</tr>
+<tr>
+<td align="center">d\w+d</td>
+<td align="center">“\w+” 将匹配第一个 “d” 和最后一个 “d” 之间的所有字符 “xxxdxxx”。虽然 “\w+” 也能够匹配上最后一个 “d”，但是为了使整个表达式匹配成功，”\w+”   可以 “让出” 它本来能够匹配的最后一个 “d”。</td>
+</tr>
+</tbody></table>
+<p>非贪婪模式: 在修饰匹配次数的特殊符号后再加上一个 “?” 号，则可以使匹配次数不定的表达式尽可能少的匹配，使可匹配可不匹配的表达式，尽可能的 “不匹配”。</p>
+<table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">d\w+</td>
+<td align="center">“\w+?” 将尽可能少的匹配第一个 “d” 之后的字符，结果是：”\w+?” 只匹配了一个 “x”</td>
+</tr>
+<tr>
+<td align="center">d\w+d</td>
+<td align="center">为了让整个表达式匹配成功，”\w+?” 不得不匹配 “xxx” 才可以让后边的 “d” 匹配，从而使整个表达式匹配成功。   因此，结果是：”\w+?” 匹配 “xxx”。</td>
+</tr>
+</tbody></table>
+<h1 id="常用表达式"><a href="#常用表达式" class="headerlink" title="常用表达式"></a>常用表达式</h1><h2 id="数字类"><a href="#数字类" class="headerlink" title="数字类"></a>数字类</h2><ol>
+<li>数字：^[0-9]*$</li>
+</ol>
+<ol start="2">
+<li>n位的数字：^\d{n}$</li>
+</ol>
+<ol start="3">
+<li>至少n位的数字：^\d{n,}$</li>
+</ol>
+<ol start="4">
+<li>m-n位的数字：^\d{m,n}$</li>
+</ol>
+<ol start="5">
+<li>零和非零开头的数字：^(0|[1-9][0-9]*)$</li>
+</ol>
+<ol start="6">
+<li>非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]{1,2})?$</li>
+</ol>
+<ol start="7">
+<li>带1-2位小数的正数或负数：^(-)?\d+(.\d{1,2})?$</li>
+</ol>
+<ol start="8">
+<li>正数、负数、和小数：^(-|+)?\d+(.\d+)?$</li>
+</ol>
+<ol start="9">
+<li>有两位小数的正实数：^[0-9]+(.[0-9]{2})?$</li>
+</ol>
+<ol start="10">
+<li>有1~3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$</li>
+</ol>
+<ol start="11">
+<li>非零的正整数：^[1-9]\d<em>$ 或 ^([1-9][0-9]</em>){1,3}$ 或 ^+?[1-9][0-9]*$</li>
+</ol>
+<ol start="12">
+<li>非零的负整数：^-[1-9][]0-9”<em>$ 或 ^-[1-9]\d</em>$</li>
+</ol>
+<ol start="13">
+<li>非负整数：^\d+$ 或 ^[1-9]\d*|0$</li>
+</ol>
+<ol start="14">
+<li>非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$</li>
+</ol>
+<ol start="15">
+<li>非负浮点数：^\d+(.\d+)?$ 或 ^[1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>|0?.0+|0$</li>
+</ol>
+<ol start="16">
+<li>非正浮点数：^((-\d+(.\d+)?)|(0+(.0+)?))$ 或 ^(-([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>))|0?.0+|0$</li>
+</ol>
+<ol start="17">
+<li>正浮点数：^[1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>$ 或 ^(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]*.[0-9]+)|([0-9]</em>[1-9][0-9]*))$</li>
+</ol>
+<ol start="18">
+<li>负浮点数：^-([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>)$ 或 ^(-(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]*.[0-9]+)|([0-9]</em>[1-9][0-9]*)))$</li>
+</ol>
+<ol start="19">
+<li>浮点数：^(-?\d+)(.\d+)?$ 或 ^-?([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>|0?.0+|0)$</li>
+</ol>
+<h2 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h2><ol>
+<li>汉字：^[\u4e00-\u9fa5]{0,}$</li>
+</ol>
+<ol start="2">
+<li>英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$</li>
+</ol>
+<ol start="3">
+<li>长度为3-20的所有字符：^.{3,20}$</li>
+</ol>
+<ol start="4">
+<li>由26个英文字母组成的字符串：^[A-Za-z]+$</li>
+</ol>
+<ol start="5">
+<li>由26个大写英文字母组成的字符串：^[A-Z]+$</li>
+</ol>
+<ol start="6">
+<li>由26个小写英文字母组成的字符串：^[a-z]+$</li>
+</ol>
+<ol start="7">
+<li>由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$</li>
+</ol>
+<ol start="8">
+<li>由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w{3,20}$</li>
+</ol>
+<ol start="9">
+<li>中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$</li>
+</ol>
+<ol start="10">
+<li>中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</li>
+</ol>
+<ol start="11">
+<li>可以输入含有^%&amp;’,;=?$&quot;等字符：[^%&amp;’,;=?$\x22]+ 12 禁止输入含有<del>的字符：[^</del>\x22]+</li>
+</ol>
+<h2 id="特殊类"><a href="#特殊类" class="headerlink" title="特殊类"></a>特殊类</h2><p>\1. Email地址：^\w+([-+.]\w+)<em>@\w+([-.]\w+)*.\w+([-.]\w+)</em>$</p>
+<p>\2. 域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</p>
+<p>\3. InternetURL：[a-zA-z]+://[^\s]* 或 ^http://([\w-]+.)+[\w-]+(/[\w-./?%&amp;=]*)?$</p>
+<p>\4. 手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</p>
+<p>\5. 电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：^((\d{3,4}-)|\d{3.4}-)?\d{7,8}$</p>
+<p>\6. 国内电话号码(0511-4405222、021-87888822)：\d{3}-\d{8}|\d{4}-\d{7}</p>
+<p>\7. 身份证号(15位、18位数字)：^\d{15}|\d{18}$</p>
+<p>\8. 短身份证号码(数字、字母x结尾)：^([0-9]){7,18}(x|X)?$ 或 ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$</p>
+<p>\9. 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$</p>
+<p>\10. 密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w{5,17}$</p>
+<p>\11. 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}$</p>
+<p>\12. 日期格式：^\d{4}-\d{1,2}-\d{1,2}</p>
+<p>\13. 一年的12个月(01～09和1～12)：^(0?[1-9]|1[0-2])$</p>
+<p>\14. 一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$</p>
+<p>\15. 腾讯QQ号：[1-9][0-9]{4,} (腾讯QQ号从10000开始)</p>
+<p>\16. 中国邮政编码：[1-9]\d{5}(?!\d) (中国邮政编码为6位数字)</p>
+<p>\17. IP地址：\d+.\d+.\d+.\d+ (提取IP地址时有用)</p>
+<p>\18. IP地址：((?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d))</p>
+<p>\19. 银行卡号: /^([1-9]{1})(\d{14}|\d{18})$/</p>
+<p>\20. 钱的输入格式：</p>
+<p>A．有四种钱的表示形式我们可以接受:”10000.00” 和 “10,000.00”, 和没有 “分” 的 “10000” 和 “10,000”：^[1-9][0-9]*$</p>
+<p>B．这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0”不通过,所以我们采用下面的形式：^(0|[1-9][0-9]*)$</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2019-08-10T09:09:48.214Z" itemprop="dateUpdated">2019-08-10 17:09:48</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/08/正则表达式/" target="_blank" rel="external">http://wisejay.top/2019/08/08/正则表达式/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/08/正则表达式/&title=《正则表达式》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/08/正则表达式/&title=《正则表达式》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/06/Markdown常用语法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Markdown常用语法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#正则表达式基础"><span class="post-toc-number">2.</span> <span class="post-toc-text">正则表达式基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#普通字符"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">普通字符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#非打印字符（转义）"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">非打印字符（转义）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特殊字符"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">特殊字符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#匹配次数"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">匹配次数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符集"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">字符集</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#正则表达式进阶"><span class="post-toc-number">3.</span> <span class="post-toc-text">正则表达式进阶</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#贪婪与非贪婪"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">贪婪与非贪婪</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常用表达式"><span class="post-toc-number">4.</span> <span class="post-toc-text">常用表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数字类"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">数字类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符类"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">字符类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特殊类"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">特殊类</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/08/正则表达式/&title=《正则表达式》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/08/正则表达式/&title=《正则表达式》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3a22qEQBBFUf//pw3kKRBs96lyBqzePgWTaK8JVOp2HPg6f6+rO+efa/3d9f3/P/PwJUOGjNcyyOOuGORYV09YnyGmypAhYwPGOsjyYErCZRqsyT8AGTJkyCBH7IRLGTJkyPhEwCVBNi19ZciQIWPNICUoL007gfXjtbgMGTJeyEgHA9/8+oPzDRkyZLyEcT508aeRNDF+uwwZMkYzeCstLXr52DJt3h38F2TIkDGC0SlTU15ttImQMmTI2IBBAmVndazW9OdDUxkyZOzA4F2sTrjkQ1Byp5hjypAh47WMNJg+MErEJ0FvlCFDxgaMTsuMHKI2sCQLZ5epoQwZMsYx+g19EqBrgVWGDBky0tDGX0OGDZ07N3muDBkyxjHSUWUalEmA7hS9MmTI2IHRWUvtpJL87aj0lSFDxlAGScV4qCUrGuQ+TwRvtttkyJAxiLFuuqEH4YSvWJquPzIZMmRswKgVsWmqRz6s9PkyZMjYgcHXHR6olXEbjn8cl38TGTJkDGXwkjKYNuAVilo5HcxLZciQMYJRKzJrKWBntQKlhjJkyBjHIIlardGfpp6diCpDhoypjDO80qWudI2Dp6o3I0wZMmQMYtRa/+lD09enLTwZMmTswEgHAGk6mAbuYvtPhgwZGzDScSMJjp0wnY4fZMiQIaO2BtEPr8X5hgwZMjZmpIeuzSjSAYMMGTL2YTzbxE8L2toCmQwZMvZh1AYD/SKWHDpdPpMhQ8Y4xg8lChkGUIcJFgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '点这里看看！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '欢迎回来!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
