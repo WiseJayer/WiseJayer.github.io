@@ -3,6 +3,45 @@
   
     
     <entry>
+      <title><![CDATA[SQL注入之information_schema库]]></title>
+      <url>/2019/08/15/SQL%E6%B3%A8%E5%85%A5%E4%B9%8Binformation-schema%E5%BA%93/</url>
+      <content type="html"><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
+<h1 id="information-schema简介"><a href="#information-schema简介" class="headerlink" title="information_schema简介"></a>information_schema简介</h1><p>每种数据库语言都有着自己第一无二的特性，mysql也不例外。在mysql数据库中,informationschema 是 mysql 自 带 的 元 数 据 库 ， 是 每 个 mysql 实 例 中 的 数 据 库 ， 通 过 它 我 们 能 够 找 到 mysql 数 据 库 中 所 有 的 数 据 信 息。</p>
+<p><strong>注：information_schema是在sql5.0版本之后才有的，5.0之前需要只能暴力去跑。</strong></p>
+<blockquote>
+<h3 id="informaton-schema-是mysql数据库内置自带的元数据库"><a href="#informaton-schema-是mysql数据库内置自带的元数据库" class="headerlink" title="informaton_schema:是mysql数据库内置自带的元数据库"></a>informaton_schema:是mysql数据库内置自带的元数据库</h3></blockquote>
+<h2 id="schemata表"><a href="#schemata表" class="headerlink" title="schemata表"></a>schemata表</h2><p>包含了mysql数据库中所有的数据库信息，相等于我们上述的show databases操作。我们可以通过schemata表来获取mysql中所以数据 库名信息。</p>
+<p>通过sql自带的informaton_schema查询有哪些数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">group_concat</span>(schema_name) <span class="keyword">from</span> information_schema.schemata<span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+
+<p><code>group_concat是一个字符串连接函数，查询结果通过逗号分离。
+-- 是sql注释符(--后面有一个空格)url中+等于空格所以通常用--+来注释后面内容</code></p>
+<h2 id="tables表"><a href="#tables表" class="headerlink" title="tables表"></a>tables表</h2><p>包含了mysql数据库中的所有表的信息。详细表述了某个表属于哪个schema，表类型，表引擎，创建时间等信息。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="keyword">group_concat</span>(table_name) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span></span><br><span class="line">table_schema=<span class="string">'security'</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="columns表"><a href="#columns表" class="headerlink" title="columns表"></a>columns表</h2><p>包含了mysql表中所有数据列的信息。详细表述了某张表的所有列以及每个列的信息。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">group_concat</span>(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name=<span class="string">'users'</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查询敏感信息"><a href="#查询敏感信息" class="headerlink" title="查询敏感信息"></a>查询敏感信息</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> username <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span><span class="comment">--+</span></span><br><span class="line"><span class="keyword">Select</span> <span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span><span class="comment">--+</span></span><br><span class="line">查询出账号密码。</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> SQL注入 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> tag1 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Python 正则表达式应用]]></title>
       <url>/2019/08/09/Python-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BA%94%E7%94%A8/</url>
       <content type="html"><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>关于正则表达式的内容可以参考“正则表达式”文章。这一篇是关于Python re模块的基本使用方法。</p>
@@ -978,9 +1017,9 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         
         <tags>
             
-            <tag> 博客 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 博客 </tag>
             
         </tags>
         
