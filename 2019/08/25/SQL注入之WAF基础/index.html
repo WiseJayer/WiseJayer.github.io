@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>SQL注入之WAF基础 | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="SQL注入">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>SQL注入之WAF基础</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">SQL注入之WAF基础</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-25T12:49:39.000Z" itemprop="datePublished" class="page-time">
+  2019-08-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-SQL注入之WAF基础"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">SQL注入之WAF基础</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-25 20:49:39" datetime="2019-08-25T12:49:39.000Z"  itemprop="datePublished">2019-08-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="WAF简介"><a href="#WAF简介" class="headerlink" title="WAF简介"></a>WAF简介</h1><p>在过去网站发展不是很流行的时候，传统的网络防火墙往往就是成为了企业或者公司的安全防线。但这传统防火墙只是架构网络体系在第三层中的网络层当中，只能有限地阻止和截获一些网络层的数据包。而随着web服务应用的不断发展，攻击者开始懂得针对性的盯上web应用层服务进行攻击。而传统的防火墙往往只能截获网络层数据包，对于应用层当中的数据包往往就无能为力，这时WAF就应用开始应运而生。</p>
+<p>全称Web应用防火墙，是通过执行一系列针对HTTP/HTTPS的安全策略来专门为Web应用提高保护的一款产品。WAF往往是基础规则防护的设备，WAF通常包含着各种各样防护应用的安全规则，WAF生产商往往根据这个制定好的规则库并定期跟新。用户使用这个WAF规则就可以对自己网站进行有效的保护</p>
+<p>所以我们就可以简单理解为：WAF就是一款Web应用的安全产品，通过内置安全规则匹配来保护Web网站应用。</p>
+<h1 id="WAF分类"><a href="#WAF分类" class="headerlink" title="WAF分类"></a>WAF分类</h1><h2 id="云waf"><a href="#云waf" class="headerlink" title="云waf"></a>云waf</h2><p>简单而言，就是将WAF架构部署在云端，外量流量连接都需要经过云 架构部署在云端，外量流量连接都需要经过云waf过滤检测，之后再将过滤检测后 过滤检测，之后再将过滤检测后 数据包发给网站服务器。 数据包发给网站</p>
+<h2 id="硬件waf"><a href="#硬件waf" class="headerlink" title="硬件waf"></a>硬件waf</h2><p>一般这类waf往往架构在服务器前端，充当硬件设备来保护网站。</p>
+<h2 id="软件waf"><a href="#软件waf" class="headerlink" title="软件waf"></a>软件waf</h2><p>而软件waf往往就是我们常常听说的安全狗之类的产品，我们可以将它直接下载下来，部署在服务器当中。软件<br>往往就是我们常常听说的安全狗之类的产品，我们可以将它直接下载下来，部署在服务器当中。软件waf往往就只是通过规则匹配<br>往往就只是通过规则匹配 进行的。而我们常常说的过狗，往往就是只是在规则层面进行绕过和利用。（规则层面后面会讲）。</p>
+<h1 id="WAF防护规则"><a href="#WAF防护规则" class="headerlink" title="WAF防护规则"></a>WAF防护规则</h1><h2 id="架构层层面"><a href="#架构层层面" class="headerlink" title="架构层层面"></a>架构层层面</h2><p>架构层层面一般是针对的是云WAF，大多数云WAF架构在云端，例如百度云加速、360安全卫士等，通过更改DNS解析，把流量引入WAF集群，流量经过检测后转发请求到源站。简单的说对于此类WAF架构层层面。</p>
+<h2 id="寻找网站的真实地址"><a href="#寻找网站的真实地址" class="headerlink" title="寻找网站的真实地址"></a>寻找网站的真实地址</h2><p>因为云WAF部署在云端，外部流量经过它的解析在传递给网站服务器。这时我们如果能够找到网站的真实地址，不通过域名进行访问，直接用网站IP地址访问，这样外部流量不经过云WAF进行DNS解析，从而绕过了WAF的实现。</p>
+<h2 id="寻找当前网站的相同网段"><a href="#寻找当前网站的相同网段" class="headerlink" title="寻找当前网站的相同网段"></a>寻找当前网站的相同网段</h2><p>这种绕过方式可以归结于云网络运营商部署问题。有些云网站运营商会把他们的同一网段的网站都只用一个云WAF进行过滤解析，你可以寻找它同一网段下的网站 找它同一网段下的网站ip地址，从而从网段内部对不同网站之间进行访问。</p>
+<h2 id="利用网站的边界漏洞"><a href="#利用网站的边界漏洞" class="headerlink" title="利用网站的边界漏洞"></a>利用网站的边界漏洞</h2><p>边界漏洞这里主要是指利用一些xss或者csrf的漏洞进行到攻击内部。云WAF的机制规则没能覆盖到网站边界。</p>
+<h2 id="资源限制角度"><a href="#资源限制角度" class="headerlink" title="资源限制角度"></a>资源限制角度</h2><p>利用发送http请求包的参数内容，过多消耗限制WAF资源，让WAF无法加载识别或者是让WAF”崩<br>崩”坏，从而实现绕过WAF。例如：服务器能接受的最大http协议请求包为10M，而WAF本身能接受最大的http协议请求包为5M，这时我们可以构造5-10Mhttp协议请求包来进行发送，让WAF超过了最大接受程度，从而”崩”坏达到绕过WAF的目的。或者我们可以在http协议请求包中添加大量的反复编码内容或者恶意代WAF对于这些大量不熟悉的参数内容难以识别或者干脆不识别，从而达到了绕过WAF的目的。</p>
+<h2 id="协议层面"><a href="#协议层面" class="headerlink" title="协议层面"></a>协议层面</h2><p>这些的协议层面主要是指http协议，主要指在WAF中对协议中的内容或者某些参数解析和覆盖不全面，或者协议本身存在的缺陷，我们加以利用从而实现了对WAF绕过。同时我们还需要对web中间件服务器有充分的认识，因为每种服务器自身解析也是不一样的。</p>
+<h2 id="规则层面缺陷"><a href="#规则层面缺陷" class="headerlink" title="规则层面缺陷"></a>规则层面缺陷</h2><p>规则层面的缺陷，往往是指基于正则规则相关层面。也就是我们常常看见绕过WAF规则的文章，百分之90文章都是从规则层面缺陷进行绕过的。因为大多数WAF都是基于安全规则来进行对网站的安全监控的，也就是认为设计好的安全规则。这种设计最大的缺陷就是本身规则就是存在缺陷，有时没有考虑到方方面面进行设置，攻击者可能从中构造出一些攻击变形的编码语句，不在这个安全规则之内识别不到，从而达到绕过WAF的目的。</p>
+<h1 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h1><h2 id="大小写替换"><a href="#大小写替换" class="headerlink" title="大小写替换"></a>大小写替换</h2><p>对于mysql绕过，它的规则中可以进行了简单函数限制，但它却没有考虑到这些函数存在大小写等限制，所以我们可以对这些函数变换大写形式即可。</p>
+<p>如: xxxx.com/index.php?id=-3’ uniON sEleCt 1,2,3–+</p>
+<p>不过这种绕过方式往往都是最开始存在的，现在几乎见不到了</p>
+<h2 id="双关键字绕过"><a href="#双关键字绕过" class="headerlink" title="双关键字绕过"></a>双关键字绕过</h2><p>在一些简易的waf规则中，他是进行敏感关键字进行检测，一旦识别就会直接将其替换为空(但这里存在不合理的是，它只检测替换一次),所以我们就可以构造双写关键字进行绕过</p>
+<p>如：id=-1’+UNIunionON+SeLselectECT1,2,3–-+</p>
+<p>当它检测出union关键字时为空但经过我们拼接之后，又变成了UNION关键字。这里的+代替空格。</p>
+<h2 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h2><p>对于sql注入函数绕过，我们还可以结合一些编码知识原理进行绕过。例如：十六进制编码、url编码、unicode编码、数据库编码以及多种编码混合等。</p>
+<p>1=1即31%3d%31</p>
+<p>Test为CHAR(101)+CHAR(97)+CHAR(115)+CHAR(116)</p>
+<h2 id="关键字替换"><a href="#关键字替换" class="headerlink" title="关键字替换"></a>关键字替换</h2><p>因为sql函数存在很多很多，各种各样的。它的waf规则可能将常见的函数进行了过滤，但我们还有sql函数能够替换这些常见的函数功能。WAF如果没有对这些能够替换功能实现的函数纳入到它的规则当中，那我们使用这些也就能轻易绕过了。</p>
+<p>常见函数替换 常见函数替换:</p>
+<p>hex()、 、bin()==&gt;ascii()</p>
+<p>sleep()==&gt;benchmark()</p>
+<p>concatws()==&gt;groupconcat()</p>
+<p>mid()、substr()==&gt;substring()@@user==&gt;user()@@datadir==&gt;datadir() </p>
+<h2 id="注释符绕过"><a href="#注释符绕过" class="headerlink" title="注释符绕过"></a>注释符绕过</h2><p>/xxx/是注释符，也可以充当空白符。因为// 可 使 得 MySQL 对 sql 语 句 (union//select) 词 法 解 析 成 功 。事 实 上 许 多 WAF 都 考 虑 到 都 考 虑 到 // 可 以 作 为 空 白 分 ， 但 是 waf 检 测 “/<em>.</em>/” 注 释 符 很 消 耗 网 站 性 能 ， 基 于 网 站 业 务 的 考 虑 ， 安 全 工 程 师 可 能 只 会 在 检 测 注 释 符 中 间 引 入 一 些 特 殊 字 符 ， 例 如 ： /\w+/ 。 或 者 ， WAF 可 能 只 中 间 检 查 n 个 字 符 “/<em>.{,n}</em>/” 。 *</p>
+<p>根据以上想法，我们可以得出逐步测试绕过方法：</p>
+<p>先测试最基本的：union//select</p>
+<p>再 测 试 中 间 引 入 特 殊 字 ： union/aaaa%01bbs/select (注释符内添加特殊字符)</p>
+<p>最 后 测 试 注 释 长 度 ： union/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/select (注释符内添加长度)</p>
+<p>同 理 ， 对 于 /!xxx/(相当于/sql 语 句 /) ， 可 以 采 取 类 似 的 思 路 绕 过 WAF 。</p>
+<h2 id="空白符绕过"><a href="#空白符绕过" class="headerlink" title="空白符绕过"></a>空白符绕过</h2><p>基于正则表达式的WAF，SQL注入规则使用正则表达式的“\s”匹配空格，例如”select\s+union”。利用正则表达式的空白符与MySQL空白符的不同可绕过WAF规则。如何找到这些MySQL的特性？通过fuzz,每次更改正常SQL语句的某部分替换为其他字符，判断语法是否正确，即可判断出来MySQL语法特性。当然，也可以通过分析MySQL词法来发现语法特性，从而找到绕过方法。</p>
+<p>利用空白符进行绕过，测试WAF时尽可能减少其他原因的影响，例如”union select”被拦截，只需把中间空白符替换为”%250C”, “%25A0”， “%09%0A %0B %0C %0D %A0 %20 //“进行绕过测试</p>
+<p>union%250Cselect</p>
+<p>union%25A0select</p>
+<h2 id="sql注入黑魔法"><a href="#sql注入黑魔法" class="headerlink" title="sql注入黑魔法"></a>sql注入黑魔法</h2><p>我们在进行sql注入过程中，我们需要对数据库语法和结构有个清晰的了解。比如一些特殊的mysql语法常常就会没有被纳入到WAF 的规则当中去。</p>
+<p>select{x tablename}from{x informationschema.tables};</p>
+<h2 id="特殊字符绕过"><a href="#特殊字符绕过" class="headerlink" title="特殊字符绕过"></a>特殊字符绕过</h2><p>当我们平时sql注入当中的常规字符都是WAF吞掉过滤的时候，我们就可以尝试下一些特殊字符进行过滤检测。。如：~，!，@，{x key}，1.1，1e1，()，emoji表情符号@:=等等。不过一般这些特殊字符我们都是用来进行fuzz测试，看看能不能绕过waf检测测试，然后我们在将这些特殊字符进行sql语句构造拼接，看看能不能将其进行利用。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>sql注入绕WAF=熟悉mysql函数和数据库特性+了解web中间件服务器原理+掌握WAF的原理机制。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-08-23T12:53:01.591Z" itemprop="dateUpdated">2019-08-23 20:53:01</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/25/SQL注入之WAF基础/" target="_blank" rel="external">http://wisejay.top/2019/08/25/SQL注入之WAF基础/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL注入/">SQL注入</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/25/SQL注入之WAF基础/&title=《SQL注入之WAF基础》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/25/SQL注入之WAF基础/&title=《SQL注入之WAF基础》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/23/SQL注入之order-by注入/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">SQL注入之order by后注入</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#WAF简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">WAF简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#WAF分类"><span class="post-toc-number">2.</span> <span class="post-toc-text">WAF分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#云waf"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">云waf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#硬件waf"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">硬件waf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件waf"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">软件waf</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#WAF防护规则"><span class="post-toc-number">3.</span> <span class="post-toc-text">WAF防护规则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#架构层层面"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">架构层层面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#寻找网站的真实地址"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">寻找网站的真实地址</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#寻找当前网站的相同网段"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">寻找当前网站的相同网段</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#利用网站的边界漏洞"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">利用网站的边界漏洞</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#资源限制角度"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">资源限制角度</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#协议层面"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">协议层面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#规则层面缺陷"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">规则层面缺陷</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#WAF绕过"><span class="post-toc-number">4.</span> <span class="post-toc-text">WAF绕过</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#大小写替换"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">大小写替换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#双关键字绕过"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">双关键字绕过</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编码绕过"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">编码绕过</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关键字替换"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">关键字替换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注释符绕过"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">注释符绕过</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#空白符绕过"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">空白符绕过</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sql注入黑魔法"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">sql注入黑魔法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特殊字符绕过"><span class="post-toc-number">4.8.</span> <span class="post-toc-text">特殊字符绕过</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/25/SQL注入之WAF基础/&title=《SQL注入之WAF基础》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/25/SQL注入之WAF基础/&title=《SQL注入之WAF基础》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACM0lEQVR42u3aQW7DMAwEwPz/0y7QU4E09pJSioYenYIisTU6bEVRj0c8ju/x/PnVN3+O/AnPv9o8MDAwPpZxnI5Xk8inki/B+btezQ0DA+M+jPXHVReiGtMXc8bAwMAofl4PdAwMDIyVwE0eeh7HyW8xMDAweoF4PpV8m1gN8c21OAYGxgcyVhoD7/78R/0NDAyMf8w4iqP3hLxVebQGBgbGbEZSRuatgl4RmzQGojjGwMAYyjjfhPWidqWdmSzHL9/EwMAYzYgO3OMGQBKUyaR75TQGBsZURrLVKzQR4xfnbYAooDEwMG7GWNky7ordfFEKXQsMDIwPZ6wc+ueYlY7kxZMxMDBGM8o1bqttmW8H8yO2iztuGBgYgxi9AjJvBqw0CQpLhoGBcQNGfqC297JX9drHReBiYGCMZlRLx16xWm08FGAYGBi3YZy/rBqISRxvu5yBgYExmlG97FVuLi5Ec771xMDAmM3ovThH9g79k79f/N/AwMAYxKimVvW4LT+wyxflgoeBgTGO0StWkzDtYaoxjYGBcR9GtTTtXdHoNTujmWBgYIxm9GK3d+Vr5SAv2npiYGAMZRzFkbQed+3ZCgdzGBgYoxnVsKuWuOstzDzcMTAwZjN6IdtrdiYr2rvqioGBcQdGEnznL1jZRK6HPgYGBkb1KkYC3vUPAAMDA6PaJMgbANWy9mI5MDAwbsDobf6q0Vy9bJFf4MDAwJjN2FBAxsf61TBd2WJiYGCMYHwBO1BBz8D+HCYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
