@@ -3,6 +3,218 @@
   
     
     <entry>
+      <title><![CDATA[数据库DQL]]></title>
+      <url>/2019/09/30/%E6%95%B0%E6%8D%AE%E5%BA%93DQL/</url>
+      <content type="html"><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="DQL（数据查询语句）"><a href="#DQL（数据查询语句）" class="headerlink" title="DQL（数据查询语句）"></a>DQL（数据查询语句）</h2><h3 id="查询所有列"><a href="#查询所有列" class="headerlink" title="查询所有列"></a>查询所有列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名；</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询指定列"><a href="#查询指定列" class="headerlink" title="查询指定列"></a>查询指定列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 列<span class="number">1</span> [列<span class="number">2</span>, ... ,列n] <span class="keyword">FROM</span> 表名；</span><br></pre></td></tr></table></figure>
+
+<h3 id="去重查询"><a href="#去重查询" class="headerlink" title="去重查询"></a>去重查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> * | 列<span class="number">1</span> [列<span class="number">2</span>, ... ,列n] <span class="keyword">FROM</span> 表名；</span><br></pre></td></tr></table></figure>
+
+<h3 id="列运算"><a href="#列运算" class="headerlink" title="列运算"></a>列运算</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 列名<span class="number">1</span>+列名<span class="number">2</span> <span class="keyword">FROM</span> 表名； // +、-、*、/，如果非法转发成整数都被当作<span class="number">0</span>运算，列名可以换成整数</span><br><span class="line"><span class="keyword">SELECT</span> IFUNLL(列名，<span class="number">0</span>) <span class="keyword">FROM</span> 表名；//转换<span class="literal">NULL</span>值为<span class="number">0</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CONCAT</span>(列名<span class="number">1</span>，列名<span class="number">2</span>) <span class="keyword">FROM</span> 表名；//mysql字符串连接要用<span class="keyword">CONCAT</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 列名<span class="number">1</span> <span class="keyword">AS</span> 别名 <span class="keyword">FROM</span> 表名；//<span class="keyword">AS</span>可以省略</span><br></pre></td></tr></table></figure>
+
+<h3 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 条件；</span><br></pre></td></tr></table></figure>
+
+<h3 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 列名 <span class="keyword">LIKE</span> 条件;// %标配0到N个字符，如%SQL匹配SQL结尾的，SQL%匹配SQL开头的，%SQL%匹配含有SQL的；_匹配一个字符。</span><br></pre></td></tr></table></figure>
+
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 列名 <span class="keyword">ASC</span>;//升序</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 列名 <span class="keyword">DESC</span>;//降序</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 列名<span class="number">1</span> <span class="keyword">ASC</span>，列名<span class="number">2</span> <span class="keyword">DESC</span>[,列名<span class="number">3</span> 类型...];//多列查询</span><br></pre></td></tr></table></figure>
+
+<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><ul>
+<li>COUNT</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> 表名；//记录不为<span class="literal">null</span>的行数的总和</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>MAX</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>(列名) <span class="keyword">FROM</span> 表名；//查询最大值</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>MIN</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MIN</span>(列名) <span class="keyword">FROM</span> 表名；//查询最小值</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>SUM</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(列名) <span class="keyword">FROM</span> 表名；//求和</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>AVG</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(列名) <span class="keyword">FROM</span> 表名；//平均值</span><br></pre></td></tr></table></figure>
+
+<h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 列名,聚合函数 <span class="keyword">FROM</span> 表名 <span class="keyword">GROUP</span> <span class="keyword">BY</span> 列名；</span><br></pre></td></tr></table></figure>
+
+<h3 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名 <span class="keyword">LIMIT</span> n,m;//从n+1行开始，查询m条</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[数据库DML]]></title>
+      <url>/2019/09/30/%E6%95%B0%E6%8D%AE%E5%BA%93DML/</url>
+      <content type="html"><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="DML（数据操作语言）"><a href="#DML（数据操作语言）" class="headerlink" title="DML（数据操作语言）"></a>DML（数据操作语言）</h2><p><strong>在数据库中所有字符串必须使用单引</strong></p>
+<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名<span class="number">1</span>,列名<span class="number">2</span>,...) <span class="keyword">VALUES</span>(列值<span class="number">1</span>,列值<span class="number">2</span>,..);//完整插入</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名<span class="number">1</span>，列名<span class="number">3</span>) <span class="keyword">VALUES</span>(列值<span class="number">1</span>，列值<span class="number">3</span>)；//部分列插入，列值<span class="number">2</span>填充<span class="literal">null</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">VALUES</span>(列值<span class="number">1</span>,列值<span class="number">2</span>,..)//按表的结构插入所有列</span><br></pre></td></tr></table></figure>
+
+<p><code>插入总是是完整的一行，VALUES的值要与列名对应</code></p>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> 表名 <span class="keyword">SET</span> 列名<span class="number">1</span>=列值<span class="number">1</span>,列名<span class="number">2</span>=列值<span class="number">2</span>,...[<span class="keyword">WHERE</span> 条件];</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表名 [<span class="keyword">WHERE</span> 条件];</span><br></pre></td></tr></table></figure>
+
+<p><code>必须加WHERE不然全部都删除</code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[数据库DCL]]></title>
+      <url>/2019/09/30/%E6%95%B0%E6%8D%AE%E5%BA%93DCL/</url>
+      <content type="html"><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="DCL（数据控制语言）"><a href="#DCL（数据控制语言）" class="headerlink" title="DCL（数据控制语言）"></a>DCL（数据控制语言）</h2><h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 用户名@IP地址 <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> ’密码‘;</span><br></pre></td></tr></table></figure>
+
+<p><code>用户名@’%‘  可以任意IP地址登陆</code></p>
+<h3 id="给用户授权"><a href="#给用户授权" class="headerlink" title="给用户授权"></a>给用户授权</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> 权限<span class="number">1</span>,权限<span class="number">2</span>,...，权限n <span class="keyword">ON</span> 数据库.* <span class="keyword">TO</span> 用户名@IP地址；</span><br></pre></td></tr></table></figure>
+
+<p><code>*代表全部表</code></p>
+<h3 id="撤销权限"><a href="#撤销权限" class="headerlink" title="撤销权限"></a>撤销权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> 权限<span class="number">1</span>,权限<span class="number">2</span>,...，权限n <span class="keyword">ON</span> 数据库.* <span class="keyword">FROM</span> 用户名@IP地址；</span><br></pre></td></tr></table></figure>
+
+<p><code>*代表全部表</code></p>
+<h3 id="查看权限"><a href="#查看权限" class="headerlink" title="查看权限"></a>查看权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">GRANTS</span> <span class="keyword">FOR</span> 用户名@IP地址；</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> 用户名@IP地址；</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[数据库DDL]]></title>
+      <url>/2019/09/30/%E6%95%B0%E6%8D%AE%E5%BA%93DDL/</url>
+      <content type="html"><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="DDL-数据定义语言"><a href="#DDL-数据定义语言" class="headerlink" title="DDL(数据定义语言)"></a>DDL(数据定义语言)</h2><h3 id="库"><a href="#库" class="headerlink" title="库"></a>库</h3><ul>
+<li>查看数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>切换数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> 数据库名;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> [<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] 数据库名 [<span class="keyword">CHARSET</span>=utf8];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> [<span class="keyword">IF</span> <span class="keyword">EXISTS</span>] 数据库名;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改数据库编码</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> 数据库名 <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8;</span><br></pre></td></tr></table></figure>
+
+<h3 id="表"><a href="#表" class="headerlink" title="表"></a>表</h3><ul>
+<li>查看表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> [<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] 表名（</span><br><span class="line">	列名 列类型,</span><br><span class="line">	列名 列类型,</span><br><span class="line">	...</span><br><span class="line">	列名 列类型,</span><br><span class="line">）；</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看表结构</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC 表名；</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span>(</span><br><span class="line">	列名 列类型,</span><br><span class="line">	列名 列类型,</span><br><span class="line">	...</span><br><span class="line">	列名 列类型,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改列类型</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">MODIFY</span> 列名 列类型；</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除列</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">DROP</span> 列名；</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改表名称</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">RENAME</span> <span class="keyword">TO</span> 新表名；</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SQL注入之WAF基础]]></title>
       <url>/2019/08/25/SQL%E6%B3%A8%E5%85%A5%E4%B9%8BWAF%E5%9F%BA%E7%A1%80/</url>
       <content type="html"><![CDATA[<h1 id="WAF简介"><a href="#WAF简介" class="headerlink" title="WAF简介"></a>WAF简介</h1><p>在过去网站发展不是很流行的时候，传统的网络防火墙往往就是成为了企业或者公司的安全防线。但这传统防火墙只是架构网络体系在第三层中的网络层当中，只能有限地阻止和截获一些网络层的数据包。而随着web服务应用的不断发展，攻击者开始懂得针对性的盯上web应用层服务进行攻击。而传统的防火墙往往只能截获网络层数据包，对于应用层当中的数据包往往就无能为力，这时WAF就应用开始应运而生。</p>
