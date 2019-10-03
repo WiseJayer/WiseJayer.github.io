@@ -3,6 +3,195 @@
   
     
     <entry>
+      <title><![CDATA[多表查询]]></title>
+      <url>/2019/10/03/%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/</url>
+      <content type="html"><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="合并结果集"><a href="#合并结果集" class="headerlink" title="合并结果集"></a>合并结果集</h2><p><code>要求两个结果集的列数和列类型完全相同</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> <span class="keyword">UNION</span> <span class="keyword">ALL</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">2</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> <span class="keyword">UNION</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">2</span>;//去除重复的</span><br></pre></td></tr></table></figure>
+
+<h2 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h2><h3 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h3><p><code>查询所有满足条件的</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span>，表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">WHERE</span> 别名<span class="number">1.</span>列名=别名<span class="number">2.</span>列名;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> <span class="keyword">INNER</span> <span class="keyword">JOIN</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">ON</span> 别名<span class="number">1.</span>列名=别名<span class="number">2.</span>列名;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> 表<span class="number">2</span> 别名<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h3><ul>
+<li>左外</li>
+</ul>
+<p><code>左表查询全部，右表查询满足的</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">ON</span> 别名<span class="number">1.</span>列名=别名<span class="number">2.</span>列名;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> <span class="keyword">NATURAL</span> <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> 表<span class="number">2</span> 别名<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>右外</li>
+</ul>
+<p><code>右表查询全部，左表查询满足的</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> <span class="keyword">RIGHT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">ON</span> 别名<span class="number">1.</span>列名=别名<span class="number">2.</span>列名;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> <span class="keyword">NATURAL</span> <span class="keyword">RIGHT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> 表<span class="number">2</span> 别名<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>全连接</li>
+</ul>
+<p><code>左外和右外使用UNION连接</code></p>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><ul>
+<li>出现的位置</li>
+</ul>
+<p><code>WHERE后作为条件</code><br><code>FROM后作为表存在</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> <span class="keyword">WHERE</span> 列<span class="number">1</span> [=、&gt;、&lt;、&gt;=、&lt;=、！=](<span class="keyword">SELECT</span> 列名 <span class="keyword">FROM</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">WHERE</span> 条件);//单行单列</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> <span class="keyword">WHERE</span> 列<span class="number">1</span> [=、&gt;、&lt;、&gt;=、&lt;=、！=] [<span class="keyword">IN</span>,<span class="keyword">ALL</span>,<span class="keyword">ANY</span>](<span class="keyword">SELECT</span> 列名 <span class="keyword">FROM</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">WHERE</span> 条件);//多行单列</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> <span class="keyword">WHERE</span>(列<span class="number">1</span>，列<span class="number">2</span>) <span class="keyword">IN</span> (<span class="keyword">SELECT</span> 列<span class="number">1</span>，列<span class="number">2</span> <span class="keyword">FROM</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">WHERE</span> 条件);//单行多列</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span> , (<span class="keyword">SELECT</span> ...) 别名<span class="number">2</span> <span class="keyword">WHERE</span> 条件;//多汗多列</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[数据库备份和还原]]></title>
+      <url>/2019/10/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9F/</url>
+      <content type="html"><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><blockquote>
+<p>不要登陆sql</p>
+<p>不要打分号</p>
+</blockquote>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u用户名 -p密码 数据库名&gt;生成的脚本文件路径如（c:\a.sql）</span><br></pre></td></tr></table></figure>
+
+<h2 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h2><ul>
+<li>没登陆sql前</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u用户名 -p密码 数据库&lt;脚本文件路径如（c:\a.sql）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>登陆sql</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source 脚本文件路径如（c:\a.sql）</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[数据库外键]]></title>
+      <url>/2019/10/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%96%E9%94%AE/</url>
+      <content type="html"><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h2><p><code>外键必须是另一个表的主键值</code></p>
+<ul>
+<li>可以重复</li>
+<li>可以为空</li>
+<li>一张表可以有多个外键</li>
+</ul>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名(</span><br><span class="line">	列名 列类型,</span><br><span class="line">    列名 列类型,//外键名称和类型要和关联表的一样</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> 约束名称 <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(外键列名) <span class="keyword">REFERENCES</span> 关联表名(关联列名)</span><br><span class="line">);</span><br><span class="line">或</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> 约束名称 <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(外键列名) <span class="keyword">REFERENCES</span> 关联表名(关联列名);</span><br></pre></td></tr></table></figure>
+
+<h2 id="撤销约束"><a href="#撤销约束" class="headerlink" title="撤销约束"></a>撤销约束</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">DROP</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> 约束名称;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除外键"><a href="#删除外键" class="headerlink" title="删除外键"></a>删除外键</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">drop</span> 列名;</span><br></pre></td></tr></table></figure>
+
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><ul>
+<li>一对多</li>
+</ul>
+<p>从表的外键是除主键外的列</p>
+<ul>
+<li>一对一</li>
+</ul>
+<p>从表的外键就是主键</p>
+<ul>
+<li>多对多</li>
+</ul>
+<p>创建一个中间表做为外键</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[数据库主键]]></title>
+      <url>/2019/10/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E9%94%AE/</url>
+      <content type="html"><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h2><ul>
+<li>非空</li>
+<li>唯一</li>
+<li>被引用</li>
+</ul>
+<p><code>主键的列不能为空，不能有重复值出现</code></p>
+<h2 id="创建主键"><a href="#创建主键" class="headerlink" title="创建主键"></a>创建主键</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名(</span><br><span class="line">	列名 列类型 PRIMARY <span class="keyword">KEY</span>,//主键</span><br><span class="line">    列名 列类型</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名(</span><br><span class="line">	列名 列类型，</span><br><span class="line">    列名 列类型，</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span>(列名)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改主键"><a href="#修改主键" class="headerlink" title="修改主键"></a>修改主键</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> PRIMARY <span class="keyword">KEY</span>(列名);</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除主键"><a href="#删除主键" class="headerlink" title="删除主键"></a>删除主键</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">DROP</span> PRIMARY <span class="keyword">KEY</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自增长"><a href="#自增长" class="headerlink" title="自增长"></a>自增长</h2><p><code>通常为整型</code></p>
+<ul>
+<li>创建自增长主键</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名(</span><br><span class="line">	列名 <span class="built_in">INT</span> PRIMARY AUTO_INCREMENT,</span><br><span class="line">    列名 列类型</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改自增长</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">CHANGE</span> 列名 列名 <span class="built_in">INT</span> AUTO_INCREMENT;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除自增长</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">CHANGE</span> 列名 列名 <span class="built_in">INT</span>；</span><br></pre></td></tr></table></figure>
+
+<h2 id="非空和唯一约束"><a href="#非空和唯一约束" class="headerlink" title="非空和唯一约束"></a>非空和唯一约束</h2><p><code>不是主键也可以设置</code></p>
+<ul>
+<li>非空</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名(</span><br><span class="line">	列名 列类型 <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    列名 列类型</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>唯一</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名(</span><br><span class="line">	列名 列类型 <span class="keyword">UNIQUE</span>,</span><br><span class="line">    列名 列类型</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[数据库DQL]]></title>
       <url>/2019/09/30/%E6%95%B0%E6%8D%AE%E5%BA%93DQL/</url>
       <content type="html"><![CDATA[<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="DQL（数据查询语句）"><a href="#DQL（数据查询语句）" class="headerlink" title="DQL（数据查询语句）"></a>DQL（数据查询语句）</h2><h3 id="查询所有列"><a href="#查询所有列" class="headerlink" title="查询所有列"></a>查询所有列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名；</span><br></pre></td></tr></table></figure>
