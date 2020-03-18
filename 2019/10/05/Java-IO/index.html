@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>Java-IO | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Java">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>Java-IO</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Java-IO</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-05T10:32:28.000Z" itemprop="datePublished" class="page-time">
+  2019-10-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-Java-IO"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">Java-IO</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-05 18:32:28" datetime="2019-10-05T10:32:28.000Z"  itemprop="datePublished">2019-10-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h1><ul>
+<li>OutputStreamWriter</li>
+</ul>
+<p><code>负责把输出字节流转换为输出字符流</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">OutputStreamWriter</span> <span class="params">(OutputStream out)</span></span>;<span class="comment">//字节流转换为字符流</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">OutputStreamWriter</span><span class="params">(OutputStream out, String enc)</span></span>;<span class="comment">//指定编码规范</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>InputStreamReader</li>
+</ul>
+<p><code>负责把字节输入流转换为字符输入流</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">InputStreamReader</span> <span class="params">(InputStream in)</span></span>;<span class="comment">//字节流转换为字符流</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">InputStreamReader</span><span class="params">(InputStream in, String enc)</span></span>; <span class="comment">//指定编码规范</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="内存流"><a href="#内存流" class="headerlink" title="内存流"></a>内存流</h1><p><code>数据在内存中处理比磁盘(硬盘)要更快一些，有时候可能需要临时在内存中保存并处理数据，内存流效率会更高</code></p>
+<ul>
+<li>ByteArrayInputStream</li>
+<li>ByteArrayOutputStream</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ByteArrayInputStream</span><span class="params">(<span class="keyword">byte</span>[] b)</span></span>;<span class="comment">//数据保存到内存</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ByteArrayOutputStream</span><span class="params">()</span></span>;<span class="comment">//读取内存数据</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="管道流"><a href="#管道流" class="headerlink" title="管道流"></a>管道流</h1><p><code>管道流是用来在多个线程之间进行信息传递的Java流</code></p>
+<ul>
+<li>字节管道流</li>
+</ul>
+<p>PipedOutputStream、PipedInPutStream</p>
+<ul>
+<li>字符管道流</li>
+</ul>
+<p>PipedWriter、PipedReader</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(PipedIntputStrem snk)</span></span>;<span class="comment">//连接处理</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(PipedReader snk)</span></span>;<span class="comment">//连接处理</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="RandomAccessFile类"><a href="#RandomAccessFile类" class="headerlink" title="RandomAccessFile类"></a>RandomAccessFile类</h1><p><code>RandomAccessFile类是一个专门读写文件的类，封装了基本的IO流，在读写文件内容方面比常规IO流更方便、更灵活。但也仅限于读写文件，无法像IO流一样，可以传输内存和网络中的数据。</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">RandomAccessFile</span><span class="params">(File file,String mode)</span></span>;<span class="comment">//mode:r、rw</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h1><p><code>提高已有类的功能</code></p>
+<ul>
+<li>PrintStream</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">PrintStream</span><span class="params">(OutputStream out)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>PrintWriter</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">PrintWriter</span><span class="params">(OutputStream out)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">PrintWriter</span><span class="params">(Writer out)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="标准流"><a href="#标准流" class="headerlink" title="标准流"></a>标准流</h1><h1 id="System"><a href="#System" class="headerlink" title="System"></a>System</h1><p><code>管理标准输入/输出流和错误流</code></p>
+<ul>
+<li>标准输出</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> PrintStream out;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>错误输出</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> PrintStream err;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>标准输出</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> PrintStream in;</span><br></pre></td></tr></table></figure>
+
+<h1 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h1><ul>
+<li>BufferedInputStream</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedInputStream</span><span class="params">(InputStream in)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedInputStream</span><span class="params">(InputStream in, <span class="keyword">int</span> size)</span> </span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>BufferedOutputStream</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedOutputStream</span><span class="params">(OutputStream out)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedOutputStream</span><span class="params">(OutputStream out, <span class="keyword">int</span> size)</span> </span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>BufferedReader</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedReader</span><span class="params">(Reader in)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedReader</span><span class="params">(Reader in, <span class="keyword">int</span> size)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>BufferedWriter</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedWriter</span><span class="params">(Writer out)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedWriter</span><span class="params">(Writer out, <span class="keyword">int</span> size)</span></span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Scanner</span><span class="params">(InputStream source)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;<span class="comment">//判断是否还有数据</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">next</span><span class="params">()</span></span>;<span class="comment">//取出数据</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-10-04T10:39:05.188Z" itemprop="dateUpdated">2019-10-04 18:39:05</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/10/05/Java-IO/" target="_blank" rel="external">http://wisejay.top/2019/10/05/Java-IO/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/10/05/Java-IO/&title=《Java-IO》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/10/05/Java-IO/&title=《Java-IO》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/10/05/Java多例设计/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Java多例设计</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/10/05/Java单例设计/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java单例设计</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#转换流"><span class="post-toc-number">1.</span> <span class="post-toc-text">转换流</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#内存流"><span class="post-toc-number">2.</span> <span class="post-toc-text">内存流</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#管道流"><span class="post-toc-number">3.</span> <span class="post-toc-text">管道流</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#RandomAccessFile类"><span class="post-toc-number">4.</span> <span class="post-toc-text">RandomAccessFile类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#打印流"><span class="post-toc-number">5.</span> <span class="post-toc-text">打印流</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#标准流"><span class="post-toc-number">6.</span> <span class="post-toc-text">标准流</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#System"><span class="post-toc-number">7.</span> <span class="post-toc-text">System</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#缓冲流"><span class="post-toc-number">8.</span> <span class="post-toc-text">缓冲流</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Scanner"><span class="post-toc-number">9.</span> <span class="post-toc-text">Scanner</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2019/10/05/Java-IO/&title=《Java-IO》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2019/10/05/Java-IO/&title=《Java-IO》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aS27DMAwFwNz/0inQbWv5kfrEAUarIqntiReE+KjXK17v3/X3k6vPx3e4unbZwsXFnea+h2vMzSnJ/cf/g4uLe57bKz35teMimNwHFxf3mdxqIatehYuL+43c8dZkpgji4uI+k5s3J+Nrk+DjUK+Gi4s7wa0Gpjv+3pjv4uLiFrnv4qqWoeq26ebpuLi4R7hJ5FENOvM2JnkFr+qNcHFxp7nVUWh+/KI6sk0aKlxc3JPcmdLT+xnVwe0/OzJcXNxt3F4zUw06Z4g3+S4uLu4GbgLNI9RqSUq2U5cpDi4u7jbu/BBlwUB07d1wcXGnuXlgkTdCvaMb0dgVFxf3CLcafeagHQEKLi7uGW4vCpmJTnBxcb+Rm5ebJEbpRas3kx9cXNzN3GooWW5UisFHc6CCi4u7lJuPMapHMVZdhYuL+yluUpiqg9ikSFXLHy4u7kluvnrbl16hLDwGFxd3Kbd3CCMf1iYbmt63uLi4u7l5lDn/Y5Kt0k0ZxcXFPcjNG57qJmmmBcLFxX0+t7fd6b2Iy2fh4uI+mJtHIdUm5+bV4OLiHuSufXy1ySkc9cDFxT3CnQ9ME3r1iAYuLu6HuD+adwYcm7eOnQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
