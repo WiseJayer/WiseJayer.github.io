@@ -3,6 +3,683 @@
   
     
     <entry>
+      <title><![CDATA[基于wappalyzer编写指纹]]></title>
+      <url>/2021/01/15/wappalyzer/</url>
+      <content type="html"><![CDATA[<h1 id="基于wappalyzer编写指纹"><a href="#基于wappalyzer编写指纹" class="headerlink" title="基于wappalyzer编写指纹"></a>基于wappalyzer编写指纹</h1><h2 id="node-js安装"><a href="#node-js安装" class="headerlink" title="node.js安装"></a>node.js安装</h2><p>下载地址:<code>http://nodejs.cn/download/</code></p>
+<p>安装完后CMD中使用：node -v 验证是否成功</p>
+<h2 id="wappalyzer安装"><a href="#wappalyzer安装" class="headerlink" title="wappalyzer安装"></a>wappalyzer安装</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g wappalyzer</span><br></pre></td></tr></table></figure>
+
+<p>因为node.js模块安装在<code>C:\Users\Administrator\AppData\Roaming\npm\node_modules</code>目录下，在该目录下我们可以找到<code>wappalyzer</code></p>
+<h2 id="wappalyzer原理与基本使用"><a href="#wappalyzer原理与基本使用" class="headerlink" title="wappalyzer原理与基本使用"></a>wappalyzer原理与基本使用</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>Wappalyzer通过给指定URI发送HTTP请求，通过获得的响应头和响应头来识别单个URL的指纹。</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>以查询百度指纹为例</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wappalyzer https://www.baidu.com/</span><br></pre></td></tr></table></figure>
+
+<p>返回结果如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"urls"</span>:&#123;<span class="attr">"https://www.baidu.com/"</span>:&#123;<span class="attr">"status"</span>:<span class="number">200</span>&#125;&#125;,<span class="attr">"technologies"</span>:[&#123;<span class="attr">"slug"</span>:<span class="string">"swfobject"</span>,<span class="attr">"name"</span>:<span class="string">"SWFObject"</span>,<span class="attr">"confidence"</span>:<span class="number">100</span>,<span class="attr">"version"</span>:<span class="literal">null</span>,<span class="attr">"icon"</span>:<span class="string">"SWFObject.png"</span>,<span class="attr">"website"</span>:<span class="string">"https://github.com/swfobject/swfobject"</span>,<span class="attr">"cpe"</span>:<span class="literal">null</span>,<span class="attr">"categories"</span>:[&#123;<span class="attr">"id"</span>:<span class="number">19</span>,<span class="attr">"slug"</span>:<span class="string">"miscellaneous"</span>,<span class="attr">"name"</span>:<span class="string">"Miscellaneous"</span>&#125;]&#125;,&#123;<span class="attr">"slug"</span>:<span class="string">"jquery"</span>,<span class="attr">"name"</span>:<span class="string">"jQuery"</span>,<span class="attr">"confidence"</span>:<span class="number">100</span>,<span class="attr">"version"</span>:<span class="string">"1.10.2"</span>,<span class="attr">"icon"</span>:<span class="string">"jQuery.svg"</span>,<span class="attr">"website"</span>:<span class="string">"https://jquery.com"</span>,<span class="attr">"cpe"</span>:<span class="string">"cpe:/a:jquery:jquery"</span>,<span class="attr">"categories"</span>:[&#123;<span class="attr">"id"</span>:<span class="number">59</span>,<span class="attr">"slug"</span>:<span class="string">"javascript-libraries"</span>,<span class="attr">"name"</span>:<span class="string">"JavaScript libraries"</span>&#125;]&#125;]&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <img src="img/wappalyzer/image-20210108224909184.png" alt="image-20210108224909184" title class>
+                <p>image-20210108224909184</p>
+            </figure>
+
+<h2 id="指纹识别应用"><a href="#指纹识别应用" class="headerlink" title="指纹识别应用"></a>指纹识别应用</h2><h3 id="基于Wappalyzer的指纹识别分类"><a href="#基于Wappalyzer的指纹识别分类" class="headerlink" title="基于Wappalyzer的指纹识别分类"></a>基于Wappalyzer的指纹识别分类</h3><table>
+<thead>
+<tr>
+<th><strong>分类编号</strong></th>
+<th><strong>分类名称</strong></th>
+<th><strong>中文名称</strong></th>
+<th><strong>备注说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>CMS</td>
+<td>内容管理系统</td>
+<td>例如：wordpress</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Message Boards</td>
+<td>留言板</td>
+<td>例如：phpBB</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Database Managers</td>
+<td>数据库管理</td>
+<td>例如：phpMyAdmin</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Documentation Tools</td>
+<td>文件工具</td>
+<td>例如：GitBook</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Widgets</td>
+<td>窗口小部件</td>
+<td>例如：Facebook</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Ecommerce</td>
+<td>电子商务</td>
+<td>例如：Wikinggruppen</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Photo Galleries</td>
+<td>照片画廊</td>
+<td>例如：phpAlbum</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Wikis</td>
+<td>维基百科</td>
+<td>例如：ikiwiki</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Hosting Panels</td>
+<td>主机控制板</td>
+<td>例如：cPanel</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Analytics</td>
+<td>分析统计</td>
+<td>例如：Webtrends</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Blogs</td>
+<td>博客</td>
+<td>例如：Typecho</td>
+</tr>
+<tr>
+<td>12</td>
+<td>JavaScript Frameworks</td>
+<td>JavaScript框架</td>
+<td>例如：SoundManager</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Issue Trackers</td>
+<td>问题跟踪</td>
+<td>例如：Redmine</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Video Players</td>
+<td>视频播放器</td>
+<td>例如：Asciinema</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Comment Systems</td>
+<td>评论系统</td>
+<td>例如：Question2Answer</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Captchas</td>
+<td>验证码</td>
+<td>例如：Mollom</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Font Scripts</td>
+<td>字体脚本</td>
+<td>例如：Ionicons</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Web Frameworks</td>
+<td>Web框架</td>
+<td>例如：Includable</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Miscellaneous</td>
+<td>其它</td>
+<td>例如：Twitter Emoji (Twemoji)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Editors</td>
+<td>编辑器</td>
+<td>例如：FrontPage</td>
+</tr>
+<tr>
+<td>21</td>
+<td>LMS</td>
+<td>学习管理系统</td>
+<td>例如：Dokeos</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Web Servers</td>
+<td>Web服务</td>
+<td>例如：Apache</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Cache Tools</td>
+<td>缓存工具</td>
+<td>例如：wpCache</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Rich Text Editors</td>
+<td>富文本编辑器</td>
+<td>例如：TinyMCE</td>
+</tr>
+<tr>
+<td>25</td>
+<td>JavaScript Graphics</td>
+<td>JavaScript图形插件</td>
+<td>例如：Timeplot</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Mobile Frameworks</td>
+<td>移动框架</td>
+<td>例如：Mobify</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Programming Languages</td>
+<td>开发语言</td>
+<td>例如：Go</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Operating Systems</td>
+<td>操作系统</td>
+<td>例如：Gentoo</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Search Engines</td>
+<td>搜索引擎</td>
+<td>例如：Fact Finder</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Web Mail</td>
+<td>Web邮件</td>
+<td>例如：SquirrelMail</td>
+</tr>
+<tr>
+<td>31</td>
+<td>CDN</td>
+<td>CDN</td>
+<td>例如：Netlify</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Marketing Automation</td>
+<td>自动化营销</td>
+<td>例如：Marketo</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Web Server Extensions</td>
+<td>Web服务器扩展</td>
+<td>例如：mod_wsgi</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Databases</td>
+<td>数据库</td>
+<td>例如：Mysql</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Maps</td>
+<td>地图</td>
+<td>例如：Ushahidi</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Advertising Networks</td>
+<td>广告网络</td>
+<td>例如：Titan</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Network Devices</td>
+<td>网络设备</td>
+<td>例如：Moxa</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Media Servers</td>
+<td>媒体服务器</td>
+<td>例如：MediaTomb</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Webcams</td>
+<td>网络摄像头</td>
+<td>例如：MOBOTIX</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Printers</td>
+<td>打印机</td>
+<td>例如：Dell</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Payment Processors</td>
+<td>付款处理器</td>
+<td>例如：Stripe</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Tag Managers</td>
+<td>标签管理</td>
+<td>例如：Google Tag Manager</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Paywalls</td>
+<td>付费</td>
+<td>例如：Piano Solo</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Build CI Systems</td>
+<td>持续集成系统</td>
+<td>例如：Jenkins</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Control Systems</td>
+<td>控制系统</td>
+<td>例如：Schneider</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Remote Access</td>
+<td>远程访问</td>
+<td>例如：ShellInABox</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Dev Tools</td>
+<td>开发工具</td>
+<td>例如：Phabricator</td>
+</tr>
+<tr>
+<td>48</td>
+<td>Network Storage</td>
+<td>网络存储</td>
+<td>例如：Synology DiskStation</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Feed Readers</td>
+<td>Feed阅读器</td>
+<td>例如：Planet</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Document Management Systems</td>
+<td>文档管理系统</td>
+<td>例如：MHonArc</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Landing Page Builders</td>
+<td>引导页</td>
+<td>例如：ApexPages</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Live Chat</td>
+<td>在线聊天</td>
+<td>例如：Aircall</td>
+</tr>
+<tr>
+<td>53</td>
+<td>CRM</td>
+<td>客户关系管理</td>
+<td>例如：Salesforce</td>
+</tr>
+<tr>
+<td>54</td>
+<td>SEO</td>
+<td>引擎优化</td>
+<td>例如：Yoast SEO</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Accounting</td>
+<td>会计</td>
+<td>例如：Akaunting</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Cryptominer</td>
+<td>挖矿程序</td>
+<td>例如：ProjectPoi</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Static Site Generator</td>
+<td>静态网站生成器</td>
+<td>例如：Hugo</td>
+</tr>
+<tr>
+<td>58</td>
+<td>User Onboarding</td>
+<td>聊天机器人软件</td>
+<td>例如：instabot</td>
+</tr>
+<tr>
+<td>59</td>
+<td>JavaScript Libraries</td>
+<td>JavaScript库</td>
+<td>例如：jQuery</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Containers</td>
+<td>容器</td>
+<td>例如：Docker</td>
+</tr>
+<tr>
+<td>61</td>
+<td>SaaS</td>
+<td>SaaS</td>
+<td>例如：Amazon ECS</td>
+</tr>
+<tr>
+<td>62</td>
+<td>PaaS</td>
+<td>PaaS</td>
+<td>例如：Amazon Web Services</td>
+</tr>
+<tr>
+<td>63</td>
+<td>IaaS</td>
+<td>IaaS</td>
+<td>例如：LocalFocus</td>
+</tr>
+<tr>
+<td>64</td>
+<td>Reverse Proxy</td>
+<td>反向代理</td>
+<td>例如：Nginx</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Load Balancer</td>
+<td>负载均衡</td>
+<td>例如：Amazon ELB</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>Service Banner</td>
+<td>服务版本</td>
+<td>例如：SSH</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>Securities Web</td>
+<td>证券行业web</td>
+<td>例如：thinkive云投顾</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>Securities Remote Access</td>
+<td>证券行业远程访问</td>
+<td>例如：同花顺</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>APIs</td>
+<td>API接口</td>
+<td>例如：RESTful</td>
+</tr>
+<tr>
+<td>1004</td>
+<td>Web Management Interface</td>
+<td>Web管理端</td>
+<td>例如：管理后台</td>
+</tr>
+<tr>
+<td>1005</td>
+<td>Router and Switch and VPN</td>
+<td>路由器、交换机、VPN</td>
+<td>例如：Cisco、Huawei、Sangfor</td>
+</tr>
+<tr>
+<td>1006</td>
+<td>Security Application Products</td>
+<td>安全应用产品</td>
+<td>例如：防火墙、防病毒、上网行为管理等</td>
+</tr>
+<tr>
+<td>1007</td>
+<td>Office Software</td>
+<td>办公软件</td>
+<td>例如：OA、财务软件</td>
+</tr>
+<tr>
+<td>1008</td>
+<td>IoT</td>
+<td>物联网</td>
+<td>例如：IoT设备</td>
+</tr>
+<tr>
+<td>1009</td>
+<td>Application Services</td>
+<td>应用服务</td>
+<td>例如：FTP、Telnet、SSH、RDP等</td>
+</tr>
+<tr>
+<td>1010</td>
+<td>Trojan Backdoor</td>
+<td>木马后门</td>
+<td>例如：Backdoor</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>Application Frameworks</td>
+<td>应用框架</td>
+<td>例如：spring</td>
+</tr>
+<tr>
+<td>1012</td>
+<td>Protocols</td>
+<td>协议</td>
+<td>例如：3CX Tunnel Protocol</td>
+</tr>
+</tbody></table>
+<h3 id="指纹分五层"><a href="#指纹分五层" class="headerlink" title="指纹分五层"></a>指纹分五层</h3><ul>
+<li><strong>应用层：</strong>主要是各种web应用系统以及前端js框架等，比如dedecms、xxx应用系统、邮件系统等；</li>
+<li><strong>支撑层：</strong>主要是语言、后端框架等，比如java、php、struts、spring等；</li>
+<li><strong>服务层：</strong>主要是服务和应用，以及协议，包含openssh、apahce、tomcat、ssl、ntp、icmp等；</li>
+<li><strong>系统层：</strong>主要指操作系统，包含Linux、unix、centos、Ubuntu、Windows等；</li>
+<li><strong>硬件层：</strong>主要是硬件设备为主，包含路由器、交换机、防火墙、VPN、waf（现在不区分软waf）、以及物联网等设备；</li>
+</ul>
+<h3 id="基于Wappalyzer的指纹规则说明"><a href="#基于Wappalyzer的指纹规则说明" class="headerlink" title="基于Wappalyzer的指纹规则说明"></a>基于Wappalyzer的指纹规则说明</h3><table>
+<thead>
+<tr>
+<th><strong>字段</strong></th>
+<th><strong>涵义说明</strong></th>
+<th><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cats</td>
+<td>分类，会有多个分类</td>
+<td>参见指纹分类表中的分类编号</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>匹配软件官方ICO</td>
+<td>可以不写</td>
+</tr>
+<tr>
+<td>website</td>
+<td>匹配软件官方网站</td>
+<td></td>
+</tr>
+<tr>
+<td>implies</td>
+<td>推断，例如：存在wordpress，一定会存在php mysql。</td>
+<td>可以不写</td>
+</tr>
+<tr>
+<td>excludes</td>
+<td>排除，存在一个指纹，就肯定不会存在另外一个指纹。</td>
+<td>可以不写</td>
+</tr>
+<tr>
+<td>js</td>
+<td>匹配<script></script>之间内容 例如：”js”:{“js_test”: “(.*)\;version:\1”}</td>
+<td><script> var js_test = "shuziguanxing"; </script></td>
+</tr>
+<tr>
+<td>headers</td>
+<td>匹配response返回的头信息</td>
+<td></td>
+</tr>
+<tr>
+<td>html</td>
+<td>匹配html返回内容</td>
+<td>要求必须精准，否则误报很高</td>
+</tr>
+<tr>
+<td>url</td>
+<td>匹配传递URL中的数据</td>
+<td>要求必须精准，否则误报很高</td>
+</tr>
+<tr>
+<td>cookies</td>
+<td>匹配头信息cookie内容</td>
+<td></td>
+</tr>
+<tr>
+<td>meta</td>
+<td>匹配<meta>标签中的参数和数据</td>
+<td></td>
+</tr>
+<tr>
+<td>scripts</td>
+<td><script src="匹配数据"></script></td>
+<td></td>
+</tr>
+<tr>
+<td>confidence</td>
+<td>信心值，百分制，例如：50</td>
+<td>“js”: { “Mage”: “\;confidence:50” }</td>
+</tr>
+<tr>
+<td>version</td>
+<td>版本匹配信息</td>
+<td>“script”: “jquery-([0-9.]+).js\;version:\1”</td>
+</tr>
+<tr>
+<td>product</td>
+<td>产品名称匹配</td>
+<td>“html”: “天融信(.*)\;product:\1”,</td>
+</tr>
+<tr>
+<td>子表达式</td>
+<td>\1</td>
+<td>返回第一个匹配数据</td>
+</tr>
+<tr>
+<td>子表达式</td>
+<td>\1?a:</td>
+<td>如果第一个匹配数据存在，则返回a，否则返回空</td>
+</tr>
+<tr>
+<td>子表达式</td>
+<td>\1?a:b</td>
+<td>如果第一个匹配数据存在，则返回a，否则返回b</td>
+</tr>
+<tr>
+<td>子表达式</td>
+<td>\1?:b</td>
+<td>如果第一个匹配数据存在，则返回空，否则返回b</td>
+</tr>
+<tr>
+<td>子表达式</td>
+<td>xxoo\1</td>
+<td></td>
+</tr>
+<tr>
+<td>description</td>
+<td>指纹应用描述</td>
+<td>非必填，比如nginx，<em>Nginx</em> 是一个高性能的HTTP和反向代理web服务器。</td>
+</tr>
+<tr>
+<td>_fingerprint_test_url</td>
+<td>测试指纹是否准确的URL</td>
+<td>必填项，比如通过网站检测指纹。</td>
+</tr>
+</tbody></table>
+<h2 id="指纹识别编写"><a href="#指纹识别编写" class="headerlink" title="指纹识别编写"></a>指纹识别编写</h2><h3 id="指纹编写"><a href="#指纹编写" class="headerlink" title="指纹编写"></a>指纹编写</h3><ol>
+<li>确定web指纹产品</li>
+<li>寻找产品样例</li>
+<li>分析案例编写规则</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">"AXUI":&#123;</span><br><span class="line">  "cats":[</span><br><span class="line">      <span class="number">18</span></span><br><span class="line">  ],</span><br><span class="line">  "description":" ax前端框架对一些常用的功能进行集成处理，比如美化滚动条、菜单、cookie等",</span><br><span class="line">  "layer":1,</span><br><span class="line">  "html":[</span><br><span class="line">      "&lt;link [^&gt;]*href=\"[^\"]+\\.*/src/css/ax\\.css",</span><br><span class="line">      <span class="string">"&lt;link [^&gt;]*href=\"[^\"]+\\.*/src/css/ax-response\\.css"</span></span><br><span class="line">  ],    </span><br><span class="line">  "website":"http://www.axui.cn/",</span><br><span class="line">  "scripts":"\\.*/src/js/ax\\.min\\.js",</span><br><span class="line">  "_fingerprint_test_url":"http://www.axui.cn/examples/ax-admin01.php"            </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项：</strong> </p>
+<ul>
+<li>规则匹配实际上是用字符串编写的JavaScript正则表达式</li>
+<li>特殊转义<ul>
+<li><code>.</code>的需要用两个反斜杠<code>\\.</code>来表达；<code>&quot;</code>需要用一个反斜杆如<code>\&quot;</code>；斜杠<code>/</code>不需要转义</li>
+<li>捕获组<code>()</code>用于版本检测，在其他情况下，使用非捕获组<code>(?:)</code>来表达</li>
+<li>尽可能使用字符串锚点<code>^</code>和<code>$</code>的开头和结尾</li>
+</ul>
+</li>
+</ul>
+<h3 id="指纹测试"><a href="#指纹测试" class="headerlink" title="指纹测试"></a>指纹测试</h3><p>我们写好规则后可以添加到<code>C:\Users\Administrator\AppData\Roaming\npm\node_modules</code>目录下的<code>technologies.json</code>文件中进行测试</p>
+<figure class="image-box">
+                <img src="img/wappalyzer/image-20210110212616136.png" alt="image-20210110212616136" title class>
+                <p>image-20210110212616136</p>
+            </figure>
+
+<p>添加完成后，我们使用wappalyzer进行测试</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wappalyzer 测试网站</span><br></pre></td></tr></table></figure>
+
+<p>就可以看到返回结果</p>
+<figure class="image-box">
+                <img src="img/wappalyzer/image-20210110212723083.png" alt="image-20210110212723083" title class>
+                <p>image-20210110212723083</p>
+            </figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://github.com/AliasIO/wappalyzer" target="_blank" rel="noopener">https://github.com/AliasIO/wappalyzer</a></li>
+<li><a href="https://fp.shuziguanxing.com/#/fingerplatinfo" target="_blank" rel="noopener">https://fp.shuziguanxing.com/#/fingerplatinfo</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 其他 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 其他 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[反弹Shell]]></title>
       <url>/2021/01/08/%E5%8F%8D%E5%BC%B9shell/</url>
       <content type="html"><![CDATA[<h1 id="反弹Shell"><a href="#反弹Shell" class="headerlink" title="反弹Shell"></a>反弹Shell</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><code>反弹shell和telnet，ssh等标准shell对应，就是控制端监听在某TCP/UDP端口，被控端发起请求到该端口，并将其命令行的输入输出转到控制端。</code></p>
@@ -647,9 +1324,9 @@
         
         <tags>
             
-            <tag> VUE </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> VUE </tag>
             
         </tags>
         
@@ -1096,9 +1773,9 @@
         
         <tags>
             
-            <tag> VUE </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> VUE </tag>
             
         </tags>
         
@@ -3658,9 +4335,9 @@ hexo d</code></pre><h1 id="浏览"><a href="#浏览" class="headerlink" title="�
         
         <tags>
             
-            <tag> 博客 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 博客 </tag>
             
         </tags>
         
