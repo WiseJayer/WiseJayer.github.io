@@ -3,6 +3,128 @@
   
     
     <entry>
+      <title><![CDATA[web安全-CSRF]]></title>
+      <url>/2021/02/02/CSRF/</url>
+      <content type="html"><![CDATA[<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><blockquote>
+<p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+</blockquote>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>CSRF 即跨站请求伪造，是攻击者通过一些技术手段欺骗用户的 浏览器去访问一个自己曾经认证过的网站并执行一些操作。由于浏览器曾经认证过，所以被访问的网 站会认为是真正的用户操作而去执行。</p>
+<p><strong>CSRF攻击需要同时满足以下两个条件</strong></p>
+<ul>
+<li>用户登录受信任网站A，并生成cookie保存在本地</li>
+<li>在不登出网站A的情况下，访问危险网站B(或被恶意构造的链接)</li>
+</ul>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>同源策略的目的：<code>防止恶意网站窃取数据</code></p>
+<p>同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。</p>
+<ul>
+<li>协议相同</li>
+<li>域名相同</li>
+<li>端口相同</li>
+</ul>
+<p><strong>不同源下面三种行为会被限制</strong></p>
+<ul>
+<li>Cookie、LocalStorage、IndexDB无法读取</li>
+<li>Dom无法获得</li>
+<li>AJAX请求<code>准确来说是限制操作 ajax 响应结果</code></li>
+</ul>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><ul>
+<li>Domain：当前要添加的Cookie的域名归属，如果没有明确指定默认为当前域名</li>
+<li>Path：当前要添加的Cookie的路径归属，如果没有明确指定默认为当前路径</li>
+</ul>
+<p><strong>Cookie作用域</strong></p>
+<p>提交cookie要满足一下两点</p>
+<ol>
+<li>当前域名或父域名下的cookie</li>
+<li>当前路径或父路径下的cookie</li>
+</ol>
+<h2 id="靶场练习"><a href="#靶场练习" class="headerlink" title="靶场练习"></a>靶场练习</h2><h3 id="LOW"><a href="#LOW" class="headerlink" title="LOW"></a>LOW</h3><blockquote>
+<p>首先我们抓取一下修改密码的数据包</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/csrf/1597419644211.png" alt="1597419644211" title class>
+                <p>1597419644211</p>
+            </figure>
+
+<blockquote>
+<p>通过分析我们找到，这里修改密码等同只发送一个GET请求，没有其他限制，这样我们可以直接构造一个GET请求payload就可以轻易更改密码啦</p>
+</blockquote>
+<p><code>http://192.168.65.128/dvwa/vulnerabilities/csrf/?password_new=admin&amp;password_conf=admin&amp;Change=Change</code></p>
+<blockquote>
+<p>访问payload发现密码被修改为admin了</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/csrf/1597420000299.png" alt="1597420000299" title class>
+                <p>1597420000299</p>
+            </figure>
+
+<h3 id="MEDIUM"><a href="#MEDIUM" class="headerlink" title="MEDIUM"></a>MEDIUM</h3><blockquote>
+<p>这里我们直接用前面payload测试一下,发现报错,报错是英文没有定义REFERER</p>
+</blockquote>
+<p><code>http://192.168.65.128/dvwa/vulnerabilities/csrf/?password_new=admin&amp;password_conf=admin&amp;Change=Change</code></p>
+<figure class="image-box">
+                <img src="/img/csrf/1597420317135.png" alt="1597420317135" title class>
+                <p>1597420317135</p>
+            </figure>
+
+<blockquote>
+<p>我抓取正常修改时候数据包看一下情况和直接使用payload差别,发现payload缺少referer字段</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/csrf/1597420636366.png" alt="1597420636366" title class>
+                <p>1597420636366</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/csrf/1597420578010.png" alt="1597420578010" title class>
+                <p>1597420578010</p>
+            </figure>
+
+<blockquote>
+<p>我们直接用payload抓包并自己添加主机名到referer字段发现能修改成功</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/csrf/1597421183227.png" alt="1597421183227" title class>
+                <p>1597421183227</p>
+            </figure>
+
+<blockquote>
+<p>在实际中我们可能没方法抓包修改用户的referer字段,但是我们可以构造一个假的,比如网站为1.1.1.1,我们可以在自己服务器上建立一个1.1.1.1.html,然后当用户点击时候就会自动带上1.1.1.1.html的字段绕过referer检测</p>
+</blockquote>
+<h3 id="HIGH"><a href="#HIGH" class="headerlink" title="HIGH"></a>HIGH</h3><blockquote>
+<p>这里我们发现修改密码时候带上了tokne验证,所以我们无法直接实现CSRF攻击,这些我们就要结合其他漏洞一起才能利用啦,比如xss漏洞等</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/csrf/1597422122860.png" alt="1597422122860" title class>
+                <p>1597422122860</p>
+            </figure>
+
+<blockquote>
+<p>这里的利用就不再展示啦.</p>
+</blockquote>
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ol>
+<li>二次认证:再次输入密码、验证码、确认弹框</li>
+<li>采用token认证的方法</li>
+</ol>
+<hr>
+]]></content>
+      
+        <categories>
+            
+            <category> web安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[web安全-XSS]]></title>
       <url>/2021/02/01/XSS/</url>
       <content type="html"><![CDATA[<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><blockquote>
@@ -1742,7 +1864,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>data用于定义属性。</p>
 <p>methods 用于定义的函数，可以通过 return 来返回函数值。</p>
 <p>&lt;!–￼77–&gt; 用于输出对象属性和函数返回值。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Vue 测试实例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">!导包</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span>    </span><br><span class="line">     [v-cloak]&#123;</span><br><span class="line">        dispaly:none;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.staticfile.org/vue/2.4.2/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span> </span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-cloak</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-text</span>=<span class="string">"msg"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span> <span class="attr">v-bind:title</span>=<span class="string">"msg"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span> <span class="attr">v-bind:title</span>=<span class="string">"msg"</span> <span class="attr">v-on:click</span>=<span class="string">"show"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    	var vm = new Vue(&#123;//创建vue对象</span><br><span class="line">    		el: '#app',//引用组件</span><br><span class="line">    		data: &#123;//数据</span><br><span class="line">    			msg: "wisejay"</span><br><span class="line">    		&#125;,</span><br><span class="line">    		methods: &#123;//方法</span><br><span class="line">    			show: function() &#123;</span><br><span class="line">    				alert("123")</span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Vue 测试实例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">!导包</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span>    </span><br><span class="line">     [v-cloak]&#123;</span><br><span class="line">        dispaly:none;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.staticfile.org/vue/2.4.2/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span> </span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-cloak</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-text</span>=<span class="string">"msg"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span> <span class="attr">v-bind:title</span>=<span class="string">"msg"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span> <span class="attr">v-bind:title</span>=<span class="string">"msg"</span> <span class="attr">v-on:click</span>=<span class="string">"show"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    	<span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;<span class="comment">//创建vue对象</span></span></span><br><span class="line"><span class="javascript">    		el: <span class="string">'#app'</span>,<span class="comment">//引用组件</span></span></span><br><span class="line"><span class="javascript">    		data: &#123;<span class="comment">//数据</span></span></span><br><span class="line"><span class="javascript">    			msg: <span class="string">"wisejay"</span></span></span><br><span class="line">    		&#125;,</span><br><span class="line"><span class="javascript">    		methods: &#123;<span class="comment">//方法</span></span></span><br><span class="line"><span class="javascript">    			show: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    				alert(<span class="string">"123"</span>)</span></span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>v-cloak</li>
