@@ -3,6 +3,205 @@
   
     
     <entry>
+      <title><![CDATA[web安全-暴力破解]]></title>
+      <url>/2021/02/05/%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</url>
+      <content type="html"><![CDATA[<h1 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h1><p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>暴力破解的产生是由于服务器端没有做限制，导致攻击者可以通过暴力的手 段破解所需信息，如用户名、密码、验证码等。暴力破解需要一个庞大的字典。 暴力破解的关键在于字典</p>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><blockquote>
+<p>首先进行抓包</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/暴力破解/1599814622594.png" alt="1599814622594" title class>
+                <p>1599814622594</p>
+            </figure>
+
+<blockquote>
+<p>将抓到的包发到 Intruder 模块</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/暴力破解/1599814643215.png" alt="1599814643215" title class>
+                <p>1599814643215</p>
+            </figure>
+
+<blockquote>
+<p>先清除标记，然后自己标记账号和密码</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/暴力破解/1599814670366.png" alt="1599814670366" title class>
+                <p>1599814670366</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/暴力破解/1599815003089.png" alt="1599815003089" title class>
+                <p>1599815003089</p>
+            </figure>
+
+<blockquote>
+<p>设置对应的字典</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/暴力破解/1599814784181.png" alt="1599814784181" title class>
+                <p>1599814784181</p>
+            </figure>
+
+<blockquote>
+<p>开始破解，长度和其他不同就是正确的</p>
+</blockquote>
+<figure class="image-box">
+                <img src="/img/暴力破解/1599814916130.png" alt="1599814916130" title class>
+                <p>1599814916130</p>
+            </figure>
+
+<h2 id="暴力破解四种模式区别"><a href="#暴力破解四种模式区别" class="headerlink" title="暴力破解四种模式区别"></a>暴力破解四种模式区别</h2><h3 id="Sniper（狙击手模式）"><a href="#Sniper（狙击手模式）" class="headerlink" title="Sniper（狙击手模式）"></a>Sniper（狙击手模式）</h3><p><code>变量数量：不限</code></p>
+<ul>
+<li>添加了一个参数，且假设payload有n个，那么就会执行n次。</li>
+<li>添加了两个参数，就会挨着来，第一个参数开始爆破时，第二个不变，如此这样，会进行n+n此 总共2n次爆破。</li>
+</ul>
+<h3 id="Battering-Ram（攻城锤模式）"><a href="#Battering-Ram（攻城锤模式）" class="headerlink" title="Battering Ram（攻城锤模式）"></a>Battering Ram（攻城锤模式）</h3><p><code>变量数量：不限</code></p>
+<ul>
+<li>一个参数情况下，与Sniper一样。</li>
+<li>两个参数时，和sniper模式不同的地方在于，同样情况下，攻击次数减半，每次两个位置用同样的密码。</li>
+</ul>
+<h3 id="Pitchfork（草叉模式）"><a href="#Pitchfork（草叉模式）" class="headerlink" title="Pitchfork（草叉模式）"></a>Pitchfork（草叉模式）</h3><p><code>变量数量：需要和字段数量相同</code></p>
+<ul>
+<li><p>两个参数的话 ，要求添加两个payload</p>
+<ul>
+<li><p>dict1：1，2</p>
+</li>
+<li><p>dict2：3，4</p>
+</li>
+</ul>
+</li>
+<li><p>那么第一爆破为 1，3，而二次爆破为2，4</p>
+</li>
+<li><p>如果两个payload行数不一致的话，取最小值进行测试。</p>
+</li>
+</ul>
+<h3 id="Cluster-Bomb（集束炸弹模式）"><a href="#Cluster-Bomb（集束炸弹模式）" class="headerlink" title="Cluster Bomb（集束炸弹模式）"></a>Cluster Bomb（集束炸弹模式）</h3><p><code>变量数量：需要和字段数量相同</code></p>
+<ul>
+<li>两个参数的话，dict1的第一个payload和dict2的每个payload进行组合爆破,会进行dict1中payload*dict2payload数量次数</li>
+</ul>
+<hr>
+]]></content>
+      
+        <categories>
+            
+            <category> web安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[web安全-SSRF]]></title>
+      <url>/2021/02/05/SSRF/</url>
+      <content type="html"><![CDATA[<h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>SSRF漏洞（服务器端请求伪造）：是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。SSRF的出现使得waf变得不再那么无敌。攻击者通过伪造服务器请求与内网进行交互，从而达到探测内网，对内网进行攻击的目的。SSRF形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等。利用的是服务端的请求伪造。SSRF是利用存在缺陷的web应用作为代理攻击远程和本地的服务器。</p>
+<h2 id="漏洞出现点"><a href="#漏洞出现点" class="headerlink" title="漏洞出现点"></a>漏洞出现点</h2><ul>
+<li>社交分享功能：通过URL地址分享网页内容</li>
+<li>转码服务：通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览</li>
+<li>翻译：翻译给定得某个网址</li>
+<li>图片加载/下载：通过URL加载和下载图片</li>
+<li>图片/文章收藏功能</li>
+<li>未公开的api实现以及其他扩展调用URL的功能</li>
+<li>通过关键字寻找<code>share、wap、url、link、src、source、target、u、3g、display、sourceURl、imageURL、domain</code></li>
+</ul>
+<h2 id="漏洞产生"><a href="#漏洞产生" class="headerlink" title="漏洞产生"></a>漏洞产生</h2><p>在PHP中常见的造成ssrf的函数有<code>file_get_contents()</code>，<code>fsockopen()</code>和<code>curl</code>。</p>
+<h3 id="漏洞造成"><a href="#漏洞造成" class="headerlink" title="漏洞造成"></a>漏洞造成</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$url = $_GET[<span class="string">'url'</span>];</span><br><span class="line"><span class="keyword">echo</span> file_get_contents($url);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Getfile</span><span class="params">($host, $port, $link)</span></span>&#123;</span><br><span class="line">    $fp = fsockopen($host, intval($port), $errno, $errstr, <span class="number">30</span>);</span><br><span class="line">    <span class="keyword">if</span>(!$fp)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"$errstr (error number $errno) \n"</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $out = <span class="string">"GET $link HTTP/1.1\r\n"</span>;</span><br><span class="line">        $out .= <span class="string">"HOST $host \r\n"</span>;</span><br><span class="line">        $out .= <span class="string">"Connection: Close\r\n\r\n"</span>;</span><br><span class="line">        $out .= <span class="string">"\r\n"</span>;</span><br><span class="line">        fwrite($fp, $out);</span><br><span class="line">        $content = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">while</span>(!feof($fp))&#123;</span><br><span class="line">            $contents .= fgets($fp, <span class="number">1024</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        fclose($fp);</span><br><span class="line">        <span class="keyword">return</span> $contents;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#3.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curl</span><span class="params">($url)</span></span>&#123;  </span><br><span class="line">    $ch = curl_init();</span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">    curl_exec($ch);</span><br><span class="line">    curl_close($ch);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$url = $_GET[<span class="string">'url'</span>];</span><br><span class="line">curl($url); </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="读取IP"><a href="#读取IP" class="headerlink" title="读取IP"></a>读取IP</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ip.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">     $ip = $_SERVER[<span class="string">'REMOTE_ADDR'</span>];</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">"Your ip is "</span>.$ip;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>直接访问<code>ip.php</code>发现是我们自己的P地址</p>
+<figure class="image-box">
+                <img src="/img/ssrf/1598259501707.png" alt="1598259501707" title class>
+                <p>1598259501707</p>
+            </figure>
+
+<p>利用SSRF漏洞访问<code>ip.php</code>发现是服务器的地址</p>
+<figure class="image-box">
+                <img src="/img/ssrf/1598259579496.png" alt="1598259579496" title class>
+                <p>1598259579496</p>
+            </figure>
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><ul>
+<li><p>file：读取服务器上任意文件内容</p>
+<ul>
+<li><code>http://192.168.65.128/ssrf/1.php?url=file://c:/2.txt</code></li>
+</ul>
+</li>
+<li><p>dict：可以探测端口</p>
+<ul>
+<li><code>http://192.168.65.128/ssrf/1.php?url=dict://127.0.0.1:3306</code></li>
+</ul>
+</li>
+<li><p>http:：访问内网限制的网址</p>
+<ul>
+<li><code>http://192.168.65.128/ssrf/1.php?url=http://127.0.0.1</code></li>
+</ul>
+</li>
+<li><p>gopher：反弹shell</p>
+</li>
+</ul>
+<h2 id="绕过方法"><a href="#绕过方法" class="headerlink" title="绕过方法"></a>绕过方法</h2><ul>
+<li>@<ul>
+<li><code>http://baidu.com@www.baidu.com/</code>与<code>http://www.baidu.com/</code>请求时是相同的</li>
+</ul>
+</li>
+<li>添加端口号<ul>
+<li><code>http://127.0.0.1:8080</code></li>
+</ul>
+</li>
+<li>短网址绕过<ul>
+<li><code>http://t.cn/RwbLKDx</code></li>
+</ul>
+</li>
+<li>ip地址转换成进制来访问 <ul>
+<li><code>192.168.0.1</code>=<code>3232235521</code>（十进制）</li>
+</ul>
+</li>
+<li>xip.io来绕过<ul>
+<li><code>http://www.qq.com.192.168.0.1.xip.io/</code>=<code>192.168.0.1</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ul>
+<li>限制协议为HTTP、HTTPS</li>
+<li>限制302跳转次数</li>
+<li>统一错误信息</li>
+<li>限制内网IP</li>
+</ul>
+<hr>
+]]></content>
+      
+        <categories>
+            
+            <category> web安全 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[web安全-命令执行]]></title>
       <url>/2021/02/04/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</url>
       <content type="html"><![CDATA[<h1 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h1><p>Author:<code>wisejay</code></p>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>web安全-暴力破解 | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="web安全">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>web安全-暴力破解</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">web安全-暴力破解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-02-05T10:41:32.970Z" itemprop="datePublished" class="page-time">
+  2021-02-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-暴力破解"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">web安全-暴力破解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-02-05 18:41:32" datetime="2021-02-05T10:41:32.970Z"  itemprop="datePublished">2021-02-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h1><p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>暴力破解的产生是由于服务器端没有做限制，导致攻击者可以通过暴力的手 段破解所需信息，如用户名、密码、验证码等。暴力破解需要一个庞大的字典。 暴力破解的关键在于字典</p>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><blockquote>
+<p>首先进行抓包</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-暴力破解 href="/img/暴力破解/1599814622594.png" title="1599814622594" data-fancybox="images"><img src="/img/暴力破解/1599814622594.png" alt="1599814622594" title class></a>
+                <p>1599814622594</p>
+            </figure>
+
+<blockquote>
+<p>将抓到的包发到 Intruder 模块</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-暴力破解 href="/img/暴力破解/1599814643215.png" title="1599814643215" data-fancybox="images"><img src="/img/暴力破解/1599814643215.png" alt="1599814643215" title class></a>
+                <p>1599814643215</p>
+            </figure>
+
+<blockquote>
+<p>先清除标记，然后自己标记账号和密码</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-暴力破解 href="/img/暴力破解/1599814670366.png" title="1599814670366" data-fancybox="images"><img src="/img/暴力破解/1599814670366.png" alt="1599814670366" title class></a>
+                <p>1599814670366</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=web安全-暴力破解 href="/img/暴力破解/1599815003089.png" title="1599815003089" data-fancybox="images"><img src="/img/暴力破解/1599815003089.png" alt="1599815003089" title class></a>
+                <p>1599815003089</p>
+            </figure>
+
+<blockquote>
+<p>设置对应的字典</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-暴力破解 href="/img/暴力破解/1599814784181.png" title="1599814784181" data-fancybox="images"><img src="/img/暴力破解/1599814784181.png" alt="1599814784181" title class></a>
+                <p>1599814784181</p>
+            </figure>
+
+<blockquote>
+<p>开始破解，长度和其他不同就是正确的</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=web安全-暴力破解 href="/img/暴力破解/1599814916130.png" title="1599814916130" data-fancybox="images"><img src="/img/暴力破解/1599814916130.png" alt="1599814916130" title class></a>
+                <p>1599814916130</p>
+            </figure>
+
+<h2 id="暴力破解四种模式区别"><a href="#暴力破解四种模式区别" class="headerlink" title="暴力破解四种模式区别"></a>暴力破解四种模式区别</h2><h3 id="Sniper（狙击手模式）"><a href="#Sniper（狙击手模式）" class="headerlink" title="Sniper（狙击手模式）"></a>Sniper（狙击手模式）</h3><p><code>变量数量：不限</code></p>
+<ul>
+<li>添加了一个参数，且假设payload有n个，那么就会执行n次。</li>
+<li>添加了两个参数，就会挨着来，第一个参数开始爆破时，第二个不变，如此这样，会进行n+n此 总共2n次爆破。</li>
+</ul>
+<h3 id="Battering-Ram（攻城锤模式）"><a href="#Battering-Ram（攻城锤模式）" class="headerlink" title="Battering Ram（攻城锤模式）"></a>Battering Ram（攻城锤模式）</h3><p><code>变量数量：不限</code></p>
+<ul>
+<li>一个参数情况下，与Sniper一样。</li>
+<li>两个参数时，和sniper模式不同的地方在于，同样情况下，攻击次数减半，每次两个位置用同样的密码。</li>
+</ul>
+<h3 id="Pitchfork（草叉模式）"><a href="#Pitchfork（草叉模式）" class="headerlink" title="Pitchfork（草叉模式）"></a>Pitchfork（草叉模式）</h3><p><code>变量数量：需要和字段数量相同</code></p>
+<ul>
+<li><p>两个参数的话 ，要求添加两个payload</p>
+<ul>
+<li><p>dict1：1，2</p>
+</li>
+<li><p>dict2：3，4</p>
+</li>
+</ul>
+</li>
+<li><p>那么第一爆破为 1，3，而二次爆破为2，4</p>
+</li>
+<li><p>如果两个payload行数不一致的话，取最小值进行测试。</p>
+</li>
+</ul>
+<h3 id="Cluster-Bomb（集束炸弹模式）"><a href="#Cluster-Bomb（集束炸弹模式）" class="headerlink" title="Cluster Bomb（集束炸弹模式）"></a>Cluster Bomb（集束炸弹模式）</h3><p><code>变量数量：需要和字段数量相同</code></p>
+<ul>
+<li>两个参数的话，dict1的第一个payload和dict2的每个payload进行组合爆破,会进行dict1中payload*dict2payload数量次数</li>
+</ul>
+<hr>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-02-05T10:42:56.769Z" itemprop="dateUpdated">2021-02-05 18:42:56</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/02/05/暴力破解/" target="_blank" rel="external">http://wisejay.top/2021/02/05/暴力破解/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/05/暴力破解/&title=《web安全-暴力破解》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/05/暴力破解/&title=《web安全-暴力破解》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/02/05/SSRF/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">web安全-SSRF</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#暴力破解"><span class="post-toc-number">1.</span> <span class="post-toc-text">暴力破解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单使用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">简单使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#暴力破解四种模式区别"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">暴力破解四种模式区别</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Sniper（狙击手模式）"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">Sniper（狙击手模式）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Battering-Ram（攻城锤模式）"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">Battering Ram（攻城锤模式）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Pitchfork（草叉模式）"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">Pitchfork（草叉模式）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Cluster-Bomb（集束炸弹模式）"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">Cluster Bomb（集束炸弹模式）</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/05/暴力破解/&title=《web安全-暴力破解》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/05/暴力破解/&title=《web安全-暴力破解》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIElEQVR42u3aMXLDMAwEwPz/006TIikk34FyZkQtK49Mi9wUCEHg6yser1/j/Nvz8Xt+u8oFAwMD47aMfOHzDR1t4nxOu+4hFQMD4wGMowh2NCcBJBs9XyvZGwYGBsb5nPOD3coTDAwMjKsCbpJ2tsdKDAwMjJUkNmckh8X20HlZLo6BgXFDRn7r/v+fP1LfwMDAuBXjVY6VoPmJ/fy8GQMDY2vG7CqtRbYNHMPfYmBgbMpomxvai/71y7WIioGB8RhGG/jykkDScpEADtfCwMB4ACN/kgfTpACZFBWSN2BgYGDM2rlmbRltLMXAwHgCI1msTWXbFLc4As5qCxgYGFsw1i/IZk1gefhO3oyBgbEro93EyubaBDgvoGJgYDyBsZKyriSleVHhzW8xMDC2ZszCZRtYVy71irQWAwNja8aMlFCTQDk7OL6BYWBgbMRom7Ha0Nk2kCV/FAwMjCczZgey9nKtLQlEx0cMDIytGSvX8ZctX5YiMDAwnszIA+UnmifaS72oZwQDA2NrxqzoOCt2Dhss2niMgYGxBSO/PmsDaE6d1SgxMDD2ZrzKkcBWmjPyY+KfJxgYGFsz2gA3g+VvyBssagAGBsbNGe2lf5t2rs/BwMDAuCrwDUuP5f+BN4UBDAwMjFGYbtPXtsyJgYGB0c7JSwhtS9kbDAYGxgMYs9CZfM6pSwdNDAyMrRmz1PGq0Jk0Z1zVooGBgXFDxjfb3RkGI8RZdgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>

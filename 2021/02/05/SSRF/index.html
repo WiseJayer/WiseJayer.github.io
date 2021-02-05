@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>web安全-SSRF | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="web安全">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>web安全-SSRF</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">web安全-SSRF</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-02-05T10:41:24.358Z" itemprop="datePublished" class="page-time">
+  2021-02-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-SSRF"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">web安全-SSRF</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-02-05 18:41:24" datetime="2021-02-05T10:41:24.358Z"  itemprop="datePublished">2021-02-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>SSRF漏洞（服务器端请求伪造）：是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。SSRF的出现使得waf变得不再那么无敌。攻击者通过伪造服务器请求与内网进行交互，从而达到探测内网，对内网进行攻击的目的。SSRF形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等。利用的是服务端的请求伪造。SSRF是利用存在缺陷的web应用作为代理攻击远程和本地的服务器。</p>
+<h2 id="漏洞出现点"><a href="#漏洞出现点" class="headerlink" title="漏洞出现点"></a>漏洞出现点</h2><ul>
+<li>社交分享功能：通过URL地址分享网页内容</li>
+<li>转码服务：通过URL地址把原地址的网页内容调优使其适合手机屏幕浏览</li>
+<li>翻译：翻译给定得某个网址</li>
+<li>图片加载/下载：通过URL加载和下载图片</li>
+<li>图片/文章收藏功能</li>
+<li>未公开的api实现以及其他扩展调用URL的功能</li>
+<li>通过关键字寻找<code>share、wap、url、link、src、source、target、u、3g、display、sourceURl、imageURL、domain</code></li>
+</ul>
+<h2 id="漏洞产生"><a href="#漏洞产生" class="headerlink" title="漏洞产生"></a>漏洞产生</h2><p>在PHP中常见的造成ssrf的函数有<code>file_get_contents()</code>，<code>fsockopen()</code>和<code>curl</code>。</p>
+<h3 id="漏洞造成"><a href="#漏洞造成" class="headerlink" title="漏洞造成"></a>漏洞造成</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$url = $_GET[<span class="string">'url'</span>];</span><br><span class="line"><span class="keyword">echo</span> file_get_contents($url);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Getfile</span><span class="params">($host, $port, $link)</span></span>&#123;</span><br><span class="line">    $fp = fsockopen($host, intval($port), $errno, $errstr, <span class="number">30</span>);</span><br><span class="line">    <span class="keyword">if</span>(!$fp)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"$errstr (error number $errno) \n"</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $out = <span class="string">"GET $link HTTP/1.1\r\n"</span>;</span><br><span class="line">        $out .= <span class="string">"HOST $host \r\n"</span>;</span><br><span class="line">        $out .= <span class="string">"Connection: Close\r\n\r\n"</span>;</span><br><span class="line">        $out .= <span class="string">"\r\n"</span>;</span><br><span class="line">        fwrite($fp, $out);</span><br><span class="line">        $content = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">while</span>(!feof($fp))&#123;</span><br><span class="line">            $contents .= fgets($fp, <span class="number">1024</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        fclose($fp);</span><br><span class="line">        <span class="keyword">return</span> $contents;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#3.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curl</span><span class="params">($url)</span></span>&#123;  </span><br><span class="line">    $ch = curl_init();</span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">    curl_exec($ch);</span><br><span class="line">    curl_close($ch);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$url = $_GET[<span class="string">'url'</span>];</span><br><span class="line">curl($url); </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="读取IP"><a href="#读取IP" class="headerlink" title="读取IP"></a>读取IP</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ip.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">     $ip = $_SERVER[<span class="string">'REMOTE_ADDR'</span>];</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">"Your ip is "</span>.$ip;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>直接访问<code>ip.php</code>发现是我们自己的P地址</p>
+<figure class="image-box">
+                <a rel=web安全-SSRF href="/img/ssrf/1598259501707.png" title="1598259501707" data-fancybox="images"><img src="/img/ssrf/1598259501707.png" alt="1598259501707" title class></a>
+                <p>1598259501707</p>
+            </figure>
+
+<p>利用SSRF漏洞访问<code>ip.php</code>发现是服务器的地址</p>
+<figure class="image-box">
+                <a rel=web安全-SSRF href="/img/ssrf/1598259579496.png" title="1598259579496" data-fancybox="images"><img src="/img/ssrf/1598259579496.png" alt="1598259579496" title class></a>
+                <p>1598259579496</p>
+            </figure>
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><ul>
+<li><p>file：读取服务器上任意文件内容</p>
+<ul>
+<li><code>http://192.168.65.128/ssrf/1.php?url=file://c:/2.txt</code></li>
+</ul>
+</li>
+<li><p>dict：可以探测端口</p>
+<ul>
+<li><code>http://192.168.65.128/ssrf/1.php?url=dict://127.0.0.1:3306</code></li>
+</ul>
+</li>
+<li><p>http:：访问内网限制的网址</p>
+<ul>
+<li><code>http://192.168.65.128/ssrf/1.php?url=http://127.0.0.1</code></li>
+</ul>
+</li>
+<li><p>gopher：反弹shell</p>
+</li>
+</ul>
+<h2 id="绕过方法"><a href="#绕过方法" class="headerlink" title="绕过方法"></a>绕过方法</h2><ul>
+<li>@<ul>
+<li><code>http://baidu.com@www.baidu.com/</code>与<code>http://www.baidu.com/</code>请求时是相同的</li>
+</ul>
+</li>
+<li>添加端口号<ul>
+<li><code>http://127.0.0.1:8080</code></li>
+</ul>
+</li>
+<li>短网址绕过<ul>
+<li><code>http://t.cn/RwbLKDx</code></li>
+</ul>
+</li>
+<li>ip地址转换成进制来访问 <ul>
+<li><code>192.168.0.1</code>=<code>3232235521</code>（十进制）</li>
+</ul>
+</li>
+<li>xip.io来绕过<ul>
+<li><code>http://www.qq.com.192.168.0.1.xip.io/</code>=<code>192.168.0.1</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ul>
+<li>限制协议为HTTP、HTTPS</li>
+<li>限制302跳转次数</li>
+<li>统一错误信息</li>
+<li>限制内网IP</li>
+</ul>
+<hr>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-02-05T10:42:15.628Z" itemprop="dateUpdated">2021-02-05 18:42:15</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/02/05/SSRF/" target="_blank" rel="external">http://wisejay.top/2021/02/05/SSRF/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.top">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/05/SSRF/&title=《web安全-SSRF》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/05/SSRF/&title=《web安全-SSRF》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/02/05/暴力破解/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">web安全-暴力破解</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/02/04/命令执行/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">web安全-命令执行</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SSRF"><span class="post-toc-number">1.</span> <span class="post-toc-text">SSRF</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞出现点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">漏洞出现点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞产生"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">漏洞产生</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#漏洞造成"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">漏洞造成</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#读取IP"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">读取IP</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞利用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">漏洞利用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#绕过方法"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">绕过方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防御"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">防御</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.top/2021/02/05/SSRF/&title=《web安全-SSRF》 — Wisejay&pic=http://wisejay.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.top/2021/02/05/SSRF/&title=《web安全-SSRF》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aQZKDMAwEQP7/afYBu7AjCZukqn1KJcQ0HKZsyccRj/PXuPr16vqrfx0rBi4u7ph73o5k6nvo/TW5ARcXdz83RyQJk8dfbsDFxf1kbnLj6hIHFxf3e7lJqCWRh4uL+y3cZPMzeYBeGQUXF/ctbl6lXPd5SX0XFxe3xT0Ho7pBmt8XFxd3D7caOnlBZN4hvYw8XFzcl7iT2Koe1Ei2Q4U6Li4u7pj71LYkebA8KC/vjouL+yp3dZE0wf1xX1xc3C3c+6mfKqROljhH/iZwcXEf5VYn6hVE8i1T9OJwcXEXc+cN0d6xreoLwsXF3cnNFzG90xHVw1ijMg0uLu6Y29u6VA9SVOOv0PPBxcVdxq3+LQ+gyZyXpVJcXNzF3N6hil6ZIy+vFOq7uLi4C7h58aKHyJdKER0XF3cLt9cImZRNe+0WXFzcndyzOPLo6ZVCCn1gXFzcZdxq7zIJpqcedYTGxcUdc5Pwqh7P6jVZ77/HxcXdz50HTd4ymUQnLi7up3GTJcvkyEU0Dy4u7odxnwq1/BDYA7mLi4s74OZbl3mc5eXaf5qsuLi4y7j5ViQPr+qc+evAxcVdzP0Bkw8GHHLuUGAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
