@@ -3,6 +3,152 @@
   
     
     <entry>
+      <title><![CDATA[wireshark流量分析]]></title>
+      <url>/2021/02/21/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/</url>
+      <content type="html"><![CDATA[<h1 id="wireshark流量分析"><a href="#wireshark流量分析" class="headerlink" title="wireshark流量分析"></a>wireshark流量分析</h1><h2 id="wireshark基本使用"><a href="#wireshark基本使用" class="headerlink" title="wireshark基本使用"></a>wireshark基本使用</h2><p><strong>过滤符号</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">英文</th>
+<th align="center">符号</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">eq</td>
+<td align="center">==</td>
+<td align="center">等于</td>
+</tr>
+<tr>
+<td align="center">ne</td>
+<td align="center">!=</td>
+<td align="center">不等于</td>
+</tr>
+<tr>
+<td align="center">gt</td>
+<td align="center">&gt;</td>
+<td align="center">大于</td>
+</tr>
+<tr>
+<td align="center">lt</td>
+<td align="center">&lt;</td>
+<td align="center">小于</td>
+</tr>
+<tr>
+<td align="center">ge</td>
+<td align="center">&gt;=</td>
+<td align="center">大于等于</td>
+</tr>
+<tr>
+<td align="center">le</td>
+<td align="center">&lt;=</td>
+<td align="center">小于等于</td>
+</tr>
+<tr>
+<td align="center">contains</td>
+<td align="center"></td>
+<td align="center">包含</td>
+</tr>
+<tr>
+<td align="center">matches</td>
+<td align="center">~</td>
+<td align="center">正则匹配</td>
+</tr>
+<tr>
+<td align="center">bitwise_and</td>
+<td align="center">&amp;</td>
+<td align="center">位与</td>
+</tr>
+</tbody></table>
+<h3 id="数据包筛选"><a href="#数据包筛选" class="headerlink" title="数据包筛选"></a>数据包筛选</h3><ul>
+<li>根据IP地址筛选<ul>
+<li>筛选源IP：<code>ip.src == ip地址</code></li>
+<li>筛选目标IP：<code>ip.dst == ip地址</code></li>
+<li>筛选源和目的IP：<code>ip.addr ==ip地址</code></li>
+</ul>
+</li>
+<li>根据mac地址筛选<ul>
+<li>筛选源mac：<code>eth.src == mac地址</code></li>
+<li>筛选目标mac：<code>eth.dst == mac地址</code></li>
+<li>筛选源和目的mac：<code>eth.addr == mac地址</code></li>
+</ul>
+</li>
+<li>根据端口筛选<ul>
+<li>筛选源端口 ：<code>tcp.srcport == 端口号</code>、<code>udp.srcport == 端口号</code></li>
+<li>筛选目的端口：<code>tcp.dstport == 端口号</code>、<code>udp.dstport == 端口号</code></li>
+<li>筛选源和目标的端口：<code>tcp.port == 端口号</code>、<code>udp.port == 端口号</code></li>
+</ul>
+</li>
+<li>根据协议筛选<ul>
+<li>筛选协议：<code>协议号</code></li>
+<li>筛选tcp：<code>tcp</code></li>
+<li>筛选udp：<code>udp</code></li>
+<li>筛选ip：<code>ip</code></li>
+<li>筛选http：<code>http</code></li>
+<li>筛选arp：<code>arp</code></li>
+</ul>
+</li>
+<li>根据包长度筛选<ul>
+<li>筛选协议包长度：<code>协议.len == 长度</code></li>
+<li>筛选UDP长度：<code>udp.length &gt;= 长度</code></li>
+<li>筛选TCP长度：<code>tcp.len &lt;= 长度</code></li>
+<li>筛选ip长度：<code>ip.len == 长度</code></li>
+</ul>
+</li>
+<li>HTTP筛选<ul>
+<li>筛选请求GET方法：<code>http.request.method == GET</code>、GET要大写</li>
+<li>筛选请求POST方法：<code>http.request.method == POST</code>、POST要大写</li>
+<li>筛选指定URI：<code>http.request.uri == &quot;/admin&quot;</code></li>
+<li>筛选指定包含内容：<code>http contains &quot;text&quot;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="数据包搜索"><a href="#数据包搜索" class="headerlink" title="数据包搜索"></a>数据包搜索</h3><p>按<code>Ctrl+F</code>调出搜索框进行搜索</p>
+<figure class="image-box">
+                <img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202131541280.png" alt="image-20210202131541280" title class>
+                <p>image-20210202131541280</p>
+            </figure>
+
+<h3 id="数据包还原"><a href="#数据包还原" class="headerlink" title="数据包还原"></a>数据包还原</h3><p>选中准备还原数据包，右键选择追踪流，选择对应的流</p>
+<figure class="image-box">
+                <img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173315749.png" alt="image-20210202173315749" title class>
+                <p>image-20210202173315749</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173401106.png" alt="image-20210202173401106" title class>
+                <p>image-20210202173401106</p>
+            </figure>
+
+<h3 id="数据包提取"><a href="#数据包提取" class="headerlink" title="数据包提取"></a>数据包提取</h3><p>在分组详细中选中右键导出字节流分组保存即可</p>
+<figure class="image-box">
+                <img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202195432801.png" alt="image-20210202195432801" title class>
+                <p>image-20210202195432801</p>
+            </figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://www.wireshark.org/docs/wsug_html/#DispCompOps" target="_blank" rel="noopener">https://www.wireshark.org/docs/wsug_html/#DispCompOps</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/36179402" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36179402</a></li>
+<li><a href="https://www.cnblogs.com/jiugao/p/11644508.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiugao/p/11644508.html</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 其他 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 其他 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Apache Flink目录遍历漏洞]]></title>
       <url>/2021/02/19/CVE-2020-17519/</url>
       <content type="html"><![CDATA[<h1 id="CVE-2020-17519"><a href="#CVE-2020-17519" class="headerlink" title="CVE-2020-17519"></a>CVE-2020-17519</h1><h2 id="Apache-Flink简介"><a href="#Apache-Flink简介" class="headerlink" title="Apache Flink简介"></a>Apache Flink简介</h2><p><code>Apache Flink是一个开源流处理框架，具有强大的流处理和批处理功能</code></p>

