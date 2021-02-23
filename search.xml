@@ -3,6 +3,145 @@
   
     
     <entry>
+      <title><![CDATA[TCP/IP协议-HTTP]]></title>
+      <url>/2021/02/23/HTTP/</url>
+      <content type="html"><![CDATA[<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>HTTP是超文本传输协议主要用于访问WWW上的数据。协议以普通文本、超文本、音频、视频等格式传输数据。称为超文本协议，原因是在应用环境中，它可以快速的在文档之间跳转。HTTP在公认端口80上使用TCP服务。</strong></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li><p>HTTP1.0定义了非持续连接，每次请求/响应都要建立TCP连接。</p>
+<ul>
+<li><strong>建立一次连接</strong></li>
+<li><strong>处理1个请求</strong></li>
+<li><strong>发回1个应答</strong></li>
+<li><strong>释放本次连接</strong> </li>
+</ul>
+</li>
+<li><p>HTTP1.1默认的连接是持续连接，服务器在发送响应以后会保持连接状态，等待更多的请求</p>
+<ul>
+<li><p><strong>建立一次连接</strong></p>
+</li>
+<li><p><strong>处理n个请求</strong></p>
+</li>
+<li><p><strong>发回n个应答</strong></p>
+</li>
+<li><p><strong>释放本次连接</strong> </p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/http/1596341322106.png" alt="1596341322106"></p>
+<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
+                <img src="/img/http/1596341575443.png" alt="1596341575443" title class>
+                <p>1596341575443</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/http/1591683083552.png" alt="1591683083552" title class>
+                <p>1591683083552</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/http/1591683279197.png" alt="1591683279197" title class>
+                <p>1591683279197</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/http/1591685059995.png" alt="1591685059995" title class>
+                <p>1591685059995</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/http/1591683307629.png" alt="1591683307629" title class>
+                <p>1591683307629</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/http/1591685728692.png" alt="1591685728692" title class>
+                <p>1591685728692</p>
+            </figure>
+
+<h2 id="信息首部"><a href="#信息首部" class="headerlink" title="信息首部"></a>信息首部</h2><p><strong>通用头域</strong></p>
+<ul>
+<li>Cache-control：高速缓存指示，指定请求和响应遵循的缓存机制；</li>
+<li>Connection：指定与请求响应连接有关的选项；</li>
+<li>Date：报文构建日期；</li>
+<li>MIME-version：发送端使用的MIME版本；</li>
+<li>Pragma：用于包含特定执行指令，可能被应用于请求/响应链中任何接收者；</li>
+<li>Transfer-Encoding：指示了消息主体的编码转换；</li>
+<li>Upgrade：允许客户端指定它支持什么样的附加传输协议。</li>
+</ul>
+<p><strong>请求头</strong></p>
+<ul>
+<li><p>Accept：客户端可以接受的数据类型；</p>
+</li>
+<li><p>Accept-charset：客户端浏览器可以处理的字符集；</p>
+</li>
+<li><p>Accept-encoding：客户端可以处理的数据编码机制；</p>
+</li>
+<li><p>Accept-language：客户端浏览器可以接受的语言种类；</p>
+</li>
+<li><p>Authorization：认证消息，包括用户名和口令；</p>
+</li>
+<li><p>Cookie：包含cookie，是最重要的请求头信息。</p>
+</li>
+<li><p>From：提供客户端用户的E-mail地址；</p>
+</li>
+<li><p>Host：客户端指定的请求初始URL，说明了接受请求服务器的主机名和端口号；</p>
+</li>
+<li><p>If-Match：条件方法，验证实体实体的一个或多个是否就是服务器当前实体；</p>
+</li>
+<li><p>If-Modified-Since：条件方法，根据请求变量在此头域里指定的时间之后有没有改变而执行不同的操作；</p>
+</li>
+<li><p>Range：客户端请求正文的范围，以字节为单位；</p>
+</li>
+<li><p>Referer：允许客户指定某资源的URI，客户端从此资源获得的请求URI的地址；</p>
+</li>
+<li><p>User-agent：客户端软件类型。</p>
+</li>
+</ul>
+<p>部分请求头在实际应用中虽然在使用，但目前却不一定已经进入网络标准，比如Client-IP（提供客户端机器的IP地址）。</p>
+<ul>
+<li>X-Forwarded-For：用来表示 HTTP 请求端真实 IP</li>
+</ul>
+<p><strong>响应头</strong></p>
+<ul>
+<li>Accept-range：给出服务器接受客户请求的范围；</li>
+<li>Age：文档的使用期限；</li>
+<li>Etag：提供了请求对应变量（variant）的当前实体标签，使用不同URL发布的同一个资源其Etag值是一样的；</li>
+<li>Location：对于一个已经移动的资源，用于重定向请求者到另一个位置；</li>
+<li>Retry-After：用于一个503（服务不可得）响应，向请求端指明服务不可得的时长；</li>
+<li>Public：给出服务器所支持的方法列表；</li>
+<li>Server：指出服务器程序类型和版本号。</li>
+</ul>
+<p><strong>正文头</strong></p>
+<ul>
+<li>Allow：请求的URI（Request-URI）指定资源所支持的几种方法；</li>
+<li>Content-encoding：实体的编码机制；</li>
+<li>Content-language：定义实体的语言类型； </li>
+<li>Content-length：按十进制或八位字节数指明了发给接收者的实体主体的大小，即指定包含于请求或响应中的数据的字节长度；</li>
+<li>Content-range：实体头域与部分实体主体一起发送，用于指明部分实体主体在完整实体主体里哪一部分被采用；</li>
+<li>Content-type：指明发给接收者的实体主体的媒体类型；</li>
+<li>Expires：给出实体的有效期； </li>
+<li>Last-modified：给出实体上次被修改的日期和时间；</li>
+<li>Extention-header：允许客户端定义新的</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 协议 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 协议 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[wireshark流量分析]]></title>
       <url>/2021/02/21/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/</url>
       <content type="html"><![CDATA[<h1 id="wireshark流量分析"><a href="#wireshark流量分析" class="headerlink" title="wireshark流量分析"></a>wireshark流量分析</h1><h2 id="wireshark基本使用"><a href="#wireshark基本使用" class="headerlink" title="wireshark基本使用"></a>wireshark基本使用</h2><p><strong>过滤符号</strong></p>

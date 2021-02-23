@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>wireshark流量分析 | Wisejay | To be better</title>
+    <title>TCP/IP协议-HTTP | Wisejay | To be better</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="其他">
+    <meta name="keywords" content="协议">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -138,7 +138,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>wireshark流量分析</span>
+            <span>TCP/IP协议-HTTP</span>
             
         </div>
         
@@ -151,15 +151,15 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">wireshark流量分析</h1>
+        <h1 class="title">TCP/IP协议-HTTP</h1>
         <h5 class="subtitle">
             
-                <time datetime="2021-02-21T10:23:15.776Z" itemprop="datePublished" class="page-time">
-  2021-02-21
+                <time datetime="2021-02-23T07:57:57.246Z" itemprop="datePublished" class="page-time">
+  2021-02-23
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其他/">其他</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
 
             
         </h5>
@@ -184,15 +184,15 @@
 
 
 <div class="container body-wrap">
-    <article id="post-wireshark流量分析"
+    <article id="post-HTTP"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">wireshark流量分析</h1>
+        <h1 class="post-card-title">TCP/IP协议-HTTP</h1>
         <div class="post-meta">
-            <time class="post-time" title="2021-02-21 18:23:15" datetime="2021-02-21T10:23:15.776Z"  itemprop="datePublished">2021-02-21</time>
+            <time class="post-time" title="2021-02-23 15:57:57" datetime="2021-02-23T07:57:57.246Z"  itemprop="datePublished">2021-02-23</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其他/">其他</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
 
 
 
@@ -205,132 +205,125 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="wireshark流量分析"><a href="#wireshark流量分析" class="headerlink" title="wireshark流量分析"></a>wireshark流量分析</h1><h2 id="wireshark基本使用"><a href="#wireshark基本使用" class="headerlink" title="wireshark基本使用"></a>wireshark基本使用</h2><p><strong>过滤符号</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">英文</th>
-<th align="center">符号</th>
-<th align="center">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">eq</td>
-<td align="center">==</td>
-<td align="center">等于</td>
-</tr>
-<tr>
-<td align="center">ne</td>
-<td align="center">!=</td>
-<td align="center">不等于</td>
-</tr>
-<tr>
-<td align="center">gt</td>
-<td align="center">&gt;</td>
-<td align="center">大于</td>
-</tr>
-<tr>
-<td align="center">lt</td>
-<td align="center">&lt;</td>
-<td align="center">小于</td>
-</tr>
-<tr>
-<td align="center">ge</td>
-<td align="center">&gt;=</td>
-<td align="center">大于等于</td>
-</tr>
-<tr>
-<td align="center">le</td>
-<td align="center">&lt;=</td>
-<td align="center">小于等于</td>
-</tr>
-<tr>
-<td align="center">contains</td>
-<td align="center"></td>
-<td align="center">包含</td>
-</tr>
-<tr>
-<td align="center">matches</td>
-<td align="center">~</td>
-<td align="center">正则匹配</td>
-</tr>
-<tr>
-<td align="center">bitwise_and</td>
-<td align="center">&amp;</td>
-<td align="center">位与</td>
-</tr>
-</tbody></table>
-<h3 id="数据包筛选"><a href="#数据包筛选" class="headerlink" title="数据包筛选"></a>数据包筛选</h3><ul>
-<li>根据IP地址筛选<ul>
-<li>筛选源IP：<code>ip.src == ip地址</code></li>
-<li>筛选目标IP：<code>ip.dst == ip地址</code></li>
-<li>筛选源和目的IP：<code>ip.addr ==ip地址</code></li>
+            <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>HTTP是超文本传输协议主要用于访问WWW上的数据。协议以普通文本、超文本、音频、视频等格式传输数据。称为超文本协议，原因是在应用环境中，它可以快速的在文档之间跳转。HTTP在公认端口80上使用TCP服务。</strong></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li><p>HTTP1.0定义了非持续连接，每次请求/响应都要建立TCP连接。</p>
+<ul>
+<li><strong>建立一次连接</strong></li>
+<li><strong>处理1个请求</strong></li>
+<li><strong>发回1个应答</strong></li>
+<li><strong>释放本次连接</strong> </li>
 </ul>
 </li>
-<li>根据mac地址筛选<ul>
-<li>筛选源mac：<code>eth.src == mac地址</code></li>
-<li>筛选目标mac：<code>eth.dst == mac地址</code></li>
-<li>筛选源和目的mac：<code>eth.addr == mac地址</code></li>
-</ul>
+<li><p>HTTP1.1默认的连接是持续连接，服务器在发送响应以后会保持连接状态，等待更多的请求</p>
+<ul>
+<li><p><strong>建立一次连接</strong></p>
 </li>
-<li>根据端口筛选<ul>
-<li>筛选源端口 ：<code>tcp.srcport == 端口号</code>、<code>udp.srcport == 端口号</code></li>
-<li>筛选目的端口：<code>tcp.dstport == 端口号</code>、<code>udp.dstport == 端口号</code></li>
-<li>筛选源和目标的端口：<code>tcp.port == 端口号</code>、<code>udp.port == 端口号</code></li>
-</ul>
+<li><p><strong>处理n个请求</strong></p>
 </li>
-<li>根据协议筛选<ul>
-<li>筛选协议：<code>协议号</code></li>
-<li>筛选tcp：<code>tcp</code></li>
-<li>筛选udp：<code>udp</code></li>
-<li>筛选ip：<code>ip</code></li>
-<li>筛选http：<code>http</code></li>
-<li>筛选arp：<code>arp</code></li>
-</ul>
+<li><p><strong>发回n个应答</strong></p>
 </li>
-<li>根据包长度筛选<ul>
-<li>筛选协议包长度：<code>协议.len == 长度</code></li>
-<li>筛选UDP长度：<code>udp.length &gt;= 长度</code></li>
-<li>筛选TCP长度：<code>tcp.len &lt;= 长度</code></li>
-<li>筛选ip长度：<code>ip.len == 长度</code></li>
-</ul>
+<li><p><strong>释放本次连接</strong> </p>
 </li>
-<li>HTTP筛选<ul>
-<li>筛选请求GET方法：<code>http.request.method == GET</code>、GET要大写</li>
-<li>筛选请求POST方法：<code>http.request.method == POST</code>、POST要大写</li>
-<li>筛选指定URI：<code>http.request.uri == &quot;/admin&quot;</code></li>
-<li>筛选指定包含内容：<code>http contains &quot;text&quot;</code></li>
 </ul>
 </li>
 </ul>
-<h3 id="数据包搜索"><a href="#数据包搜索" class="headerlink" title="数据包搜索"></a>数据包搜索</h3><p>按<code>Ctrl+F</code>调出搜索框进行搜索</p>
-<figure class="image-box">
-                <a rel=wireshark流量分析 href="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202131541280.png" title="image-20210202131541280" data-fancybox="images"><img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202131541280.png" alt="image-20210202131541280" title class></a>
-                <p>image-20210202131541280</p>
-            </figure>
-
-<h3 id="数据包还原"><a href="#数据包还原" class="headerlink" title="数据包还原"></a>数据包还原</h3><p>选中准备还原数据包，右键选择追踪流，选择对应的流</p>
-<figure class="image-box">
-                <a rel=wireshark流量分析 href="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173315749.png" title="image-20210202173315749" data-fancybox="images"><img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173315749.png" alt="image-20210202173315749" title class></a>
-                <p>image-20210202173315749</p>
+<p><a rel=TCP/IP协议-HTTP href="/img/http/1596341322106.png" title="1596341322106" data-fancybox="images"><img src="/img/http/1596341322106.png" alt="1596341322106"></a></p>
+<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
+                <a rel=TCP/IP协议-HTTP href="/img/http/1596341575443.png" title="1596341575443" data-fancybox="images"><img src="/img/http/1596341575443.png" alt="1596341575443" title class></a>
+                <p>1596341575443</p>
             </figure>
 
 <figure class="image-box">
-                <a rel=wireshark流量分析 href="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173401106.png" title="image-20210202173401106" data-fancybox="images"><img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173401106.png" alt="image-20210202173401106" title class></a>
-                <p>image-20210202173401106</p>
+                <a rel=TCP/IP协议-HTTP href="/img/http/1591683083552.png" title="1591683083552" data-fancybox="images"><img src="/img/http/1591683083552.png" alt="1591683083552" title class></a>
+                <p>1591683083552</p>
             </figure>
 
-<h3 id="数据包提取"><a href="#数据包提取" class="headerlink" title="数据包提取"></a>数据包提取</h3><p>在分组详细中选中右键导出字节流分组保存即可</p>
 <figure class="image-box">
-                <a rel=wireshark流量分析 href="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202195432801.png" title="image-20210202195432801" data-fancybox="images"><img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202195432801.png" alt="image-20210202195432801" title class></a>
-                <p>image-20210202195432801</p>
+                <a rel=TCP/IP协议-HTTP href="/img/http/1591683279197.png" title="1591683279197" data-fancybox="images"><img src="/img/http/1591683279197.png" alt="1591683279197" title class></a>
+                <p>1591683279197</p>
             </figure>
 
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
-<li><a href="https://www.wireshark.org/docs/wsug_html/#DispCompOps" target="_blank" rel="noopener">https://www.wireshark.org/docs/wsug_html/#DispCompOps</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/36179402" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36179402</a></li>
-<li><a href="https://www.cnblogs.com/jiugao/p/11644508.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiugao/p/11644508.html</a></li>
-</ol>
+<figure class="image-box">
+                <a rel=TCP/IP协议-HTTP href="/img/http/1591685059995.png" title="1591685059995" data-fancybox="images"><img src="/img/http/1591685059995.png" alt="1591685059995" title class></a>
+                <p>1591685059995</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-HTTP href="/img/http/1591683307629.png" title="1591683307629" data-fancybox="images"><img src="/img/http/1591683307629.png" alt="1591683307629" title class></a>
+                <p>1591683307629</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-HTTP href="/img/http/1591685728692.png" title="1591685728692" data-fancybox="images"><img src="/img/http/1591685728692.png" alt="1591685728692" title class></a>
+                <p>1591685728692</p>
+            </figure>
+
+<h2 id="信息首部"><a href="#信息首部" class="headerlink" title="信息首部"></a>信息首部</h2><p><strong>通用头域</strong></p>
+<ul>
+<li>Cache-control：高速缓存指示，指定请求和响应遵循的缓存机制；</li>
+<li>Connection：指定与请求响应连接有关的选项；</li>
+<li>Date：报文构建日期；</li>
+<li>MIME-version：发送端使用的MIME版本；</li>
+<li>Pragma：用于包含特定执行指令，可能被应用于请求/响应链中任何接收者；</li>
+<li>Transfer-Encoding：指示了消息主体的编码转换；</li>
+<li>Upgrade：允许客户端指定它支持什么样的附加传输协议。</li>
+</ul>
+<p><strong>请求头</strong></p>
+<ul>
+<li><p>Accept：客户端可以接受的数据类型；</p>
+</li>
+<li><p>Accept-charset：客户端浏览器可以处理的字符集；</p>
+</li>
+<li><p>Accept-encoding：客户端可以处理的数据编码机制；</p>
+</li>
+<li><p>Accept-language：客户端浏览器可以接受的语言种类；</p>
+</li>
+<li><p>Authorization：认证消息，包括用户名和口令；</p>
+</li>
+<li><p>Cookie：包含cookie，是最重要的请求头信息。</p>
+</li>
+<li><p>From：提供客户端用户的E-mail地址；</p>
+</li>
+<li><p>Host：客户端指定的请求初始URL，说明了接受请求服务器的主机名和端口号；</p>
+</li>
+<li><p>If-Match：条件方法，验证实体实体的一个或多个是否就是服务器当前实体；</p>
+</li>
+<li><p>If-Modified-Since：条件方法，根据请求变量在此头域里指定的时间之后有没有改变而执行不同的操作；</p>
+</li>
+<li><p>Range：客户端请求正文的范围，以字节为单位；</p>
+</li>
+<li><p>Referer：允许客户指定某资源的URI，客户端从此资源获得的请求URI的地址；</p>
+</li>
+<li><p>User-agent：客户端软件类型。</p>
+</li>
+</ul>
+<p>部分请求头在实际应用中虽然在使用，但目前却不一定已经进入网络标准，比如Client-IP（提供客户端机器的IP地址）。</p>
+<ul>
+<li>X-Forwarded-For：用来表示 HTTP 请求端真实 IP</li>
+</ul>
+<p><strong>响应头</strong></p>
+<ul>
+<li>Accept-range：给出服务器接受客户请求的范围；</li>
+<li>Age：文档的使用期限；</li>
+<li>Etag：提供了请求对应变量（variant）的当前实体标签，使用不同URL发布的同一个资源其Etag值是一样的；</li>
+<li>Location：对于一个已经移动的资源，用于重定向请求者到另一个位置；</li>
+<li>Retry-After：用于一个503（服务不可得）响应，向请求端指明服务不可得的时长；</li>
+<li>Public：给出服务器所支持的方法列表；</li>
+<li>Server：指出服务器程序类型和版本号。</li>
+</ul>
+<p><strong>正文头</strong></p>
+<ul>
+<li>Allow：请求的URI（Request-URI）指定资源所支持的几种方法；</li>
+<li>Content-encoding：实体的编码机制；</li>
+<li>Content-language：定义实体的语言类型； </li>
+<li>Content-length：按十进制或八位字节数指明了发给接收者的实体主体的大小，即指定包含于请求或响应中的数据的字节长度；</li>
+<li>Content-range：实体头域与部分实体主体一起发送，用于指明部分实体主体在完整实体主体里哪一部分被采用；</li>
+<li>Content-type：指明发给接收者的实体主体的媒体类型；</li>
+<li>Expires：给出实体的有效期； </li>
+<li>Last-modified：给出实体上次被修改的日期和时间；</li>
+<li>Extention-header：允许客户端定义新的</li>
+</ul>
 
         </div>
         
@@ -338,12 +331,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-02-21T10:25:19.877Z" itemprop="dateUpdated">2021-02-21 18:25:19</time>
+    Last updated: <time datetime="2021-02-23T08:03:30.949Z" itemprop="dateUpdated">2021-02-23 16:03:30</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2021/02/21/wireshark流量分析/" target="_blank" rel="external">http://wisejay.xyz/2021/02/21/wireshark流量分析/</a>
+        转载注明出处，原文地址：<a href="/2021/02/23/HTTP/" target="_blank" rel="external">http://wisejay.xyz/2021/02/23/HTTP/</a>
         
     </div>
     <footer>
@@ -363,7 +356,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/">其他</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -372,7 +365,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/21/wireshark流量分析/&title=《wireshark流量分析》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/23/HTTP/&title=《TCP/IP协议-HTTP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -384,7 +377,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/21/wireshark流量分析/&title=《wireshark流量分析》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/23/HTTP/&title=《TCP/IP协议-HTTP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -407,21 +400,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2021/02/23/HTTP/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">TCP/IP协议-HTTP</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2021/02/19/CVE-2020-17519/" id="post-next" class="post-nav-link">
+      <a href="/2021/02/21/wireshark流量分析/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Apache Flink目录遍历漏洞</h4>
+        <h4 class="title">wireshark流量分析</h4>
       </a>
     </div>
   
@@ -433,7 +419,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#wireshark流量分析"><span class="post-toc-number">1.</span> <span class="post-toc-text">wireshark流量分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wireshark基本使用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">wireshark基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据包筛选"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">数据包筛选</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据包搜索"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">数据包搜索</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据包还原"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">数据包还原</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据包提取"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">数据包提取</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">参考链接</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTTP"><span class="post-toc-number">1.</span> <span class="post-toc-text">HTTP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据包分析"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据包分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#信息首部"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">信息首部</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -512,7 +498,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/21/wireshark流量分析/&title=《wireshark流量分析》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/23/HTTP/&title=《TCP/IP协议-HTTP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -524,7 +510,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/21/wireshark流量分析/&title=《wireshark流量分析》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/23/HTTP/&title=《TCP/IP协议-HTTP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -536,7 +522,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3ay24CMRAEQP7/p4mUK4J0jxcU7NoTSvZVe2jNeHy7xcf993j8nZxzfzie/f3xnIsPDAyMr2Ukt8sf/+xVXr/cBVQMDIwDGG3Ivn7kLBtn4Y6BgYGRBOJ6EGNgYGBcG7h52ff6zKSIxMDAwGib2PZ18zD9aC+OgYHxhYyVwcC7f39ovoGBgfGPGfeFI4/aJFhX3gcDA2NvRrugv97cttcWQYyBgbEpY32hrY3RGfKPT4+BgXEAo31MWyYm2Zh/lNvsK2JgYHwtoy3RkhCcFZRFvCaTWAwMjI0YsyZzFqNtWuaLdBgYGCcwks0NsxniVS3uH1dhYGAcwGgX4tfPacEYGBgnMxJAMgyYVWj1i74uRjEwMLZmtMv6baM7i9S2AMXAwDiB0T4yX3RLGtRZKNerdxgYGF/IuAdHPnRcaUrzcvPpCBMDA+MARrvRoY3dq6gYGBinMZLYnW3Vau/ZRnBdIGJgYGzByC9rl+HaOG5bXwwMjHMYK9sj8gX92VpZMQzAwMA4kjEbZOYxvV56YmBgnMBY2oZVLsBFr7IQ3xgYGPsxLijI4ua23VJWtNMYGBhbM9qYmwVo3hKvPwsDA2NXxsq2sHapri3+isDFwMA4gDEbKM5Ktzd24RgYGBhBIOb/TT7KcFsYBgbGwYx8A9lswHBZn42BgbEpo43LNkzzGG23nWFgYJzAmA0GWmr7+ZI7XzDfwMDA+O+MHwN1+ghSOZDSAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwElEQVR42u3aQQ6DMAwEwP7/0/QFpGubRFSanCpEyZCDZWx/PvG6btbdPevrd3c+tnBxccfca7nyDarPWV+/3REXF/cg92779T3rUJUHssSAi4v7Zm7CWqc7+XHg4uL+FzdPeqqBDxcX9z3c5KMl2bhXWNnyrYaLizvg5lXKfb+31HdxcXFb3Ku4ki2rQaqwOy4u7hFuHlB6r5SXRfJSLC4u7hluNbmZBKlqY6aZBuHi4g64vfLHOkj12qvljAwXF/cIN09KEmh+vRD4cHFxj3B72VB15GLy3x/PxMXF3cbNG6i9Xk1eNIlKJ7i4uEe4vWSlGvKqRdJy3MXFxX2ImyclecskJ1aPBhcX9z3cPPmYPCc6Dlxc3CPceXLTG5XovRguLu5JbvJJU22LTsqjhYIpLi7uZm7eEJ1MSSXp0Y/7cXFxD3J75c5qk3WUheHi4h7hXsXVa7VWQ2T0IFxc3G3c3pa9QYremEXzZXBxccfcXoGjPDwRH0GhiYKLi7uZ2ws0Vehk6BMXF/f93Hx8Mx/3jA4IFxf3ldzdHzwPBzJcXNwBNx+dnLdjq0RcXNzz3F7js1fsSNKj+avi4uIOuF/q1sNCokg5tAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
