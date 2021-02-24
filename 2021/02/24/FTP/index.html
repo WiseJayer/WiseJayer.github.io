@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>Java多例设计 | Wisejay | To be better</title>
+    <title>TCP/IP协议-FTP | Wisejay | To be better</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="Java">
+    <meta name="keywords" content="协议">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -138,7 +138,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Java多例设计</span>
+            <span>TCP/IP协议-FTP</span>
             
         </div>
         
@@ -151,15 +151,15 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Java多例设计</h1>
+        <h1 class="title">TCP/IP协议-FTP</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-10-05T10:32:53.000Z" itemprop="datePublished" class="page-time">
-  2019-10-05
+                <time datetime="2021-02-24T13:58:20.414Z" itemprop="datePublished" class="page-time">
+  2021-02-24
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
 
             
         </h5>
@@ -184,15 +184,15 @@
 
 
 <div class="container body-wrap">
-    <article id="post-Java多例设计"
+    <article id="post-FTP"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">Java多例设计</h1>
+        <h1 class="post-card-title">TCP/IP协议-FTP</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-10-05 18:32:53" datetime="2019-10-05T10:32:53.000Z"  itemprop="datePublished">2019-10-05</time>
+            <time class="post-time" title="2021-02-24 21:58:20" datetime="2021-02-24T13:58:20.414Z"  itemprop="datePublished">2021-02-24</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
 
 
 
@@ -205,8 +205,43 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="多例设计"><a href="#多例设计" class="headerlink" title="多例设计"></a>多例设计</h1><p><code>构造方法私有化</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Color</span> </span>&#123; <span class="comment">// 定义描述颜色的类</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Color RED = <span class="keyword">new</span> Color(<span class="string">"红色"</span>) ;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Color GREEN = <span class="keyword">new</span> Color(<span class="string">"绿色"</span>) ;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Color BLUE = <span class="keyword">new</span> Color(<span class="string">"蓝色"</span>) ;</span><br><span class="line">	<span class="keyword">private</span> String title ;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span> </span>&#123;	<span class="comment">// 构造方法私有化</span></span><br><span class="line">		<span class="keyword">this</span>.title = title ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Color <span class="title">getInstance</span><span class="params">(String color)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">switch</span>(color) &#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"red"</span>: <span class="keyword">return</span> RED ;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"green"</span>: <span class="keyword">return</span> GREEN ;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"blue"</span>: <span class="keyword">return</span> BLUE ;</span><br><span class="line">			<span class="keyword">default</span>: <span class="keyword">return</span> <span class="keyword">null</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.title ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Color c = Color.getInstance(<span class="string">"green"</span>) ;</span><br><span class="line">		System.out.println(c) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>FTP工作在TCP/IP模型的应用层，采用TCP面向连接为文件数据的传输提供了可靠的保证。</strong></p>
+<p><strong>FTP使用两个TCP连接：一个控制连接，一个数据连接</strong></p>
+<ul>
+<li><strong>控制连接</strong>一直持续到客户端和服务器端进程间的通信完成为止，用于传输控制命令。</li>
+<li><strong>数据连接</strong>根据通信的需要随时建立和释放，用于数据的传输。</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
+                <a rel=TCP/IP协议-FTP href="/img/ftp/1595432256504.png" title="1595432256504" data-fancybox="images"><img src="/img/ftp/1595432256504.png" alt="1595432256504" title class></a>
+                <p>1595432256504</p>
+            </figure>
+
+<h2 id="控制连接"><a href="#控制连接" class="headerlink" title="控制连接"></a>控制连接</h2><h3 id="主动模式（PORT）"><a href="#主动模式（PORT）" class="headerlink" title="主动模式（PORT）"></a>主动模式（PORT）</h3><p><code>客户端向服务器的FTP端口（默认是21）发送连接请求，服务器接受连接，建立一条控制连接。当需要传送数据时，客户端在控制连接上用PORT命令告诉服务器：“我打开了XXXX端口，你过来连接我”。于是服务器从20端口向客户端的XXXX端口主动发送连接请求，建立一条数据连接来传送数据。</code></p>
+<ul>
+<li>ftp客户端请求:PORT 172,16,28,81,<em>17,64</em></li>
+<li>ftp服务器响应:200 PORT Command successful</li>
+</ul>
+<p>服务器收到客户端的这个PORT指令后，主动用服务器的20端口连接客户端<strong>172.16.28.81</strong>的<strong>17x256+64</strong>这个端口</p>
+<h3 id="被动模式（PASV）"><a href="#被动模式（PASV）" class="headerlink" title="被动模式（PASV）"></a>被动模式（PASV）</h3><p><code>客户端向服务器的FTP端口（默认是21）发送连接请求，服务器接受连接，建立一条控制连接。当需要传送数据时，客户端在控制连接上发送PASV命令询问服务器的数据连接端口，服务器回应PASV命令告诉客户端：“我打开了XXXX端口，你过来连接我”。于是客户端向服务器的XXXX端口发送连接请求，建立一条数据连接来传送数据。</code></p>
+<ul>
+<li>ftp客户端请求:PASV</li>
+<li>ftp服务器响应:227 Entering Passive Mode (172,16,3,240,219,164)</li>
+</ul>
+<p>服务器（172.16.3.240）响应客户端PASV模式连接请求，被动等待客户端连接到服务器的219x256+164端口 </p>
+<h2 id="数据连接"><a href="#数据连接" class="headerlink" title="数据连接"></a>数据连接</h2><figure class="image-box">
+                <a rel=TCP/IP协议-FTP href="/img/ftp/1595434276734.png" title="1595434276734" data-fancybox="images"><img src="/img/ftp/1595434276734.png" alt="1595434276734" title class></a>
+                <p>1595434276734</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-FTP href="/img/ftp/1595434290076.png" title="1595434290076" data-fancybox="images"><img src="/img/ftp/1595434290076.png" alt="1595434290076" title class></a>
+                <p>1595434290076</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-FTP href="/img/ftp/1595434293995.png" title="1595434293995" data-fancybox="images"><img src="/img/ftp/1595434293995.png" alt="1595434293995" title class></a>
+                <p>1595434293995</p>
+            </figure>
 
 
         </div>
@@ -215,12 +250,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-10-04T10:41:11.519Z" itemprop="dateUpdated">2019-10-04 18:41:11</time>
+    Last updated: <time datetime="2021-02-24T13:59:31.217Z" itemprop="dateUpdated">2021-02-24 21:59:31</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2019/10/05/Java多例设计/" target="_blank" rel="external">http://wisejay.xyz/2019/10/05/Java多例设计/</a>
+        转载注明出处，原文地址：<a href="/2021/02/24/FTP/" target="_blank" rel="external">http://wisejay.xyz/2021/02/24/FTP/</a>
         
     </div>
     <footer>
@@ -240,7 +275,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -249,7 +284,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2019/10/05/Java多例设计/&title=《Java多例设计》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/24/FTP/&title=《TCP/IP协议-FTP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -261,7 +296,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2019/10/05/Java多例设计/&title=《Java多例设计》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/24/FTP/&title=《TCP/IP协议-FTP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -284,21 +319,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/10/05/Java多态/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Java多态</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/10/05/Java单例设计/" id="post-next" class="post-nav-link">
+      <a href="/2021/02/23/HTTP/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Java单例设计</h4>
+        <h4 class="title">TCP/IP协议-HTTP</h4>
       </a>
     </div>
   
@@ -310,7 +338,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#多例设计"><span class="post-toc-number">1.</span> <span class="post-toc-text">多例设计</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#FTP"><span class="post-toc-number">1.</span> <span class="post-toc-text">FTP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#控制连接"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">控制连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主动模式（PORT）"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">主动模式（PORT）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#被动模式（PASV）"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">被动模式（PASV）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据连接"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">数据连接</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -389,7 +417,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2019/10/05/Java多例设计/&title=《Java多例设计》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/24/FTP/&title=《TCP/IP协议-FTP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -401,7 +429,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2019/10/05/Java多例设计/&title=《Java多例设计》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/24/FTP/&title=《TCP/IP协议-FTP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -413,7 +441,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3aS24DIRBFUe9/0x0po0yo3FfQUYDbI8uygdODUn34fPDzfD/1N+T3P79/yufzxiNDhoxtGWQ5sv2IQY5V74uoMmTIuIBRB800vPLD1XuRs8mQIUNGfaA3jiVDhgwZ8wG33oYHX56GypAhQwZfelVrLA3Qi2txGTJkbMhIBwN/+fnF+YYMGTI2YTytJx1trho8DFeQIUPG0YxRorbqKsbMaLOmoj/IkCHjCEYNIDz+CtJgHewrQ4aMCxi9dn9v8NkbJCyosGXIkLEtI+1icTD/Tfr7uCUnQ4aMzRlpsFvb+u9Rh402GTJkHM3gm5GUbqa4TV/csBaXIUPGcQze6iLlaPoi+FBhQbtNhgwZ2zJ610nTgpP/N05bZciQcRmjDql8PMlHBWkXsHm7TYYMGdsyeIqWjgfSwnXBLjJkyLiA0Swgw0sbaUoaXNGQIUPGoQwS+EjiyNn1CjwxlSFDxj0M3o7nw8jeWJSH119enwwZMo5m8Lb+TNE7n3qiFFaGDBnHMcgGJAj2xgz8ikbQNZQhQ8ahjF7x2WvD8WscQcEsQ4aMoxm8XEwbZ+maU5ctZMiQcSjjvTFAOhzthVoZMmTcwHjjIldvhXQMkIZpGTJk7M7oBVleyqZPcxQqQ4aMCxg8yZu5itFM6UiglyFDhowwsUvDMb/kMTyzDBkyZITNMr7ysuRShgwZFzDSwWRd3JKWHL9sgXgyZMg4mjEzGCCkXlFKmn3L5hsyZMj4v4wv7lcD8Z96MwwAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3awa7CMAwEQP7/p3kSpyehtmu7CT1MTqjQdsLBijd5veLx/ozvK//H0V3fvzm/64aBi4s75r5Pxzf3/DVHlOSZ5wZcXNz93PPilU9j/psLGy4u7sO4yWSShVFeHHFxcZ/P7S2Dksng4uI+k5tQkuYkCTsmz8fFxd3DrQamKz4vzHdxcXGL3HdxJMuRJE5tvh0XF3cLNwkvkkpSbaWSBulw2ri4uFu4k+2T6pqkuk178S5cXNzF3Gqg2YtH5xswuLi4e7jzI1krYtZyvouLi7uAO9kQ7RWpfBqHsQguLu4ybr4VmmcU8zZptNGCi4s75vYC0+ok8/J327+Ci4s75ibLlKS9yadXDVBwcXH3cJN2ZVJDqixcXNzncAuHolpnIfLw9GJ5hIuLu4WbH5LoJSu9eDTKd3FxcZdxJ4uVpLHpxTGHHlxc3I3c6jGsXuQxKYW4uLj7udUW6Jzeiz+amyi4uLgLuPM25q5Wp/otLi7uau6K4pWg8+u4uLi/4q7bGqnGJRcBCi4u7sO4yYt7W7OF4BUXF/eR3MkRrl65xMXF/RW32qhUv51nnri4uDu59wamSfDRew4uLu4W7h/2hnademR53gAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
