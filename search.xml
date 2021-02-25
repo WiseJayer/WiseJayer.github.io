@@ -4,6 +4,130 @@
     
     <entry>
       <title><![CDATA[TCP/IP协议-FTP]]></title>
+      <url>/2021/02/25/DHCP/</url>
+      <content type="html"><![CDATA[<h1 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>DHCP(Dynamic Host Configuration Protocol)是 BOOTP的扩展，是基于C/S模式的，它提供了一种动态指定IP地址和配置参数的机制。DHCP是应用层的协议。其传输层采用UDP协议。</strong></p>
+<ul>
+<li><p>DHCP服务器(DHCP Server)，UDP 67端口</p>
+</li>
+<li><p>DHCP客户机(DHCP  Client)，UDP  68端口</p>
+</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
+                <img src="/img/dhcp/1596339941167.png" alt="1596339941167" title class>
+                <p>1596339941167</p>
+            </figure>
+
+<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
+                <img src="/img/dhcp/1595421350607.png" alt="1595421350607" title class>
+                <p>1595421350607</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/dhcp/1595422505596.png" alt="1595422505596" title class>
+                <p>1595422505596</p>
+            </figure>
+
+<p><strong>DHCP报文的各个字段的含义如下：</strong></p>
+<p>（1）操作码：表示本次DHCP操作的类别，占1字节。为1表示请求，即客户机发送给服务器的报文，为2表示应答，即服务器发回给客户机的报文。<br>（2）硬件类型：表示物理网络的类型，占1字节。取值0x01表示以太网。</p>
+<p>（3）硬件地址长度：物理地址的长度，占1字节。对以太网值为0x06。</p>
+<p>（4）跳数：指报文经过路由器传送的跳数，占1字节。如果报文经过网络上路由器转发则每站加1，若是在同一网络内为0。</p>
+<p>（5）事务标识：用作请求与应答匹配的依据，是系统生成的随机数，占4字节。</p>
+<p>（6）秒数：由客户指定的时间，指客户端开始地址获取和更新进行后的时间（秒），占2字节。</p>
+<p>（7）标志：表示服务器的通信方式，占16比特。最左一位为1时表示服务器将以广播方式传送封包，为0则为单播方式，其余位保留，尚未使用。</p>
+<p>（8）客户IP地址：是客户端想继续使用之前取得之IP地址，则列在这里。</p>
+<p>（9）你的IP地址：是从服务器送回的分配给客户的IP地址。</p>
+<p>（10）服务器IP地址：是客户端引导过程中使用的DHCP服务器IP地址。<br>（11）网关IP地址：指如使用DHCP中继，则给出中继代理的地址，否则为0。</p>
+<p>（12）客户主机硬件地址：存放客户端的物理地址，占16字节。对以太网，则只使用前6个字节，其余字节为0。DHCP服务器存放这个地址并与分配的IP地址相关联。</p>
+<p>（13）服务器主机名：服务器名称字符串，占64字节。可选字段，以0x00 结尾。</p>
+<p>（14）引导文件名：是指客户端网络引导的开机程序名称，通常设计为稍后以TFTP传送引导文件内容，占128字节。可选字段，以0x00结尾。</p>
+<p>（15）选项：提供更多的设定信息，如：子网掩码、路由器、DNS等等，可携带多个选项。每一选项的格式都是“类别-长度-值”即TLV（Tag-Len-Value）格式，完全兼容BOOTP并扩充了更多选项。</p>
+<figure class="image-box">
+                <img src="/img/dhcp/1595422712845.png" alt="1595422712845" title class>
+                <p>1595422712845</p>
+            </figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 协议 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 协议 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[TCP/IP协议-FTP]]></title>
+      <url>/2021/02/25/DNS/</url>
+      <content type="html"><![CDATA[<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>DNS（域名系统）是一种能够完成从名称到地址或从地址到名称的映射。系统域名解析的方式有两种，一种称为递归查询，另一种称为迭代查询</strong></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
+                <img src="/img/dns/1595384474208.png" alt="1595384474208" title class>
+                <p>1595384474208</p>
+            </figure>
+
+<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
+                <img src="/img/dns/1595384513677.png" alt="1595384513677" title class>
+                <p>1595384513677</p>
+            </figure>
+
+
+<figure class="image-box">
+                <img src="/img/dns/1595418285524.png" alt="1595418285524" title class>
+                <p>1595418285524</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="/img/dns/1595384639006.png" alt="1595384639006" title class>
+                <p>1595384639006</p>
+            </figure>
+
+<ul>
+<li><p>QR—0：查询报文；1：响应报文（使用UDP时，当应答的总长度超过512字节时，只返回前512字节）</p>
+</li>
+<li><p>opcode—0：标准查询；1：反向查询；2：服务器状态请求。</p>
+</li>
+<li><p>AA—权威应答域只在响应中有效。如果设置的话，该位表示响应的名称服务器是问题名称域中定义的域名的权威服务器。</p>
+</li>
+<li><p>TC—该位通常只在响应中出现。它表示响应被切割，因为响应过大而无法适用于数据包的数据部分。例如，如果响应包含大量名称服务器，数据包可能会超过允许的MTU。在这种情况下，数据包被切割，并且将TC域位设置为1。</p>
+</li>
+<li><p>RD—如果目标名称服务器不包含所请求的信息，该域表示客户机请求递归查询。</p>
+</li>
+<li><p>RA—该域在响应中有效，它表示响应名称服务器是否提供递归查询。</p>
+</li>
+<li><p>Rcode—该域长度为4位，用于DNS响应中，表示是否出现错误。</p>
+</li>
+</ul>
+<figure class="image-box">
+                <img src="/img/dns/1595420041106.png" alt="1595420041106" title class>
+                <p>1595420041106</p>
+            </figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 协议 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 协议 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[TCP/IP协议-FTP]]></title>
       <url>/2021/02/24/FTP/</url>
       <content type="html"><![CDATA[<h1 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>FTP工作在TCP/IP模型的应用层，采用TCP面向连接为文件数据的传输提供了可靠的保证。</strong></p>
 <p><strong>FTP使用两个TCP连接：一个控制连接，一个数据连接</strong></p>

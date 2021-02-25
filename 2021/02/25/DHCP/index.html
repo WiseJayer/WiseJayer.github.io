@@ -154,8 +154,8 @@
         <h1 class="title">TCP/IP协议-FTP</h1>
         <h5 class="subtitle">
             
-                <time datetime="2021-02-24T13:58:20.414Z" itemprop="datePublished" class="page-time">
-  2021-02-24
+                <time datetime="2021-02-25T11:41:57.838Z" itemprop="datePublished" class="page-time">
+  2021-02-25
 </time>
 
 
@@ -184,12 +184,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-FTP"
+    <article id="post-DHCP"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">TCP/IP协议-FTP</h1>
         <div class="post-meta">
-            <time class="post-time" title="2021-02-24 21:58:20" datetime="2021-02-24T13:58:20.414Z"  itemprop="datePublished">2021-02-24</time>
+            <time class="post-time" title="2021-02-25 19:41:57" datetime="2021-02-25T11:41:57.838Z"  itemprop="datePublished">2021-02-25</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
@@ -205,42 +205,45 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>FTP工作在TCP/IP模型的应用层，采用TCP面向连接为文件数据的传输提供了可靠的保证。</strong></p>
-<p><strong>FTP使用两个TCP连接：一个控制连接，一个数据连接</strong></p>
+            <h1 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>DHCP(Dynamic Host Configuration Protocol)是 BOOTP的扩展，是基于C/S模式的，它提供了一种动态指定IP地址和配置参数的机制。DHCP是应用层的协议。其传输层采用UDP协议。</strong></p>
 <ul>
-<li><strong>控制连接</strong>一直持续到客户端和服务器端进程间的通信完成为止，用于传输控制命令。</li>
-<li><strong>数据连接</strong>根据通信的需要随时建立和释放，用于数据的传输。</li>
+<li><p>DHCP服务器(DHCP Server)，UDP 67端口</p>
+</li>
+<li><p>DHCP客户机(DHCP  Client)，UDP  68端口</p>
+</li>
 </ul>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
-                <a rel=TCP/IP协议-FTP href="/img/ftp/1595432256504.png" title="1595432256504" data-fancybox="images"><img src="/img/ftp/1595432256504.png" alt="1595432256504" title class></a>
-                <p>1595432256504</p>
+                <a rel=TCP/IP协议-FTP href="/img/dhcp/1596339941167.png" title="1596339941167" data-fancybox="images"><img src="/img/dhcp/1596339941167.png" alt="1596339941167" title class></a>
+                <p>1596339941167</p>
             </figure>
 
-<h2 id="控制连接"><a href="#控制连接" class="headerlink" title="控制连接"></a>控制连接</h2><h3 id="主动模式（PORT）"><a href="#主动模式（PORT）" class="headerlink" title="主动模式（PORT）"></a>主动模式（PORT）</h3><p><code>客户端向服务器的FTP端口（默认是21）发送连接请求，服务器接受连接，建立一条控制连接。当需要传送数据时，客户端在控制连接上用PORT命令告诉服务器：“我打开了XXXX端口，你过来连接我”。于是服务器从20端口向客户端的XXXX端口主动发送连接请求，建立一条数据连接来传送数据。</code></p>
-<ul>
-<li>ftp客户端请求:PORT 172,16,28,81,<em>17,64</em></li>
-<li>ftp服务器响应:200 PORT Command successful</li>
-</ul>
-<p>服务器收到客户端的这个PORT指令后，主动用服务器的20端口连接客户端<strong>172.16.28.81</strong>的<strong>17x256+64</strong>这个端口</p>
-<h3 id="被动模式（PASV）"><a href="#被动模式（PASV）" class="headerlink" title="被动模式（PASV）"></a>被动模式（PASV）</h3><p><code>客户端向服务器的FTP端口（默认是21）发送连接请求，服务器接受连接，建立一条控制连接。当需要传送数据时，客户端在控制连接上发送PASV命令询问服务器的数据连接端口，服务器回应PASV命令告诉客户端：“我打开了XXXX端口，你过来连接我”。于是客户端向服务器的XXXX端口发送连接请求，建立一条数据连接来传送数据。</code></p>
-<ul>
-<li>ftp客户端请求:PASV</li>
-<li>ftp服务器响应:227 Entering Passive Mode (172,16,3,240,219,164)</li>
-</ul>
-<p>服务器（172.16.3.240）响应客户端PASV模式连接请求，被动等待客户端连接到服务器的219x256+164端口 </p>
-<h2 id="数据连接"><a href="#数据连接" class="headerlink" title="数据连接"></a>数据连接</h2><figure class="image-box">
-                <a rel=TCP/IP协议-FTP href="/img/ftp/1595434276734.png" title="1595434276734" data-fancybox="images"><img src="/img/ftp/1595434276734.png" alt="1595434276734" title class></a>
-                <p>1595434276734</p>
+<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
+                <a rel=TCP/IP协议-FTP href="/img/dhcp/1595421350607.png" title="1595421350607" data-fancybox="images"><img src="/img/dhcp/1595421350607.png" alt="1595421350607" title class></a>
+                <p>1595421350607</p>
             </figure>
 
 <figure class="image-box">
-                <a rel=TCP/IP协议-FTP href="/img/ftp/1595434290076.png" title="1595434290076" data-fancybox="images"><img src="/img/ftp/1595434290076.png" alt="1595434290076" title class></a>
-                <p>1595434290076</p>
+                <a rel=TCP/IP协议-FTP href="/img/dhcp/1595422505596.png" title="1595422505596" data-fancybox="images"><img src="/img/dhcp/1595422505596.png" alt="1595422505596" title class></a>
+                <p>1595422505596</p>
             </figure>
 
+<p><strong>DHCP报文的各个字段的含义如下：</strong></p>
+<p>（1）操作码：表示本次DHCP操作的类别，占1字节。为1表示请求，即客户机发送给服务器的报文，为2表示应答，即服务器发回给客户机的报文。<br>（2）硬件类型：表示物理网络的类型，占1字节。取值0x01表示以太网。</p>
+<p>（3）硬件地址长度：物理地址的长度，占1字节。对以太网值为0x06。</p>
+<p>（4）跳数：指报文经过路由器传送的跳数，占1字节。如果报文经过网络上路由器转发则每站加1，若是在同一网络内为0。</p>
+<p>（5）事务标识：用作请求与应答匹配的依据，是系统生成的随机数，占4字节。</p>
+<p>（6）秒数：由客户指定的时间，指客户端开始地址获取和更新进行后的时间（秒），占2字节。</p>
+<p>（7）标志：表示服务器的通信方式，占16比特。最左一位为1时表示服务器将以广播方式传送封包，为0则为单播方式，其余位保留，尚未使用。</p>
+<p>（8）客户IP地址：是客户端想继续使用之前取得之IP地址，则列在这里。</p>
+<p>（9）你的IP地址：是从服务器送回的分配给客户的IP地址。</p>
+<p>（10）服务器IP地址：是客户端引导过程中使用的DHCP服务器IP地址。<br>（11）网关IP地址：指如使用DHCP中继，则给出中继代理的地址，否则为0。</p>
+<p>（12）客户主机硬件地址：存放客户端的物理地址，占16字节。对以太网，则只使用前6个字节，其余字节为0。DHCP服务器存放这个地址并与分配的IP地址相关联。</p>
+<p>（13）服务器主机名：服务器名称字符串，占64字节。可选字段，以0x00 结尾。</p>
+<p>（14）引导文件名：是指客户端网络引导的开机程序名称，通常设计为稍后以TFTP传送引导文件内容，占128字节。可选字段，以0x00结尾。</p>
+<p>（15）选项：提供更多的设定信息，如：子网掩码、路由器、DNS等等，可携带多个选项。每一选项的格式都是“类别-长度-值”即TLV（Tag-Len-Value）格式，完全兼容BOOTP并扩充了更多选项。</p>
 <figure class="image-box">
-                <a rel=TCP/IP协议-FTP href="/img/ftp/1595434293995.png" title="1595434293995" data-fancybox="images"><img src="/img/ftp/1595434293995.png" alt="1595434293995" title class></a>
-                <p>1595434293995</p>
+                <a rel=TCP/IP协议-FTP href="/img/dhcp/1595422712845.png" title="1595422712845" data-fancybox="images"><img src="/img/dhcp/1595422712845.png" alt="1595422712845" title class></a>
+                <p>1595422712845</p>
             </figure>
 
 
@@ -250,12 +253,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-02-24T13:59:31.217Z" itemprop="dateUpdated">2021-02-24 21:59:31</time>
+    Last updated: <time datetime="2021-02-25T11:43:22.231Z" itemprop="dateUpdated">2021-02-25 19:43:22</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2021/02/24/FTP/" target="_blank" rel="external">http://wisejay.xyz/2021/02/24/FTP/</a>
+        转载注明出处，原文地址：<a href="/2021/02/25/DHCP/" target="_blank" rel="external">http://wisejay.xyz/2021/02/25/DHCP/</a>
         
     </div>
     <footer>
@@ -284,7 +287,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/24/FTP/&title=《TCP/IP协议-FTP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/25/DHCP/&title=《TCP/IP协议-FTP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -296,7 +299,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/24/FTP/&title=《TCP/IP协议-FTP》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/25/DHCP/&title=《TCP/IP协议-FTP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -319,21 +322,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2021/02/25/DNS/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">TCP/IP协议-FTP</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2021/02/23/HTTP/" id="post-next" class="post-nav-link">
+      <a href="/2021/02/25/DNS/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">TCP/IP协议-HTTP</h4>
+        <h4 class="title">TCP/IP协议-FTP</h4>
       </a>
     </div>
   
@@ -345,7 +341,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#FTP"><span class="post-toc-number">1.</span> <span class="post-toc-text">FTP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#控制连接"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">控制连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主动模式（PORT）"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">主动模式（PORT）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#被动模式（PASV）"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">被动模式（PASV）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据连接"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">数据连接</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#DHCP"><span class="post-toc-number">1.</span> <span class="post-toc-text">DHCP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据包分析"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据包分析</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -424,7 +420,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/24/FTP/&title=《TCP/IP协议-FTP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/25/DHCP/&title=《TCP/IP协议-FTP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -436,7 +432,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/24/FTP/&title=《TCP/IP协议-FTP》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/25/DHCP/&title=《TCP/IP协议-FTP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -448,7 +444,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3awa7CMAwEQP7/p3kSpyehtmu7CT1MTqjQdsLBijd5veLx/ozvK//H0V3fvzm/64aBi4s75r5Pxzf3/DVHlOSZ5wZcXNz93PPilU9j/psLGy4u7sO4yWSShVFeHHFxcZ/P7S2Dksng4uI+k5tQkuYkCTsmz8fFxd3DrQamKz4vzHdxcXGL3HdxJMuRJE5tvh0XF3cLNwkvkkpSbaWSBulw2ri4uFu4k+2T6pqkuk178S5cXNzF3Gqg2YtH5xswuLi4e7jzI1krYtZyvouLi7uAO9kQ7RWpfBqHsQguLu4ybr4VmmcU8zZptNGCi4s75vYC0+ok8/J327+Ci4s75ibLlKS9yadXDVBwcXH3cJN2ZVJDqixcXNzncAuHolpnIfLw9GJ5hIuLu4WbH5LoJSu9eDTKd3FxcZdxJ4uVpLHpxTGHHlxc3I3c6jGsXuQxKYW4uLj7udUW6Jzeiz+amyi4uLgLuPM25q5Wp/otLi7uau6K4pWg8+u4uLi/4q7bGqnGJRcBCi4u7sO4yYt7W7OF4BUXF/eR3MkRrl65xMXF/RW32qhUv51nnri4uDu59wamSfDRew4uLu4W7h/2hnademR53gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3ay2oDMQwF0Pz/T6fQVaFkciV51BSOV0Me5owXQg8/HvF6fq+fz78/SX5//a9jCxcXd8x9Xq5XxFe4VzvnR/DKgIuLu8+tBq8kSOWvUTgIXFzcD+PO6dd74uLi/l9utSrJjwAXF/fTuEnxc71RDl2q1XBxcQfcXsP07PPt/V1cXNxDU4le0ZKEs97CxcXd4U6GoJOSqVpKPfLuCy4u7phbLVF6g5Bj1y9wcXHXub20Jm9k5M2ON8kNLi7uzdwcOhmU5mPa5FtcXNwdbpK4JNcp8vKmOkR5E85wcXGPcvPWZ29QWk1uCvdEcHFxF7nJCCRPR/KrWlHExcXFXeeeveFw6mJW1N/FxcU9yq2OPPPuRIJuNlxwcXFXuNWrEnniMrmcETVMcXFxb+Am6Uu1SdoLXtFh4eLi/im3mtxMmqGF1iouLu4Kt7dpnjflL9/My3BxcW/gTtqj+5/j4uLucE/lD70ImrdIcHFx97nz4JUXNnmrpRl9cXFxj3KrzYvekLUa+HBxcT+fO2mJVgcto4sXuLi469xqElMduBZOAhcX92buqeKnGviqO+Pi4u5wqynLpA2aB7IRHRcXt8/9AujRmnlJXU3oAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
