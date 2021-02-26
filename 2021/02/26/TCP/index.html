@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>TCP/IP协议-DNS | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="协议">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>TCP/IP协议-DNS</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">TCP/IP协议-DNS</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-02-26T15:42:36.178Z" itemprop="datePublished" class="page-time">
+  2021-02-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-TCP"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">TCP/IP协议-DNS</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-02-26 23:42:36" datetime="2021-02-26T15:42:36.178Z"  itemprop="datePublished">2021-02-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>TCP是TCP/IP协议栈中的传输层协议，TCP称为面向字节流连接的可靠传输层协议。它给IP协议提供了面向连接的和可靠的服务</strong></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li>IP 协议的作用范围（提供主机之间的逻辑通信）</li>
+<li>TCP 和 UDP 协议的作用范围（提供进程之间的逻辑通信)</li>
+</ul>
+<figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1591332708474.png" title="1591332708474" data-fancybox="images"><img src="/img/tcp/1591332708474.png" alt="1591332708474" title class></a>
+                <p>1591332708474</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1596374648644.png" title="1596374648644" data-fancybox="images"><img src="/img/tcp/1596374648644.png" alt="1596374648644" title class></a>
+                <p>1596374648644</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1596366771908.png" title="1596366771908" data-fancybox="images"><img src="/img/tcp/1596366771908.png" alt="1596366771908" title class></a>
+                <p>1596366771908</p>
+            </figure>
+
+<p><strong>三次握手</strong></p>
+<figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1596380836503.png" title="1596380836503" data-fancybox="images"><img src="/img/tcp/1596380836503.png" alt="1596380836503" title class></a>
+                <p>1596380836503</p>
+            </figure>
+
+<p><strong>四次挥手</strong></p>
+<figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1596380853796.png" title="1596380853796" data-fancybox="images"><img src="/img/tcp/1596380853796.png" alt="1596380853796" title class></a>
+                <p>1596380853796</p>
+            </figure>
+
+<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1590765220856.png" title="1590765220856" data-fancybox="images"><img src="/img/tcp/1590765220856.png" alt="1590765220856" title class></a>
+                <p>1590765220856</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1591365771480.png" title="1591365771480" data-fancybox="images"><img src="/img/tcp/1591365771480.png" alt="1591365771480" title class></a>
+                <p>1591365771480</p>
+            </figure>
+
+<p><strong>FLAG位：</strong></p>
+<table>
+<thead>
+<tr>
+<th>RFC793定义</th>
+<th></th>
+<th></th>
+<th><strong>URG</strong></th>
+<th><strong>ACK</strong></th>
+<th><strong>PSH</strong></th>
+<th><strong>RST</strong></th>
+<th><strong>SYN</strong></th>
+<th><strong>FIN</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>RFC3168定义</strong></td>
+<td><strong>CWR</strong></td>
+<td><strong>ECN</strong></td>
+<td><strong>URG</strong></td>
+<td><strong>ACK</strong></td>
+<td><strong>PSH</strong></td>
+<td><strong>RST</strong></td>
+<td><strong>SYN</strong></td>
+<td><strong>FIN</strong></td>
+</tr>
+</tbody></table>
+<p><code>MSS (Maximum Segment Size)是 TCP 报文段中的数据字段的最大长度。数据字段加上 TCP 首部才等于整个的 TCP</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2</td>
+<td>最大数据段大小(MSS）</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>窗口扩大选项 ——占 3 字节，其中有一个字节表示移位值 S。新的窗口值等于TCP 首部中的窗口位数增大到(16 + S)，相当于把窗口值向左移动 S 位后获得实际的窗口大小。</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>允许选择的ACK(SACK)—说明发送方对于特定的ACK数据包可以有选择的使用确认</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>SACK—在SACK数据包内使用</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td>时间戳选项——占10 字节，其中最主要的字段时间戳值字段（4 字节）和时间戳回送回答字段（4 字节）。</td>
+</tr>
+</tbody></table>
+<h2 id="TCP的流量控制过程"><a href="#TCP的流量控制过程" class="headerlink" title="TCP的流量控制过程"></a>TCP的流量控制过程</h2><figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1591366377444.png" title="1591366377444" data-fancybox="images"><img src="/img/tcp/1591366377444.png" alt="1591366377444" title class></a>
+                <p>1591366377444</p>
+            </figure>
+
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1596380869826.png" title="1596380869826" data-fancybox="images"><img src="/img/tcp/1596380869826.png" alt="1596380869826" title class></a>
+                <p>1596380869826</p>
+            </figure>
+
+<h2 id="端口多路复用"><a href="#端口多路复用" class="headerlink" title="端口多路复用"></a>端口多路复用</h2><figure class="image-box">
+                <a rel=TCP/IP协议-DNS href="/img/tcp/1596380879642.png" title="1596380879642" data-fancybox="images"><img src="/img/tcp/1596380879642.png" alt="1596380879642" title class></a>
+                <p>1596380879642</p>
+            </figure>
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-02-26T15:43:35.341Z" itemprop="dateUpdated">2021-02-26 23:43:35</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/02/26/TCP/" target="_blank" rel="external">http://wisejay.xyz/2021/02/26/TCP/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.xyz">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/26/TCP/&title=《TCP/IP协议-DNS》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/26/TCP/&title=《TCP/IP协议-DNS》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/02/25/DHCP/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TCP/IP协议-DHCP</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TCP"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据包分析"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据包分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TCP的流量控制过程"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">TCP的流量控制过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#滑动窗口"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">滑动窗口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#端口多路复用"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">端口多路复用</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/26/TCP/&title=《TCP/IP协议-DNS》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/26/TCP/&title=《TCP/IP协议-DNS》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwElEQVR42u3aS27DMAwFQN//0u62QGvnkbRUoxitgiCRRhuCHx1HvM6Ldf/Lq2++f3+sWLi4uGPuebt+bp38/uqU5Eof9sTFxd3I7R1wtUM1kCUGXFzcN3Pz1OT+X7i4uP+Dm1+jl/Tg4uK+jZsUPwkrKWA21Wq4uLgDbp6srPu8pL+Li4vb4p6DlV/vqXNxcXH3cOdFTl7q9NKpXy6Pi4u7nfvYpsHOvUcbuLi4q7n3ASi5RvUJVy9Q4uLi7uT2nkz1BrHVUqqQkeHi4j7KnQ8tqk2TaopzVOMoLi7uo9wVDy/yJCmR4OLivoHba3kkD62a7VdcXNw/5U5aJ5MOxocAiouLu5FbLVGqlOplCjMfXFzcZdzqGLX6/KKa1nzo7OLi4i7m5k2QJBjNGx/R6bi4uIu51bLnbK1eKVUofnBxcR/lTgLWZNQ6Gtzi4uIu5k5C0uRi5YKnF0dxcXFb3F5wqQ5Ccnp+bVxc3NXcJHjNg051T1xc3Ddwq4Emp/SiaXMyjIuLu53ba4NOguYokOHi4m7h9kYsvSTpsbiLi4s74PYOy0cpk8db0WsyXFzcR7m9AclTjZIVY1pcXNwB9wsvN91EyT0VkQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
