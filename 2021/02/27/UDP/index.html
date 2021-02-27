@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>TCP/IP协议-TCP | Wisejay | To be better</title>
+    <title>TCP/IP协议-UDP | Wisejay | To be better</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="协议">
@@ -138,7 +138,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>TCP/IP协议-TCP</span>
+            <span>TCP/IP协议-UDP</span>
             
         </div>
         
@@ -151,11 +151,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">TCP/IP协议-TCP</h1>
+        <h1 class="title">TCP/IP协议-UDP</h1>
         <h5 class="subtitle">
             
-                <time datetime="2021-02-26T15:42:36.178Z" itemprop="datePublished" class="page-time">
-  2021-02-26
+                <time datetime="2021-02-27T14:21:18.491Z" itemprop="datePublished" class="page-time">
+  2021-02-27
 </time>
 
 
@@ -184,12 +184,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-TCP"
+    <article id="post-UDP"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">TCP/IP协议-TCP</h1>
+        <h1 class="post-card-title">TCP/IP协议-UDP</h1>
         <div class="post-meta">
-            <time class="post-time" title="2021-02-26 23:42:36" datetime="2021-02-26T15:42:36.178Z"  itemprop="datePublished">2021-02-26</time>
+            <time class="post-time" title="2021-02-27 22:21:18" datetime="2021-02-27T14:21:18.491Z"  itemprop="datePublished">2021-02-27</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
@@ -205,130 +205,44 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>TCP是TCP/IP协议栈中的传输层协议，TCP称为面向字节流连接的可靠传输层协议。它给IP协议提供了面向连接的和可靠的服务</strong></p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
-<li>IP 协议的作用范围（提供主机之间的逻辑通信）</li>
-<li>TCP 和 UDP 协议的作用范围（提供进程之间的逻辑通信)</li>
+            <h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>UDP用于实现面向无连接的不可靠协议，传输层协议。UDP是一个简单的面向数据报的传输层协议，无连接协议简单地把从TCP/IP应用层得到的消息打包到数据报中，UDP数据报只是在应用层的基础数据上添加一个首部后就传递给IP层</strong></p>
+<p><code>由于UDP没有提供任何类型的内置出错检查或重传能力来提高可靠性，这种方法称为尽最大努力交付（Best-Effort
+Delivery）</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>UDP 是面向报文的</strong></p>
+<figure class="image-box">
+                <a rel=TCP/IP协议-UDP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596365435970.png" title="1596365435970" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596365435970.png" alt="1596365435970" title class></a>
+                <p>1596365435970</p>
+            </figure>
+
+<h2 id="数据包结构"><a href="#数据包结构" class="headerlink" title="数据包结构"></a>数据包结构</h2><figure class="image-box">
+                <a rel=TCP/IP协议-UDP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591666338671.png" title="1591666338671" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591666338671.png" alt="1591666338671" title class></a>
+                <p>1591666338671</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-UDP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591666777626.png" title="1591666777626" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591666777626.png" alt="1591666777626" title class></a>
+                <p>1591666777626</p>
+            </figure>
+
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
+<li>通信过程中，源端口一般属于随机高端口，目的端口属于固定知名端口。</li>
+<li>1-1023为知名端口号范围</li>
+<li>由于IP层已经把IP数据报分配给TCP或UDP，因此TCP端口号由TCP来查看，而UDP端口号由UDP来查看，TCP端口号与UDP端口号是相互独立的</li>
+<li>UDP具有较好的通信效能，非常适合对通信开销有一定要求的场合。许多典型的应用协议采用了UDP协议来实现，例如RIP、DHCP、DNS和SNMP协议等</li>
 </ul>
-<figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591332708474.png" title="1591332708474" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591332708474.png" alt="1591332708474" title class></a>
-                <p>1591332708474</p>
-            </figure>
 
-<figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380836503.png" title="1596374648644" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380836503.png" alt="1596374648644" title class></a>
-                <p>1596374648644</p>
-            </figure>
-
-<figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596366771908.png" title="1596366771908" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596366771908.png" alt="1596366771908" title class></a>
-                <p>1596366771908</p>
-            </figure>
-
-<p><strong>三次握手</strong></p>
-<figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596374648644.png" title="1596380836503" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596374648644.png" alt="1596380836503" title class></a>
-                <p>1596380836503</p>
-            </figure>
-
-<p><strong>四次挥手</strong></p>
-<figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380853796.png" title="1596380853796" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380853796.png" alt="1596380853796" title class></a>
-                <p>1596380853796</p>
-            </figure>
-
-<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380869826.png" title="1590765220856" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380869826.png" alt="1590765220856" title class></a>
-                <p>1590765220856</p>
-            </figure>
-
-<figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590765220856.png" title="1591365771480" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590765220856.png" alt="1591365771480" title class></a>
-                <p>1591365771480</p>
-            </figure>
-
-<p><strong>FLAG位：</strong></p>
-<table>
-<thead>
-<tr>
-<th>RFC793定义</th>
-<th></th>
-<th></th>
-<th><strong>URG</strong></th>
-<th><strong>ACK</strong></th>
-<th><strong>PSH</strong></th>
-<th><strong>RST</strong></th>
-<th><strong>SYN</strong></th>
-<th><strong>FIN</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>RFC3168定义</strong></td>
-<td><strong>CWR</strong></td>
-<td><strong>ECN</strong></td>
-<td><strong>URG</strong></td>
-<td><strong>ACK</strong></td>
-<td><strong>PSH</strong></td>
-<td><strong>RST</strong></td>
-<td><strong>SYN</strong></td>
-<td><strong>FIN</strong></td>
-</tr>
-</tbody></table>
-<p><code>MSS (Maximum Segment Size)是 TCP 报文段中的数据字段的最大长度。数据字段加上 TCP 首部才等于整个的 TCP</code></p>
-<table>
-<thead>
-<tr>
-<th align="center">选项</th>
-<th>定义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">2</td>
-<td>最大数据段大小(MSS）</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td>窗口扩大选项 ——占 3 字节，其中有一个字节表示移位值 S。新的窗口值等于TCP 首部中的窗口位数增大到(16 + S)，相当于把窗口值向左移动 S 位后获得实际的窗口大小。</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td>允许选择的ACK(SACK)—说明发送方对于特定的ACK数据包可以有选择的使用确认</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td>SACK—在SACK数据包内使用</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td>时间戳选项——占10 字节，其中最主要的字段时间戳值字段（4 字节）和时间戳回送回答字段（4 字节）。</td>
-</tr>
-</tbody></table>
-<h2 id="TCP的流量控制过程"><a href="#TCP的流量控制过程" class="headerlink" title="TCP的流量控制过程"></a>TCP的流量控制过程</h2><figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380879642.png" title="1591366377444" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380879642.png" alt="1591366377444" title class></a>
-                <p>1591366377444</p>
-            </figure>
-
-<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591366377444.png" title="1596380869826" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591366377444.png" alt="1596380869826" title class></a>
-                <p>1596380869826</p>
-            </figure>
-
-<h2 id="端口多路复用"><a href="#端口多路复用" class="headerlink" title="端口多路复用"></a>端口多路复用</h2><figure class="image-box">
-                <a rel=TCP/IP协议-TCP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591365771480.png" title="1596380879642" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591365771480.png" alt="1596380879642" title class></a>
-                <p>1596380879642</p>
-            </figure>
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2021-02-27T14:21:47.790Z" itemprop="dateUpdated">2021-02-27 22:21:47</time>
+    最後更新時間：<time datetime="2021-02-27T14:22:23.176Z" itemprop="dateUpdated">2021-02-27 22:22:23</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2021/02/26/TCP/" target="_blank" rel="external">http://wisejay.xyz/2021/02/26/TCP/</a>
+        转载注明出处，原文地址：<a href="/2021/02/27/UDP/" target="_blank" rel="external">http://wisejay.xyz/2021/02/27/UDP/</a>
         
     </div>
     <footer>
@@ -357,7 +271,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/26/TCP/&title=《TCP/IP协议-TCP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/27/UDP/&title=《TCP/IP协议-UDP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -369,7 +283,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/26/TCP/&title=《TCP/IP协议-TCP》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/27/UDP/&title=《TCP/IP协议-UDP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -392,21 +306,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2021/02/27/UDP/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">TCP/IP协议-UDP</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2021/02/25/DHCP/" id="post-next" class="post-nav-link">
+      <a href="/2021/02/26/TCP/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">TCP/IP协议-DHCP</h4>
+        <h4 class="title">TCP/IP协议-TCP</h4>
       </a>
     </div>
   
@@ -418,7 +325,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TCP"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据包分析"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据包分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TCP的流量控制过程"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">TCP的流量控制过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#滑动窗口"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">滑动窗口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#端口多路复用"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">端口多路复用</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#UDP"><span class="post-toc-number">1.</span> <span class="post-toc-text">UDP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据包结构"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据包结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#拓展"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">拓展</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -497,7 +404,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/26/TCP/&title=《TCP/IP协议-TCP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/27/UDP/&title=《TCP/IP协议-UDP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -509,7 +416,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/26/TCP/&title=《TCP/IP协议-TCP》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/27/UDP/&title=《TCP/IP协议-UDP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -521,7 +428,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwElEQVR42u3aS27DMAwFQN//0u62QGvnkbRUoxitgiCRRhuCHx1HvM6Ldf/Lq2++f3+sWLi4uGPuebt+bp38/uqU5Eof9sTFxd3I7R1wtUM1kCUGXFzcN3Pz1OT+X7i4uP+Dm1+jl/Tg4uK+jZsUPwkrKWA21Wq4uLgDbp6srPu8pL+Li4vb4p6DlV/vqXNxcXH3cOdFTl7q9NKpXy6Pi4u7nfvYpsHOvUcbuLi4q7n3ASi5RvUJVy9Q4uLi7uT2nkz1BrHVUqqQkeHi4j7KnQ8tqk2TaopzVOMoLi7uo9wVDy/yJCmR4OLivoHba3kkD62a7VdcXNw/5U5aJ5MOxocAiouLu5FbLVGqlOplCjMfXFzcZdzqGLX6/KKa1nzo7OLi4i7m5k2QJBjNGx/R6bi4uIu51bLnbK1eKVUofnBxcR/lTgLWZNQ6Gtzi4uIu5k5C0uRi5YKnF0dxcXFb3F5wqQ5Ccnp+bVxc3NXcJHjNg051T1xc3Ddwq4Emp/SiaXMyjIuLu53ba4NOguYokOHi4m7h9kYsvSTpsbiLi4s74PYOy0cpk8db0WsyXFzcR7m9AclTjZIVY1pcXNwB9wsvN91EyT0VkQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aQW7DMAwEwPz/0y7QU4E08ZKU1KAYnQLHlic5ENRKj0c8ru/xfOXn9ecryf2PHQMXF3fMvd6O95T3uN78r+7BxcU9z01emd9fLWSFOXFxcT+Mm1yZ3I+Li/ufuL0FDy4u7udzk8XJjqc2rtVwcXEH3GpguuPzxnwXFxe3yL1aI2mAeuHpzXtxcXGPcJPpkgYlL3x5oxOt1XBxcTdwq8HHqh/W/DtwcXEPclcFmlHVbB3/wsXFPcnNG5SkZUkamnkBxcXF3c2dbJ3Of16+PfOY7/Ti4uK2uHlzUw1V88blpsri4uIe4c4XIdXwNN+GKdBxcXE3cPOlSPVIVrVhGm2y4uLiLuIWkpJi4etFqDcFDhcX9zi3ejxiX1tz86/g4uJu5k5K0o7DFqM9H1xc3EXcVQVrvpUSoXFxcY9wVx2xmhzO6M2Ji4u7j3sVR6/T6DVGvzyLi4t7hNvLH5KAIymIyZy4uLh/xe0dsZp8OwlTcHFxT3KrByN6hSwvmi+fwsXF/Uhu79tqULKskOHi4m7mVuPUPEDJiyMuLu5J7mTxkx/J6h3eKqS8uLi4i7i9wDSPMyabtcvyXVxc3JT7BaXEbMOVwBSjAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
