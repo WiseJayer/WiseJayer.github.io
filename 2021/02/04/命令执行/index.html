@@ -258,38 +258,38 @@
 <h2 id="漏洞产生"><a href="#漏洞产生" class="headerlink" title="漏洞产生"></a>漏洞产生</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span> shell_exec($_GET[<span class="string">'cmd'</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598801111498.png" title="1598801111498" data-fancybox="images"><img src="/img/命令执行/1598801111498.png" alt="1598801111498" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801111498.png" title="1598801111498" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801111498.png" alt="1598801111498" title class></a>
                 <p>1598801111498</p>
             </figure>
 
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2.php	动态函数调用</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"a()函数.."</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"b()函数.."</span>;</span><br><span class="line">&#125;</span><br><span class="line">$fun=$_REQUEST[<span class="string">'fun'</span>];</span><br><span class="line"><span class="keyword">echo</span> $fun();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598801174266.png" title="1598801174266" data-fancybox="images"><img src="/img/命令执行/1598801174266.png" alt="1598801174266" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801174266.png" title="1598801174266" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801174266.png" alt="1598801174266" title class></a>
                 <p>1598801174266</p>
             </figure>
 
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598801216337.png" title="1598801216337" data-fancybox="images"><img src="/img/命令执行/1598801216337.png" alt="1598801216337" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801425250.png" title="1598801216337" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801425250.png" alt="1598801216337" title class></a>
                 <p>1598801216337</p>
             </figure>
 
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#3.php 动态函数调用（传递参数）</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $fun = $_GET[<span class="string">'fun'</span>];</span><br><span class="line">    $par = $_GET[<span class="string">'par'</span>];</span><br><span class="line">    $fun($par);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598801287452.png" title="1598801287452" data-fancybox="images"><img src="/img/命令执行/1598801287452.png" alt="1598801287452" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801287452.png" title="1598801287452" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801287452.png" alt="1598801287452" title class></a>
                 <p>1598801287452</p>
             </figure>
 
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598801425250.png" title="1598801425250" data-fancybox="images"><img src="/img/命令执行/1598801425250.png" alt="1598801425250" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801625275.png" title="1598801425250" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801625275.png" alt="1598801425250" title class></a>
                 <p>1598801425250</p>
             </figure>
 
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#4.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $arr = $_GET[<span class="string">'arr'</span>];</span><br><span class="line">	$array = <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">	$new_array = array_map($arr,$array);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598801625275.png" title="1598801625275" data-fancybox="images"><img src="/img/命令执行/1598801625275.png" alt="1598801625275" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598843280659.png" title="1598801625275" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598843280659.png" alt="1598801625275" title class></a>
                 <p>1598801625275</p>
             </figure>
 
@@ -297,7 +297,7 @@
 <p>这里默认是输入一个IP地址就会返回ping的信息，我们利用连接符可以再后面添加我们的命令，并且没有任何过滤</p>
 </blockquote>
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598843280659.png" title="1598843280659" data-fancybox="images"><img src="/img/命令执行/1598843280659.png" alt="1598843280659" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598844048445.png" title="1598843280659" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598844048445.png" alt="1598843280659" title class></a>
                 <p>1598843280659</p>
             </figure>
 
@@ -305,7 +305,7 @@
 <p>这里也没有进行严格过滤</p>
 </blockquote>
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598843280659.png" title="1598843280659" data-fancybox="images"><img src="/img/命令执行/1598843280659.png" alt="1598843280659" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598844048445.png" title="1598843280659" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598844048445.png" alt="1598843280659" title class></a>
                 <p>1598843280659</p>
             </figure>
 
@@ -313,7 +313,7 @@
 <p>进行了过滤，所以这里需要绕过</p>
 </blockquote>
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598843675551.png" title="1598843675551" data-fancybox="images"><img src="/img/命令执行/1598843675551.png" alt="1598843675551" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598843675551.png" title="1598843675551" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598843675551.png" alt="1598843675551" title class></a>
                 <p>1598843675551</p>
             </figure>
 
@@ -321,7 +321,7 @@
 <p>这里对<code>|</code>的过滤是过滤<code>|</code>后面带一个空格，所以我们不输入空格直接执行即可</p>
 </blockquote>
 <figure class="image-box">
-                <a rel=web安全-命令执行 href="/img/命令执行/1598844048445.png" title="1598844048445" data-fancybox="images"><img src="/img/命令执行/1598844048445.png" alt="1598844048445" title class></a>
+                <a rel=web安全-命令执行 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801216337.png" title="1598844048445" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1598801216337.png" alt="1598844048445" title class></a>
                 <p>1598844048445</p>
             </figure>
 
@@ -337,7 +337,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-02-04T14:29:22.219Z" itemprop="dateUpdated">2021-02-04 22:29:22</time>
+    最後更新時間：<time datetime="2021-02-27T12:29:12.600Z" itemprop="dateUpdated">2021-02-27 20:29:12</time>
 </span><br>
 
 
