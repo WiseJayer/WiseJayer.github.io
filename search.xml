@@ -3,6 +3,117 @@
   
     
     <entry>
+      <title><![CDATA[TCP/IP协议-IP]]></title>
+      <url>/2021/03/02/IP/</url>
+      <content type="html"><![CDATA[<h1 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>IP用于实现数据的不可靠面向无连接的通信，实现三层数据封装与IP寻址</strong></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596364442923.png" alt="1596364442923" title class>
+                <p>1596364442923</p>
+            </figure>
+
+<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><ul>
+<li><p>一个 IP 数据报由首部和数据两部分组成</p>
+</li>
+<li><p>首部的前一部分是固定长度，共 20 字节，是所有 IP 数据报必须具有的</p>
+</li>
+<li><p>在首部的固定部分的后面是一些可选字段，其长度是可变的 </p>
+</li>
+</ul>
+<p><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590596009691.png" alt="1590596009691"></p>
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590637295000.png" alt="1590637295000" title class>
+                <p>1590637295000</p>
+            </figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>版本号</strong></td>
+<td>表示IP协议版本，对IPv4来说这个值总是4bit</td>
+</tr>
+<tr>
+<td align="center"><strong>头部长度</strong></td>
+<td>头部长度（默认为20字节）</td>
+</tr>
+<tr>
+<td align="center"><strong>服务类型</strong></td>
+<td>为应用程序、主机或路由器处理报文提供一个优先级服务标志</td>
+</tr>
+<tr>
+<td align="center"><strong>总长度</strong></td>
+<td>指整个IP数据报以字节为单位的长度。用于区分IP头部和数据包，接收方根据长度字段知道从哪里解封装</td>
+</tr>
+<tr>
+<td align="center"><strong>标识符</strong></td>
+<td>唯一地标识主机发送的每一份数据报，用于标志分片的进程</td>
+</tr>
+<tr>
+<td align="center"><strong>标志符</strong></td>
+<td>MF 为1表示还有分片，本报文不是最后一个分片报文，为0表示本是最后一个分片报文。当DF为0时才允许分片</td>
+</tr>
+<tr>
+<td align="center"><strong>分片偏移</strong></td>
+<td>用于告知接收方每个分片距离IP头部的位置，才能实现有序的重新组装</td>
+</tr>
+<tr>
+<td align="center"><strong>生存时间</strong></td>
+<td>TTL值最大为255，标志路径长短防止环路</td>
+</tr>
+<tr>
+<td align="center"><strong>协议号</strong></td>
+<td>上层协议</td>
+</tr>
+<tr>
+<td align="center"><strong>头部校验和</strong></td>
+<td>验证数据包的完整性。检验和不对首部后面的数据进行计算</td>
+</tr>
+<tr>
+<td align="center"><strong>源地址</strong></td>
+<td>发送方IP地址</td>
+</tr>
+<tr>
+<td align="center"><strong>目的地址</strong></td>
+<td>接收方IP地址</td>
+</tr>
+</tbody></table>
+<h2 id="分片与重组"><a href="#分片与重组" class="headerlink" title="分片与重组"></a>分片与重组</h2><figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596365153423.png" alt="1596365153423" title class>
+                <p>1596365153423</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590636929934.png" alt="1590636929934" title class>
+                <p>1590636929934</p>
+            </figure>
+
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
+<li>IP数据报的分片与重组是在网络层进完成的</li>
+<li>TCP报文段的分段与重组是在运输层完成的</li>
+<li>UDP不会分段，就由IP来分。TCP会分段，就不用IP来分</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 协议 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 协议 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[TCP/IP协议-UDP]]></title>
       <url>/2021/02/27/UDP/</url>
       <content type="html"><![CDATA[<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>UDP用于实现面向无连接的不可靠协议，传输层协议。UDP是一个简单的面向数据报的传输层协议，无连接协议简单地把从TCP/IP应用层得到的消息打包到数据报中，UDP数据报只是在应用层的基础数据上添加一个首部后就传递给IP层</strong></p>
