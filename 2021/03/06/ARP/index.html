@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>TCP/IP协议-UDP | Wisejay | To be better</title>
+    <title>TCP/IP协议-ARP | Wisejay | To be better</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="协议">
@@ -138,7 +138,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>TCP/IP协议-UDP</span>
+            <span>TCP/IP协议-ARP</span>
             
         </div>
         
@@ -151,11 +151,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">TCP/IP协议-UDP</h1>
+        <h1 class="title">TCP/IP协议-ARP</h1>
         <h5 class="subtitle">
             
-                <time datetime="2021-02-27T14:21:18.491Z" itemprop="datePublished" class="page-time">
-  2021-02-27
+                <time datetime="2021-03-06T06:00:56.002Z" itemprop="datePublished" class="page-time">
+  2021-03-06
 </time>
 
 
@@ -184,12 +184,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-UDP"
+    <article id="post-ARP"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">TCP/IP协议-UDP</h1>
+        <h1 class="post-card-title">TCP/IP协议-ARP</h1>
         <div class="post-meta">
-            <time class="post-time" title="2021-02-27 22:21:18" datetime="2021-02-27T14:21:18.491Z"  itemprop="datePublished">2021-02-27</time>
+            <time class="post-time" title="2021-03-06 14:00:56" datetime="2021-03-06T06:00:56.002Z"  itemprop="datePublished">2021-03-06</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
@@ -205,30 +205,54 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>UDP用于实现面向无连接的不可靠协议，传输层协议。UDP是一个简单的面向数据报的传输层协议，无连接协议简单地把从TCP/IP应用层得到的消息打包到数据报中，UDP数据报只是在应用层的基础数据上添加一个首部后就传递给IP层</strong></p>
-<p><code>由于UDP没有提供任何类型的内置出错检查或重传能力来提高可靠性，这种方法称为尽最大努力交付（Best-Effort
-Delivery）</code></p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>UDP 是面向报文的</strong></p>
+            <h1 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>ARP用于实现IP地址到MAC地址映射</strong>（IP→MAC）</p>
+<p><code>地址解析协议，即ARP（Address Resolution Protocol），是根据IP地址获取物理地址的一个TCP/IP协议。主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。地址解析协议是建立在网络中各个主机互相信任的基础上的，局域网络上的主机可以自主发送ARP应答消息，其他主机收到应答报文时不会检测该报文的真实性就会将其记入本机ARP缓存；由此攻击者就可以向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机，这就构成了一个ARP欺骗。ARP命令可用于查询本机ARP缓存中IP地址和MAC地址的对应关系、添加或删除静态对应关系等。</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590596598243.png" title="1596339018946" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590596598243.png" alt="1596339018946" title class></a>
+                <p>1596339018946</p>
+            </figure>
+
+<h2 id="数据包"><a href="#数据包" class="headerlink" title="数据包"></a>数据包</h2><ul>
+<li>ARP数据包的长度固定为28 bytes</li>
+</ul>
+<p><strong>报文格式</strong></p>
 <figure class="image-box">
-                <a rel=TCP/IP协议-UDP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596365435970.png" title="1596365435970" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596365435970.png" alt="1596365435970" title class></a>
-                <p>1596365435970</p>
-            </figure>
-
-<h2 id="数据包结构"><a href="#数据包结构" class="headerlink" title="数据包结构"></a>数据包结构</h2><figure class="image-box">
-                <a rel=TCP/IP协议-UDP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591666338671.png" title="1591666338671" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591666338671.png" alt="1591666338671" title class></a>
-                <p>1591666338671</p>
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596339018946.png" title="1590596598243" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596339018946.png" alt="1590596598243" title class></a>
+                <p>1590596598243</p>
             </figure>
 
 <figure class="image-box">
-                <a rel=TCP/IP协议-UDP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591666777626.png" title="1591666777626" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1591666777626.png" alt="1591666777626" title class></a>
-                <p>1591666777626</p>
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493175549.png" title="1590491854669" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493175549.png" alt="1590491854669" title class></a>
+                <p>1590491854669</p>
             </figure>
 
-<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
-<li>通信过程中，源端口一般属于随机高端口，目的端口属于固定知名端口。</li>
-<li>1-1023为知名端口号范围</li>
-<li>由于IP层已经把IP数据报分配给TCP或UDP，因此TCP端口号由TCP来查看，而UDP端口号由UDP来查看，TCP端口号与UDP端口号是相互独立的</li>
-<li>UDP具有较好的通信效能，非常适合对通信开销有一定要求的场合。许多典型的应用协议采用了UDP协议来实现，例如RIP、DHCP、DNS和SNMP协议等</li>
+<figure class="image-box">
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493282072.png" title="1590492093776" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493282072.png" alt="1590492093776" title class></a>
+                <p>1590492093776</p>
+            </figure>
+
+<p><strong>请求包</strong></p>
+<figure class="image-box">
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590491854669.png" title="1590493175549" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590491854669.png" alt="1590493175549" title class></a>
+                <p>1590493175549</p>
+            </figure>
+
+<p><strong>回应包</strong></p>
+<figure class="image-box">
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590492093776.png" title="1590493282072" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590492093776.png" alt="1590493282072" title class></a>
+                <p>1590493282072</p>
+            </figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><strong>免费ARP</strong>：查询想使用的ip地址是否在局域网中已被占用</li>
+<li><strong>代理ARP</strong>:向另一个网络发送ARP请求时，路由器主机返回自己的mac作为目的地址</li>
+<li><strong>RARP(翻转ARP)</strong>：通过MAC地址获得ip地址</li>
+<li><strong>IARP(逆向ARP):</strong>DLCI到IP的映射,应用在帧中继网络中</li>
+</ul>
+<h2 id="ARP命令"><a href="#ARP命令" class="headerlink" title="ARP命令"></a>ARP命令</h2><ul>
+<li>arp -a:显示接口当前的ARP缓存表</li>
+<li>arp -d:删除指定IP项目</li>
+<li>arp -s:添加静态绑定</li>
 </ul>
 
         </div>
@@ -237,12 +261,12 @@ Delivery）</code></p>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-02-27T14:22:23.176Z" itemprop="dateUpdated">2021-02-27 22:22:23</time>
+    最后更新时间：<time datetime="2021-03-06T06:03:31.723Z" itemprop="dateUpdated">2021-03-06 14:03:31</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2021/02/27/UDP/" target="_blank" rel="external">http://wisejay.xyz/2021/02/27/UDP/</a>
+        转载注明出处，原文地址：<a href="/2021/03/06/ARP/" target="_blank" rel="external">http://wisejay.xyz/2021/03/06/ARP/</a>
         
     </div>
     <footer>
@@ -271,7 +295,7 @@ Delivery）</code></p>
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/27/UDP/&title=《TCP/IP协议-UDP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/03/06/ARP/&title=《TCP/IP协议-ARP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -283,7 +307,7 @@ Delivery）</code></p>
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/27/UDP/&title=《TCP/IP协议-UDP》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/03/06/ARP/&title=《TCP/IP协议-ARP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -309,18 +333,18 @@ Delivery）</code></p>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2021/03/02/IP/" id="post-prev" class="post-nav-link">
+      <a href="/2021/03/06/ICMP/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">TCP/IP协议-IP</h4>
+        <h4 class="title">TCP/IP协议-ICMP</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2021/02/26/TCP/" id="post-next" class="post-nav-link">
+      <a href="/2021/03/02/IP/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">TCP/IP协议-TCP</h4>
+        <h4 class="title">TCP/IP协议-IP</h4>
       </a>
     </div>
   
@@ -332,7 +356,7 @@ Delivery）</code></p>
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#UDP"><span class="post-toc-number">1.</span> <span class="post-toc-text">UDP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据包结构"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据包结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#拓展"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">拓展</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ARP协议"><span class="post-toc-number">1.</span> <span class="post-toc-text">ARP协议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据包"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">其他</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ARP命令"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">ARP命令</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -411,7 +435,7 @@ Delivery）</code></p>
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/02/27/UDP/&title=《TCP/IP协议-UDP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/03/06/ARP/&title=《TCP/IP协议-ARP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -423,7 +447,7 @@ Delivery）</code></p>
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/02/27/UDP/&title=《TCP/IP协议-UDP》 — Wisejay&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/03/06/ARP/&title=《TCP/IP协议-ARP》 — Wisejay&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -435,7 +459,7 @@ Delivery）</code></p>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aQW7DMAwEwPz/0y7QU4E08ZKU1KAYnQLHlic5ENRKj0c8ru/xfOXn9ecryf2PHQMXF3fMvd6O95T3uN78r+7BxcU9z01emd9fLWSFOXFxcT+Mm1yZ3I+Li/ufuL0FDy4u7udzk8XJjqc2rtVwcXEH3GpguuPzxnwXFxe3yL1aI2mAeuHpzXtxcXGPcJPpkgYlL3x5oxOt1XBxcTdwq8HHqh/W/DtwcXEPclcFmlHVbB3/wsXFPcnNG5SkZUkamnkBxcXF3c2dbJ3Of16+PfOY7/Ti4uK2uHlzUw1V88blpsri4uIe4c4XIdXwNN+GKdBxcXE3cPOlSPVIVrVhGm2y4uLiLuIWkpJi4etFqDcFDhcX9zi3ejxiX1tz86/g4uJu5k5K0o7DFqM9H1xc3EXcVQVrvpUSoXFxcY9wVx2xmhzO6M2Ji4u7j3sVR6/T6DVGvzyLi4t7hNvLH5KAIymIyZy4uLh/xe0dsZp8OwlTcHFxT3KrByN6hSwvmi+fwsXF/Uhu79tqULKskOHi4m7mVuPUPEDJiyMuLu5J7mTxkx/J6h3eKqS8uLi4i7i9wDSPMyabtcvyXVxc3JT7BaXEbMOVwBSjAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzUlEQVR42u3aSW6FMBAFQO5/abLNIjav29hCUXn1xWcoWLR68HXF6x6s+ZmjI7+PXzsWLi7uMveertGtE1B+fmLAxcU9z80f8NbLzO8wPI6Li/tJbp6mzEMSLi7u/+DOw9Z60oOLi/s1bpLEJI2MpIA5VKvh4uIucPMu5b7fW/q7uLi4Le7dWnnS8/JzcXFxj3CrQScvZtYnpMPPgYuLu5mbtzLzkiY50mys4OLiHuEm26rywFQdx86vunqPx8XFPcKdDzmqYS5viUYNFFxc3A3cPHz0BiR5oIw+Ey4u7nFub1tVkuJUrxqWT7i4uMe5K9sv1hOjKF7h4uIe4a6MOvLXqLZim7UaLi7uBm4+QM3Hor17FoYouLi4G7i9QUgetnppzcM+EVxc3M3c6iaM5N9qSbOUheHi4m7grqQpd7yq05CHISsuLu5m7gq0twmjutvqj/vg4uJu5t7F1SxX4ldd6ubi4uK+xF0PLkkJVE1oXkDj4uIuc3vbL3qgPJDh4uJ+gdsLNNXubB5NH0atuLi4n+GuFyq9oImLi/tl7vyqHJGHvJfjLi4ubpHbe1hv61V12jOc/ODi4m7j5qlJrzHaG6u80N/FxcXtcH8AwWK0e34aGQEAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

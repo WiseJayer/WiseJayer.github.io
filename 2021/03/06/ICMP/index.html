@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>TCP/IP协议-ICMP | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="协议">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>TCP/IP协议-ICMP</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">TCP/IP协议-ICMP</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-03-06T06:05:09.530Z" itemprop="datePublished" class="page-time">
+  2021-03-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-ICMP"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">TCP/IP协议-ICMP</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-03-06 14:05:09" datetime="2021-03-06T06:05:09.530Z"  itemprop="datePublished">2021-03-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/协议/">协议</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>​      <strong>ICMP用于在IP主机、路由器之间传递控制消息。控制消息是指网络通不通、主机是否可达、路由是否可用等网络本身的消息。这些控制消息并不传输用户数据，但是对于用户数据的传递起着重要的作用。</strong> </p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
+                <a rel=TCP/IP协议-ICMP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590497892010.png" title="1590497892010" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590497892010.png" alt="1590497892010" title class></a>
+                <p>1590497892010</p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-ICMP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596364034828.png" title="1590497909864" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596364034828.png" alt="1590497909864" title class></a>
+                <p>1590497909864</p>
+            </figure>
+
+<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><p><strong>报文格式</strong></p>
+<figure class="image-box">
+                <a rel=TCP/IP协议-ICMP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590497909864.png" title="" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590497909864.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<figure class="image-box">
+                <a rel=TCP/IP协议-ICMP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590497291991.png" title="1596364034828" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590497291991.png" alt="1596364034828" title class></a>
+                <p>1596364034828</p>
+            </figure>
+
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TYPE</td>
+<td align="center">CODE</td>
+<td align="center">Description</td>
+<td align="center">Query</td>
+<td align="center">Error</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">Echo Reply——回显应答（Ping应答）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">Network Unreachable——网络不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">Host Unreachable——主机不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">Protocol Unreachable——协议不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">Port Unreachable——端口不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">Fragmentation needed but no frag. bit set——需要进行分片但设置不分片比特</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">Source routing failed——源站选路失败</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">Destination network unknown——目的网络未知</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">7</td>
+<td align="center">Destination host unknown——目的主机未知</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">Source host isolated (obsolete)——源主机被隔离（作废不用）</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">9</td>
+<td align="center">Destination network administratively prohibited——目的网络被强制禁止</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">10</td>
+<td align="center">Destination host administratively prohibited——目的主机被强制禁止</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">11</td>
+<td align="center">Network unreachable for TOS——由于服务类型TOS，网络不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">12</td>
+<td align="center">Host unreachable for TOS——由于服务类型TOS，主机不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">13</td>
+<td align="center">Communication administratively prohibited by filtering——由于过滤，通信被强制禁止</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">14</td>
+<td align="center">Host precedence violation——主机越权</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">15</td>
+<td align="center">Precedence cutoff in effect——优先中止生效</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">Source quench——源端被关闭（基本流控制）</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">Redirect for network——对网络重定向</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">Redirect for host——对主机重定向</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">Redirect for TOS and network——对服务类型和网络重定向</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">Redirect for TOS and host——对服务类型和主机重定向</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">Echo request——回显请求（Ping请求）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">0</td>
+<td align="center">Router advertisement——路由器通告</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">Route solicitation——路由器请求</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">0</td>
+<td align="center">TTL equals 0 during transit——传输期间生存时间为0</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">1</td>
+<td align="center">TTL equals 0 during reassembly——在数据报组装期间生存时间为0</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">IP header bad (catchall error)——坏的IP首部（包括各种差错）</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">1</td>
+<td align="center">Required options missing——缺少必需的选项</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">0</td>
+<td align="center">Timestamp request (obsolete)——时间戳请求（作废不用）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center"></td>
+<td align="center">Timestamp reply (obsolete)——时间戳应答（作废不用）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">0</td>
+<td align="center">Information request (obsolete)——信息请求（作废不用）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">0</td>
+<td align="center">Information reply (obsolete)——信息应答（作废不用）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">0</td>
+<td align="center">Address mask request——地址掩码请求</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">0</td>
+<td align="center">Address mask reply——地址掩码应答</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><strong>回显请求</strong></p>
+<figure class="image-box">
+                <a rel=TCP/IP协议-ICMP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590594453579.png" title="1590594423632" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590594453579.png" alt="1590594423632" title class></a>
+                <p>1590594423632</p>
+            </figure>
+
+<p><strong>回显应答</strong></p>
+<figure class="image-box">
+                <a rel=TCP/IP协议-ICMP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590594423632.png" title="1590594453579" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590594423632.png" alt="1590594453579" title class></a>
+                <p>1590594453579</p>
+            </figure>
+
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-03-06T06:05:29.742Z" itemprop="dateUpdated">2021-03-06 14:05:29</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/03/06/ICMP/" target="_blank" rel="external">http://wisejay.xyz/2021/03/06/ICMP/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.xyz">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/03/06/ICMP/&title=《TCP/IP协议-ICMP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/03/06/ICMP/&title=《TCP/IP协议-ICMP》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/03/06/ARP/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TCP/IP协议-ARP</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ICMP"><span class="post-toc-number">1.</span> <span class="post-toc-text">ICMP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据包分析"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据包分析</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/03/06/ICMP/&title=《TCP/IP协议-ICMP》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/03/06/ICMP/&title=《TCP/IP协议-ICMP》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzUlEQVR42u3aSW7DMAwF0Nz/0u6mixap7U9qqFs8rYzAUZ6yIDjo9YrX8ba+fn72fPat9/cnL1xc3GHucbne38l3yN9JDLi4uPu5Z4gz7nVQy8NcbsDFxX0yNz9GnuLg4uL+J24v0cHFxf0r3KQ46bU/rvsbC2s1XFzcAW5v67nPS/q7uLi4Le7RWtXQNv6Ln/vg4uJu4fZanyOtjaQcwsXFfQL3mtUbnySB7PrzqPjBxcVdwM1bD9WGxawG67c/BRcX9zHc/DDVdmr18Li4uPu5eRkzkk9Vd4iiIy4u7gLuSJMiSk1aM5Ef9sfFxd3C7V2oytugyQAmD6O4uLh7uCOD1ZF2SV4a3RQ/uLi4C7h5eZMPX8dHqri4uL/LnTXkqA5jmskWLi7uFm6SuMy9qJEHvptYi4uLu4zbux4x3ompNkpwcXF3cpMA1AtVhX5t1YOLi7uYexRXM4eK2yLTRim4uLjzI0l0sGoaVH0eOgAuLu4wd2S8mrdXeinRTcWGi4u7mNu7KjFy/aI5esHFxX0Yt5qO5KPZwjUOXFzch3GrF7aSMFfdGRcXdye3Wqj0SqPeVbBmWwQXF3eAWx18VlOZakHVG9Lg4uJO4n4AbeuLsrY3QmMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>

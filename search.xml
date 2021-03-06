@@ -3,6 +3,392 @@
   
     
     <entry>
+      <title><![CDATA[TCP/IP协议-ICMP]]></title>
+      <url>/2021/03/06/ICMP/</url>
+      <content type="html"><![CDATA[<h1 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>​      <strong>ICMP用于在IP主机、路由器之间传递控制消息。控制消息是指网络通不通、主机是否可达、路由是否可用等网络本身的消息。这些控制消息并不传输用户数据，但是对于用户数据的传递起着重要的作用。</strong> </p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590497892010.png" alt="1590497892010" title class>
+                <p>1590497892010</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596364034828.png" alt="1590497909864" title class>
+                <p>1590497909864</p>
+            </figure>
+
+<h2 id="数据包分析"><a href="#数据包分析" class="headerlink" title="数据包分析"></a>数据包分析</h2><p><strong>报文格式</strong></p>
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590497909864.png" alt title class>
+                <p></p>
+            </figure>
+
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590497291991.png" alt="1596364034828" title class>
+                <p>1596364034828</p>
+            </figure>
+
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TYPE</td>
+<td align="center">CODE</td>
+<td align="center">Description</td>
+<td align="center">Query</td>
+<td align="center">Error</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">Echo Reply——回显应答（Ping应答）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">Network Unreachable——网络不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">Host Unreachable——主机不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">Protocol Unreachable——协议不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">Port Unreachable——端口不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">Fragmentation needed but no frag. bit set——需要进行分片但设置不分片比特</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">Source routing failed——源站选路失败</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">Destination network unknown——目的网络未知</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">7</td>
+<td align="center">Destination host unknown——目的主机未知</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">Source host isolated (obsolete)——源主机被隔离（作废不用）</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">9</td>
+<td align="center">Destination network administratively prohibited——目的网络被强制禁止</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">10</td>
+<td align="center">Destination host administratively prohibited——目的主机被强制禁止</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">11</td>
+<td align="center">Network unreachable for TOS——由于服务类型TOS，网络不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">12</td>
+<td align="center">Host unreachable for TOS——由于服务类型TOS，主机不可达</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">13</td>
+<td align="center">Communication administratively prohibited by filtering——由于过滤，通信被强制禁止</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">14</td>
+<td align="center">Host precedence violation——主机越权</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">15</td>
+<td align="center">Precedence cutoff in effect——优先中止生效</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">Source quench——源端被关闭（基本流控制）</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">Redirect for network——对网络重定向</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">Redirect for host——对主机重定向</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">Redirect for TOS and network——对服务类型和网络重定向</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">Redirect for TOS and host——对服务类型和主机重定向</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">Echo request——回显请求（Ping请求）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">0</td>
+<td align="center">Router advertisement——路由器通告</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">Route solicitation——路由器请求</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">0</td>
+<td align="center">TTL equals 0 during transit——传输期间生存时间为0</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">1</td>
+<td align="center">TTL equals 0 during reassembly——在数据报组装期间生存时间为0</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">IP header bad (catchall error)——坏的IP首部（包括各种差错）</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">1</td>
+<td align="center">Required options missing——缺少必需的选项</td>
+<td align="center"></td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">0</td>
+<td align="center">Timestamp request (obsolete)——时间戳请求（作废不用）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center"></td>
+<td align="center">Timestamp reply (obsolete)——时间戳应答（作废不用）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">0</td>
+<td align="center">Information request (obsolete)——信息请求（作废不用）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">0</td>
+<td align="center">Information reply (obsolete)——信息应答（作废不用）</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">0</td>
+<td align="center">Address mask request——地址掩码请求</td>
+<td align="center">v</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">0</td>
+<td align="center">Address mask reply——地址掩码应答</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><strong>回显请求</strong></p>
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590594453579.png" alt="1590594423632" title class>
+                <p>1590594423632</p>
+            </figure>
+
+<p><strong>回显应答</strong></p>
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590594423632.png" alt="1590594453579" title class>
+                <p>1590594453579</p>
+            </figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 协议 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 协议 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[TCP/IP协议-ARP]]></title>
+      <url>/2021/03/06/ARP/</url>
+      <content type="html"><![CDATA[<h1 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>ARP用于实现IP地址到MAC地址映射</strong>（IP→MAC）</p>
+<p><code>地址解析协议，即ARP（Address Resolution Protocol），是根据IP地址获取物理地址的一个TCP/IP协议。主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。地址解析协议是建立在网络中各个主机互相信任的基础上的，局域网络上的主机可以自主发送ARP应答消息，其他主机收到应答报文时不会检测该报文的真实性就会将其记入本机ARP缓存；由此攻击者就可以向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机，这就构成了一个ARP欺骗。ARP命令可用于查询本机ARP缓存中IP地址和MAC地址的对应关系、添加或删除静态对应关系等。</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590596598243.png" alt="1596339018946" title class>
+                <p>1596339018946</p>
+            </figure>
+
+<h2 id="数据包"><a href="#数据包" class="headerlink" title="数据包"></a>数据包</h2><ul>
+<li>ARP数据包的长度固定为28 bytes</li>
+</ul>
+<p><strong>报文格式</strong></p>
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596339018946.png" alt="1590596598243" title class>
+                <p>1590596598243</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493175549.png" alt="1590491854669" title class>
+                <p>1590491854669</p>
+            </figure>
+
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493282072.png" alt="1590492093776" title class>
+                <p>1590492093776</p>
+            </figure>
+
+<p><strong>请求包</strong></p>
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590491854669.png" alt="1590493175549" title class>
+                <p>1590493175549</p>
+            </figure>
+
+<p><strong>回应包</strong></p>
+<figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590492093776.png" alt="1590493282072" title class>
+                <p>1590493282072</p>
+            </figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><strong>免费ARP</strong>：查询想使用的ip地址是否在局域网中已被占用</li>
+<li><strong>代理ARP</strong>:向另一个网络发送ARP请求时，路由器主机返回自己的mac作为目的地址</li>
+<li><strong>RARP(翻转ARP)</strong>：通过MAC地址获得ip地址</li>
+<li><strong>IARP(逆向ARP):</strong>DLCI到IP的映射,应用在帧中继网络中</li>
+</ul>
+<h2 id="ARP命令"><a href="#ARP命令" class="headerlink" title="ARP命令"></a>ARP命令</h2><ul>
+<li>arp -a:显示接口当前的ARP缓存表</li>
+<li>arp -d:删除指定IP项目</li>
+<li>arp -s:添加静态绑定</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 协议 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 协议 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[TCP/IP协议-IP]]></title>
       <url>/2021/03/02/IP/</url>
       <content type="html"><![CDATA[<h1 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>IP用于实现数据的不可靠面向无连接的通信，实现三层数据封装与IP寻址</strong></p>
