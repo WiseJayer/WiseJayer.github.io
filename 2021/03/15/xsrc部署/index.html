@@ -222,7 +222,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull xsrc/xsrc:v1.0.1</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315155226841.png" title="image-20210315161325629" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315155226841.png" alt="image-20210315161325629" title class></a>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161325629.png" title="image-20210315161325629" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161325629.png" alt="image-20210315161325629" title class></a>
                 <p>image-20210315161325629</p>
             </figure>
 
@@ -230,20 +230,20 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//启动</span><br><span class="line">docker run -it -d --name xsrc_web -p 80:80 --privileged=true xsrc/xsrc:v1.0.1 /sbin/init</span><br><span class="line">//进入容器</span><br><span class="line">docker exec -it (容器名 -&gt; docker ps -a 指令查看) /bin/bash</span><br><span class="line">service mysql start</span><br><span class="line">// 注意修改MySQL默认账户密码</span><br><span class="line">mysql -uroot -pxSRC_2nv_Cha1gEMe（旧密码）</span><br><span class="line">//设置新密码</span><br><span class="line">ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password USING PASSWORD("wisejay")</span><br><span class="line">// 修改默认密码结束</span><br><span class="line">service nginx start</span><br><span class="line">service php-fpm start</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161325629.png" title="image-20210315161358108" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161325629.png" alt="image-20210315161358108" title class></a>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161358108.png" title="image-20210315161358108" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161358108.png" alt="image-20210315161358108" title class></a>
                 <p>image-20210315161358108</p>
             </figure>
 
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161358108.png" title="image-20210315155226841" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161358108.png" alt="image-20210315155226841" title class></a>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315155226841.png" title="image-20210315155226841" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315155226841.png" alt="image-20210315155226841" title class></a>
                 <p>image-20210315155226841</p>
             </figure>
 
 <p>访问站点进行初始化</p>
 <p>http://<your-ip>/install.php</your-ip></p>
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161600714.png" title="image-20210315194318172" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161600714.png" alt="image-20210315194318172" title class></a>
-                <p>image-20210315194318172</p>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161600714.png" title="image-20210315161600714" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161600714.png" alt="image-20210315161600714" title class></a>
+                <p>image-20210315161600714</p>
             </figure>
 
 <p>设置数据库</p>
@@ -272,20 +272,20 @@
 </tr>
 </tbody></table>
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161741588.png" title="image-20210315194250143" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161741588.png" alt="image-20210315194250143" title class></a>
-                <p>image-20210315194250143</p>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161741588.png" title="image-20210315161741588" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161741588.png" alt="image-20210315161741588" title class></a>
+                <p>image-20210315161741588</p>
             </figure>
 
 <p>创建站点管理员用户名（将用于前台展示）、邮箱（将用于登陆管理后台）及密码</p>
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161943765.png" title="image-20210315194127896" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161943765.png" alt="image-20210315194127896" title class></a>
-                <p>image-20210315194127896</p>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161943765.png" title="image-20210315161943765" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315161943765.png" alt="image-20210315161943765" title class></a>
+                <p>image-20210315161943765</p>
             </figure>
 
 <p>填入站点SMTP配置信息，后续将用于用户注册、报告通知等功能</p>
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315162137989.png" title="image-20210315193617875" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315162137989.png" alt="image-20210315193617875" title class></a>
-                <p>image-20210315193617875</p>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315162137989.png" title="image-20210315162137989" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315162137989.png" alt="image-20210315162137989" title class></a>
+                <p>image-20210315162137989</p>
             </figure>
 
 <p>完成安装即可</p>
@@ -295,21 +295,21 @@
 
 <h2 id="错误解决"><a href="#错误解决" class="headerlink" title="错误解决"></a>错误解决</h2><p>跳转后不显示错误信息</p>
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315193321924.png" title="image-20210315161600714" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315193321924.png" alt="image-20210315161600714" title class></a>
-                <p>image-20210315161600714</p>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315193321924.png" title="image-20210315193321924" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315193321924.png" alt="image-20210315193321924" title class></a>
+                <p>image-20210315193321924</p>
             </figure>
 
 <p>查看源码发现作者把所有错误都输出到$this-&gt;error中</p>
 <p>通过在ThinkPHP\Conf\convention.php找到$this-&gt;error跳转的模板是ThinkPHP\Tpl\dispatch_jump.tpl</p>
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315193617875.png" title="image-20210315161741588" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315193617875.png" alt="image-20210315161741588" title class></a>
-                <p>image-20210315161741588</p>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315193617875.png" title="image-20210315193617875" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315193617875.png" alt="image-20210315193617875" title class></a>
+                <p>image-20210315193617875</p>
             </figure>
 
 <p>查看dispatch_jump.tpl源码发现，模板没有对$this-&gt;error传的参数进行输出</p>
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194127896.png" title="image-20210315161943765" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194127896.png" alt="image-20210315161943765" title class></a>
-                <p>image-20210315161943765</p>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194127896.png" title="image-20210315194127896" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194127896.png" alt="image-20210315194127896" title class></a>
+                <p>image-20210315194127896</p>
             </figure>
 
 <p>这里直接对$this-&gt;error传的参数进行输出即可</p>
@@ -317,14 +317,14 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">if</span>(<span class="keyword">isset</span>($message)) &#123;<span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>:)<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"success"</span>&gt;</span><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span>($message); <span class="meta">?&gt;</span></span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span> &#125;<span class="keyword">else</span>&#123;<span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"error"</span>&gt;</span><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span>($error); <span class="meta">?&gt;</span></span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>:(<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"error"</span>&gt;</span>程序错误，请重试！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span> &#125;<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194250143.png" title="image-20210315162137989" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194250143.png" alt="image-20210315162137989" title class></a>
-                <p>image-20210315162137989</p>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194250143.png" title="image-20210315194250143" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194250143.png" alt="image-20210315194250143" title class></a>
+                <p>image-20210315194250143</p>
             </figure>
 
 <p>错误信息就会输出，不用一脸懵逼了</p>
 <figure class="image-box">
-                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194318172.png" title="image-20210315193321924" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194318172.png" alt="image-20210315193321924" title class></a>
-                <p>image-20210315193321924</p>
+                <a rel=Xsrc安全应急响应中心部署 href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194318172.png" title="image-20210315194318172" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210315194318172.png" alt="image-20210315194318172" title class></a>
+                <p>image-20210315194318172</p>
             </figure>
 
 <p>下面是网上找到的一个好看的模板可以用来替代dispatch_jump.tpl</p>
@@ -337,7 +337,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-03-15T12:23:02.164Z" itemprop="dateUpdated">2021-03-15 20:23:02</time>
+    Last updated: <time datetime="2021-05-02T15:52:47.582Z" itemprop="dateUpdated">2021-05-02 23:52:47</time>
 </span><br>
 
 

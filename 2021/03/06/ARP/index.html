@@ -208,7 +208,7 @@
             <h1 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>ARP用于实现IP地址到MAC地址映射</strong>（IP→MAC）</p>
 <p><code>地址解析协议，即ARP（Address Resolution Protocol），是根据IP地址获取物理地址的一个TCP/IP协议。主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。地址解析协议是建立在网络中各个主机互相信任的基础上的，局域网络上的主机可以自主发送ARP应答消息，其他主机收到应答报文时不会检测该报文的真实性就会将其记入本机ARP缓存；由此攻击者就可以向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机，这就构成了一个ARP欺骗。ARP命令可用于查询本机ARP缓存中IP地址和MAC地址的对应关系、添加或删除静态对应关系等。</code></p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="image-box">
-                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590596598243.png" title="1596339018946" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590596598243.png" alt="1596339018946" title class></a>
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596339018946.png" title="1596339018946" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596339018946.png" alt="1596339018946" title class></a>
                 <p>1596339018946</p>
             </figure>
 
@@ -217,29 +217,29 @@
 </ul>
 <p><strong>报文格式</strong></p>
 <figure class="image-box">
-                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596339018946.png" title="1590596598243" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1596339018946.png" alt="1590596598243" title class></a>
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590596598243.png" title="1590596598243" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590596598243.png" alt="1590596598243" title class></a>
                 <p>1590596598243</p>
             </figure>
 
 <figure class="image-box">
-                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493175549.png" title="1590491854669" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493175549.png" alt="1590491854669" title class></a>
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590491854669.png" title="1590491854669" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590491854669.png" alt="1590491854669" title class></a>
                 <p>1590491854669</p>
             </figure>
 
 <figure class="image-box">
-                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493282072.png" title="1590492093776" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493282072.png" alt="1590492093776" title class></a>
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590492093776.png" title="1590492093776" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590492093776.png" alt="1590492093776" title class></a>
                 <p>1590492093776</p>
             </figure>
 
 <p><strong>请求包</strong></p>
 <figure class="image-box">
-                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590491854669.png" title="1590493175549" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590491854669.png" alt="1590493175549" title class></a>
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493175549.png" title="1590493175549" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493175549.png" alt="1590493175549" title class></a>
                 <p>1590493175549</p>
             </figure>
 
 <p><strong>回应包</strong></p>
 <figure class="image-box">
-                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590492093776.png" title="1590493282072" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590492093776.png" alt="1590493282072" title class></a>
+                <a rel=TCP/IP协议-ARP href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493282072.png" title="1590493282072" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1590493282072.png" alt="1590493282072" title class></a>
                 <p>1590493282072</p>
             </figure>
 
@@ -261,7 +261,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-03-06T06:03:31.723Z" itemprop="dateUpdated">2021-03-06 14:03:31</time>
+    Last updated: <time datetime="2021-05-02T15:48:05.421Z" itemprop="dateUpdated">2021-05-02 23:48:05</time>
 </span><br>
 
 

