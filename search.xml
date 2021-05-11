@@ -3,6 +3,83 @@
   
     
     <entry>
+      <title><![CDATA[FRP内网穿透]]></title>
+      <url>/2021/05/11/FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+      <content type="html"><![CDATA[<h1 id="FRP内网穿透"><a href="#FRP内网穿透" class="headerlink" title="FRP内网穿透"></a>FRP内网穿透</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>FRP 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>地址：<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">https://github.com/fatedier/frp/releases</a></p>
+<h2 id="隧道模式"><a href="#隧道模式" class="headerlink" title="隧道模式"></a>隧道模式</h2><figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210511172159096.png" alt="image-20210511172159096" title class>
+                <p>image-20210511172159096</p>
+            </figure>
+
+<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><p>这里的服务端就是我们对应的VPS服务器，我们需要配置<code>frps.ini</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_addr = 0.0.0.0        #绑定ip</span><br><span class="line">bind_port = 9000		   #绑定端口</span><br></pre></td></tr></table></figure>
+
+<p>更加详细配置和选项可以参考<code>frps_full.ini</code>文件</p>
+<ul>
+<li>启动服务器</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frps.exe -c frps.ini</span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>这里的客户端是我们自己内网的主机，我们需要配置<code>frpc.ini</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 1.1.1.1	#绑定服务器的地址</span><br><span class="line">server_port = 9000		#绑定服务器端口</span><br><span class="line"></span><br><span class="line">[proxy]</span><br><span class="line">type = tcp				</span><br><span class="line">remote_port = 8000		#远程端口</span><br><span class="line">plugin = socks5			#协议</span><br></pre></td></tr></table></figure>
+
+<p>同样更加详细配置和选项可以参考<code>frpc_full.ini</code>文件</p>
+<ul>
+<li>启动客户端</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frpc.exe -c frpc.ini</span><br></pre></td></tr></table></figure>
+
+<h2 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h2><figure class="image-box">
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210511172208906.png" alt="image-20210511172208906" title class>
+                <p>image-20210511172208906</p>
+            </figure>
+
+<h3 id="服务器配置-1"><a href="#服务器配置-1" class="headerlink" title="服务器配置"></a>服务器配置</h3><p>这里的服务端就是我们对应的VPS服务器，我们需要配置<code>frps.ini</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_addr = 0.0.0.0        #绑定ip</span><br><span class="line">bind_port = 9000		   #绑定端口</span><br></pre></td></tr></table></figure>
+
+<p>更加详细配置和选项可以参考<code>frps_full.ini</code>文件</p>
+<ul>
+<li>启动服务器</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frps.exe -c frps.ini</span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端配置-1"><a href="#客户端配置-1" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>这里的客户端是我们自己内网的主机，我们需要配置<code>frpc.ini</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 1.1.1.1	#绑定服务器的地址</span><br><span class="line">server_port = 9000		#绑定服务器端口</span><br><span class="line"></span><br><span class="line">[rdp]</span><br><span class="line">type = tcp</span><br><span class="line">local_port = 127.0.0.1  #监听本地端口</span><br><span class="line">local_port = 3389		#映射本地端口</span><br><span class="line">remote_port = 3389		#远程端口</span><br></pre></td></tr></table></figure>
+
+<p>同样更加详细配置和选项可以参考<code>frpc_full.ini</code>文件</p>
+<ul>
+<li>启动客户端</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frpc.exe -c frpc.ini</span><br></pre></td></tr></table></figure>
+
+<h2 id="图像化界面"><a href="#图像化界面" class="headerlink" title="图像化界面"></a>图像化界面</h2><p>需要配置图形化界面管理的话，我们只需要修改vps中的<code>fprs.ini</code>文件</p>
+<p>这里的服务端就是我们对应的VPS服务器，我们需要配置<code>frps.ini</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_addr = 0.0.0.0        #绑定ip</span><br><span class="line">bind_port = 9000		   #绑定端口</span><br></pre></td></tr></table></figure>
+
+<p>更加详细配置和选项可以参考<code>frps_full.ini</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_addr = 0.0.0.0        #绑定i</span><br><span class="line">bind_port = 9000         #绑定端口</span><br><span class="line">dashboard_addr = 0.0.0.0   #管理地址</span><br><span class="line">dashboard_port = 9800     #管理端口</span><br><span class="line">dashboard_user = root      #管理的用户名</span><br><span class="line">dashboard_pwd  = 123456    #管理用户的密码</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://mp.weixin.qq.com/s/cTOPmZ_lfEpkbMTblO9X6Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/cTOPmZ_lfEpkbMTblO9X6Q</a></p>
+<p><a href="https://www.freebuf.com/articles/web/268234.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/web/268234.html</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 其他 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 其他 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTTP代理地址池爬取并验]]></title>
       <url>/2021/05/04/HTTP%E4%BB%A3%E7%90%86%E5%9C%B0%E5%9D%80%E6%B1%A0%E7%88%AC%E5%8F%96%E5%B9%B6%E9%AA%8C%E8%AF%81/</url>
       <content type="html"><![CDATA[<h1 id="HTTP代理地址池爬取并验证"><a href="#HTTP代理地址池爬取并验证" class="headerlink" title="HTTP代理地址池爬取并验证"></a>HTTP代理地址池爬取并验证</h1><p>质量不高，纯属用来练习</p>
@@ -1598,14 +1675,14 @@ Delivery）</code></p>
 </ul>
 <h3 id="数据包搜索"><a href="#数据包搜索" class="headerlink" title="数据包搜索"></a>数据包搜索</h3><p>按<code>Ctrl+F</code>调出搜索框进行搜索</p>
 <figure class="image-box">
-                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210202173315749.png" alt="image-20210202173315749" title class>
-                <p>image-20210202173315749</p>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210202131541280.png" alt="image-20210202131541280" title class>
+                <p>image-20210202131541280</p>
             </figure>
 
 <h3 id="数据包还原"><a href="#数据包还原" class="headerlink" title="数据包还原"></a>数据包还原</h3><p>选中准备还原数据包，右键选择追踪流，选择对应的流</p>
 <figure class="image-box">
-                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210202131541280.png" alt="image-20210202131541280" title class>
-                <p>image-20210202131541280</p>
+                <img src="https://pic-1303705611.cos.ap-guangzhou.myqcloud.com/typora/img/image-20210202173315749.png" alt="image-20210202173315749" title class>
+                <p>image-20210202173315749</p>
             </figure>
 
 <figure class="image-box">
